@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_SL1K4_SCATTER" Id="{1360fbdd-6b87-49fd-b21a-31ee7aa7acc7}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SL1K4_SCATTER
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// M10, Axis 10
+// M11, Axis 11
+// M12, Axis 12
+// M13, Axis 13]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

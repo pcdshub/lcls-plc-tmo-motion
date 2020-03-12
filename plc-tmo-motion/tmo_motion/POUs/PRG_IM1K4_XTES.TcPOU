@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_IM1K4_XTES" Id="{7c144f06-c35b-43dd-8fb5-524985d03342}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_IM1K4_XTES
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// M6, Axis 6
+// M7, Axis 7
+// M8, Axis 8]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

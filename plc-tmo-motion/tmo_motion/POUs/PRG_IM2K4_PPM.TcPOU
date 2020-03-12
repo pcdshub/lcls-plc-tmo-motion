@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_IM2K4_PPM" Id="{ba5f0424-d340-4eff-ab23-3e63bc2d0678}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_IM2K4_PPM
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// M9, Axis 9]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

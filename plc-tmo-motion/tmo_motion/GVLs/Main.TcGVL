@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="Main" Id="{1691e643-5c47-48e9-bb1a-9f3fc0d078a1}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+    M1: DUT_MotionStage;
+    M2: DUT_MotionStage;
+    M3: DUT_MotionStage;
+    M4: DUT_MotionStage;
+    M5: DUT_MotionStage;
+    M6: DUT_MotionStage;
+    M7: DUT_MotionStage;
+    M8: DUT_MotionStage;
+    M9: DUT_MotionStage;
+    M10: DUT_MotionStage;
+    M11: DUT_MotionStage;
+    M12: DUT_MotionStage;
+    M13: DUT_MotionStage;
+    M14: DUT_MotionStage;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
