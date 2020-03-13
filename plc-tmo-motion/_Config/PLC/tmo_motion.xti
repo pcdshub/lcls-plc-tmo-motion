@@ -898,7 +898,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{9DD0BA81-4A92-4D5E-8BD9-E101C02702D4}" Name="tmo_motion" PrjFilePath="..\..\tmo_motion\tmo_motion.plcproj" TmcFilePath="..\..\tmo_motion\tmo_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc">
 			<Name>tmo_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -2153,7 +2153,7 @@ External Setpoint Generation:
 	</Project>
 	<Mappings>
 		<OwnerA Name="tmo_motion Instance">
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1 AL1K4-L2SI-MMS">
 				<Link VarA="PlcTask Inputs^Main.M1.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M1.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
@@ -2193,19 +2193,19 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M5.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M5.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 6">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 6 IM1K4-XTES-MMS">
 				<Link VarA="PlcTask Inputs^Main.M6.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M6.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 7">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 7 IM1K4-XTES-CLZ">
 				<Link VarA="PlcTask Inputs^Main.M7.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M7.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 8">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 8 IM1K4-XTES-CLF">
 				<Link VarA="PlcTask Inputs^Main.M8.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M8.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 9">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 9 IM2K4-PPM-MMS">
 				<Link VarA="PlcTask Inputs^Main.M9.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M9.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
