@@ -3,12 +3,78 @@
   <POU Name="PRG_IM1K4_XTES" Id="{7c144f06-c35b-43dd-8fb5-524985d03342}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_IM1K4_XTES
 VAR
+    {attribute 'pytmc' := '
+        pv: IM1K4:XTES
+        io: io
+    '}
+    {attribute 'TcLinkTo' := '.bZoomEndFwd := TIIB[IM1K4-EL1088-E5]^Channel 1^Input;
+                              .bZoomEndBwd := TIIB[IM1K4-EL1088-E5]^Channel 2^Input;
+                              .bFocusEndFwd := TIIB[IM1K4-EL1088-E5]^Channel 3^Input;
+                              .bFocusEndBwd := TIIB[IM1K4-EL1088-E5]^Channel 4^Input;
+                              .fbOpal.bOpalPower := TIIB[IM1K4-EL2004-E2]^Channel 2^Output;
+                              .fbOpal.bLedPower := TIIB[IM1K4-EL2004-E2]^Channel 3^Output'}
+    fbIM1K4: FB_XPIM;
+    {attribute 'TcLinkTo' := '.Status := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Status;
+                              .D[0] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 0;
+                              .D[1] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 1;
+                              .D[2] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 2;
+                              .D[3] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 3;
+                              .D[4] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 4;
+                              .D[5] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 5;
+                              .D[6] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 6;
+                              .D[7] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 7;
+                              .D[8] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 8;
+                              .D[9] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 9;
+                              .D[10] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 10;
+                              .D[11] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 11;
+                              .D[12] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 12;
+                              .D[13] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 13;
+                              .D[14] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 14;
+                              .D[15] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 15;
+                              .D[16] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 16;
+                              .D[17] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 17;
+                              .D[18] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 18;
+                              .D[19] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 19;
+                              .D[20] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 20;
+                              .D[21] := TIIB[IM1K4-EL6002-E6]^COM TxPDO-Map Inputs Channel 1^Data In 21'}
+    stEL6In AT %I*: EL6InData22b;
+    {attribute 'TcLinkTo' := '.Ctrl := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Ctrl;
+                              .D[0] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 0;
+                              .D[1] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 1;
+                              .D[2] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 2;
+                              .D[3] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 3;
+                              .D[4] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 4;
+                              .D[5] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 5;
+                              .D[6] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 6;
+                              .D[7] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 7;
+                              .D[8] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 8;
+                              .D[9] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 9;
+                              .D[10] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 10;
+                              .D[11] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 11;
+                              .D[12] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 12;
+                              .D[13] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 13;
+                              .D[14] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 14;
+                              .D[15] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 15;
+                              .D[16] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 16;
+                              .D[17] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 17;
+                              .D[18] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 18;
+                              .D[19] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 19;
+                              .D[20] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 20;
+                              .D[21] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 21'}
+    stEL6Out AT %Q*: EL6OutData22b;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// M6, Axis 6
-// M7, Axis 7
-// M8, Axis 8]]></ST>
+      <ST><![CDATA[fbIM1K4(
+    stYStage := Main.M6,
+    stZoomStage := Main.M7,
+    stFocusStage := Main.M8,
+    stEl6In := stEL6In,
+    stEl6Out := stEl6Out,
+    fYag := -88.87,
+    fDiamond := -58.87,
+    fReticle := -28.87,
+    fOut := 0);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
