@@ -1324,10 +1324,13 @@ External Setpoint Generation:
 	<Axis Id="6" CreateSymbols="true" AxisType="1" AxisFolder="IM1K4-XTES">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
+			<Velo Maximum="10"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara MaxCount="#xffffffff">
+			<EncPara ScaleFactorNumerator="5e-05" Offset="-922337203685454" Inverse="true" MaxCount="#xffffffff" ReferenceSystem="1">
+				<SoftEndMinControl Enable="true" Range="-89"/>
+				<SoftEndMaxControl Enable="true"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
@@ -1371,7 +1374,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="50" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1459,8 +1462,10 @@ Drive Status 4 (manually linked):
 				</Var>
 			</Vars>
 		</Drive>
-		<Controller Name="Ctrl" CtrType="1">
+		<Controller Name="Ctrl" CtrType="2">
 			<CtrPara PriorControlFactor="1">
+				<PosDiffControl Range="1"/>
+				<PID PosKp="20" PosExtKp="20" DeadBandPosition="0.001"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
