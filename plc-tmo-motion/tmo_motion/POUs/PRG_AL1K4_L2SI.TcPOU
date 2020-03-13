@@ -3,10 +3,17 @@
   <POU Name="PRG_AL1K4_L2SI" Id="{41f87cec-8d4f-488b-ae3e-a2c9e5843eec}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_AL1K4_L2SI
 VAR
+    {attribute 'pytmc' := '
+		pv: AL1K4:L2SI
+		io: io
+	'}
+	{attribute 'TcLinkTo' := '.fbLaser.iLaserINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 1^Analog output;
+							  .fbLaser.iShutdownINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 2^Analog output'}
+    fbAL1K4: FB_REF;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// M1, Axis 1]]></ST>
+      <ST><![CDATA[fbAL1K4(stYStage := Main.M1);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
