@@ -2153,6 +2153,30 @@ External Setpoint Generation:
 	</Project>
 	<Mappings>
 		<OwnerA Name="tmo_motion Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL1088-E5">
+				<Link VarA="PlcTask Inputs^Main.M7.bHome" VarB="Channel 2^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M8.bHome" VarB="Channel 4^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL2004-E2">
+				<Link VarA="PlcTask Outputs^Main.M6.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M6.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M1.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M1.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M1.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M9.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M9.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M9.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1 AL1K4-L2SI-MMS">
 				<Link VarA="PlcTask Inputs^Main.M1.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M1.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
