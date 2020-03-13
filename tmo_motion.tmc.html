@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>tmo_motion.tmc &#8212; pcdshub/lcls-plc-tmo-motion  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="PLC Project (1): tmo_motion" href="plc-tmo-motion.tsproj.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tmo-motion-tmc">
+<h1>tmo_motion.tmc<a class="headerlink" href="#tmo-motion-tmc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="records">
+<h2>Records<a class="headerlink" href="#records" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="s2">&quot;$(PREFIX)LCLSGeneral:LogHost_RBV&quot;</span> <span class="p">(</span><span class="n">waveform</span><span class="p">)</span>
+ <span class="s2">&quot;$(PREFIX)LCLSGeneral:LogHost&quot;</span> <span class="p">(</span><span class="n">waveform</span><span class="p">)</span>
+ <span class="s2">&quot;$(PREFIX)LCLSGeneral:LogPort&quot;</span> <span class="p">(</span><span class="n">longout</span><span class="p">)</span>
+ <span class="s2">&quot;$(PREFIX)LCLSGeneral:LogPort_RBV&quot;</span> <span class="p">(</span><span class="n">longin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="epics-database">
+<h2>EPICS database<a class="headerlink" href="#epics-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>record(longin, &quot;$(PREFIX)LCLSGeneral:LogPort_RBV&quot;) {
+  field(DESC, &quot;The log host UDP port&quot;)
+  field(SCAN, &quot;I/O Intr&quot;)
+  field(PINI, &quot;1&quot;)
+  field(TSE, &quot;-2&quot;)
+  field(DTYP, &quot;asynInt32&quot;)
+  field(INP, &quot;@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Logger.iLogPort?&quot;)
+}
+
+record(longout, &quot;$(PREFIX)LCLSGeneral:LogPort&quot;) {
+  field(DESC, &quot;The log host UDP port&quot;)
+  field(DTYP, &quot;asynInt32&quot;)
+  field(OUT, &quot;@asyn($(PORT),0,1)ADSPORT=851/GVL_Logger.iLogPort=&quot;)
+  info(autosaveFields_pass0, &quot;VAL&quot;)
+}
+
+record(waveform, &quot;$(PREFIX)LCLSGeneral:LogHost_RBV&quot;) {
+  field(DESC, &quot;The log host IP address&quot;)
+  field(SCAN, &quot;I/O Intr&quot;)
+  field(PINI, &quot;1&quot;)
+  field(TSE, &quot;-2&quot;)
+  field(DTYP, &quot;asynInt8ArrayIn&quot;)
+  field(INP, &quot;@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Logger.cLogHost?&quot;)
+  field(FTVL, &quot;CHAR&quot;)
+  field(NELM, &quot;15&quot;)
+}
+
+record(waveform, &quot;$(PREFIX)LCLSGeneral:LogHost&quot;) {
+  field(DESC, &quot;The log host IP address&quot;)
+  field(DTYP, &quot;asynInt8ArrayOut&quot;)
+  field(INP, &quot;@asyn($(PORT),0,1)ADSPORT=851/GVL_Logger.cLogHost=&quot;)
+  field(FTVL, &quot;CHAR&quot;)
+  field(NELM, &quot;15&quot;)
+  info(autosaveFields_pass0, &quot;VAL&quot;)
+}```
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pcdshub/lcls-plc-tmo-motion</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="plc-tmo-motion.tsproj.html">PLC Project (1): tmo_motion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tmo_motion.tmc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#records">Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#epics-database">EPICS database</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="plc-tmo-motion.tsproj.html" title="previous chapter">PLC Project (1): tmo_motion</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, SLAC National Accelerator Laboratory.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tmo_motion.tmc.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
