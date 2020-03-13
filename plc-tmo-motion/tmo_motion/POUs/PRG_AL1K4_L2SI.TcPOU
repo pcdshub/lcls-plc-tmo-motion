@@ -4,11 +4,11 @@
     <Declaration><![CDATA[PROGRAM PRG_AL1K4_L2SI
 VAR
     {attribute 'pytmc' := '
-		pv: AL1K4:L2SI
-		io: io
-	'}
-	{attribute 'TcLinkTo' := '.fbLaser.iLaserINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 1^Analog output;
-							  .fbLaser.iShutdownINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 2^Analog output'}
+        pv: AL1K4:L2SI
+        io: io
+    '}
+    {attribute 'TcLinkTo' := '.fbLaser.iLaserINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 1^Analog output;
+                              .fbLaser.iShutdownINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 2^Analog output'}
     fbAL1K4: FB_REF;
 END_VAR
 ]]></Declaration>
