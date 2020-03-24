@@ -36,19 +36,19 @@ VAR_GLOBAL
     M9: DUT_MotionStage;
 
     // SL1K4-SCATTER: 4 Axes
-	{attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:BOTTOM'}
+    {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:BOTTOM'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E1]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E1]^STM Status^Status^Digital input 1'}
     M10: DUT_MotionStage;
-	{attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:TOP'}
+    {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:TOP'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E3]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E3]^STM Status^Status^Digital input 1'}
     M11: DUT_MotionStage;
-	{attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:NORTH'}
+    {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:NORTH'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E5]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E5]^STM Status^Status^Digital input 2'}
     M12: DUT_MotionStage;
-	{attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:SOUTH'}
+    {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:SOUTH'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E7]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E7]^STM Status^Status^Digital input 2'}
     M13: DUT_MotionStage;

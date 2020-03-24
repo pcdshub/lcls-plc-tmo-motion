@@ -3,14 +3,14 @@
   <POU Name="PRG_SL1K4_SCATTER" Id="{1360fbdd-6b87-49fd-b21a-31ee7aa7acc7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SL1K4_SCATTER
 VAR
-	
-	//fbSL1K4: FB_SLITS;
-	//GET PMPS Move Ok bit
-	// Default True until it is properly linked to PMPS bit
-	bMoveOk:BOOL :=TRUE;
-	
-	//for testing purposes only. comment-out/delete once done.	
-	mcPower : ARRAY [1..4] OF MC_POWER;
+
+    //fbSL1K4: FB_SLITS;
+    //GET PMPS Move Ok bit
+    // Default True until it is properly linked to PMPS bit
+    bMoveOk:BOOL :=TRUE;
+
+    //for testing purposes only. comment-out/delete once done.
+    mcPower : ARRAY [1..4] OF MC_POWER;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -23,12 +23,12 @@ END_VAR
 fbSL1K4.bMoveOk := bMoveOk;
 
 fbSL1K4(stTopBlade:=  Main.M10,
-		stBottomBlade:= Main.M11, 
-		stNorthBlade:=  Main.M12, 
-		stSouthBlade:=  Main.M13);*)
+        stBottomBlade:= Main.M11,
+        stNorthBlade:=  Main.M12,
+        stSouthBlade:=  Main.M13);*)
 
 
-//for testing purposes only. comment-out/delete once done.	
+//for testing purposes only. comment-out/delete once done.
 mcPower[1](axis:=Main.M10.Axis, Enable:=TRUE, enable_positive:=Main.M10.bLimitForwardEnable, enable_negative:=Main.M10.bLimitBackwardEnable);
 mcPower[2](axis:=Main.M11.Axis, Enable:=TRUE, enable_positive:=Main.M11.bLimitForwardEnable, enable_negative:=Main.M11.bLimitBackwardEnable);
 mcPower[3](axis:=Main.M12.Axis, Enable:=TRUE, enable_positive:=Main.M12.bLimitForwardEnable, enable_negative:=Main.M12.bLimitBackwardEnable);
