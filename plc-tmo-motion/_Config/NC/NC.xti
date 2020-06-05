@@ -1356,7 +1356,7 @@ External Setpoint Generation:
 		<Axis File="Axis 11.xti" Id="11"/>
 		<Axis File="Axis 12.xti" Id="12"/>
 		<Axis File="Axis 13.xti" Id="13"/>
-		<Axis CreateSymbols="true" AxisType="1" AxisFolder="ST1K4-TEST" Id="15">
+		<Axis CreateSymbols="true" AxisType="1" AxisFolder="ST1K4-TEST" Id="14">
 			<Name>ST1K4-TEST</Name>
 			<AxisPara>
 				<Velo RefSearch="5" RefSync="5" SlowManual="1" FastManual="5" Maximum="50"/>
