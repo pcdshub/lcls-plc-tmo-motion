@@ -3,20 +3,16 @@
   <POU Name="PRG_ST1K4_TEST" Id="{75fb9ec1-c09f-44b1-93e4-582e1bc13e2e}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_ST1K4_TEST
 VAR
-	fbMotion1: FB_MotionStage;
+    fbMotion1: FB_MotionStage;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// M14, Axis 14
 Main.M14.nEnableMode	:= ENUM_StageEnableMode.DURING_MOTION;
 Main.M14.bHardwareEnable:= TRUE;
+Main.M14.bPowerSelf := TRUE;
 Main.M14.nBrakeMode := ENUM_StageBrakeMode.IF_ENABLED;
 fbMotion1(stMotionStage:=Main.M14);]]></ST>
     </Implementation>
-    <LineIds Name="PRG_ST1K4_TEST">
-      <LineId Id="2" Count="0" />
-      <LineId Id="9" Count="2" />
-      <LineId Id="8" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

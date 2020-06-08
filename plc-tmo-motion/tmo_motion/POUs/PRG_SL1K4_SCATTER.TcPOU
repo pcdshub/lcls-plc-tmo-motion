@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SL1K4_SCATTER" Id="{1360fbdd-6b87-49fd-b21a-31ee7aa7acc7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SL1K4_SCATTER
 VAR
@@ -11,6 +11,7 @@ VAR
 
     //for testing purposes only. comment-out/delete once done.
     mcPower : ARRAY [1..4] OF MC_POWER;
+    bTest : BOOL := FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -29,10 +30,10 @@ fbSL1K4(stTopBlade:=  Main.M10,
 
 
 //for testing purposes only. comment-out/delete once done.
-mcPower[1](axis:=Main.M10.Axis, Enable:=TRUE, enable_positive:=Main.M10.bLimitForwardEnable, enable_negative:=Main.M10.bLimitBackwardEnable);
-mcPower[2](axis:=Main.M11.Axis, Enable:=TRUE, enable_positive:=Main.M11.bLimitForwardEnable, enable_negative:=Main.M11.bLimitBackwardEnable);
-mcPower[3](axis:=Main.M12.Axis, Enable:=TRUE, enable_positive:=Main.M12.bLimitForwardEnable, enable_negative:=Main.M12.bLimitBackwardEnable);
-mcPower[4](axis:=Main.M13.Axis, Enable:=TRUE, enable_positive:=Main.M13.bLimitForwardEnable, enable_negative:=Main.M13.bLimitBackwardEnable);
+mcPower[1](axis:=Main.M10.Axis, Enable:=bTest, enable_positive:=Main.M10.bLimitForwardEnable, enable_negative:=Main.M10.bLimitBackwardEnable);
+mcPower[2](axis:=Main.M11.Axis, Enable:=bTest, enable_positive:=Main.M11.bLimitForwardEnable, enable_negative:=Main.M11.bLimitBackwardEnable);
+mcPower[3](axis:=Main.M12.Axis, Enable:=bTest, enable_positive:=Main.M12.bLimitForwardEnable, enable_negative:=Main.M12.bLimitBackwardEnable);
+mcPower[4](axis:=Main.M13.Axis, Enable:=bTest, enable_positive:=Main.M13.bLimitForwardEnable, enable_negative:=Main.M13.bLimitBackwardEnable);
 
 ]]></ST>
     </Implementation>

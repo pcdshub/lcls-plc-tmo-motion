@@ -1,34 +1,28 @@
 language: python
+os: linux
+dist: xenial
 python: 3.7
-sudo: false
 
 env:
   global:
+    # Doctr deploy key for pcdshub/lcls-plc-tmo-motion
     - secure: "qi5wKcCNhDOJUp8/N2QceP7ypGklWKfmSazfQcQQWL2mPP5sAIWFXYj1DevvgybfdKGzGuRazZ/XW2sQyeZCkF9ENJq5snqu/9kwrJ/shJgJB/JoLgoUEFaYPSYLdPZllw5FFvbi0hPHNxTB5HFT3zGNqbfJM7gYGqGRKk3VcVsa7c4106DYUkQMLunnxsx5wqLImubVOIDme5vz5bvNIlnKtCmbEWtVnotaBgSrBGg3KyoeX1OgnEOgt2kuBuISRnOQ9vFGDDkSYcvtA7jXgfI9/1q8y7e27FGU5BeXD0WNyYK5+Xr5aYnoZl2KdJrSOz/5xBMe4DcYbMv9ggluyLLWnXILNCt1lgc53lNVsS/hTTckBnmi797K/LAKvvykcKKKtfa8X6fY7o0B/82qMEO6ZuMbr2DP/cbgZL6PdvjjdMaAeeuNXAw6dc/mVSBl81VtwEZYvwQRIaqz2A5zF39ZVlPSjTGAv8jdPHvu73FrxvuOtoJMMI2/l6fDipqg/W0TW0Bh71oTT8o1iXdU/0CAk1eanVCYDEGekrWScs6Xs1D0MmupjRhd+cMRRZ834ky6ttsgTFR90k90yL26SzZbxIxqAFfksXWhZ1bVaFRwRyQo7PESpKgzoLw7c6+Q6fbqyrpsJI3Fyaoy8kaALg2xOToQOe6tkHTFGKm1k/M="
 
-matrix:
+jobs:
   include:
     - name: Project summary
-      python: 3.7
       env: TWINCAT_SUMMARY=1
     - name: Pragma linting
-      python: 3.7
       env: TWINCAT_PRAGMALINT=1
     - name: Documentation building
-      python: 3.7
       env: TWINCAT_BUILD_DOCS=1
     - name: Twincat Style
-      python: 3.7
       env: TWINCAT_STYLE=1
+    - name: Pre-commit Checks
+      env: PRE_COMMIT=1
 
 install:
   # Import the helper scripts
   - git clone --depth 1 git://github.com/pcdshub/pcds-ci-helpers.git
   # Start the helper-script initialization + run based on environment variables
   - source pcds-ci-helpers/travis/init.sh
-
-script:
-  - |
-    if [ -n "${TWINCAT_STYLE}" ]; then
-      ./style/check_style.sh
-    fi

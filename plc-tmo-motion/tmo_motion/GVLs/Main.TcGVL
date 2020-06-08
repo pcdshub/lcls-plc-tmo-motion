@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="Main" Id="{1691e643-5c47-48e9-bb1a-9f3fc0d078a1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -54,12 +54,11 @@ VAR_GLOBAL
     M13: DUT_MotionStage;
 
     // ST1K4-TEST: 1 Axis
-	{attribute 'pytmc' := 'pv: ST1K4:TEST:MMS'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable	:=	TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 1;
-						     .bLimitBackwardEnable	:=	TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 2;
-						     .bBrakeRelease		:=	TIIB[ST1K4-EL2002-E3]^Channel 1^Output'
-	}
-	M14:DUT_MotionStage;
+    {attribute 'pytmc' := 'pv: ST1K4:TEST:MMS:01'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 2;
+                              .bBrakeRelease        := TIIB[ST1K4-EL2202-E3]^Channel 1^Output'}
+    M14: DUT_MotionStage;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
