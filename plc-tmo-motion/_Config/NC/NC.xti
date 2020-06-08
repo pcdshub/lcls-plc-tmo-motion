@@ -1352,10 +1352,10 @@ External Setpoint Generation:
 		<Axis File="Axis 7 IM1K4-XTES-CLZ.xti" Id="7"/>
 		<Axis File="Axis 8 IM1K4-XTES-CLF.xti" Id="8"/>
 		<Axis File="Axis 9 IM2K4-PPM-MMS.xti" Id="9"/>
-		<Axis File="Axis 10.xti" Id="10"/>
-		<Axis File="Axis 11.xti" Id="11"/>
-		<Axis File="Axis 12.xti" Id="12"/>
-		<Axis File="Axis 13.xti" Id="13"/>
+		<Axis File="SL1K4-BOTTOM-M10.xti" Id="10"/>
+		<Axis File="SL1K4-TOP-M11.xti" Id="11"/>
+		<Axis File="SL1K4-NORTH-M12.xti" Id="12"/>
+		<Axis File="SL1K4-SOUTH-M13.xti" Id="13"/>
 		<Axis CreateSymbols="true" AxisType="1" AxisFolder="ST1K4-TEST" Id="14">
 			<Name>ST1K4-TEST</Name>
 			<AxisPara>
