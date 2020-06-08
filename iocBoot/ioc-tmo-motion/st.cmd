@@ -1,11 +1,11 @@
-#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.2.1/bin/rhel7-x86_64/adsIoc
+#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.2.3/bin/rhel7-x86_64/adsIoc
 
 < envPaths
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
 epicsEnvSet("IOCNAME", "ioc-tmo-motion" )
-epicsEnvSet("ENGINEER", "zlentz" )
+epicsEnvSet("ENGINEER", "adpai" )
 epicsEnvSet("LOCATION", "PLC:TMO:MOTION" )
 epicsEnvSet("IOCSH_PS1", "$(IOCNAME)> " )
 
@@ -283,9 +283,9 @@ dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME
 dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
 
 epicsEnvSet("AXIS_NO",         "14")
-epicsEnvSet("MOTOR_PREFIX",    "PLC:TMO:MOTION:")
-epicsEnvSet("MOTOR_NAME",      "Axis:14")
-epicsEnvSet("DESC",            "Main.M14 / Axis 14")
+epicsEnvSet("MOTOR_PREFIX",    "ST1K4:TEST:")
+epicsEnvSet("MOTOR_NAME",      "MMS")
+epicsEnvSet("DESC",            "Main.M14 / ST1K4-TEST")
 epicsEnvSet("EGU",             "mm")
 epicsEnvSet("PREC",            "3")
 epicsEnvSet("AXISCONFIG",      "")
