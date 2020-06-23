@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.29" ClassName="CNestedPlcProjDef">
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNestedPlcProjDef">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
@@ -2462,7 +2462,7 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbOpal.bLedPower</Name>
+					<Name>PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2647,6 +2647,25 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 			</Vars>
+			<Vars VarGrpType="8">
+				<Name>PlcTask Retains</Name>
+				<Var>
+					<Name>PMPS_GVL.SuccessfulPreemption</Name>
+					<Comment>
+						<![CDATA[ Any time BPTM applies a new BP request which is confirmed]]>
+					</Comment>
+					<Type>UDINT</Type>
+					<InOut>7</InOut>
+				</Var>
+				<Var>
+					<Name>PMPS_GVL.AccumulatedFF</Name>
+					<Comment>
+						<![CDATA[ Any time a FF occurs]]>
+					</Comment>
+					<Type>UDINT</Type>
+					<InOut>7</InOut>
+				</Var>
+			</Vars>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502001"/>
 			</TaskPouOids>
@@ -2664,7 +2683,7 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL2004-E2">
 				<Link VarA="PlcTask Outputs^Main.M6.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbOpal.bLedPower" VarB="Channel 3^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower" VarB="Channel 3^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6">
