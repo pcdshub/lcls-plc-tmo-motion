@@ -6,7 +6,7 @@
     fbArbiter: FB_Arbiter(0);
     // Arbiter not set up yet, for devices behind ST1K4. TODO: how to veto arbiter??
     fbArbiterInactive: FB_Arbiter(1);
-    
+
     // Fast fault for before ST1K4 (AT1K4, IM1K4)
     {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:01'}
     {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 1^Output'}
@@ -15,7 +15,7 @@
     {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:02'}
     {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 2^Output'}
     fbFastFaultOutput2: FB_HardwareFFOutput := (bAutoReset := TRUE);
-    
+
     // Consider adding extra FFO card for after ST4K4
 END_VAR]]></Declaration>
   </GVL>
