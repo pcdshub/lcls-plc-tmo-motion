@@ -35,6 +35,9 @@
     <Compile Include="POUs\PRG_3_PMPS_POST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_4_LOG.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_AL1K4_L2SI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -109,13 +112,13 @@
       <Resolution>LCLS General, 2.3.4 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 1.2.0 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 1.3.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls2-cc-lib">
-      <Resolution>lcls2-cc-lib, 0.3.0 (SLAC)</Resolution>
+      <Resolution>lcls2-cc-lib, 1.0.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
-      <Resolution>PMPS, * (SLAC - LCLS)</Resolution>
+      <Resolution>PMPS, 0.6.0 (SLAC - LCLS)</Resolution>
     </PlaceholderResolution>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,8 @@ PRG_ST1K4_TEST();
 PRG_ST4K4_TMO_TERM();
 PRG_ST5K4_TMO_TERM_FIXED();
 
-PRG_3_PMPS_POST();]]></ST>
+PRG_3_PMPS_POST();
+PRG_4_LOG();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

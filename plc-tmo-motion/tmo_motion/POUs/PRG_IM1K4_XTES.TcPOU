@@ -65,16 +65,41 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbIM1K4(
+      <ST><![CDATA[fbIM1K4.nTransitionAssertionID := 2140;
+fbIM1K4.nUnknownAssertionID := 2149;
+
+fbIM1K4.stOut.fPosition := 0;
+fbIM1K4.stOut.bUseRawCounts := FALSE;
+fbIM1K4.stOut.nRequestAssertionID := 2141;
+fbIM1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stOut.bValid := TRUE;
+
+fbIM1K4.stYag.fPosition := -88.87;
+fbIM1K4.stYag.bUseRawCounts := FALSE;
+fbIM1K4.stYag.nRequestAssertionID := 2142;
+fbIM1K4.stYag.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stYag.bValid := TRUE;
+
+fbIM1K4.stDiamond.fPosition := -58.87;
+fbIM1K4.stDiamond.bUseRawCounts := FALSE;
+fbIM1K4.stDiamond.nRequestAssertionID := 2143;
+fbIM1K4.stDiamond.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stDiamond.bValid := TRUE;
+
+fbIM1K4.stReticle.fPosition := -28.87;
+fbIM1K4.stReticle.bUseRawCounts := FALSE;
+fbIM1K4.stReticle.nRequestAssertionID := 2144;
+fbIM1K4.stReticle.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbIM1K4.stReticle.bValid := TRUE;
+
+fbIM1K4(
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M6,
     stZoomStage := Main.M7,
     stFocusStage := Main.M8,
     stEl6In := stEL6In,
-    stEl6Out := stEl6Out,
-    fYag := -88.87,
-    fDiamond := -58.87,
-    fReticle := -28.87,
-    fOut := 0);]]></ST>
+    stEl6Out := stEl6Out);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

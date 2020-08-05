@@ -13,7 +13,25 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbAL1K4(stYStage := Main.M1);]]></ST>
+      <ST><![CDATA[fbAL1K4.nTransitionAssertionID := 3140;
+fbAL1K4.nUnknownAssertionID := 3149;
+
+fbAL1K4.stOut.fPosition := -10; // We don't actually know this value! Pick the highest recorded CC out position
+fbAL1K4.stOut.bUseRawCounts := FALSE;
+fbAL1K4.stOut.nRequestAssertionID := 3141;
+fbAL1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbAL1K4.stOut.bValid := TRUE;
+
+fbAL1K4.stIn.fPosition := -20; // We don't actually know this value! Pick something clearly wrong.
+fbAL1K4.stIn.bUseRawCounts := FALSE;
+fbAL1K4.stIn.nRequestAssertionID := 3142;
+fbAL1K4.stIn.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbAL1K4.stIn.bValid := TRUE;
+
+fbAL1K4(
+    stYStage := Main.M1,
+    fbArbiter := fbArbiterInactive,
+    fbFFHWO := fbFastFaultOutput2);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
