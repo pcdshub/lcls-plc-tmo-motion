@@ -15,27 +15,29 @@ PLC Project (1): tmo_motion
         4.) tmo_motion/POUs/PRG_1_PlcTask.TcPOU
         5.) tmo_motion/POUs/PRG_2_PMPS_PRE.TcPOU
         6.) tmo_motion/POUs/PRG_3_PMPS_POST.TcPOU
-        7.) tmo_motion/POUs/PRG_AL1K4_L2SI.TcPOU
-        8.) tmo_motion/POUs/PRG_AT1K4_SOLID.TcPOU
-        9.) tmo_motion/POUs/PRG_IM1K4_XTES.TcPOU
-        10.) tmo_motion/POUs/PRG_IM2K4_PPM.TcPOU
-        11.) tmo_motion/POUs/PRG_SL1K4_SCATTER.TcPOU
-        12.) tmo_motion/POUs/PRG_ST1K4_TEST.TcPOU
-        13.) tmo_motion/POUs/PRG_ST4K4_TMO_TERM.TcPOU
-        14.) tmo_motion/POUs/PRG_ST5K4_TMO_TERM_FIXED.TcPOU
+        7.) tmo_motion/POUs/PRG_4_LOG.TcPOU
+        8.) tmo_motion/POUs/PRG_AL1K4_L2SI.TcPOU
+        9.) tmo_motion/POUs/PRG_AT1K4_SOLID.TcPOU
+        10.) tmo_motion/POUs/PRG_IM1K4_XTES.TcPOU
+        11.) tmo_motion/POUs/PRG_IM2K4_PPM.TcPOU
+        12.) tmo_motion/POUs/PRG_SL1K4_SCATTER.TcPOU
+        13.) tmo_motion/POUs/PRG_ST1K4_TEST.TcPOU
+        14.) tmo_motion/POUs/PRG_ST4K4_TMO_TERM.TcPOU
+        15.) tmo_motion/POUs/PRG_ST5K4_TMO_TERM_FIXED.TcPOU
 
     POUs:
         1.) PRG_1_PlcTask
         2.) PRG_2_PMPS_PRE
         3.) PRG_3_PMPS_POST
-        4.) PRG_AL1K4_L2SI
-        5.) PRG_AT1K4_SOLID
-        6.) PRG_IM1K4_XTES
-        7.) PRG_IM2K4_PPM
-        8.) PRG_SL1K4_SCATTER
-        9.) PRG_ST1K4_TEST
-        10.) PRG_ST4K4_TMO_TERM
-        11.) PRG_ST5K4_TMO_TERM_FIXED
+        4.) PRG_4_LOG
+        5.) PRG_AL1K4_L2SI
+        6.) PRG_AT1K4_SOLID
+        7.) PRG_IM1K4_XTES
+        8.) PRG_IM2K4_PPM
+        9.) PRG_SL1K4_SCATTER
+        10.) PRG_ST1K4_TEST
+        11.) PRG_ST4K4_TMO_TERM
+        12.) PRG_ST5K4_TMO_TERM_FIXED
 
     GVLs:
         1.) GVL_PMPS
@@ -48,12 +50,21 @@ File: tmo_motion/GVLs/GVL_PMPS.TcGVL
 
 ```vhdl
 VAR_GLOBAL
-	//fbArbiter: FB_Arbiter(0);
+    // Arbiter linked to the FFO and the MPS
+    fbArbiter: FB_Arbiter(0);
+    // Arbiter not set up yet, for devices behind ST1K4. TODO: how to veto arbiter??
+    fbArbiterInactive: FB_Arbiter(1);
 
-    {attribute 'pytmc' := 'pv: PLC:LFE:MOTION:FFO:01'}
+    // Fast fault for before ST1K4 (AT1K4, IM1K4)
+    {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:01'}
     {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 1^Output'}
     fbFastFaultOutput1: FB_HardwareFFOutput := (bAutoReset := TRUE);
+    // Fast fault for after ST1K4 (Everything else)
+    {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:02'}
+    {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 2^Output'}
+    fbFastFaultOutput2: FB_HardwareFFOutput := (bAutoReset := TRUE);
 
+    // Consider adding extra FFO card for after ST4K4
 END_VAR
 ```
 
@@ -70,8 +81,9 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: AL1K4:L2SI:MMS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[AL1K4-EL7041-E1]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[AL1K4-EL7041-E1]^STM Status^Status^Digital input 2;
-                              .bBrakeRelease        := TIIB[AL1K4-EL2004-E3]^Channel 1^Output'}
-    M1: DUT_MotionStage;
+                              .bBrakeRelease        := TIIB[AL1K4-EL2004-E3]^Channel 1^Output;
+                              .nRawEncoderULINT     := TIIB[AL1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
+    M1: DUT_MotionStage := (sName := 'AL1K4:L2SI:MMS');
 
     // AT1K4-SOLID: 4 Axes
     M2: DUT_MotionStage;
@@ -82,46 +94,55 @@ VAR_GLOBAL
     // IM1K4-XTES: 3 Axes
     {attribute 'pytmc' := 'pv: IM1K4:XTES:MMS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[IM1K4-EL7041-E1]^STM Status^Status^Digital input 1;
-                              .bBrakeRelease        := TIIB[IM1K4-EL2004-E2]^Channel 1^Output'}
-    M6: DUT_MotionStage;
+                              .bBrakeRelease        := TIIB[IM1K4-EL2004-E2]^Channel 1^Output;
+                              .nRawEncoderULINT     := TIIB[IM1K4-EL5042-E3]^FB Inputs Channel 1^Position'}
+    M6: DUT_MotionStage := (sName := 'IM1K4:XTES:MMS');
     {attribute 'pytmc' := 'pv: IM1K4:XTES:CLZ'}
-    {attribute 'TcLinkTo' := '.bHome := TIIB[IM1K4-EL1088-E5]^Channel 2^Input'}
-    M7: DUT_MotionStage;
+    {attribute 'TcLinkTo' := '.bHome                := TIIB[IM1K4-EL1088-E5]^Channel 2^Input;
+                              .nRawEncoderULINT     := TIIB[IM1K4-EL5042-E3]^FB Inputs Channel 1^Position'}
+    M7: DUT_MotionStage := (sName := 'IM1K4:XTES:CLZ');
     {attribute 'pytmc' := 'pv: IM1K4:XTES:CLF'}
-    {attribute 'TcLinkTo' := '.bHome := TIIB[IM1K4-EL1088-E5]^Channel 4^Input'}
-    M8: DUT_MotionStage;
+    {attribute 'TcLinkTo' := '.bHome := TIIB[IM1K4-EL1088-E5]^Channel 4^Input;
+                              .nRawEncoderULINT     := TIIB[IM1K4-EL5042-E3]^FB Inputs Channel 1^Position'}
+    M8: DUT_MotionStage := (sName := 'IM1K4:XTES:CLF');
 
     // IM2K4-PPM: 1 Axis
     {attribute 'pytmc' := 'pv: IM2K4:PPM:MMS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[IM2K4-EL7041-E1]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[IM2K4-EL7041-E1]^STM Status^Status^Digital input 2;
-                              .bBrakeRelease        := TIIB[IM2K4-EL2004-E3]^Channel 1^Output'}
-    M9: DUT_MotionStage;
+                              .bBrakeRelease        := TIIB[IM2K4-EL2004-E3]^Channel 1^Output;
+                              .nRawEncoderULINT     := TIIB[IM2K4-EL5042-E2]^FB Inputs Channel 1^Position'}
+    M9: DUT_MotionStage := (sName := 'IM2K4:PPM:MMS');
 
     // SL1K4-SCATTER: 4 Axes
     {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:BOTTOM'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E1]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E1]^STM Status^Status^Digital input 1'}
-    M10: DUT_MotionStage;
+                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E1]^STM Status^Status^Digital input 1;
+                              .nRawEncoderUINT      := TIIB[SL1K4-EL5101-E2]^ENC Status compact^Counter value'}
+    M10: DUT_MotionStage := (sName := 'SL1K4:SCATTER:MMS:BOTTOM');
     {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:TOP'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E3]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E3]^STM Status^Status^Digital input 1'}
-    M11: DUT_MotionStage;
+                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E3]^STM Status^Status^Digital input 1;
+                              .nRawEncoderUINT      := TIIB[SL1K4-EL5101-E4]^ENC Status compact^Counter value'}
+    M11: DUT_MotionStage := (sName := 'SL1K4:SCATTER:MMS:TOP');
     {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:NORTH'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E5]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E5]^STM Status^Status^Digital input 2'}
-    M12: DUT_MotionStage;
+                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E5]^STM Status^Status^Digital input 2;
+                              .nRawEncoderUINT      := TIIB[SL1K4-EL5101-E6]^ENC Status compact^Counter value'}
+    M12: DUT_MotionStage := (sName := 'SL1K4:SCATTER:MMS:NORTH');
     {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:SOUTH'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL1K4-EL7031-E7]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E7]^STM Status^Status^Digital input 2'}
-    M13: DUT_MotionStage;
+                              .bLimitBackwardEnable := TIIB[SL1K4-EL7031-E7]^STM Status^Status^Digital input 2;
+                              .nRawEncoderUINT      := TIIB[SL1K4-EL5101-E8]^ENC Status compact^Counter value'}
+    M13: DUT_MotionStage := (sName := 'SL1K4:SCATTER:MMS:SOUTH');
 
     // ST1K4-TEST: 1 Axis
     {attribute 'pytmc' := 'pv: ST1K4:TEST:MMS:01'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[ST1K4-EL7041-E4]^STM Status^Status^Digital input 2;
-                              .bBrakeRelease        := TIIB[ST1K4-EL2202-E3]^Channel 1^Output'}
-    M14: DUT_MotionStage;
+                              .bBrakeRelease        := TIIB[ST1K4-EL2202-E3]^Channel 1^Output;
+                              .nRawEncoderUINT      := TIIB[ST1K4-EL7041-E4]^ENC Status compact^Counter value'}
+    M14: DUT_MotionStage := (sName := 'ST1K4:TEST:MMS:01');
 END_VAR
 ```
 
@@ -147,6 +168,7 @@ PRG_ST4K4_TMO_TERM();
 PRG_ST5K4_TMO_TERM_FIXED();
 
 PRG_3_PMPS_POST();
+PRG_4_LOG();
 
 END_PROGRAM
 ```
@@ -175,8 +197,30 @@ File: tmo_motion/POUs/PRG_3_PMPS_POST.TcPOU
 ```vhdl
 PROGRAM PRG_3_PMPS_POST
 VAR
+    fbArbiterIO: FB_SubSysToArbiter_IO;
 END_VAR
+fbFastFaultOutput1.Execute();
+fbFastFaultOutput2.Execute();
 
+fbArbiterIO(
+    Arbiter:=fbArbiter,
+    fbFFHWO:=fbFastFaultOutput1);
+
+END_PROGRAM
+```
+
+
+POU: PRG_4_LOG
+--------------
+
+File: tmo_motion/POUs/PRG_4_LOG.TcPOU
+
+```vhdl
+PROGRAM PRG_4_LOG
+VAR
+    fbLogHandler: FB_LogHandler;
+END_VAR
+fbLogHandler();
 
 END_PROGRAM
 ```
@@ -198,7 +242,25 @@ VAR
                               .fbLaser.iShutdownINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 2^Analog output'}
     fbAL1K4: FB_REF;
 END_VAR
-fbAL1K4(stYStage := Main.M1);
+fbAL1K4.nTransitionAssertionID := 3140;
+fbAL1K4.nUnknownAssertionID := 3149;
+
+fbAL1K4.stOut.fPosition := -10; // We don't actually know this value! Pick the highest recorded CC out position
+fbAL1K4.stOut.bUseRawCounts := FALSE;
+fbAL1K4.stOut.nRequestAssertionID := 3141;
+fbAL1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbAL1K4.stOut.bValid := TRUE;
+
+fbAL1K4.stIn.fPosition := -20; // We don't actually know this value! Pick something clearly wrong.
+fbAL1K4.stIn.bUseRawCounts := FALSE;
+fbAL1K4.stIn.nRequestAssertionID := 3142;
+fbAL1K4.stIn.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbAL1K4.stIn.bValid := TRUE;
+
+fbAL1K4(
+    stYStage := Main.M1,
+    fbArbiter := fbArbiterInactive,
+    fbFFHWO := fbFastFaultOutput2);
 
 END_PROGRAM
 ```
@@ -290,16 +352,41 @@ VAR
                               .D[21] := TIIB[IM1K4-EL6002-E6]^COM RxPDO-Map Outputs Channel 1^Data Out 21'}
     stEL6Out AT %Q*: EL6OutData22b;
 END_VAR
+fbIM1K4.nTransitionAssertionID := 2140;
+fbIM1K4.nUnknownAssertionID := 2149;
+
+fbIM1K4.stOut.fPosition := 0;
+fbIM1K4.stOut.bUseRawCounts := FALSE;
+fbIM1K4.stOut.nRequestAssertionID := 2141;
+fbIM1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stOut.bValid := TRUE;
+
+fbIM1K4.stYag.fPosition := -88.87;
+fbIM1K4.stYag.bUseRawCounts := FALSE;
+fbIM1K4.stYag.nRequestAssertionID := 2142;
+fbIM1K4.stYag.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stYag.bValid := TRUE;
+
+fbIM1K4.stDiamond.fPosition := -58.87;
+fbIM1K4.stDiamond.bUseRawCounts := FALSE;
+fbIM1K4.stDiamond.nRequestAssertionID := 2143;
+fbIM1K4.stDiamond.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM1K4.stDiamond.bValid := TRUE;
+
+fbIM1K4.stReticle.fPosition := -28.87;
+fbIM1K4.stReticle.bUseRawCounts := FALSE;
+fbIM1K4.stReticle.nRequestAssertionID := 2144;
+fbIM1K4.stReticle.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbIM1K4.stReticle.bValid := TRUE;
+
 fbIM1K4(
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M6,
     stZoomStage := Main.M7,
     stFocusStage := Main.M8,
     stEl6In := stEL6In,
-    stEl6Out := stEl6Out,
-    fYag := -88.87,
-    fDiamond := -58.87,
-    fReticle := -28.87,
-    fOut := 0);
+    stEl6Out := stEl6Out);
 
 END_PROGRAM
 ```
@@ -330,12 +417,37 @@ VAR
                               .fbYagThermoCouple.iRaw := TIIB[IM2K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM2K4: FB_PPM;
 END_VAR
+fbIM2K4.nTransitionAssertionID := 2240;
+fbIM2K4.nUnknownAssertionID := 2249;
+
+fbIM2K4.stOut.fPosition := -8.59;
+fbIM2K4.stOut.bUseRawCounts := FALSE;
+fbIM2K4.stOut.nRequestAssertionID := 2241;
+fbIM2K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM2K4.stOut.bValid := TRUE;
+
+fbIM2K4.stPower.fPosition := -47.69;
+fbIM2K4.stPower.bUseRawCounts := FALSE;
+fbIM2K4.stPower.nRequestAssertionID := 2242;
+fbIM2K4.stPower.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM2K4.stPower.bValid := TRUE;
+
+fbIM2K4.stYag1.fPosition := -71.69;
+fbIM2K4.stYag1.bUseRawCounts := FALSE;
+fbIM2K4.stYag1.nRequestAssertionID := 2243;
+fbIM2K4.stYag1.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM2K4.stYag1.bValid := TRUE;
+
+fbIM2K4.stYag2.fPosition := -97.70;
+fbIM2K4.stYag2.bUseRawCounts := FALSE;
+fbIM2K4.stYag2.nRequestAssertionID := 2244;
+fbIM2K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
+fbIM2K4.stYag2.bValid := TRUE;
+
 fbIM2K4(
-    stYStage := Main.M9,
-    fPolished := -71.69,
-    fFrosted := -97.70,
-    fPower := -47.69,
-    fOut := -8.59);
+    fbArbiter := fbArbiterInactive,
+    fbFFHWO := fbFastFaultOutput2,
+    stYStage := Main.M9);
 
 END_PROGRAM
 ```
@@ -412,25 +524,25 @@ File: tmo_motion/POUs/PRG_ST4K4_TMO_TERM.TcPOU
 ```vhdl
 PROGRAM PRG_ST4K4_TMO_TERM
 VAR
-	 {attribute 'pytmc' := 'pv: ST4K4:TMO_TERM'}
-	{attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-EP2338]^Channel 4^Input;
-								 .i_xRetractedLS:=	TIIB[ST4K4-EP2338]^Channel 3^Input;
-								 .q_xInsert_DO	:=	TIIB[ST4K4-EP2338]^Channel 9^Output
-	'}
-	ST4K4: FB_MotionPneumaticActuator;
-	ibPMPS_OK : BOOL;
+    {attribute 'pytmc' := 'pv: ST4K4:TMO_TERM'}
+    {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-EP2338]^Channel 4^Input;
+                                 .i_xRetractedLS:=	TIIB[ST4K4-EP2338]^Channel 3^Input;
+                                 .q_xInsert_DO	:=	TIIB[ST4K4-EP2338]^Channel 9^Output
+    '}
+    ST4K4: FB_MotionPneumaticActuator;
+    ibPMPS_OK : BOOL;
 END_VAR
 ST4K4(
-	ibInsertOK:= TRUE, 
-	ibRetractOK:= TRUE, 
-	ibPMPS_OK:= ibPMPS_OK, 
-	ibSingleCntrl:= TRUE , 
-	ibCntrlHold:= TRUE, 
-	ibOverrideInterlock:= , 
-	i_xReset:= , 
-	stPneumaticActuator=> , 
-	xMPS_OK=>  , 
-	io_fbFFHWO:= fbFastFaultOutput1  ); // Do Stoppers send MPS signal?
+    ibInsertOK:= TRUE,
+    ibRetractOK:= TRUE,
+    ibPMPS_OK:= ibPMPS_OK,
+    ibSingleCntrl:= TRUE ,
+    ibCntrlHold:= TRUE,
+    ibOverrideInterlock:= ,
+    i_xReset:= ,
+    stPneumaticActuator=> ,
+    xMPS_OK=>  ,
+    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS signal?
 
 END_PROGRAM
 ```
@@ -444,25 +556,25 @@ File: tmo_motion/POUs/PRG_ST5K4_TMO_TERM_FIXED.TcPOU
 ```vhdl
 PROGRAM PRG_ST5K4_TMO_TERM_FIXED
 VAR
-	 {attribute 'pytmc' := 'pv: ST5K4:TMO_TERM_FIXED'}
-	{attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-EP2338]^Channel 4^Input;
-								 .i_xRetractedLS:=	TIIB[ST4K4-EP2338]^Channel 3^Input;
-								 .q_xInsert_DO	:=	TIIB[ST4K4-EP2338]^Channel 9^Output
-	'}
-	ST4K4: FB_MotionPneumaticActuator;
-	ibPMPS_OK : BOOL;
+    {attribute 'pytmc' := 'pv: ST5K4:TMO_TERM_FIXED'}
+    {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-EP2338]^Channel 4^Input;
+                                 .i_xRetractedLS:=	TIIB[ST4K4-EP2338]^Channel 3^Input;
+                                 .q_xInsert_DO	:=	TIIB[ST4K4-EP2338]^Channel 9^Output
+    '}
+    ST4K4: FB_MotionPneumaticActuator;
+    ibPMPS_OK : BOOL;
 END_VAR
 ST4K4(
-	ibInsertOK:= TRUE, 
-	ibRetractOK:= TRUE, 
-	ibPMPS_OK:= ibPMPS_OK, 
-	ibSingleCntrl:= TRUE , 
-	ibCntrlHold:= TRUE, 
-	ibOverrideInterlock:= , 
-	i_xReset:= , 
-	stPneumaticActuator=> , 
-	xMPS_OK=>  , 
-	io_fbFFHWO:= fbFastFaultOutput1  ); // Do Stoppers send MPS signal?
+    ibInsertOK:= TRUE,
+    ibRetractOK:= TRUE,
+    ibPMPS_OK:= ibPMPS_OK,
+    ibSingleCntrl:= TRUE ,
+    ibCntrlHold:= TRUE,
+    ibOverrideInterlock:= ,
+    i_xReset:= ,
+    stPneumaticActuator=> ,
+    xMPS_OK=>  ,
+    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS signal?
 
 END_PROGRAM
 ```
@@ -472,19 +584,19 @@ Symbols
 -------
 
     .TCPADS_MAXUDP_BUFFSIZE : UDINT (4386080 32)
-    Constants.CompilerVersion : VERSION (11134912 64)
-    Constants.CompilerVersionNumeric : DWORD (11135040 32)
-    Constants.RuntimeVersion : VERSION (11134848 64)
-    Constants.RuntimeVersionNumeric : DWORD (11135008 32)
-    Constants.bFPUSupport : BOOL (10139640 8)
-    Constants.bLittleEndian : BOOL (10139624 8)
-    Constants.bSimulationMode : BOOL (10139632 8)
-    Constants.nPackMode : UINT (11134992 16)
-    Constants.nRegisterSize : WORD (11134976 16)
+    Constants.CompilerVersion : VERSION (12598016 64)
+    Constants.CompilerVersionNumeric : DWORD (12598144 32)
+    Constants.RuntimeVersion : VERSION (12597952 64)
+    Constants.RuntimeVersionNumeric : DWORD (12598112 32)
+    Constants.bFPUSupport : BOOL (9670440 8)
+    Constants.bLittleEndian : BOOL (8987960 8)
+    Constants.bSimulationMode : BOOL (9670432 8)
+    Constants.nPackMode : UINT (12598080 16)
+    Constants.nRegisterSize : WORD (9670448 16)
     DefaultGlobals.fTimeStamp : LREAL (4096128 64)
     DefaultGlobals.stSys : LCLS_General.ST_System (4096000 88)
     GVL.nLangId_OnlineMonitoring : DINT (4386464 32)
-    GVL_CUSTOM_CONSTANTS.MAX_FAST_FAULTS : UINT (4387232 16)
+    GVL_CUSTOM_CONSTANTS.MAX_FAST_FAULTS : UINT (4387248 16)
     GVL_INTERNAL.UNINITIALIZED_CLASS_GUID : GUID (4386816 128)
     GVL_Logger.TCPADS_MAXUDP_BUFFSIZE : UDINT (4097024 32)
     GVL_Logger.cLogHost : STRING(15) (4096192 128)
@@ -492,18 +604,22 @@ Symbols
     GVL_Logger.iLogPort : UINT (4096096 16)
     GVL_Logger.sIpTidbit : STRING(6) (4096320 56)
     GVL_Logger.sPlcHostname : STRING(80) (4096376 648)
-    GVL_PMPS.fbFastFaultOutput1 : PMPS.FB_HardwareFFOutput (10512512 464640)
-    GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut : BOOL (10512600 8)
-    GVL_Param_TcUnit.MaxNumberOfAsserts : UINT (4474400 16)
-    GVL_Param_TcUnit.MaxNumberOfTestSuites : UINT (4474368 16)
-    GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite : UINT (4474384 16)
-    GVL_TcUnit.AdsLogger : lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_ADSLogStringMessageFifoQueue (4493024 4128864)
-    GVL_TcUnit.CurrentTestNameBeingCalled : Tc2_System.T_MaxString (4474976 2048)
-    GVL_TcUnit.CurrentTestSuiteBeingCalled : POINTER TO lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TestSuite (4474944 32)
+    GVL_PMPS.fbArbiter : PMPS.FB_Arbiter (10980160 196864)
+    GVL_PMPS.fbArbiterInactive : PMPS.FB_Arbiter (11177024 196864)
+    GVL_PMPS.fbFastFaultOutput1 : PMPS.FB_HardwareFFOutput (11373888 464640)
+    GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut : BOOL (11373976 8)
+    GVL_PMPS.fbFastFaultOutput2 : PMPS.FB_HardwareFFOutput (11838528 464640)
+    GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut : BOOL (11838616 8)
+    GVL_Param_TcUnit.MaxNumberOfAsserts : UINT (4479280 16)
+    GVL_Param_TcUnit.MaxNumberOfTestSuites : UINT (4478704 16)
+    GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite : UINT (4479264 16)
+    GVL_TcUnit.AdsLogger : lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_ADSLogStringMessageFifoQueue (4497920 4128864)
+    GVL_TcUnit.CurrentTestNameBeingCalled : Tc2_System.T_MaxString (4479840 2048)
+    GVL_TcUnit.CurrentTestSuiteBeingCalled : POINTER TO lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TestSuite (4479808 32)
     GVL_TcUnit.IgnoreCurrentTest : BOOL (4384744 8)
-    GVL_TcUnit.NumberOfInitializedTestSuites : UINT (4474416 16)
-    GVL_TcUnit.TcUnitRunner : lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TcUnitRunner (4474432 512)
-    GVL_TcUnit.TestSuiteAddresses : ARRAY[1..500] OF POINTER TO lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TestSuite (4477024 16000)
+    GVL_TcUnit.NumberOfInitializedTestSuites : UINT (4481888 16)
+    GVL_TcUnit.TcUnitRunner : lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TcUnitRunner (4479296 512)
+    GVL_TcUnit.TestSuiteAddresses : ARRAY[1..500] OF POINTER TO lcls2_cc_lib.lcls_twincat_motion.PMPS.TcUnit.FB_TestSuite (4481920 16000)
     GVL_TcUnit.TestSuiteIsRegistered : BOOL (4383032 8)
     Global_Constants.EMPTY_EVENT_CLASS : GUID (4386112 128)
     Global_Constants.EMPTY_EVENT_ID : UDINT (4386240 32)
@@ -585,39 +701,41 @@ Symbols
     Global_Variables.AMSPORT_R0_RTIME : UINT (4178256 16)
     Global_Variables.AMSPORT_R3_SCOPESERVER : UINT (4178512 16)
     Global_Variables.AMSPORT_R3_SYSSERV : UINT (4178496 16)
-    Global_Variables.ASCII_DLE : BYTE (8631168 8)
-    Global_Variables.ASCII_ETX : BYTE (8631160 8)
-    Global_Variables.ASCII_NAK : BYTE (8631176 8)
-    Global_Variables.ASCII_STX : BYTE (8629448 8)
+    Global_Variables.AMSPORT_TCPIPSRV : UINT (15953104 16)
+    Global_Variables.ASCII_DLE : BYTE (8636048 8)
+    Global_Variables.ASCII_ETX : BYTE (8636040 8)
+    Global_Variables.ASCII_NAK : BYTE (8636056 8)
+    Global_Variables.ASCII_STX : BYTE (4481912 8)
     Global_Variables.BOOTDATAFLAGS_PERSISTENT_INVALID : BYTE (4180904 8)
     Global_Variables.BOOTDATAFLAGS_PERSISTENT_LOADED : BYTE (4180896 8)
     Global_Variables.BOOTDATAFLAGS_RETAIN_INVALID : BYTE (4178864 8)
     Global_Variables.BOOTDATAFLAGS_RETAIN_LOADED : BYTE (4096088 8)
     Global_Variables.BOOTDATAFLAGS_RETAIN_REQUESTED : BYTE (4178872 8)
-    Global_Variables.COMERRORADS_INVALID_BAUDRATE : UDINT (8630080 32)
-    Global_Variables.COMERRORADS_INVALID_CFGSTLEN : UDINT (8629984 32)
-    Global_Variables.COMERRORADS_INVALID_CFGSTVER : UDINT (8630016 32)
-    Global_Variables.COMERRORADS_INVALID_CMD : UDINT (8629920 32)
-    Global_Variables.COMERRORADS_INVALID_COMPORT : UDINT (8629472 32)
-    Global_Variables.COMERRORADS_INVALID_CTS_OUTCTRL : UDINT (8630272 32)
-    Global_Variables.COMERRORADS_INVALID_DATABITS : UDINT (8630144 32)
-    Global_Variables.COMERRORADS_INVALID_DATAPOINTER : UDINT (8629952 32)
-    Global_Variables.COMERRORADS_INVALID_DSR_OUTCTRL : UDINT (8630304 32)
-    Global_Variables.COMERRORADS_INVALID_DSR_SENS : UDINT (8630336 32)
-    Global_Variables.COMERRORADS_INVALID_DTR_CTRL : UDINT (8630208 32)
-    Global_Variables.COMERRORADS_INVALID_PARITY : UDINT (8630112 32)
-    Global_Variables.COMERRORADS_INVALID_RTS_CTRL : UDINT (8630240 32)
-    Global_Variables.COMERRORADS_INVALID_STOPBITS : UDINT (8630176 32)
-    Global_Variables.COMERRORADS_INVALID_TL : UDINT (8630048 32)
-    Global_Variables.COMERRORADS_NOT_INIT : UDINT (8630368 32)
-    Global_Variables.COMERRORADS_PORT_CONNECTED : UDINT (8630432 32)
-    Global_Variables.COMERRORADS_PORT_NOT_CONNECTED : UDINT (8630464 32)
-    Global_Variables.COMERRORADS_RD_BUFFER_OVERRUN : UDINT (8630400 32)
-    Global_Variables.COMERRORADS_RD_FAILURE : UDINT (8630560 32)
-    Global_Variables.COMERRORADS_RD_THREAD_TIMEOUT : UDINT (8630496 32)
-    Global_Variables.COMERRORADS_SERVER_INCOMPATIBLE : UDINT (8630624 32)
-    Global_Variables.COMERRORADS_WR_FAILURE : UDINT (8630592 32)
-    Global_Variables.COMERRORADS_WR_THREAD_TIMEOUT : UDINT (8630528 32)
+    Global_Variables.COMERRORADS_INVALID_BAUDRATE : UDINT (8634944 32)
+    Global_Variables.COMERRORADS_INVALID_CFGSTLEN : UDINT (8634848 32)
+    Global_Variables.COMERRORADS_INVALID_CFGSTVER : UDINT (8634880 32)
+    Global_Variables.COMERRORADS_INVALID_CMD : UDINT (8634784 32)
+    Global_Variables.COMERRORADS_INVALID_COMPORT : UDINT (8634336 32)
+    Global_Variables.COMERRORADS_INVALID_CTS_OUTCTRL : UDINT (8635136 32)
+    Global_Variables.COMERRORADS_INVALID_DATABITS : UDINT (8635008 32)
+    Global_Variables.COMERRORADS_INVALID_DATAPOINTER : UDINT (8634816 32)
+    Global_Variables.COMERRORADS_INVALID_DSR_OUTCTRL : UDINT (8635168 32)
+    Global_Variables.COMERRORADS_INVALID_DSR_SENS : UDINT (8635200 32)
+    Global_Variables.COMERRORADS_INVALID_DTR_CTRL : UDINT (8635072 32)
+    Global_Variables.COMERRORADS_INVALID_PARITY : UDINT (8634976 32)
+    Global_Variables.COMERRORADS_INVALID_RTS_CTRL : UDINT (8635104 32)
+    Global_Variables.COMERRORADS_INVALID_STOPBITS : UDINT (8635040 32)
+    Global_Variables.COMERRORADS_INVALID_TL : UDINT (8634912 32)
+    Global_Variables.COMERRORADS_NOT_INIT : UDINT (8635232 32)
+    Global_Variables.COMERRORADS_PORT_CONNECTED : UDINT (8635296 32)
+    Global_Variables.COMERRORADS_PORT_NOT_CONNECTED : UDINT (8635328 32)
+    Global_Variables.COMERRORADS_RD_BUFFER_OVERRUN : UDINT (8635264 32)
+    Global_Variables.COMERRORADS_RD_FAILURE : UDINT (8635424 32)
+    Global_Variables.COMERRORADS_RD_THREAD_TIMEOUT : UDINT (8635360 32)
+    Global_Variables.COMERRORADS_SERVER_INCOMPATIBLE : UDINT (8635488 32)
+    Global_Variables.COMERRORADS_WR_FAILURE : UDINT (8635456 32)
+    Global_Variables.COMERRORADS_WR_THREAD_TIMEOUT : UDINT (8635392 32)
+    Global_Variables.CONNECT_MODE_ENABLEDBG : DWORD (16470720 32)
     Global_Variables.DATE_AND_TIME_SECPERDAY : DWORD (4259488 32)
     Global_Variables.DATE_AND_TIME_SECPERWEEK : DWORD (4259520 32)
     Global_Variables.DBG_OUTPUT_FILE : DWORD (4265792 32)
@@ -625,12 +743,12 @@ Symbols
     Global_Variables.DBG_OUTPUT_NONE : DWORD (4265728 32)
     Global_Variables.DBG_OUTPUT_VISU : DWORD (4265824 32)
     Global_Variables.DEFAULT_ADS_TIMEOUT : TIME (4181632 32)
-    Global_Variables.DEFAULT_BACKLASHVALUE : LREAL (8629568 64)
+    Global_Variables.DEFAULT_BACKLASHVALUE : LREAL (8634432 64)
     Global_Variables.DEFAULT_CSV_FIELD_DOUBLE_QUOTE : BYTE (4382064 8)
     Global_Variables.DEFAULT_CSV_FIELD_SEP : BYTE (4183304 8)
     Global_Variables.DEFAULT_CSV_RECORD_SEP_CR : BYTE (4382072 8)
     Global_Variables.DEFAULT_CSV_RECORD_SEP_LF : BYTE (4383024 8)
-    Global_Variables.DEFAULT_HOME_POSITION : LREAL (8629504 64)
+    Global_Variables.DEFAULT_HOME_POSITION : LREAL (8634368 64)
     Global_Variables.EMPTY_ARG_VALUE : LCLS_General.Tc2_Utilities.T_Arg (4247168 96)
     Global_Variables.EMPTY_GUID_REGSTRING : STRING(38) (4385192 312)
     Global_Variables.EMPTY_GUID_STRING : STRING(36) (4384896 296)
@@ -671,17 +789,20 @@ Symbols
     Global_Variables.HKEY_MAX_BINARY_DATA_SIZE : UDINT (4246496 32)
     Global_Variables.IPHELPERAPI_ADAPTERSINFO : UDINT (4244960 32)
     Global_Variables.IPHELPERAPI_IPADDRBYHOSTNAME : UDINT (4244992 32)
+    Global_Variables.LISTEN_MODE_CLOSEALL : DWORD (16470656 32)
+    Global_Variables.LISTEN_MODE_USEOPENED : DWORD (16470688 32)
     Global_Variables.MAX_ADAPTER_ADDRESS_LENGTH : UDINT (4244864 32)
     Global_Variables.MAX_ADAPTER_DESCRIPTION_LENGTH : UDINT (4244832 32)
     Global_Variables.MAX_ADAPTER_NAME_LENGTH : UDINT (4244800 32)
     Global_Variables.MAX_AVERAGE_MEASURES : INT (4183152 16)
     Global_Variables.MAX_LOCAL_ADAPTERS : UDINT (4245024 32)
     Global_Variables.MAX_REMOTE_PCS : INT (4183312 16)
-    Global_Variables.MAX_RETRIES : INT (8631184 16)
+    Global_Variables.MAX_RETRIES : INT (8636064 16)
     Global_Variables.MAX_ROUTE_ADDR_LEN : BYTE (4245256 8)
     Global_Variables.MAX_ROUTE_NAME_LEN : BYTE (4245248 8)
     Global_Variables.MAX_ROUTE_TRANSPORT : BYTE (4245272 8)
     Global_Variables.MAX_STRING_LENGTH : UDINT (4181664 32)
+    Global_Variables.MAX_THROTTLE_MODE : DWORD (16470752 32)
     Global_Variables.MIN_ROUTE_TRANSPORT : BYTE (4245264 8)
     Global_Variables.PI : LREAL (4181568 64)
     Global_Variables.ROUTE_FLAG_DYNAMIC : DWORD (4245184 32)
@@ -746,236 +867,313 @@ Symbols
     Global_Variables.TCEVENTSTATE_SIGNALED : WORD (4181456 16)
     Global_Variables.TCEVENT_FMTPRGSIZE : INT (4181536 16)
     Global_Variables.TCEVENT_SRCNAMESIZE : INT (4181520 16)
-    Global_Variables.TIMEOUT_QVZ : TIME (8631232 32)
-    Global_Variables.TIMEOUT_WVZ : TIME (8631264 32)
-    Global_Variables.TIMEOUT_ZVZ : TIME (8631200 32)
+    Global_Variables.TCPADSCONLST_IOF_ACCEPT : UDINT (16470176 32)
+    Global_Variables.TCPADSCONLST_IOF_CLOSEALL : UDINT (16470144 32)
+    Global_Variables.TCPADSCONLST_IOF_CONNECT : UDINT (16470080 32)
+    Global_Variables.TCPADSCONLST_IOF_GETHNDLBYADDR : UDINT (16470240 32)
+    Global_Variables.TCPADSCONLST_IOF_GETLINKSTATUS : UDINT (16470272 32)
+    Global_Variables.TCPADSCONLST_IOF_LISTEN : UDINT (16470112 32)
+    Global_Variables.TCPADSCONLST_IOF_UDPBIND : UDINT (16470208 32)
+    Global_Variables.TCPADS_IGR_ADAPTER_LINKSTATUS : UDINT (16470048 32)
+    Global_Variables.TCPADS_IGR_CLOSEBYHDL : UDINT (15956000 32)
+    Global_Variables.TCPADS_IGR_CONLIST : UDINT (15955808 32)
+    Global_Variables.TCPADS_IGR_MULTICAST_ADDBYHDL : UDINT (16469984 32)
+    Global_Variables.TCPADS_IGR_MULTICAST_DROPBYHDL : UDINT (16470016 32)
+    Global_Variables.TCPADS_IGR_PEERBYHDL : UDINT (15956384 32)
+    Global_Variables.TCPADS_IGR_RECVBYHDL : UDINT (15956576 32)
+    Global_Variables.TCPADS_IGR_RECVFROMBYHDL : UDINT (15965280 32)
+    Global_Variables.TCPADS_IGR_SENDBYHDL : UDINT (15956192 32)
+    Global_Variables.TCPADS_IGR_SENDTOBYHDL : UDINT (16469952 32)
+    Global_Variables.TCPADS_NULL_HSOCKET : LCLS_General.Tc2_TcpIp.T_HSOCKET (16470304 352)
+    Global_Variables.THROTTLE_MODE_DEFAULT : LCLS_General.Tc2_TcpIp.T_ThrottleTimes (16471200 416)
+    Global_Variables.THROTTLE_MODE_OFF : LCLS_General.Tc2_TcpIp.T_ThrottleTimes (16470784 416)
+    Global_Variables.TIMEOUT_QVZ : TIME (8636128 32)
+    Global_Variables.TIMEOUT_WVZ : TIME (8636160 32)
+    Global_Variables.TIMEOUT_ZVZ : TIME (8636096 32)
     Global_Variables.TIMESERVICE_ADJUSTTIMETORTC : UDINT (4180608 32)
     Global_Variables.TIMESERVICE_DATEANDTIME : UDINT (4180512 32)
     Global_Variables.TIMESERVICE_RTCTIMEDIFF : UDINT (4180576 32)
     Global_Variables.TIMESERVICE_SYSTEMTIMES : UDINT (4180544 32)
     Global_Variables.TIMESERVICE_TIMEZONINFORMATION : UDINT (4180640 32)
-    Global_Variables.TcMcGlobal : Tc2_MC2._TCMCGLOBAL (8622464 6976)
+    Global_Variables.TcMcGlobal : Tc2_MC2._TCMCGLOBAL (8627360 6976)
     Global_Variables.WEST_EUROPE_TZI : LCLS_General.Tc2_Utilities.ST_TimeZoneInformation (4254528 864)
     Global_Variables.eWatchdogConfig : Tc2_System.E_WATCHDOG_TIME_CONFIG (4181552 16)
     Global_Variables.nWatchdogTime : BYTE (4182208 8)
     Global_Version.stLibVersion_Tc2_IoFunctions : ST_LibVersion (4385504 288)
-    Global_Version.stLibVersion_Tc2_MC2 : ST_LibVersion (8622176 288)
-    Global_Version.stLibVersion_Tc2_Math : ST_LibVersion (8629632 288)
+    Global_Version.stLibVersion_Tc2_MC2 : ST_LibVersion (8627072 288)
+    Global_Version.stLibVersion_Tc2_Math : ST_LibVersion (8634496 288)
     Global_Version.stLibVersion_Tc2_ModbusSrv : ST_LibVersion (4385792 288)
     Global_Version.stLibVersion_Tc2_System : ST_LibVersion (4177952 288)
     Global_Version.stLibVersion_Tc2_Utilities : ST_LibVersion (4182848 288)
     Global_Version.stLibVersion_Tc3_EventLogger : ST_LibVersion (4386528 288)
     Global_Version.stLibVersion_Tc3_JsonXml : ST_LibVersion (4386944 288)
     Global_Version.stLibVersion_Tc3_Module : ST_LibVersion (4182240 288)
-    Global_Version.stLibVersion_TcUnit : ST_LibVersion (8621888 288)
+    Global_Version.stLibVersion_TcUnit : ST_LibVersion (8626784 288)
     LCLS_General.DefaultGlobals.stSys.I_EcatMaster1 : AMSNETID (4096040 48)
-    Main.M1 : lcls_twincat_motion.DUT_MotionStage (10977152 11264)
-    Main.M1.Axis.NcToPlc : NCTOPLC_AXIS_REF (10978240 2048)
-    Main.M1.Axis.PlcToNc : PLCTONC_AXIS_REF (10977216 1024)
-    Main.M1.bBrakeRelease : BOOL (10986200 8)
-    Main.M1.bHardwareEnable : BOOL (10986208 8)
-    Main.M1.bHome : BOOL (10986192 8)
-    Main.M1.bLimitBackwardEnable : BOOL (10986184 8)
-    Main.M1.bLimitForwardEnable : BOOL (10986176 8)
-    Main.M10 : lcls_twincat_motion.DUT_MotionStage (11078528 11264)
-    Main.M10.Axis.NcToPlc : NCTOPLC_AXIS_REF (11079616 2048)
-    Main.M10.Axis.PlcToNc : PLCTONC_AXIS_REF (11078592 1024)
-    Main.M10.bBrakeRelease : BOOL (11087576 8)
-    Main.M10.bHardwareEnable : BOOL (11087584 8)
-    Main.M10.bHome : BOOL (11087568 8)
-    Main.M10.bLimitBackwardEnable : BOOL (11087560 8)
-    Main.M10.bLimitForwardEnable : BOOL (11087552 8)
-    Main.M11 : lcls_twincat_motion.DUT_MotionStage (11089792 11264)
-    Main.M11.Axis.NcToPlc : NCTOPLC_AXIS_REF (11090880 2048)
-    Main.M11.Axis.PlcToNc : PLCTONC_AXIS_REF (11089856 1024)
-    Main.M11.bBrakeRelease : BOOL (11098840 8)
-    Main.M11.bHardwareEnable : BOOL (11098848 8)
-    Main.M11.bHome : BOOL (11098832 8)
-    Main.M11.bLimitBackwardEnable : BOOL (11098824 8)
-    Main.M11.bLimitForwardEnable : BOOL (11098816 8)
-    Main.M12 : lcls_twincat_motion.DUT_MotionStage (11101056 11264)
-    Main.M12.Axis.NcToPlc : NCTOPLC_AXIS_REF (11102144 2048)
-    Main.M12.Axis.PlcToNc : PLCTONC_AXIS_REF (11101120 1024)
-    Main.M12.bBrakeRelease : BOOL (11110104 8)
-    Main.M12.bHardwareEnable : BOOL (11110112 8)
-    Main.M12.bHome : BOOL (11110096 8)
-    Main.M12.bLimitBackwardEnable : BOOL (11110088 8)
-    Main.M12.bLimitForwardEnable : BOOL (11110080 8)
-    Main.M13 : lcls_twincat_motion.DUT_MotionStage (11112320 11264)
-    Main.M13.Axis.NcToPlc : NCTOPLC_AXIS_REF (11113408 2048)
-    Main.M13.Axis.PlcToNc : PLCTONC_AXIS_REF (11112384 1024)
-    Main.M13.bBrakeRelease : BOOL (11121368 8)
-    Main.M13.bHardwareEnable : BOOL (11121376 8)
-    Main.M13.bHome : BOOL (11121360 8)
-    Main.M13.bLimitBackwardEnable : BOOL (11121352 8)
-    Main.M13.bLimitForwardEnable : BOOL (11121344 8)
-    Main.M14 : lcls_twincat_motion.DUT_MotionStage (11123584 11264)
-    Main.M14.Axis.NcToPlc : NCTOPLC_AXIS_REF (11124672 2048)
-    Main.M14.Axis.PlcToNc : PLCTONC_AXIS_REF (11123648 1024)
-    Main.M14.bBrakeRelease : BOOL (11132632 8)
-    Main.M14.bHardwareEnable : BOOL (11132640 8)
-    Main.M14.bHome : BOOL (11132624 8)
-    Main.M14.bLimitBackwardEnable : BOOL (11132616 8)
-    Main.M14.bLimitForwardEnable : BOOL (11132608 8)
-    Main.M2 : lcls_twincat_motion.DUT_MotionStage (10988416 11264)
-    Main.M2.Axis.NcToPlc : NCTOPLC_AXIS_REF (10989504 2048)
-    Main.M2.Axis.PlcToNc : PLCTONC_AXIS_REF (10988480 1024)
-    Main.M2.bBrakeRelease : BOOL (10997464 8)
-    Main.M2.bHardwareEnable : BOOL (10997472 8)
-    Main.M2.bHome : BOOL (10997456 8)
-    Main.M2.bLimitBackwardEnable : BOOL (10997448 8)
-    Main.M2.bLimitForwardEnable : BOOL (10997440 8)
-    Main.M3 : lcls_twincat_motion.DUT_MotionStage (10999680 11264)
-    Main.M3.Axis.NcToPlc : NCTOPLC_AXIS_REF (11000768 2048)
-    Main.M3.Axis.PlcToNc : PLCTONC_AXIS_REF (10999744 1024)
-    Main.M3.bBrakeRelease : BOOL (11008728 8)
-    Main.M3.bHardwareEnable : BOOL (11008736 8)
-    Main.M3.bHome : BOOL (11008720 8)
-    Main.M3.bLimitBackwardEnable : BOOL (11008712 8)
-    Main.M3.bLimitForwardEnable : BOOL (11008704 8)
-    Main.M4 : lcls_twincat_motion.DUT_MotionStage (11010944 11264)
-    Main.M4.Axis.NcToPlc : NCTOPLC_AXIS_REF (11012032 2048)
-    Main.M4.Axis.PlcToNc : PLCTONC_AXIS_REF (11011008 1024)
-    Main.M4.bBrakeRelease : BOOL (11019992 8)
-    Main.M4.bHardwareEnable : BOOL (11020000 8)
-    Main.M4.bHome : BOOL (11019984 8)
-    Main.M4.bLimitBackwardEnable : BOOL (11019976 8)
-    Main.M4.bLimitForwardEnable : BOOL (11019968 8)
-    Main.M5 : lcls_twincat_motion.DUT_MotionStage (11022208 11264)
-    Main.M5.Axis.NcToPlc : NCTOPLC_AXIS_REF (11023296 2048)
-    Main.M5.Axis.PlcToNc : PLCTONC_AXIS_REF (11022272 1024)
-    Main.M5.bBrakeRelease : BOOL (11031256 8)
-    Main.M5.bHardwareEnable : BOOL (11031264 8)
-    Main.M5.bHome : BOOL (11031248 8)
-    Main.M5.bLimitBackwardEnable : BOOL (11031240 8)
-    Main.M5.bLimitForwardEnable : BOOL (11031232 8)
-    Main.M6 : lcls_twincat_motion.DUT_MotionStage (11033472 11264)
-    Main.M6.Axis.NcToPlc : NCTOPLC_AXIS_REF (11034560 2048)
-    Main.M6.Axis.PlcToNc : PLCTONC_AXIS_REF (11033536 1024)
-    Main.M6.bBrakeRelease : BOOL (11042520 8)
-    Main.M6.bHardwareEnable : BOOL (11042528 8)
-    Main.M6.bHome : BOOL (11042512 8)
-    Main.M6.bLimitBackwardEnable : BOOL (11042504 8)
-    Main.M6.bLimitForwardEnable : BOOL (11042496 8)
-    Main.M7 : lcls_twincat_motion.DUT_MotionStage (11044736 11264)
-    Main.M7.Axis.NcToPlc : NCTOPLC_AXIS_REF (11045824 2048)
-    Main.M7.Axis.PlcToNc : PLCTONC_AXIS_REF (11044800 1024)
-    Main.M7.bBrakeRelease : BOOL (11053784 8)
-    Main.M7.bHardwareEnable : BOOL (11053792 8)
-    Main.M7.bHome : BOOL (11053776 8)
-    Main.M7.bLimitBackwardEnable : BOOL (11053768 8)
-    Main.M7.bLimitForwardEnable : BOOL (11053760 8)
-    Main.M8 : lcls_twincat_motion.DUT_MotionStage (11056000 11264)
-    Main.M8.Axis.NcToPlc : NCTOPLC_AXIS_REF (11057088 2048)
-    Main.M8.Axis.PlcToNc : PLCTONC_AXIS_REF (11056064 1024)
-    Main.M8.bBrakeRelease : BOOL (11065048 8)
-    Main.M8.bHardwareEnable : BOOL (11065056 8)
-    Main.M8.bHome : BOOL (11065040 8)
-    Main.M8.bLimitBackwardEnable : BOOL (11065032 8)
-    Main.M8.bLimitForwardEnable : BOOL (11065024 8)
-    Main.M9 : lcls_twincat_motion.DUT_MotionStage (11067264 11264)
-    Main.M9.Axis.NcToPlc : NCTOPLC_AXIS_REF (11068352 2048)
-    Main.M9.Axis.PlcToNc : PLCTONC_AXIS_REF (11067328 1024)
-    Main.M9.bBrakeRelease : BOOL (11076312 8)
-    Main.M9.bHardwareEnable : BOOL (11076320 8)
-    Main.M9.bHome : BOOL (11076304 8)
-    Main.M9.bLimitBackwardEnable : BOOL (11076296 8)
-    Main.M9.bLimitForwardEnable : BOOL (11076288 8)
-    PMPS_GVL.AUX_ATTENUATORS : UINT (4473232 16)
+    MOTION_GVL.MAX_STATES : INT (4387232 16)
+    MOTION_GVL.stInvalidState : lcls_twincat_motion.DUT_PositionState (4389696 2432)
+    MOTION_GVL.stUnknownState : lcls_twincat_motion.DUT_PositionState (4387264 2432)
+    Main.M1 : lcls_twincat_motion.DUT_MotionStage (12303168 21056)
+    Main.M1.Axis.NcToPlc : NCTOPLC_AXIS_REF (12304256 2048)
+    Main.M1.Axis.PlcToNc : PLCTONC_AXIS_REF (12303232 1024)
+    Main.M1.bBrakeRelease : BOOL (12312216 8)
+    Main.M1.bHardwareEnable : BOOL (12312224 8)
+    Main.M1.bHome : BOOL (12312208 8)
+    Main.M1.bLimitBackwardEnable : BOOL (12312200 8)
+    Main.M1.bLimitForwardEnable : BOOL (12312192 8)
+    Main.M1.nRawEncoderINT : INT (12312336 16)
+    Main.M1.nRawEncoderUINT : UINT (12312320 16)
+    Main.M1.nRawEncoderULINT : ULINT (12312256 64)
+    Main.M10 : lcls_twincat_motion.DUT_MotionStage (12492672 21056)
+    Main.M10.Axis.NcToPlc : NCTOPLC_AXIS_REF (12493760 2048)
+    Main.M10.Axis.PlcToNc : PLCTONC_AXIS_REF (12492736 1024)
+    Main.M10.bBrakeRelease : BOOL (12501720 8)
+    Main.M10.bHardwareEnable : BOOL (12501728 8)
+    Main.M10.bHome : BOOL (12501712 8)
+    Main.M10.bLimitBackwardEnable : BOOL (12501704 8)
+    Main.M10.bLimitForwardEnable : BOOL (12501696 8)
+    Main.M10.nRawEncoderINT : INT (12501840 16)
+    Main.M10.nRawEncoderUINT : UINT (12501824 16)
+    Main.M10.nRawEncoderULINT : ULINT (12501760 64)
+    Main.M11 : lcls_twincat_motion.DUT_MotionStage (12513728 21056)
+    Main.M11.Axis.NcToPlc : NCTOPLC_AXIS_REF (12514816 2048)
+    Main.M11.Axis.PlcToNc : PLCTONC_AXIS_REF (12513792 1024)
+    Main.M11.bBrakeRelease : BOOL (12522776 8)
+    Main.M11.bHardwareEnable : BOOL (12522784 8)
+    Main.M11.bHome : BOOL (12522768 8)
+    Main.M11.bLimitBackwardEnable : BOOL (12522760 8)
+    Main.M11.bLimitForwardEnable : BOOL (12522752 8)
+    Main.M11.nRawEncoderINT : INT (12522896 16)
+    Main.M11.nRawEncoderUINT : UINT (12522880 16)
+    Main.M11.nRawEncoderULINT : ULINT (12522816 64)
+    Main.M12 : lcls_twincat_motion.DUT_MotionStage (12534784 21056)
+    Main.M12.Axis.NcToPlc : NCTOPLC_AXIS_REF (12535872 2048)
+    Main.M12.Axis.PlcToNc : PLCTONC_AXIS_REF (12534848 1024)
+    Main.M12.bBrakeRelease : BOOL (12543832 8)
+    Main.M12.bHardwareEnable : BOOL (12543840 8)
+    Main.M12.bHome : BOOL (12543824 8)
+    Main.M12.bLimitBackwardEnable : BOOL (12543816 8)
+    Main.M12.bLimitForwardEnable : BOOL (12543808 8)
+    Main.M12.nRawEncoderINT : INT (12543952 16)
+    Main.M12.nRawEncoderUINT : UINT (12543936 16)
+    Main.M12.nRawEncoderULINT : ULINT (12543872 64)
+    Main.M13 : lcls_twincat_motion.DUT_MotionStage (12555840 21056)
+    Main.M13.Axis.NcToPlc : NCTOPLC_AXIS_REF (12556928 2048)
+    Main.M13.Axis.PlcToNc : PLCTONC_AXIS_REF (12555904 1024)
+    Main.M13.bBrakeRelease : BOOL (12564888 8)
+    Main.M13.bHardwareEnable : BOOL (12564896 8)
+    Main.M13.bHome : BOOL (12564880 8)
+    Main.M13.bLimitBackwardEnable : BOOL (12564872 8)
+    Main.M13.bLimitForwardEnable : BOOL (12564864 8)
+    Main.M13.nRawEncoderINT : INT (12565008 16)
+    Main.M13.nRawEncoderUINT : UINT (12564992 16)
+    Main.M13.nRawEncoderULINT : ULINT (12564928 64)
+    Main.M14 : lcls_twincat_motion.DUT_MotionStage (12576896 21056)
+    Main.M14.Axis.NcToPlc : NCTOPLC_AXIS_REF (12577984 2048)
+    Main.M14.Axis.PlcToNc : PLCTONC_AXIS_REF (12576960 1024)
+    Main.M14.bBrakeRelease : BOOL (12585944 8)
+    Main.M14.bHardwareEnable : BOOL (12585952 8)
+    Main.M14.bHome : BOOL (12585936 8)
+    Main.M14.bLimitBackwardEnable : BOOL (12585928 8)
+    Main.M14.bLimitForwardEnable : BOOL (12585920 8)
+    Main.M14.nRawEncoderINT : INT (12586064 16)
+    Main.M14.nRawEncoderUINT : UINT (12586048 16)
+    Main.M14.nRawEncoderULINT : ULINT (12585984 64)
+    Main.M2 : lcls_twincat_motion.DUT_MotionStage (12324224 21056)
+    Main.M2.Axis.NcToPlc : NCTOPLC_AXIS_REF (12325312 2048)
+    Main.M2.Axis.PlcToNc : PLCTONC_AXIS_REF (12324288 1024)
+    Main.M2.bBrakeRelease : BOOL (12333272 8)
+    Main.M2.bHardwareEnable : BOOL (12333280 8)
+    Main.M2.bHome : BOOL (12333264 8)
+    Main.M2.bLimitBackwardEnable : BOOL (12333256 8)
+    Main.M2.bLimitForwardEnable : BOOL (12333248 8)
+    Main.M2.nRawEncoderINT : INT (12333392 16)
+    Main.M2.nRawEncoderUINT : UINT (12333376 16)
+    Main.M2.nRawEncoderULINT : ULINT (12333312 64)
+    Main.M3 : lcls_twincat_motion.DUT_MotionStage (12345280 21056)
+    Main.M3.Axis.NcToPlc : NCTOPLC_AXIS_REF (12346368 2048)
+    Main.M3.Axis.PlcToNc : PLCTONC_AXIS_REF (12345344 1024)
+    Main.M3.bBrakeRelease : BOOL (12354328 8)
+    Main.M3.bHardwareEnable : BOOL (12354336 8)
+    Main.M3.bHome : BOOL (12354320 8)
+    Main.M3.bLimitBackwardEnable : BOOL (12354312 8)
+    Main.M3.bLimitForwardEnable : BOOL (12354304 8)
+    Main.M3.nRawEncoderINT : INT (12354448 16)
+    Main.M3.nRawEncoderUINT : UINT (12354432 16)
+    Main.M3.nRawEncoderULINT : ULINT (12354368 64)
+    Main.M4 : lcls_twincat_motion.DUT_MotionStage (12366336 21056)
+    Main.M4.Axis.NcToPlc : NCTOPLC_AXIS_REF (12367424 2048)
+    Main.M4.Axis.PlcToNc : PLCTONC_AXIS_REF (12366400 1024)
+    Main.M4.bBrakeRelease : BOOL (12375384 8)
+    Main.M4.bHardwareEnable : BOOL (12375392 8)
+    Main.M4.bHome : BOOL (12375376 8)
+    Main.M4.bLimitBackwardEnable : BOOL (12375368 8)
+    Main.M4.bLimitForwardEnable : BOOL (12375360 8)
+    Main.M4.nRawEncoderINT : INT (12375504 16)
+    Main.M4.nRawEncoderUINT : UINT (12375488 16)
+    Main.M4.nRawEncoderULINT : ULINT (12375424 64)
+    Main.M5 : lcls_twincat_motion.DUT_MotionStage (12387392 21056)
+    Main.M5.Axis.NcToPlc : NCTOPLC_AXIS_REF (12388480 2048)
+    Main.M5.Axis.PlcToNc : PLCTONC_AXIS_REF (12387456 1024)
+    Main.M5.bBrakeRelease : BOOL (12396440 8)
+    Main.M5.bHardwareEnable : BOOL (12396448 8)
+    Main.M5.bHome : BOOL (12396432 8)
+    Main.M5.bLimitBackwardEnable : BOOL (12396424 8)
+    Main.M5.bLimitForwardEnable : BOOL (12396416 8)
+    Main.M5.nRawEncoderINT : INT (12396560 16)
+    Main.M5.nRawEncoderUINT : UINT (12396544 16)
+    Main.M5.nRawEncoderULINT : ULINT (12396480 64)
+    Main.M6 : lcls_twincat_motion.DUT_MotionStage (12408448 21056)
+    Main.M6.Axis.NcToPlc : NCTOPLC_AXIS_REF (12409536 2048)
+    Main.M6.Axis.PlcToNc : PLCTONC_AXIS_REF (12408512 1024)
+    Main.M6.bBrakeRelease : BOOL (12417496 8)
+    Main.M6.bHardwareEnable : BOOL (12417504 8)
+    Main.M6.bHome : BOOL (12417488 8)
+    Main.M6.bLimitBackwardEnable : BOOL (12417480 8)
+    Main.M6.bLimitForwardEnable : BOOL (12417472 8)
+    Main.M6.nRawEncoderINT : INT (12417616 16)
+    Main.M6.nRawEncoderUINT : UINT (12417600 16)
+    Main.M6.nRawEncoderULINT : ULINT (12417536 64)
+    Main.M7 : lcls_twincat_motion.DUT_MotionStage (12429504 21056)
+    Main.M7.Axis.NcToPlc : NCTOPLC_AXIS_REF (12430592 2048)
+    Main.M7.Axis.PlcToNc : PLCTONC_AXIS_REF (12429568 1024)
+    Main.M7.bBrakeRelease : BOOL (12438552 8)
+    Main.M7.bHardwareEnable : BOOL (12438560 8)
+    Main.M7.bHome : BOOL (12438544 8)
+    Main.M7.bLimitBackwardEnable : BOOL (12438536 8)
+    Main.M7.bLimitForwardEnable : BOOL (12438528 8)
+    Main.M7.nRawEncoderINT : INT (12438672 16)
+    Main.M7.nRawEncoderUINT : UINT (12438656 16)
+    Main.M7.nRawEncoderULINT : ULINT (12438592 64)
+    Main.M8 : lcls_twincat_motion.DUT_MotionStage (12450560 21056)
+    Main.M8.Axis.NcToPlc : NCTOPLC_AXIS_REF (12451648 2048)
+    Main.M8.Axis.PlcToNc : PLCTONC_AXIS_REF (12450624 1024)
+    Main.M8.bBrakeRelease : BOOL (12459608 8)
+    Main.M8.bHardwareEnable : BOOL (12459616 8)
+    Main.M8.bHome : BOOL (12459600 8)
+    Main.M8.bLimitBackwardEnable : BOOL (12459592 8)
+    Main.M8.bLimitForwardEnable : BOOL (12459584 8)
+    Main.M8.nRawEncoderINT : INT (12459728 16)
+    Main.M8.nRawEncoderUINT : UINT (12459712 16)
+    Main.M8.nRawEncoderULINT : ULINT (12459648 64)
+    Main.M9 : lcls_twincat_motion.DUT_MotionStage (12471616 21056)
+    Main.M9.Axis.NcToPlc : NCTOPLC_AXIS_REF (12472704 2048)
+    Main.M9.Axis.PlcToNc : PLCTONC_AXIS_REF (12471680 1024)
+    Main.M9.bBrakeRelease : BOOL (12480664 8)
+    Main.M9.bHardwareEnable : BOOL (12480672 8)
+    Main.M9.bHome : BOOL (12480656 8)
+    Main.M9.bLimitBackwardEnable : BOOL (12480648 8)
+    Main.M9.bLimitForwardEnable : BOOL (12480640 8)
+    Main.M9.nRawEncoderINT : INT (12480784 16)
+    Main.M9.nRawEncoderUINT : UINT (12480768 16)
+    Main.M9.nRawEncoderULINT : ULINT (12480704 64)
+    PMPS_GVL.AUX_ATTENUATORS : UINT (4478112 16)
     PMPS_GVL.AccumulatedFF : UDINT (3072032 32)
-    PMPS_GVL.DUMMY_AUX_ATT_ARRAY : ARRAY[1..16] OF PMPS.ST_PMPS_Attenuator (4473264 512)
-    PMPS_GVL.EXCLUDED_ASSERTION_ID : UDINT (4470592 32)
-    PMPS_GVL.FAST_TEST_VELOCITY : LREAL (4470720 64)
-    PMPS_GVL.MAX_APERTURES : UINT (4473248 16)
-    PMPS_GVL.MAX_ASSERTIONS : UDINT (4473792 32)
-    PMPS_GVL.MAX_DEVICE_STATES : UDINT (4470624 32)
-    PMPS_GVL.MAX_STOPPERS : UINT (4387248 16)
+    PMPS_GVL.DUMMY_AUX_ATT_ARRAY : ARRAY[1..16] OF PMPS.ST_PMPS_Attenuator (4478144 512)
+    PMPS_GVL.EXCLUDED_ASSERTION_ID : UDINT (4475456 32)
+    PMPS_GVL.FAST_TEST_VELOCITY : LREAL (4475584 64)
+    PMPS_GVL.MAX_APERTURES : UINT (4478128 16)
+    PMPS_GVL.MAX_ASSERTIONS : UDINT (4478656 32)
+    PMPS_GVL.MAX_DEVICE_STATES : UDINT (4475488 32)
+    PMPS_GVL.MAX_STOPPERS : UINT (4475648 16)
     PMPS_GVL.SuccessfulPreemption : UDINT (3072000 32)
-    PMPS_GVL.VISIBLE_TEST_VELOCITY : LREAL (4470656 64)
-    PMPS_GVL.cnMaxStateArrayLen : INT (4473216 16)
-    PMPS_GVL.cstFullBeam : PMPS.ST_BeamParams (4470784 1216)
-    PMPS_GVL.cstSafeBeam : PMPS.ST_BeamParams (4472000 1216)
-    PMPS_GVL.fbLog : LCLS_General.FB_LogMessage (4389696 80896)
-    PMPS_GVL.g_areVBoundaries : ARRAY[0..15] OF REAL (4473856 512)
-    PMPS_GVL.g_cBoundaries : INT (4473776 16)
-    PMPS_GVL.reVHyst : REAL (4473824 32)
-    PMPS_GVL.stCurrentBeamParameters : PMPS.ST_BeamParams (4388480 1216)
-    PMPS_GVL.stRequestedBeamParameters : PMPS.ST_BeamParams (4387264 1216)
-    PRG_AL1K4_L2SI.fbAL1K4 : lcls2_cc_lib.FB_REF (8660288 181888)
-    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.fbGetLasPercent.iRaw : INT (8838880 16)
-    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.fbSetLasPercent.iRaw : INT (8839616 16)
-    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iLaserINT : INT (8838800 16)
-    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iShutdownINT : INT (8838784 16)
-    PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (8662976 2048)
-    PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (8661952 1024)
-    PRG_IM1K4_XTES.fbIM1K4 : lcls2_cc_lib.FB_XPIM (8844736 531776)
-    PRG_IM1K4_XTES.fbIM1K4.bFocusEndBwd : BOOL (8844968 8)
-    PRG_IM1K4_XTES.fbIM1K4.bFocusEndFwd : BOOL (8844960 8)
-    PRG_IM1K4_XTES.fbIM1K4.bZoomEndBwd : BOOL (8844952 8)
-    PRG_IM1K4_XTES.fbIM1K4.bZoomEndFwd : BOOL (8844944 8)
-    PRG_IM1K4_XTES.fbIM1K4.fbFlowSwitch.bFlowOk : BOOL (9376480 8)
-    PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9152896 2048)
-    PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (9151872 1024)
-    PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower : BOOL (9375968 8)
-    PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower : BOOL (9375872 8)
-    PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (8847744 2048)
-    PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (8846720 1024)
-    PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9000320 2048)
-    PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (8999296 1024)
-    PRG_IM1K4_XTES.stEL6In : Tc2_SerialCom.EL6inData22B (9376512 192)
-    PRG_IM1K4_XTES.stEL6Out : Tc2_SerialCom.EL6outData22B (9376704 192)
-    PRG_IM2K4_PPM.fbIM2K4 : lcls2_cc_lib.FB_PPM (9378176 761408)
-    PRG_IM2K4_PPM.fbIM2K4.fbFlowMeter.fRaw : INT (10139296 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower : BOOL (10138224 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbGige.fbGetIllPercent.iRaw : INT (10138336 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbGige.fbSetIllPercent.iRaw : INT (10139072 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbGige.iIlluminatorINT : INT (10138208 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbGetPMVoltage.iRaw : INT (9752352 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bError : BOOL (9752072 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bOverrange : BOOL (9752088 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bUnderrange : BOOL (9752080 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.iRaw : INT (9752096 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT : INT (9559712 16)
-    PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9380992 2048)
-    PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (9379968 1024)
-    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bError : BOOL (10139528 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bOverrange : BOOL (10139544 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bUnderrange : BOOL (10139536 8)
-    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.iRaw : INT (10139552 16)
-    PRG_SL1K4_SCATTER.bMoveOk : BOOL (10139584 8)
-    PRG_SL1K4_SCATTER.bTest : BOOL (10139592 8)
-    PRG_SL1K4_SCATTER.mcPower : ARRAY[1..4] OF Tc2_MC2.MC_Power (10139648 3072)
-    PRG_ST1K4_TEST.fbMotion1 : lcls_twincat_motion.FB_MotionStage (10142720 152576)
-    PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (10145216 2048)
-    PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (10144192 1024)
-    PRG_ST4K4_TMO_TERM.ST4K4 : lcls_twincat_motion.FB_MotionPneumaticActuator (10295552 108224)
-    PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS : BOOL (10403744 8)
-    PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS : BOOL (10403752 8)
-    PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO : BOOL (10403760 8)
-    PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO : BOOL (10403768 8)
-    PRG_ST4K4_TMO_TERM.ibPMPS_OK : BOOL (10139600 8)
-    PRG_ST5K4_TMO_TERM_FIXED.ST4K4 : lcls_twincat_motion.FB_MotionPneumaticActuator (10403776 108224)
-    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xInsertedLS : BOOL (10511968 8)
-    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xRetractedLS : BOOL (10511976 8)
-    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xInsert_DO : BOOL (10511984 8)
-    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xRetract_DO : BOOL (10511992 8)
-    PRG_ST5K4_TMO_TERM_FIXED.ibPMPS_OK : BOOL (10139608 8)
+    PMPS_GVL.VISIBLE_TEST_VELOCITY : LREAL (4475520 64)
+    PMPS_GVL.cnMaxStateArrayLen : INT (4475664 16)
+    PMPS_GVL.cstFullBeam : PMPS.ST_BeamParams (4475680 1216)
+    PMPS_GVL.cstSafeBeam : PMPS.ST_BeamParams (4476896 1216)
+    PMPS_GVL.fbLog : LCLS_General.FB_LogMessage (4394560 80896)
+    PMPS_GVL.g_areVBoundaries : ARRAY[0..15] OF REAL (4478752 512)
+    PMPS_GVL.g_cBoundaries : INT (4478688 16)
+    PMPS_GVL.reVHyst : REAL (4478720 32)
+    PMPS_GVL.stCurrentBeamParameters : PMPS.ST_BeamParams (4393344 1216)
+    PMPS_GVL.stRequestedBeamParameters : PMPS.ST_BeamParams (4392128 1216)
+    PRG_3_PMPS_POST.fbArbiterIO : PMPS.FB_SubSysToArbiter_IO (10951168 28480)
+    PRG_3_PMPS_POST.fbArbiterIO.i_stCurrentBP : ST_BeamParams_IO (10951968 1216)
+    PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP : ST_BeamParams_IO (10953184 1216)
+    PRG_3_PMPS_POST.fbArbiterIO.xTxPDO_state : BIT (10954401 1)
+    PRG_3_PMPS_POST.fbArbiterIO.xTxPDO_toggle : BIT (10954400 1)
+    PRG_4_LOG.fbLogHandler : LCLS_General.FB_LogHandler (21410936 5785408)
+    PRG_AL1K4_L2SI.fbAL1K4 : lcls2_cc_lib.FB_REF (8668096 317184)
+    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.fbGetLasPercent.iRaw : INT (8984160 16)
+    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.fbSetLasPercent.iRaw : INT (8984896 16)
+    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iLaserINT : INT (8984080 16)
+    PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iShutdownINT : INT (8984064 16)
+    PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (8675648 2048)
+    PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (8674624 1024)
+    PRG_IM1K4_XTES.fbIM1K4 : lcls2_cc_lib.FB_XPIM (8987968 680704)
+    PRG_IM1K4_XTES.fbIM1K4.bFocusEndBwd : BOOL (8988264 8)
+    PRG_IM1K4_XTES.fbIM1K4.bFocusEndFwd : BOOL (8988256 8)
+    PRG_IM1K4_XTES.fbIM1K4.bZoomEndBwd : BOOL (8988248 8)
+    PRG_IM1K4_XTES.fbIM1K4.bZoomEndFwd : BOOL (8988240 8)
+    PRG_IM1K4_XTES.fbIM1K4.fbFlowSwitch.bFlowOk : BOOL (9668640 8)
+    PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9310208 2048)
+    PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (9309184 1024)
+    PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower : BOOL (9668128 8)
+    PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower : BOOL (9668032 8)
+    PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9000576 2048)
+    PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (8999552 1024)
+    PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9155392 2048)
+    PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (9154368 1024)
+    PRG_IM1K4_XTES.stEL6In : Tc2_SerialCom.EL6inData22B (9668672 192)
+    PRG_IM1K4_XTES.stEL6Out : Tc2_SerialCom.EL6outData22B (9668864 192)
+    PRG_IM2K4_PPM.fbIM2K4 : lcls2_cc_lib.FB_PPM (9670464 905856)
+    PRG_IM2K4_PPM.fbIM2K4.fbFlowMeter.fRaw : INT (10576032 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower : BOOL (10574960 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbGige.fbGetIllPercent.iRaw : INT (10575072 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbGige.fbSetIllPercent.iRaw : INT (10575808 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbGige.iIlluminatorINT : INT (10574944 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbGetPMVoltage.iRaw : INT (10189088 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bError : BOOL (10188808 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bOverrange : BOOL (10188824 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bUnderrange : BOOL (10188816 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.iRaw : INT (10188832 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT : INT (9996448 16)
+    PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (9682880 2048)
+    PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (9681856 1024)
+    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bError : BOOL (10576264 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bOverrange : BOOL (10576280 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bUnderrange : BOOL (10576272 8)
+    PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.iRaw : INT (10576288 16)
+    PRG_SL1K4_SCATTER.bMoveOk : BOOL (8636080 8)
+    PRG_SL1K4_SCATTER.bTest : BOOL (8636088 8)
+    PRG_SL1K4_SCATTER.mcPower : ARRAY[1..4] OF Tc2_MC2.MC_Power (10576320 3072)
+    PRG_ST1K4_TEST.fbMotion1 : lcls_twincat_motion.FB_MotionStage (10579392 154816)
+    PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.NcToPlc : NCTOPLC_AXIS_REF (10581888 2048)
+    PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.PlcToNc : PLCTONC_AXIS_REF (10580864 1024)
+    PRG_ST4K4_TMO_TERM.ST4K4 : lcls_twincat_motion.FB_MotionPneumaticActuator (10734464 108224)
+    PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS : BOOL (10842656 8)
+    PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS : BOOL (10842664 8)
+    PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO : BOOL (10842672 8)
+    PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO : BOOL (10842680 8)
+    PRG_ST4K4_TMO_TERM.ibPMPS_OK : BOOL (8987936 8)
+    PRG_ST5K4_TMO_TERM_FIXED.ST4K4 : lcls_twincat_motion.FB_MotionPneumaticActuator (10842688 108224)
+    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xInsertedLS : BOOL (10950880 8)
+    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xRetractedLS : BOOL (10950888 8)
+    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xInsert_DO : BOOL (10950896 8)
+    PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xRetract_DO : BOOL (10950904 8)
+    PRG_ST5K4_TMO_TERM_FIXED.ibPMPS_OK : BOOL (8987944 8)
     ParameterList.cSourceNameSize : UDINT (4386496 32)
-    TC_EVENTS.LCLSGeneralEventClass : ST_LCLSGeneralEventClass (11183328 960)
-    TwinCAT_LicenseInfoVarList._LicenseInfo : ARRAY[1..1] OF PlcLicenseInfo (11135072 1024)
-    TwinCAT_SystemInfoVarList._AppInfo : PlcAppSystemInfo (11136096 2048)
-    TwinCAT_SystemInfoVarList._TaskInfo : ARRAY[1..1] OF PlcTaskSystemInfo (11138176 1024)
-    TwinCAT_SystemInfoVarList._TaskOid_PlcTask : OTCID (11139200 32)
-    TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask : OTCID (11138144 32)
-    TwinCAT_SystemInfoVarList.__PlcTask : _Implicit_Task_Info (11139232 704)
+    TC_EVENTS.LCLSGeneralEventClass : ST_LCLSGeneralEventClass (12646432 960)
+    TC_EVENT_CLASSES.LCLSGeneralEventClass : GUID (12616352 128)
+    TC_EVENT_CLASSES.TcGeneralAdsEventClass : GUID (12615840 128)
+    TC_EVENT_CLASSES.TcRTimeEventClass : GUID (12616096 128)
+    TC_EVENT_CLASSES.TcRouterEventClass : GUID (12615968 128)
+    TC_EVENT_CLASSES.TcSystemEventClass : GUID (12615712 128)
+    TC_EVENT_CLASSES.Win32EventClass : GUID (12616224 128)
+    TwinCAT_LicenseInfoVarList._LicenseInfo : ARRAY[1..1] OF PlcLicenseInfo (12598176 1024)
+    TwinCAT_SystemInfoVarList._AppInfo : PlcAppSystemInfo (12599200 2048)
+    TwinCAT_SystemInfoVarList._TaskInfo : ARRAY[1..1] OF PlcTaskSystemInfo (12601280 1024)
+    TwinCAT_SystemInfoVarList._TaskOid_PlcTask : OTCID (12602304 32)
+    TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask : OTCID (12601248 32)
+    TwinCAT_SystemInfoVarList.__PlcTask : _Implicit_Task_Info (12602336 704)
 
 Boxes
 -----
 
     1.) Power (EK1200)
-    2.) PMPS FFO (EL2202)
+    2.) PMPS_FFO
     3.) License (EL6070)
-    4.) PMPS_Bridge (EL6692)
+    4.) PMPS_PRE
     5.) PLC Junction 1 (EK1122)
     6.) X1 TMO FEE EC1 (EK1100)
     7.) FEE EC1 E1 (EK1122)
@@ -1110,13 +1308,13 @@ NC axes
         OtherSettings:AllowMotionCmdToSlave = 'true'
         Enc:EncType = 29
         Enc:ScaleFactorNumerator = 5e-05
-        Enc:Offset = -214727.1237
-        Enc:MaxCount = '#xffffffff'
+        Enc:Offset = -398.1892
+        Enc:MaxCount = '#x00400000'
         Enc:ReferenceSystem = 1
         Enc:SoftEndMinControl:Enable = 'true'
         Enc:SoftEndMinControl:Range = -90
         Enc:SoftEndMaxControl:Enable = 'true'
-        Enc:Inc:RefSoftSyncMask = '#x0000ffff'
+        Enc:Inc:RefSoftSyncMask = '#x00000000'
 
     7.) 'Axis 7 IM1K4-XTES-CLZ':
         Id = 7
@@ -1169,14 +1367,14 @@ NC axes
         OtherSettings:AllowMotionCmdToSlave = 'true'
         Enc:EncType = 29
         Enc:ScaleFactorNumerator = 5e-05
-        Enc:Offset = -214686.941
-        Enc:MaxCount = '#xffffffff'
+        Enc:Offset = -358.0066
+        Enc:MaxCount = '#x00400000'
         Enc:ReferenceSystem = 1
         Enc:SoftEndMinControl:Enable = 'true'
         Enc:SoftEndMinControl:Range = -100.57
         Enc:SoftEndMaxControl:Enable = 'true'
         Enc:SoftEndMaxControl:Range = -7.67
-        Enc:Inc:RefSoftSyncMask = '#x0000ffff'
+        Enc:Inc:RefSoftSyncMask = '#x00000000'
 
     10.) 'SL1K4-BOTTOM-M10':
         Id = 10
@@ -1970,221 +2168,253 @@ Links
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL2004-E2', 'Channel 3^Output')
     363.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL2004-E2', 'Channel 2^Output')
-    364.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[0]')
+    364.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M6.nRawEncoderULINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL5042-E3', 'FB Inputs Channel 1^Position')
+    365.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M7.nRawEncoderULINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL5042-E3', 'FB Inputs Channel 1^Position')
+    366.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M8.nRawEncoderULINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL5042-E3', 'FB Inputs Channel 1^Position')
+    367.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[0]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 0')
-    365.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[10]')
+    368.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[10]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 10')
-    366.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[11]')
+    369.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[11]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 11')
-    367.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[12]')
+    370.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[12]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 12')
-    368.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[13]')
+    371.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[13]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 13')
-    369.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[14]')
+    372.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[14]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 14')
-    370.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[15]')
+    373.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[15]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 15')
-    371.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[16]')
+    374.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[16]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 16')
-    372.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[17]')
+    375.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[17]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 17')
-    373.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[18]')
+    376.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[18]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 18')
-    374.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[19]')
+    377.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[19]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 19')
-    375.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[1]')
+    378.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[1]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 1')
-    376.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[20]')
+    379.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[20]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 20')
-    377.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[21]')
+    380.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[21]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 21')
-    378.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[2]')
+    381.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[2]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 2')
-    379.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[3]')
+    382.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[3]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 3')
-    380.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[4]')
+    383.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[4]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 4')
-    381.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[5]')
+    384.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[5]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 5')
-    382.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[6]')
+    385.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[6]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 6')
-    383.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[7]')
+    386.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[7]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 7')
-    384.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[8]')
+    387.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[8]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 8')
-    385.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[9]')
+    388.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[9]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Data In 9')
-    386.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^Status')
+    389.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^Status')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM TxPDO-Map Inputs Channel 1^Status')
-    387.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^Ctrl')
+    390.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^Ctrl')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Ctrl')
-    388.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[0]')
+    391.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[0]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 0')
-    389.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[10]')
+    392.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[10]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 10')
-    390.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[11]')
+    393.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[11]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 11')
-    391.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[12]')
+    394.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[12]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 12')
-    392.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[13]')
+    395.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[13]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 13')
-    393.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[14]')
+    396.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[14]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 14')
-    394.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[15]')
+    397.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[15]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 15')
-    395.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[16]')
+    398.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[16]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 16')
-    396.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[17]')
+    399.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[17]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 17')
-    397.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[18]')
+    400.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[18]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 18')
-    398.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[19]')
+    401.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[19]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 19')
-    399.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[1]')
+    402.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[1]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 1')
-    400.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[20]')
+    403.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[20]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 20')
-    401.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[21]')
+    404.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[21]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 21')
-    402.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[2]')
+    405.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[2]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 2')
-    403.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[3]')
+    406.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[3]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 3')
-    404.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[4]')
+    407.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[4]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 4')
-    405.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[5]')
+    408.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[5]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 5')
-    406.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[6]')
+    409.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[6]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 6')
-    407.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[7]')
+    410.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[7]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 7')
-    408.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[8]')
+    411.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[8]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 8')
-    409.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[9]')
+    412.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[9]')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6', 'COM RxPDO-Map Outputs Channel 1^Data Out 9')
-    410.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M6.bLimitForwardEnable')
+    413.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M6.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL7041-E1', 'STM Status^Status^Digital input 1')
-    411.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M14.bBrakeRelease')
+    414.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M14.bBrakeRelease')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL2202-E3', 'Channel 1^Output')
-    412.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.bLimitBackwardEnable')
+    415.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL7041-E4', 'STM Status^Status^Digital input 2')
-    413.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.bLimitForwardEnable')
+    416.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL7041-E4', 'STM Status^Status^Digital input 1')
-    414.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M1.bBrakeRelease')
+    417.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.nRawEncoderUINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL7041-E4', 'ENC Status compact^Counter value')
+    418.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M1.bBrakeRelease')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL2004-E3', 'Channel 1^Output')
-    415.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iLaserINT')
+    419.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iLaserINT')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL4004-E4', 'AO Outputs Channel 1^Analog output')
-    416.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iShutdownINT')
+    420.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_AL1K4_L2SI.fbAL1K4.fbLaser.iShutdownINT')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL4004-E4', 'AO Outputs Channel 2^Analog output')
-    417.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.bLimitBackwardEnable')
+    421.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.nRawEncoderULINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL5042-E2', 'FB Inputs Channel 1^Position')
+    422.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL7041-E1', 'STM Status^Status^Digital input 2')
-    418.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.bLimitForwardEnable')
+    423.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL7041-E1', 'STM Status^Status^Digital input 1')
-    419.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.bLimitBackwardEnable')
+    424.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.nRawEncoderUINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E2', 'ENC Status compact^Counter value')
+    425.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.nRawEncoderUINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E4', 'ENC Status compact^Counter value')
+    426.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.nRawEncoderUINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E6', 'ENC Status compact^Counter value')
+    427.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.nRawEncoderUINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E8', 'ENC Status compact^Counter value')
+    428.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E1', 'STM Status^Status^Digital input 1')
-    420.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.bLimitForwardEnable')
+    429.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E1', 'STM Status^Status^Digital input 2')
-    421.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.bLimitBackwardEnable')
+    430.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E3', 'STM Status^Status^Digital input 1')
-    422.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.bLimitForwardEnable')
+    431.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E3', 'STM Status^Status^Digital input 2')
-    423.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.bLimitBackwardEnable')
+    432.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E5', 'STM Status^Status^Digital input 2')
-    424.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.bLimitForwardEnable')
+    433.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E5', 'STM Status^Status^Digital input 1')
-    425.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.bLimitBackwardEnable')
+    434.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E7', 'STM Status^Status^Digital input 2')
-    426.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.bLimitForwardEnable')
+    435.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL7031-E7', 'STM Status^Status^Digital input 1')
-    427.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M9.bBrakeRelease')
+    436.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M9.bBrakeRelease')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL2004-E3', 'Channel 1^Output')
-    428.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower')
+    437.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL2004-E3', 'Channel 2^Output')
-    429.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT')
+    438.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3062-E6', 'AI Standard Channel 1^Value')
-    430.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bError')
+    439.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bError')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 1^Status^Error')
-    431.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bOverrange')
+    440.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bOverrange')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 1^Status^Overrange')
-    432.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bUnderrange')
+    441.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.bUnderrange')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 1^Status^Underrange')
-    433.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.iRaw')
+    442.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbThermoCouple.iRaw')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 1^Value')
-    434.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bError')
+    443.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bError')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 2^Status^Error')
-    435.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bOverrange')
+    444.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bOverrange')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 2^Status^Overrange')
-    436.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bUnderrange')
+    445.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.bUnderrange')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 2^Status^Underrange')
-    437.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.iRaw')
+    446.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.iRaw')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4', 'TC Inputs Channel 2^Value')
-    438.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.iIlluminatorINT')
+    447.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.iIlluminatorINT')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL4004-E7', 'AO Outputs Channel 1^Analog output')
-    439.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.bLimitBackwardEnable')
+    448.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.nRawEncoderULINT')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL5042-E2', 'FB Inputs Channel 1^Position')
+    449.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.bLimitBackwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL7041-E1', 'STM Status^Status^Digital input 2')
-    440.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.bLimitForwardEnable')
+    450.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.bLimitForwardEnable')
           B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL7041-E1', 'STM Status^Status^Digital input 1')
-    441.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.Axis.NcToPlc')
+    451.) A ('tmo_motion Instance', 'PlcTask Outputs^GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_FFO', 'Channel 1^Output')
+    452.) A ('tmo_motion Instance', 'PlcTask Outputs^GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_FFO', 'Channel 2^Output')
+    453.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_3_PMPS_POST.fbArbiterIO.i_stCurrentBP')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_PRE', 'IO Inputs^CurrentBP')
+    454.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_3_PMPS_POST.fbArbiterIO.xTxPDO_state')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_PRE', 'SYNC Inputs^TxPDO state')
+    455.) A ('tmo_motion Instance', 'PlcTask Inputs^PRG_3_PMPS_POST.fbArbiterIO.xTxPDO_toggle')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_PRE', 'SYNC Inputs^TxPDO toggle')
+    456.) A ('tmo_motion Instance', 'PlcTask Outputs^PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP')
+          B ('TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_PRE', 'IO Outputs^RequestedBP')
+    457.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M1.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 1 AL1K4-L2SI-MMS', 'Outputs^ToPlc')
-    442.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M1.Axis.PlcToNc')
+    458.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M1.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 1 AL1K4-L2SI-MMS', 'Inputs^FromPlc')
-    443.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M2.Axis.NcToPlc')
+    459.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M2.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 2', 'Outputs^ToPlc')
-    444.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M2.Axis.PlcToNc')
+    460.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M2.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 2', 'Inputs^FromPlc')
-    445.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M3.Axis.NcToPlc')
+    461.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M3.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 3', 'Outputs^ToPlc')
-    446.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M3.Axis.PlcToNc')
+    462.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M3.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 3', 'Inputs^FromPlc')
-    447.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M4.Axis.NcToPlc')
+    463.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M4.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 4', 'Outputs^ToPlc')
-    448.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M4.Axis.PlcToNc')
+    464.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M4.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 4', 'Inputs^FromPlc')
-    449.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M5.Axis.NcToPlc')
+    465.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M5.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 5', 'Outputs^ToPlc')
-    450.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M5.Axis.PlcToNc')
+    466.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M5.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 5', 'Inputs^FromPlc')
-    451.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M6.Axis.NcToPlc')
+    467.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M6.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 6 IM1K4-XTES-MMS', 'Outputs^ToPlc')
-    452.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M6.Axis.PlcToNc')
+    468.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M6.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 6 IM1K4-XTES-MMS', 'Inputs^FromPlc')
-    453.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M7.Axis.NcToPlc')
+    469.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M7.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 7 IM1K4-XTES-CLZ', 'Outputs^ToPlc')
-    454.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M7.Axis.PlcToNc')
+    470.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M7.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 7 IM1K4-XTES-CLZ', 'Inputs^FromPlc')
-    455.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M8.Axis.NcToPlc')
+    471.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M8.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 8 IM1K4-XTES-CLF', 'Outputs^ToPlc')
-    456.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M8.Axis.PlcToNc')
+    472.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M8.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 8 IM1K4-XTES-CLF', 'Inputs^FromPlc')
-    457.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.Axis.NcToPlc')
+    473.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M9.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 9 IM2K4-PPM-MMS', 'Outputs^ToPlc')
-    458.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M9.Axis.PlcToNc')
+    474.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M9.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^Axis 9 IM2K4-PPM-MMS', 'Inputs^FromPlc')
-    459.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.Axis.NcToPlc')
+    475.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M10.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-BOTTOM-M10', 'Outputs^ToPlc')
-    460.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M10.Axis.PlcToNc')
+    476.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M10.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-BOTTOM-M10', 'Inputs^FromPlc')
-    461.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.Axis.NcToPlc')
+    477.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M12.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-NORTH-M12', 'Outputs^ToPlc')
-    462.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M12.Axis.PlcToNc')
+    478.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M12.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-NORTH-M12', 'Inputs^FromPlc')
-    463.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.Axis.NcToPlc')
+    479.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M13.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-SOUTH-M13', 'Outputs^ToPlc')
-    464.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M13.Axis.PlcToNc')
+    480.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M13.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-SOUTH-M13', 'Inputs^FromPlc')
-    465.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.Axis.NcToPlc')
+    481.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M11.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-TOP-M11', 'Outputs^ToPlc')
-    466.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M11.Axis.PlcToNc')
+    482.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M11.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^SL1K4-TOP-M11', 'Inputs^FromPlc')
-    467.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.Axis.NcToPlc')
+    483.) A ('tmo_motion Instance', 'PlcTask Inputs^Main.M14.Axis.NcToPlc')
           B ('TINC^NC-Task 1 SAF^Axes^ST1K4-TEST', 'Outputs^ToPlc')
-    468.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M14.Axis.PlcToNc')
+    484.) A ('tmo_motion Instance', 'PlcTask Outputs^Main.M14.Axis.PlcToNc')
           B ('TINC^NC-Task 1 SAF^Axes^ST1K4-TEST', 'Inputs^FromPlc')
 
 Pragma lint results
 -------------------
 ```
-INFO:pytmc.bin.pragmalint:Total pragmas found: 35 Total linter errors: 0
+INFO:pytmc.bin.pragmalint:Total pragmas found: 37 Total linter errors: 0
 PLC Project (1): tmo_motion
 ===========================
 
@@ -2192,7 +2422,7 @@ PLC Project (1): tmo_motion
 GVLs/GVL_PMPS.TcGVL (TcPlcObject)
 ---------------------------------
 
-    - GVL_PMPS: Declaration - 2 pragmas
+    - GVL_PMPS: Declaration - 4 pragmas
 
 
 GVLs/Main.TcGVL (TcPlcObject)
