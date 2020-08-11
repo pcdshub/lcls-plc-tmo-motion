@@ -2,12 +2,21 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="GVL_PMPS" Id="{9b94692b-5571-4165-bb98-ffe5b3549b86}">
     <Declaration><![CDATA[VAR_GLOBAL
-	//fbArbiter: FB_Arbiter(0);
+    // Arbiter linked to the FFO and the MPS
+    fbArbiter: FB_Arbiter(0);
+    // Arbiter not set up yet, for devices behind ST1K4. TODO: how to veto arbiter??
+    fbArbiterInactive: FB_Arbiter(1);
 
-    {attribute 'pytmc' := 'pv: PLC:LFE:MOTION:FFO:01'}
+    // Fast fault for before ST1K4 (AT1K4, IM1K4)
+    {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:01'}
     {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 1^Output'}
     fbFastFaultOutput1: FB_HardwareFFOutput := (bAutoReset := TRUE);
+    // Fast fault for after ST1K4 (Everything else)
+    {attribute 'pytmc' := 'pv: PLC:TMO:MOTION:FFO:02'}
+    {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 2^Output'}
+    fbFastFaultOutput2: FB_HardwareFFOutput := (bAutoReset := TRUE);
 
+    // Consider adding extra FFO card for after ST4K4
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
