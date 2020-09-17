@@ -50,6 +50,21 @@
     <Compile Include="POUs\PRG_IM2K4_PPM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_IM3K4_PPM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_IM4K4_PPM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_IM5K4_PPM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_LI1K4_IP1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_PF1K4_WFS_TARGET.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_SL1K4_SCATTER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -60,6 +75,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_ST5K4_TMO_TERM_FIXED.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_TM1K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -73,14 +91,6 @@
     <PlaceholderReference Include="LCLS General">
       <DefaultResolution>LCLS General, * (SLAC)</DefaultResolution>
       <Namespace>LCLS_General</Namespace>
-    </PlaceholderReference>
-    <PlaceholderReference Include="lcls-twincat-motion">
-      <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
-      <Namespace>lcls_twincat_motion</Namespace>
-    </PlaceholderReference>
-    <PlaceholderReference Include="lcls2-cc-lib">
-      <DefaultResolution>lcls2-cc-lib, * (SLAC)</DefaultResolution>
-      <Namespace>lcls2_cc_lib</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="PMPS">
       <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
@@ -114,9 +124,6 @@
     <PlaceholderResolution Include="lcls-twincat-motion">
       <Resolution>lcls-twincat-motion, 1.3.1 (SLAC)</Resolution>
     </PlaceholderResolution>
-    <PlaceholderResolution Include="lcls2-cc-lib">
-      <Resolution>lcls2-cc-lib, 1.0.1 (SLAC)</Resolution>
-    </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 0.6.0 (SLAC - LCLS)</Resolution>
     </PlaceholderResolution>
@@ -125,6 +132,14 @@
     <None Include="tmo_motion.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryReference Include="lcls-twincat-motion,1.3.2,SLAC">
+      <Namespace>lcls_twincat_motion</Namespace>
+    </LibraryReference>
+    <LibraryReference Include="lcls2-cc-lib,0.0.0,SLAC">
+      <Namespace>lcls2_cc_lib</Namespace>
+    </LibraryReference>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

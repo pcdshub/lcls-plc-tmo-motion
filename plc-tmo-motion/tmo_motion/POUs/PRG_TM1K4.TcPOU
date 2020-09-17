@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_TM1K4" Id="{c02e8350-6bfd-4c3f-8509-cf01c04221fa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_TM1K4
+VAR
+    {attribute 'pytmc' := '
+        pv: TM1K4
+        io: io
+    '}
+    {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Error;
+                              .fbThermoCouple1.bUnderrange := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Underrange;
+                              .fbThermoCouple1.bOverrange := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Overrange;
+                              .fbThermoCouple1.iRaw := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Value'}
+    fbTM1K4: FB_ATM;
+
+    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+    stFoilBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+   Avoid damage peak between 1.6 keV and 3.2 keV
+   Boundaries are upper boundary of eV range
+   250,    270,    400,    540,    850,   1.15E3, 1.25E3, 1.45E3,
+   1.55E3, 1.65E3, 1.75E3, 1.82E3, 2.0E3, 3.2E3,  5.0E3,  7.1E3
+   1       1       1       1       1      1       1       1
+   1       0       0       0       0      0       1       1
+*)
+stSiBP.neVRange := 2#1111_1111_1000_0011;
+// Drop transmission to 20%
+stSiBP.nTran := 20;
+
+// Drop transmission to 10%
+stFoilBP.nTran := 10;
+
+fbTM1K4.nTransitionAssertionID := 16#3100;
+fbTM1K4.nUnknownAssertionID := 16#3109;
+
+fbTM1K4.stOut.fPosition := -15;
+fbTM1K4.stOut.bUseRawCounts := FALSE;
+fbTM1K4.stOut.nRequestAssertionID := 16#3101;
+fbTM1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbTM1K4.stOut.bValid := TRUE;
+
+fbTM1K4.stTarget1.fPosition := -39.124;
+fbTM1K4.stTarget1.bUseRawCounts := FALSE;
+fbTM1K4.stTarget1.nRequestAssertionID := 16#3102;
+fbTM1K4.stTarget1.stBeamParams := stSiBP;
+fbTM1K4.stTarget1.bValid := TRUE;
+
+fbTM1K4.stTarget2.fPosition := -53.5;
+fbTM1K4.stTarget2.bUseRawCounts := FALSE;
+fbTM1K4.stTarget2.nRequestAssertionID := 16#3103;
+fbTM1K4.stTarget2.stBeamParams := stSiBP;
+fbTM1K4.stTarget2.bValid := TRUE;
+
+fbTM1K4.stTarget3.fPosition := -67.874;
+fbTM1K4.stTarget3.bUseRawCounts := FALSE;
+fbTM1K4.stTarget3.nRequestAssertionID := 16#3104;
+fbTM1K4.stTarget3.stBeamParams := stFoilBP;
+fbTM1K4.stTarget3.bValid := TRUE;
+
+fbTM1K4.stTarget4.fPosition := -82.25;
+fbTM1K4.stTarget4.bUseRawCounts := FALSE;
+fbTM1K4.stTarget4.nRequestAssertionID := 16#3105;
+fbTM1K4.stTarget4.stBeamParams := stFoilBP;
+fbTM1K4.stTarget4.bValid := TRUE;
+
+fbTM1K4.stTarget5.fPosition := -96.623;
+fbTM1K4.stTarget5.bUseRawCounts := FALSE;
+fbTM1K4.stTarget5.nRequestAssertionID := 16#3106;
+fbTM1K4.stTarget5.stBeamParams := stFoilBP;
+fbTM1K4.stTarget5.bValid := TRUE;
+
+fbTM1K4(
+    fbArbiter := GVL_PMPS.fbArbiter,
+    fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+    stYStage := Main.M21,
+    stXStage := Main.M22);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

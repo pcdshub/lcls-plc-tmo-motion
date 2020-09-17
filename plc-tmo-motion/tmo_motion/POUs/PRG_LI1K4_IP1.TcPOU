@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_LI1K4_IP1" Id="{d1be7b36-4016-4b0e-aff6-a7c2bd7afb17}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_LI1K4_IP1
+VAR
+    {attribute 'pytmc' := '
+        pv: LI1K4:IP1
+        io: io
+    '}
+    fbLI1K4: FB_LIC;
+
+    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+    stFoilBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+   Avoid damage peak between 1.6 keV and 3.2 keV
+   Boundaries are upper boundary of eV range
+   250,    270,    400,    540,    850,   1.15E3, 1.25E3, 1.45E3,
+   1.55E3, 1.65E3, 1.75E3, 1.82E3, 2.0E3, 3.2E3,  5.0E3,  7.1E3
+   1       1       1       1       1      1       1       1
+   1       0       0       0       0      0       1       1
+*)
+stSiBP.neVRange := 2#1111_1111_1000_0011;
+// Drop transmission to 20%
+stSiBP.nTran := 20;
+
+// Drop transmission to 10%
+stFoilBP.nTran := 10;
+
+fbLI1K4.nTransitionAssertionID := 16#3100;
+fbLI1K4.nUnknownAssertionID := 16#3109;
+
+fbLI1K4.stOut.fPosition := -15;
+fbLI1K4.stOut.bUseRawCounts := FALSE;
+fbLI1K4.stOut.nRequestAssertionID := 16#3101;
+fbLI1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+fbLI1K4.stOut.bValid := TRUE;
+
+fbLI1K4.stTarget1.fPosition := -39.124;
+fbLI1K4.stTarget1.bUseRawCounts := FALSE;
+fbLI1K4.stTarget1.nRequestAssertionID := 16#3102;
+fbLI1K4.stTarget1.stBeamParams := stSiBP;
+fbLI1K4.stTarget1.bValid := TRUE;
+
+fbLI1K4(
+    fbArbiter := GVL_PMPS.fbArbiter,
+    fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+    stYStage := Main.M20);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
