@@ -89,7 +89,7 @@ fbIM1K4.stDiamond.bValid := TRUE;
 fbIM1K4.stReticle.fPosition := -28.87;
 fbIM1K4.stReticle.bUseRawCounts := FALSE;
 fbIM1K4.stReticle.nRequestAssertionID := 2144;
-fbIM1K4.stReticle.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbIM1K4.stReticle.stBeamParams := PMPS_GVL.cst0RateBeam;
 fbIM1K4.stReticle.bValid := TRUE;
 
 fbIM1K4(
