@@ -23,6 +23,9 @@
 		<Io>
 			<Device File="Device 1 (EtherCAT).xti" Id="1"/>
 		</Io>
+		<SymbolWatch>
+			<Variable>TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL5042-E2^FB Inputs Channel 1^Position</Variable>
+		</SymbolWatch>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{08502001-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="00000000000000000000000000000000"/>

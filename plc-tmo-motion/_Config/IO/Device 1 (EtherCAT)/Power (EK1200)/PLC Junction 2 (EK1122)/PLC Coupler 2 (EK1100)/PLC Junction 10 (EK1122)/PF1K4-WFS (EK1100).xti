@@ -7,19 +7,19 @@
 		<Name>__FILENAME__</Name>
 		<ImageId>1000</ImageId>
 		<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100"/>
-		<Box File="PF1K4-EL7041-1.xti" Id="202">
+		<Box File="PF1K4-EL7041-E1.xti" Id="202">
 			<EtherCAT PortABoxInfo="#x010000c9"/>
 		</Box>
-		<Box File="PF1K4-EL7041-2.xti" Id="203">
+		<Box File="PF1K4-EL7041-E2.xti" Id="203">
 			<EtherCAT PortABoxInfo="#x010000ca"/>
 		</Box>
-		<Box File="PF1K4-EL5042.xti" Id="204">
+		<Box File="PF1K4-EL5042-E3.xti" Id="204">
 			<EtherCAT PortABoxInfo="#x010000cb"/>
 		</Box>
-		<Box File="PF1K4-EL2004.xti" Id="205">
+		<Box File="PF1K4-EL2004-E4.xti" Id="205">
 			<EtherCAT PortABoxInfo="#x010000cc"/>
 		</Box>
-		<Box File="PF1K4-EL3314.xti" Id="206">
+		<Box File="PF1K4-EL3314-E5.xti" Id="206">
 			<EtherCAT PortABoxInfo="#x010000cd"/>
 		</Box>
 		<Box File="PF1K4-EL9011.xti" Id="221">

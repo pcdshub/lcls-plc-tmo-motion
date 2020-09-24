@@ -12,25 +12,25 @@
 			<Name>LI1K4-LIC (EK1100)</Name>
 			<ImageId>1001</ImageId>
 			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x0300005a"/>
-			<Box File="LI1K4-EL7041.xti" Id="175">
+			<Box File="LI1K4-EL7041-E1.xti" Id="175">
 				<EtherCAT PortABoxInfo="#x01000068"/>
 			</Box>
-			<Box File="LI1K4-EL5042.xti" Id="176">
+			<Box File="LI1K4-EL5042-E2.xti" Id="176">
 				<EtherCAT PortABoxInfo="#x010000af"/>
 			</Box>
-			<Box File="LI1K4-EL2004.xti" Id="177">
+			<Box File="LI1K4-EL2004-E3.xti" Id="177">
 				<EtherCAT PortABoxInfo="#x010000b0"/>
 			</Box>
-			<Box File="LI1K4-EL3314.xti" Id="178">
+			<Box File="LI1K4-EL3314-E4.xti" Id="178">
 				<EtherCAT PortABoxInfo="#x010000b1"/>
 			</Box>
-			<Box File="LI1K4-EL3052.xti" Id="179">
+			<Box File="LI1K4-EL3052-E5.xti" Id="179">
 				<EtherCAT PortABoxInfo="#x010000b2"/>
 			</Box>
-			<Box File="LI1K4-EL3062.xti" Id="180">
+			<Box File="LI1K4-EL3062-E6.xti" Id="180">
 				<EtherCAT PortABoxInfo="#x010000b3"/>
 			</Box>
-			<Box File="LI1K4-EL4004.xti" Id="181">
+			<Box File="LI1K4-EL4004-E7.xti" Id="181">
 				<EtherCAT PortABoxInfo="#x010000b4"/>
 			</Box>
 			<Box File="LI1K4-EL9011.xti" Id="218">
