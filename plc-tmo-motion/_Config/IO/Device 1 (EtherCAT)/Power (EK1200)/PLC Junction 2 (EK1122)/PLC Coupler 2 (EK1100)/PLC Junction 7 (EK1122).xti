@@ -8,33 +8,33 @@
 		<Name>__FILENAME__</Name>
 		<ImageId>1000</ImageId>
 		<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04622c52" RevisionNo="#x00120000" PortPhys="4883" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1122 2 port EtherCAT junction" Desc="EK1122"/>
-		<Box Id="102" BoxType="9099">
+		<Box Id="102" Disabled="true" BoxType="9099">
 			<Name>LI3K4-LIC (EK1100)</Name>
 			<ImageId>1001</ImageId>
-			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x0100006a"/>
-			<Box File="Term 185 (EL7041).xti" Id="185">
-				<EtherCAT PortABoxInfo="#x01000066"/>
-			</Box>
-			<Box File="Term 186 (EL7041).xti" Id="186">
-				<EtherCAT PortABoxInfo="#x010000b9"/>
-			</Box>
-			<Box File="Term 187 (EL5042).xti" Id="187">
-				<EtherCAT PortABoxInfo="#x010000ba"/>
-			</Box>
-			<Box File="Term 188 (EL2004).xti" Id="188">
-				<EtherCAT PortABoxInfo="#x010000bb"/>
-			</Box>
-			<Box File="Term 189 (EL3314).xti" Id="189">
-				<EtherCAT PortABoxInfo="#x010000bc"/>
-			</Box>
-			<Box File="Term 219 (EL9011).xti" Id="219">
-				<EtherCAT PortABoxInfo="#x010000bd"/>
-			</Box>
+			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x0300006a"/>
 		</Box>
-		<Box Id="103" Disabled="true" BoxType="9099">
+		<Box Id="103" BoxType="9099">
 			<Name>TM1K4-ATM (EK1100)</Name>
 			<ImageId>1001</ImageId>
-			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x02000066"/>
+			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x0100006a"/>
+			<Box File="TM1K4-EL7041-1.xti" Id="197">
+				<EtherCAT PortABoxInfo="#x01000067"/>
+			</Box>
+			<Box File="TM1K4-EL7041-2.xti" Id="198">
+				<EtherCAT PortABoxInfo="#x010000c5"/>
+			</Box>
+			<Box File="TM1K4-EL5042.xti" Id="199">
+				<EtherCAT PortABoxInfo="#x010000c6"/>
+			</Box>
+			<Box File="TM1K4-EL2004.xti" Id="200">
+				<EtherCAT PortABoxInfo="#x010000c7"/>
+			</Box>
+			<Box File="TM1K4-EL3314.xti" Id="207">
+				<EtherCAT PortABoxInfo="#x010000c8"/>
+			</Box>
+			<Box File="TM1K4-EL9011.xti" Id="240">
+				<EtherCAT PortABoxInfo="#x010000cf"/>
+			</Box>
 		</Box>
 	</Box>
 </TcSmItem>
