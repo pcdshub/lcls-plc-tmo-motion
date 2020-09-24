@@ -77,7 +77,7 @@ fbPF1K4.stTarget5.stBeamParams := stFoilBP;
 fbPF1K4.stTarget5.bValid := TRUE;
 
 fbPF1K4(
-    fbArbiter := GVL_PMPS.fbArbiter,
+    fbArbiter := GVL_PMPS.fbArbiterInactive,
     fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
     stYStage := Main.M18,
     stZStage := Main.M19);

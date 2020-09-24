@@ -45,7 +45,7 @@ fbLI1K4.stTarget1.stBeamParams := stSiBP;
 fbLI1K4.stTarget1.bValid := TRUE;
 
 fbLI1K4(
-    fbArbiter := GVL_PMPS.fbArbiter,
+    fbArbiter := GVL_PMPS.fbArbiterInactive,
     fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
     stYStage := Main.M20);
 ]]></ST>
