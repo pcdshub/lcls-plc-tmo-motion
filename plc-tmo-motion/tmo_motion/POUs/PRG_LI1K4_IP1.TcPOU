@@ -29,18 +29,18 @@ stSiBP.nTran := 20;
 // Drop transmission to 10%
 stFoilBP.nTran := 10;
 
-fbLI1K4.nTransitionAssertionID := 16#3100;
-fbLI1K4.nUnknownAssertionID := 16#3109;
+fbLI1K4.nTransitionAssertionID := 16#4140;
+fbLI1K4.nUnknownAssertionID := 16#4149;
 
 fbLI1K4.stOut.fPosition := -15;
 fbLI1K4.stOut.bUseRawCounts := FALSE;
-fbLI1K4.stOut.nRequestAssertionID := 16#3101;
+fbLI1K4.stOut.nRequestAssertionID := 16#4141;
 fbLI1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbLI1K4.stOut.bValid := TRUE;
 
 fbLI1K4.stTarget1.fPosition := -39.124;
 fbLI1K4.stTarget1.bUseRawCounts := FALSE;
-fbLI1K4.stTarget1.nRequestAssertionID := 16#3102;
+fbLI1K4.stTarget1.nRequestAssertionID := 16#4142;
 fbLI1K4.stTarget1.stBeamParams := stSiBP;
 fbLI1K4.stTarget1.bValid := TRUE;
 
