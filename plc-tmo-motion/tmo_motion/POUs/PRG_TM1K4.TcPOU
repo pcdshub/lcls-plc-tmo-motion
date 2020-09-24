@@ -74,7 +74,7 @@ fbTM1K4.stTarget5.bValid := TRUE;
 
 fbTM1K4(
     fbArbiter := GVL_PMPS.fbArbiter,
-    fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+    fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
     stYStage := Main.M21,
     stXStage := Main.M22);
 ]]></ST>
