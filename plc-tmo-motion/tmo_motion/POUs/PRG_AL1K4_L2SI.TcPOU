@@ -25,7 +25,7 @@ fbAL1K4.stOut.bValid := TRUE;
 fbAL1K4.stIn.fPosition := -20; // We don't actually know this value! Pick something clearly wrong.
 fbAL1K4.stIn.bUseRawCounts := FALSE;
 fbAL1K4.stIn.nRequestAssertionID := 16#6142;
-fbAL1K4.stIn.stBeamParams := PMPS_GVL.cstSafeBeam;
+fbAL1K4.stIn.stBeamParams := PMPS_GVL.cst0RateBeam;
 fbAL1K4.stIn.bValid := TRUE;
 
 fbAL1K4(
