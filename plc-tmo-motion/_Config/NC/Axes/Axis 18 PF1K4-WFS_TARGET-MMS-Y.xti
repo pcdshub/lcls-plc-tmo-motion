@@ -1354,27 +1354,11 @@ External Setpoint Generation:
 			<Velo Maximum="20"/>
 			<TargetPosControl Range="0.002" Time="2"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>260</ParameterChanged>
-			<ParameterChanged>22</ParameterChanged>
-			<ParameterChanged>39</ParameterChanged>
-			<ParameterChanged>257</ParameterChanged>
-			<ParameterChanged>259</ParameterChanged>
-			<ParameterChanged>242</ParameterChanged>
-			<ParameterChanged>18</ParameterChanged>
-			<ParameterChanged>23</ParameterChanged>
-			<ParameterChanged>258</ParameterChanged>
-			<ParameterChanged>241</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="1">
 			<EncPara ScaleFactorNumerator="5e-05" Offset="-358.0066">
 				<SoftEndMinControl Enable="true" Range="-98"/>
 				<SoftEndMaxControl Enable="true" Range="-14"/>
-				<ParameterChanged>14</ParameterChanged>
-				<ParameterChanged>11</ParameterChanged>
-				<ParameterChanged>13</ParameterChanged>
-				<ParameterChanged>7</ParameterChanged>
-				<ParameterChanged>35</ParameterChanged>
-				<ParameterChanged>12</ParameterChanged>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
@@ -1536,10 +1520,6 @@ Drive Status 4 (manually linked):
 				<PosDiffControl Range="1"/>
 				<PID PosKp="20" PosExtKp="1" PosExtVelo="0.1" DeadBandPosition="0.002"/>
 				<Observer BandWidth="20"/>
-				<ParameterChanged>269</ParameterChanged>
-				<ParameterChanged>263</ParameterChanged>
-				<ParameterChanged>262</ParameterChanged>
-				<ParameterChanged>258</ParameterChanged>
 			</CtrPara>
 		</Controller>
 		<Vars VarGrpType="1" InsertType="1">

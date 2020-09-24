@@ -1353,23 +1353,11 @@ External Setpoint Generation:
 			<Dynamic AccelerationMaximum="200" DecelerationMaximum="200" Acceleration="10" Deceleration="50" Jerk="500"/>
 			<Velo Maximum="5"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>39</ParameterChanged>
-			<ParameterChanged>257</ParameterChanged>
-			<ParameterChanged>259</ParameterChanged>
-			<ParameterChanged>242</ParameterChanged>
-			<ParameterChanged>18</ParameterChanged>
-			<ParameterChanged>258</ParameterChanged>
-			<ParameterChanged>241</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="1">
 			<EncPara ScaleFactorNumerator="5e-05">
 				<SoftEndMinControl Enable="true" Range="12"/>
 				<SoftEndMaxControl Enable="true" Range="54"/>
-				<ParameterChanged>14</ParameterChanged>
-				<ParameterChanged>11</ParameterChanged>
-				<ParameterChanged>13</ParameterChanged>
-				<ParameterChanged>35</ParameterChanged>
-				<ParameterChanged>12</ParameterChanged>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
