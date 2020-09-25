@@ -23,7 +23,15 @@ PRG_ST5K4_TMO_TERM_FIXED();
 PRG_TM1K4();
 
 PRG_3_PMPS_POST();
-PRG_4_LOG();]]></ST>
+PRG_4_LOG();
+
+//Main.M15.bPowerSelf:=TRUE;]]></ST>
     </Implementation>
+    <LineIds Name="PRG_1_PlcTask">
+      <LineId Id="3" Count="16" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

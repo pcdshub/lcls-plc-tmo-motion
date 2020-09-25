@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.2">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="Main" Id="{1691e643-5c47-48e9-bb1a-9f3fc0d078a1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -77,7 +77,6 @@ VAR_GLOBAL
                               .bBrakeRelease        := TIIB[IM3K4-EL2004-E3]^Channel 1^Output;
                               .nRawEncoderULINT     := TIIB[IM3K4-EL5042-E2]^FB Inputs Channel 1^Position'}
     M15: DUT_MotionStage := (sName := 'IM3K4:PPM:MMS');
-
     // IM4K4-PPM: 1 Axis
     {attribute 'pytmc' := 'pv: IM4K4:PPM:MMS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[IM4K4-EL7041-E1]^STM Status^Status^Digital input 1;
