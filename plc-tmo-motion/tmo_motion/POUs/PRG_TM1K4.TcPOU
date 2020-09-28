@@ -7,10 +7,10 @@ VAR
         pv: TM1K4
         io: io
     '}
-    {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Error;
-                              .fbThermoCouple1.bUnderrange := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Underrange;
-                              .fbThermoCouple1.bOverrange := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Status^Overrange;
-                              .fbThermoCouple1.iRaw := TIIB[TM1K4-EL3314]^TC Inputs Channel 1^Value'}
+    {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
+                              .fbThermoCouple1.bUnderrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
+                              .fbThermoCouple1.bOverrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
+                              .fbThermoCouple1.iRaw := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Value'}
     fbTM1K4: FB_ATM;
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
@@ -79,5 +79,9 @@ fbTM1K4(
     stXStage := Main.M22);
 ]]></ST>
     </Implementation>
+    <LineIds Name="PRG_TM1K4">
+      <LineId Id="3" Count="58" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
