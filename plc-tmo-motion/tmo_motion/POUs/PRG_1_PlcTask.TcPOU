@@ -14,6 +14,7 @@ PRG_IM1K4_XTES();
 PRG_IM2K4_PPM();
 PRG_IM3K4_PPM();
 PRG_IM4K4_PPM();
+PRG_IM5K4_PPM();
 PRG_LI1K4_IP1();
 PRG_PF1K4_WFS_TARGET();
 PRG_SL1K4_SCATTER();
@@ -23,7 +24,15 @@ PRG_ST5K4_TMO_TERM_FIXED();
 PRG_TM1K4();
 
 PRG_3_PMPS_POST();
-PRG_4_LOG();]]></ST>
+PRG_4_LOG();
+]]></ST>
     </Implementation>
+    <LineIds Name="PRG_1_PlcTask">
+      <LineId Id="3" Count="7" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="11" Count="8" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

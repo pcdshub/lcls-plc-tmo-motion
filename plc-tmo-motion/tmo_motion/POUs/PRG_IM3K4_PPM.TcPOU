@@ -7,17 +7,17 @@ VAR
         pv: IM3K4:PPM
         io: io
     '}
-    {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT := TIIB[IM3K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
-                              .fbGige.bGigePower := TIIB[IM3K4-EL2004-E3]^Channel 2^Output;
-                              .fbPowerMeter.iVoltageINT := TIIB[IM3K4-EL3062-E6]^AI Standard Channel 1^Value;
-                              .fbPowerMeter.fbThermoCouple.bError := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
-                              .fbPowerMeter.fbThermoCouple.bUnderrange := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
-                              .fbPowerMeter.fbThermoCouple.bOverrange := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
-                              .fbPowerMeter.fbThermoCouple.iRaw := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Value;
-                              .fbYagThermoCouple.bError := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
-                              .fbYagThermoCouple.bUnderrange := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
-                              .fbYagThermoCouple.bOverrange := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
-                              .fbYagThermoCouple.iRaw := TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value'}
+    {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT 					:= TIIB[IM3K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
+                              .fbGige.bGigePower 						:= TIIB[IM3K4-EL2004-E3]^Channel 2^Output;
+                              .fbPowerMeter.iVoltageINT 				:= TIIB[IM3K4-EL3062-E6]^AI Standard Channel 1^Value;
+                              .fbPowerMeter.fbThermoCouple.bError 		:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
+                              .fbPowerMeter.fbThermoCouple.bUnderrange	:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
+                              .fbPowerMeter.fbThermoCouple.bOverrange 	:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
+                              .fbPowerMeter.fbThermoCouple.iRaw 		:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Value;
+                              .fbYagThermoCouple.bError 				:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
+                              .fbYagThermoCouple.bUnderrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
+                              .fbYagThermoCouple.bOverrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM3K4: FB_PPM;
 END_VAR
 ]]></Declaration>
@@ -54,5 +54,9 @@ fbIM3K4(
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M15);]]></ST>
     </Implementation>
+    <LineIds Name="PRG_IM3K4_PPM">
+      <LineId Id="3" Count="29" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
