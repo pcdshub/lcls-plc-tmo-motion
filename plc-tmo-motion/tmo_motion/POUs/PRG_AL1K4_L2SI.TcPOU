@@ -3,7 +3,7 @@
   <POU Name="PRG_AL1K4_L2SI" Id="{41f87cec-8d4f-488b-ae3e-a2c9e5843eec}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_AL1K4_L2SI
 VAR
-    {attribute 'pytmc' := '
+    {attribute 'disabled-pytmc' := '
         pv: AL1K4:L2SI
         io: io
     '}

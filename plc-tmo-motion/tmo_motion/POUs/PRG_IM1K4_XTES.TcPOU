@@ -3,7 +3,7 @@
   <POU Name="PRG_IM1K4_XTES" Id="{7c144f06-c35b-43dd-8fb5-524985d03342}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_IM1K4_XTES
 VAR
-    {attribute 'pytmc' := '
+    {attribute 'disabled-pytmc' := '
         pv: IM1K4:XTES
         io: io
     '}
