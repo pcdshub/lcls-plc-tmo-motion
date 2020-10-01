@@ -19,7 +19,7 @@ adsIoc_registerRecordDeviceDriver(pdbbase)
 
 epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.132.27")
-epicsEnvSet("AMSID",            "172.21.148.95.1.1")
+epicsEnvSet("AMSID",            "172.21.132.27.1.1")
 epicsEnvSet("AMS_PORT",         "851")
 epicsEnvSet("ADS_MAX_PARAMS",   "10000")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
