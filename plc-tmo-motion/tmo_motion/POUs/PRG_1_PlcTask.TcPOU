@@ -27,12 +27,5 @@ PRG_3_PMPS_POST();
 PRG_4_LOG();
 ]]></ST>
     </Implementation>
-    <LineIds Name="PRG_1_PlcTask">
-      <LineId Id="3" Count="7" />
-      <LineId Id="29" Count="0" />
-      <LineId Id="11" Count="8" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="23" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

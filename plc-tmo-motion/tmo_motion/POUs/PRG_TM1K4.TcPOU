@@ -79,9 +79,5 @@ fbTM1K4(
     stXStage := Main.M22);
 ]]></ST>
     </Implementation>
-    <LineIds Name="PRG_TM1K4">
-      <LineId Id="3" Count="58" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

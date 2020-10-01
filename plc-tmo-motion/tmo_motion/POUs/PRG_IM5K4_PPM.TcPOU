@@ -54,9 +54,5 @@ fbIM5K4(
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M17);]]></ST>
     </Implementation>
-    <LineIds Name="PRG_IM5K4_PPM">
-      <LineId Id="3" Count="29" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
