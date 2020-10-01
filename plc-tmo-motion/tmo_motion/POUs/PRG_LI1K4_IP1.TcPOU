@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_LI1K4_IP1
 VAR
     {attribute 'pytmc' := '
-        pv: LI1K4:IP1
+        pv: TST:LI1K4:IP1
         io: io
     '}
     fbLI1K4: FB_LIC;

@@ -3,7 +3,7 @@
   <POU Name="PRG_ST5K4_TMO_TERM_FIXED" Id="{0264a6ae-5329-49a3-9321-cb62975a68fe}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_ST5K4_TMO_TERM_FIXED
 VAR
-    {attribute 'pytmc' := 'pv: ST5K4:TMO_TERM_FIXED'}
+    {attribute 'pytmc' := 'pv: TST:ST5K4:TMO_TERM_FIXED'}
     {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-EP2338]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-EP2338]^Channel 3^Input;
                                  .q_xInsert_DO	:=	TIIB[ST4K4-EP2338]^Channel 9^Output

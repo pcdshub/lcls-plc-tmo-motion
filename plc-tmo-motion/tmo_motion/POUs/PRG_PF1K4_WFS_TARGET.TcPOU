@@ -3,8 +3,8 @@
   <POU Name="PRG_PF1K4_WFS_TARGET" Id="{55cdfddd-07ab-43e7-a2b9-23f598a27404}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_PF1K4_WFS_TARGET
 VAR
-    {attribute 'disabled-pytmc' := '
-        pv: PF1K4:WFS_TARGET
+    {attribute 'pytmc' := '
+        pv: TST:PF1K4:WFS
         io: io
     '}
     {attribute 'TcLinkTo' := '.fbThermoCouple1.bError 		:= TIIB[PF1K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
