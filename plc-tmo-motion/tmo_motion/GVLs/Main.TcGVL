@@ -94,15 +94,15 @@ VAR_GLOBAL
     M17: DUT_MotionStage := (sName := 'IM5K4:PPM:MMS');
 
     // PF1K4-WFS_TARGET: 2 Axes
-    {attribute 'pytmc' := 'pv: TST:PF1K4:WFS_TARGET:MMS:Y'}
+    {attribute 'pytmc' := 'pv: TST:PF1K4:WFS:MMS:Y'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[PF1K4-EL7041-E1]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[PF1K4-EL7041-E1]^STM Status^Status^Digital input 2;
                               .bBrakeRelease        := TIIB[PF1K4-EL2004-E4]^Channel 1^Output;
                               .nRawEncoderULINT     := TIIB[PF1K4-EL5042-E3]^FB Inputs Channel 2^Position'}
-    M18: DUT_MotionStage := (sName := 'PF1K4:WFS_TARGET:MMS:Y');
-    {attribute 'pytmc' := 'pv: TST:PF1K4:WFS_TARGET:MMS:Z'}
+    M18: DUT_MotionStage := (sName := 'PF1K4:WFS:MMS:Y');
+    {attribute 'pytmc' := 'pv: TST:PF1K4:WFS:MMS:Z'}
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[PF1K4-EL5042-E3]^FB Inputs Channel 1^Position'}
-    M19: DUT_MotionStage := (sName := 'PF1K4:WFS_TARGET:MMS:Z');
+    M19: DUT_MotionStage := (sName := 'PF1K4:WFS:MMS:Z');
 
     // LI1K4-IP1: 1 Axis
     {attribute 'pytmc' := 'pv: TST:LI1K4:IP1:MMS'}
@@ -113,15 +113,15 @@ VAR_GLOBAL
     M20: DUT_MotionStage := (sName := 'LI1K4:IP1:MMS');
 
     // TM1K4: 2 Axes
-    {attribute 'pytmc' := 'pv: TST:TM1K4:MMS:Y'}
+    {attribute 'pytmc' := 'pv: TST:TM1K4:ATM:MMS:Y'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[TM1K4-EL7041-E1]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[TM1K4-EL7041-E1]^STM Status^Status^Digital input 2;
                               .bBrakeRelease        := TIIB[TM1K4-EL2004-E4]^Channel 1^Output;
                               .nRawEncoderULINT     := TIIB[TM1K4-EL5042-E3]^FB Inputs Channel 1^Position'}
-    M21: DUT_MotionStage := (sName := 'TM1K4:MMS:Y');
-    {attribute 'pytmc' := 'pv: TST:TM1K4:WFS_TARGET:MMS:Z'}
+    M21: DUT_MotionStage := (sName := 'TM1K4:ATM:MMS:Y');
+    {attribute 'pytmc' := 'pv: TST:TM1K4:ATM:MMS:X'}
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[TM1K4-EL5042-E3]^FB Inputs Channel 2^Position'}
-    M22: DUT_MotionStage := (sName := 'TM1K4:MMS:X');
+    M22: DUT_MotionStage := (sName := 'TM1K4:ATM:MMS:X');
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
