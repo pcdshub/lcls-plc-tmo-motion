@@ -18,7 +18,6 @@ VAR
     fbPF1K4: FB_WFS;
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
-    stFoilBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -34,46 +33,43 @@ stSiBP.neVRange := 2#1111_1111_1000_0011;
 // Drop transmission to 20%
 stSiBP.nTran := 20;
 
-// Drop transmission to 10%
-stFoilBP.nTran := 10;
-
 fbPF1K4.nTransitionAssertionID := 16#3140;
 fbPF1K4.nUnknownAssertionID := 16#3149;
 
-fbPF1K4.stOut.fPosition := -15;
+fbPF1K4.stOut.fPosition := -10.5;
 fbPF1K4.stOut.bUseRawCounts := FALSE;
 fbPF1K4.stOut.nRequestAssertionID := 16#3141;
 fbPF1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbPF1K4.stOut.bValid := TRUE;
 
-fbPF1K4.stTarget1.fPosition := -39.124;
+fbPF1K4.stTarget1.fPosition := -93.033;
 fbPF1K4.stTarget1.bUseRawCounts := FALSE;
 fbPF1K4.stTarget1.nRequestAssertionID := 16#3142;
 fbPF1K4.stTarget1.stBeamParams := stSiBP;
 fbPF1K4.stTarget1.bValid := TRUE;
 
-fbPF1K4.stTarget2.fPosition := -53.5;
+fbPF1K4.stTarget2.fPosition := -78.658;
 fbPF1K4.stTarget2.bUseRawCounts := FALSE;
 fbPF1K4.stTarget2.nRequestAssertionID := 16#3143;
 fbPF1K4.stTarget2.stBeamParams := stSiBP;
 fbPF1K4.stTarget2.bValid := TRUE;
 
-fbPF1K4.stTarget3.fPosition := -67.874;
+fbPF1K4.stTarget3.fPosition := -64.282;
 fbPF1K4.stTarget3.bUseRawCounts := FALSE;
 fbPF1K4.stTarget3.nRequestAssertionID := 16#3144;
-fbPF1K4.stTarget3.stBeamParams := stFoilBP;
+fbPF1K4.stTarget3.stBeamParams := stSiBP;
 fbPF1K4.stTarget3.bValid := TRUE;
 
-fbPF1K4.stTarget4.fPosition := -82.25;
+fbPF1K4.stTarget4.fPosition := -49.907;
 fbPF1K4.stTarget4.bUseRawCounts := FALSE;
 fbPF1K4.stTarget4.nRequestAssertionID := 16#3145;
-fbPF1K4.stTarget4.stBeamParams := stFoilBP;
+fbPF1K4.stTarget4.stBeamParams := stSiBP;
 fbPF1K4.stTarget4.bValid := TRUE;
 
-fbPF1K4.stTarget5.fPosition := -96.623;
+fbPF1K4.stTarget5.fPosition := -35.533;
 fbPF1K4.stTarget5.bUseRawCounts := FALSE;
 fbPF1K4.stTarget5.nRequestAssertionID := 16#3146;
-fbPF1K4.stTarget5.stBeamParams := stFoilBP;
+fbPF1K4.stTarget5.stBeamParams := stSiBP;
 fbPF1K4.stTarget5.bValid := TRUE;
 
 fbPF1K4(
