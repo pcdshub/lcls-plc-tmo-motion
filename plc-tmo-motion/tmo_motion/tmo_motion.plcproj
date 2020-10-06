@@ -80,10 +80,17 @@
     <Compile Include="POUs\PRG_TM1K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\temp\FB_SLITS.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\temp\FB_SLITS_POWER.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\temp" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
