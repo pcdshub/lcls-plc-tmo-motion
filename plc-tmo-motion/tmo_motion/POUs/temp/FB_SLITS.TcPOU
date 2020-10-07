@@ -491,7 +491,7 @@ fbSetPosition_South(
     <Method Name="M_CheckPMPS" Id="{5a65fdb2-ca05-46d5-ae39-949e671ee7ac}">
       <Declaration><![CDATA[METHOD M_CheckPMPS : BOOL
 VAR_INPUT
-	 index: int;
+     index: int;
 END_VAR
 ]]></Declaration>
       <Implementation>

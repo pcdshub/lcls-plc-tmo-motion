@@ -3,7 +3,7 @@
   <POU Name="PRG_SL1K4_SCATTER" Id="{1360fbdd-6b87-49fd-b21a-31ee7aa7acc7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SL1K4_SCATTER
 VAR
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: SL1K4:SCATTER
         io: io
     '}
@@ -11,19 +11,19 @@ VAR
     //GET PMPS Move Ok bit
     // Default True until it is properly linked to PMPS bit
     bMoveOk:BOOL :=TRUE;
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
     pv: SL1K0:POWER:GO;
     io: io;
     field: ZNAM False;
     field: ONAM True;
     '}
-	bExecuteMotion :BOOL :=FALSE;
-	bTest:BOOL:=FALSE;
+    bExecuteMotion :BOOL :=FALSE;
+    bTest:BOOL:=FALSE;
     //for testing purposes only. comment-out/delete once done.
     mcPower : ARRAY [1..4] OF MC_POWER;
-   
-	
-	(*Offsets*)
+
+
+    (*Offsets*)
     (* Absolute encoder value at the HLS + Absolure eoncoder value at the centered beam *)
     rEncoderOffsetTop: REAL := -15; (* 0+(-15)*)
     rEncoderOffsetBottom: REAL := -15; (* 0+(-15)*)
@@ -58,11 +58,11 @@ fbSL1K4(stTopBlade:=  Main.M10,
         stBottomBlade:= Main.M11,
         stNorthBlade:=  Main.M12,
         stSouthBlade:=  Main.M13,
-		bExecuteMotion:=bExecuteMotion,
-	    io_fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+        bExecuteMotion:=bExecuteMotion,
+        io_fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
         fbArbiter := GVL_PMPS.fbArbiter);
-		
-fbSL1K4.M_CheckPMPS(2);		
+
+fbSL1K4.M_CheckPMPS(2);
 
 END_IF
 
