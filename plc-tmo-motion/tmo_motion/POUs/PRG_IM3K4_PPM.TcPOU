@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_IM3K4_PPM
 VAR
     {attribute 'pytmc' := '
-        pv: TST:IM3K4:PPM
+        pv: IM3K4:PPM
         io: io
     '}
     {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT 					:= TIIB[IM3K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
@@ -50,8 +50,8 @@ fbIM3K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM3K4.stYag2.bValid := TRUE;
 
 fbIM3K4(
-    fbArbiter := fbArbiterInactive,
-    fbFFHWO := fbFastFaultOutput2,
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M15);]]></ST>
     </Implementation>
   </POU>

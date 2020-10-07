@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_LI1K4_IP1
 VAR
     {attribute 'pytmc' := '
-        pv: TST:LI1K4:IP1
+        pv: LI1K4:IP1
         io: io
     '}
     fbLI1K4: FB_LIC;
@@ -57,8 +57,8 @@ fbLI1K4.stTarget1.stBeamParams := stSiBP;
 fbLI1K4.stTarget1.bValid := TRUE;
 
 fbLI1K4(
-    fbArbiter := GVL_PMPS.fbArbiterInactive,
-    fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M20);
 ]]></ST>
     </Implementation>

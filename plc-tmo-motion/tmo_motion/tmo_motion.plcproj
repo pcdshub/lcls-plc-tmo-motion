@@ -41,12 +41,6 @@
     <Compile Include="POUs\PRG_AL1K4_L2SI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_AT1K4_SOLID.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PRG_IM1K4_XTES.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\PRG_IM2K4_PPM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -66,9 +60,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_SL1K4_SCATTER.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PRG_ST1K4_TEST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_ST4K4_TMO_TERM.TcPOU">
@@ -134,16 +125,16 @@
     </PlaceholderResolution>
   </ItemGroup>
   <ItemGroup>
-    <LibraryReference Include="LCLS General,newest,SLAC">
+    <LibraryReference Include="LCLS General,2.4.2,SLAC">
       <Namespace>LCLS_General</Namespace>
     </LibraryReference>
-    <LibraryReference Include="lcls-twincat-motion,newest,SLAC">
+    <LibraryReference Include="lcls-twincat-motion,1.3.3,SLAC">
       <Namespace>lcls_twincat_motion</Namespace>
     </LibraryReference>
-    <LibraryReference Include="lcls2-cc-lib,0.0.0,SLAC">
+    <LibraryReference Include="lcls2-cc-lib,1.1.0,SLAC">
       <Namespace>lcls2_cc_lib</Namespace>
     </LibraryReference>
-    <LibraryReference Include="PMPS,newest,SLAC - LCLS">
+    <LibraryReference Include="PMPS,0.13.1,SLAC - LCLS">
       <Namespace>PMPS</Namespace>
     </LibraryReference>
   </ItemGroup>

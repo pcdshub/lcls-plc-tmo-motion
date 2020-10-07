@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_PF1K4_WFS_TARGET
 VAR
     {attribute 'pytmc' := '
-        pv: TST:PF1K4:WFS
+        pv: PF1K4:WFS
         io: io
     '}
     {attribute 'TcLinkTo' := '.fbThermoCouple1.bError 		:= TIIB[PF1K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
@@ -73,8 +73,8 @@ fbPF1K4.stTarget5.stBeamParams := stSiBP;
 fbPF1K4.stTarget5.bValid := TRUE;
 
 fbPF1K4(
-    fbArbiter := GVL_PMPS.fbArbiterInactive,
-    fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M18,
     stZStage := Main.M19);
 ]]></ST>
