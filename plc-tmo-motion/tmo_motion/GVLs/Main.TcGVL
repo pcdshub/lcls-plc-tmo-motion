@@ -19,7 +19,14 @@ VAR_GLOBAL
     M6: DUT_MotionStage;
     M7: DUT_MotionStage;
     M8: DUT_MotionStage;
-    M9: DUT_MotionStage;
+
+    // IM2K4-PPM: 1 Axis
+    {attribute 'pytmc' := 'pv: IM2K4:PPM:MMS'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[IM2K4-EL7041-E1]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[IM2K4-EL7041-E1]^STM Status^Status^Digital input 2;
+                              .bBrakeRelease        := TIIB[IM2K4-EL2004-E3]^Channel 1^Output;
+                              .nRawEncoderULINT     := TIIB[IM2K4-EL5042-E2]^FB Inputs Channel 1^Position'}
+    M9: DUT_MotionStage := (sName := 'IM2K4:PPM:MMS');
 
     // SL1K4-SCATTER: 4 Axes
     {attribute 'pytmc' := 'pv: SL1K4:SCATTER:MMS:BOTTOM'}

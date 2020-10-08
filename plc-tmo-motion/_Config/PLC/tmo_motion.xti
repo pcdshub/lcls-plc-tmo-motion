@@ -5083,6 +5083,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M13.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M9.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3062-E6">
@@ -5100,6 +5101,13 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL4004-E7">
 				<Link VarA="PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.iIlluminatorINT" VarB="AO Outputs Channel 1^Analog output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL5042-E2">
+				<Link VarA="PlcTask Inputs^Main.M9.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M9.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M9.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL2004-E3">
 				<Link VarA="PlcTask Outputs^Main.M15.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
