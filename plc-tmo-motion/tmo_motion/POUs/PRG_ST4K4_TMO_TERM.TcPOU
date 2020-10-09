@@ -23,7 +23,7 @@ END_VAR
     i_xReset:= ,
     stPneumaticActuator=> ,
     xMPS_OK=>  ,
-    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS signal?]]></ST>
+    io_fbFFHWO:= fbFastFaultOutput1  ); // Do Stoppers send MPS signal?]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

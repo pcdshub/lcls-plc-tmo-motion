@@ -719,34 +719,6 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{654164A4-E99B-4E74-9A0E-0CC2D5507763}" Namespace="Tc2_SerialCom" AutoDeleteType="true">EL6inData22B</Name>
-			<Comment>
-				<![CDATA[ This data type is corresponding to the
-   KL-6xxx data structure used in the
-   TwinCAT SystemManager
-   (KL-6xxx version using 5 data bytes / 
-    non-alternative (standard) output ) 
-]]>
-			</Comment>
-			<BitSize>192</BitSize>
-			<SubItem>
-				<Name>Status</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>D</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>22</Elements>
-				</ArrayInfo>
-				<BitSize>176</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
 			<Name GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Name>
 			<BitSize>96</BitSize>
 			<SubItem>
@@ -1180,34 +1152,6 @@ External Setpoint Generation:
 				</Relation>
 			</Relations>
 		</DataType>
-		<DataType>
-			<Name GUID="{0B6D84BA-D93E-4686-8E3E-4ACAFF6740CA}" Namespace="Tc2_SerialCom" AutoDeleteType="true">EL6outData22B</Name>
-			<Comment>
-				<![CDATA[ This data type is corresponding to the
-   KL-6xxx data structure used in the
-   TwinCAT SystemManager
-   (KL-6xxx version using 5 data bytes / 
-    non-alternative (standard) output ) 
-]]>
-			</Comment>
-			<BitSize>192</BitSize>
-			<SubItem>
-				<Name>Ctrl</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>D</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>22</Elements>
-				</ArrayInfo>
-				<BitSize>176</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-		</DataType>
 	</DataTypes>
 	<Project GUID="{9DD0BA81-4A92-4D5E-8BD9-E101C02702D4}" Name="tmo_motion" PrjFilePath="..\..\tmo_motion\tmo_motion.plcproj" TmcFilePath="..\..\tmo_motion\tmo_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
 		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc">
@@ -1217,13 +1161,6 @@ External Setpoint Generation:
 				<Name>PlcTask Inputs</Name>
 				<Var>
 					<Name>LCLS_General.DefaultGlobals.stSys.I_EcatMaster1</Name>
-					<Comment>
-						<![CDATA[ AMS Net ID used for FB_EcatDiag, among others ]]>
-					</Comment>
-					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-				</Var>
-				<Var>
-					<Name>lcls2_cc_lib.lcls_twincat_motion.PMPS.LCLS_General.DefaultGlobals.stSys.I_EcatMaster1</Name>
 					<Comment>
 						<![CDATA[ AMS Net ID used for FB_EcatDiag, among others ]]>
 					</Comment>
@@ -1284,177 +1221,6 @@ External Setpoint Generation:
 						<![CDATA[ Connect this input to the terminal]]>
 					</Comment>
 					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.bZoomEndFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.bZoomEndBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.bFocusEndFwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.bFocusEndBwd</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
-					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<SubVar>
-						<Name>AxisState</Name>
-						<Comment>
-							<![CDATA[Present State Of The Axis Movement (continuous axis):
-0  = INACTIVE:		axis has no job
-1  = RUNNING:		axis is executing a motion job
-2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
-3  = PHASE_VELOCONST:	axis is moving at constant velocity
-4  = PHASE_ACCPOS:	axis is accelerating
-5  = PHASE_ACCNEG:	axis is decelerating
-Slaves only:
-11 = PREPHASE:		slave axis is in a motion pre-phase
-12 = SYNCHRONIZING:	slave axis is synchronizing
-13 = SYNCHRONOUS:	slave axis is moving synchronously
-External Setpoint Generation:
-41 = EXTSETGEN_MODE1:	external setpoint generation active
-42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>HomingState</Name>
-						<Comment>
-							<![CDATA[Axis Homing Status:
-0: idle
-1: start homing
-2: searching home switch
-3: stopping on home switch
-4: moving off home switch
-5: searching sync pulse
-6: stopping after homing
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>CoupleState</Name>
-						<Comment>
-							<![CDATA[Axis Coupling Status:
-0: axis is a single axis (not coupled)
-1: axis is a master axis
-2: axis is master and slave
-3: axis is a slave axis
-]]>
-						</Comment>
-					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.NcToPlc</Name>
-					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<SubVar>
-						<Name>AxisState</Name>
-						<Comment>
-							<![CDATA[Present State Of The Axis Movement (continuous axis):
-0  = INACTIVE:		axis has no job
-1  = RUNNING:		axis is executing a motion job
-2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
-3  = PHASE_VELOCONST:	axis is moving at constant velocity
-4  = PHASE_ACCPOS:	axis is accelerating
-5  = PHASE_ACCNEG:	axis is decelerating
-Slaves only:
-11 = PREPHASE:		slave axis is in a motion pre-phase
-12 = SYNCHRONIZING:	slave axis is synchronizing
-13 = SYNCHRONOUS:	slave axis is moving synchronously
-External Setpoint Generation:
-41 = EXTSETGEN_MODE1:	external setpoint generation active
-42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>HomingState</Name>
-						<Comment>
-							<![CDATA[Axis Homing Status:
-0: idle
-1: start homing
-2: searching home switch
-3: stopping on home switch
-4: moving off home switch
-5: searching sync pulse
-6: stopping after homing
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>CoupleState</Name>
-						<Comment>
-							<![CDATA[Axis Coupling Status:
-0: axis is a single axis (not coupled)
-1: axis is a master axis
-2: axis is master and slave
-3: axis is a slave axis
-]]>
-						</Comment>
-					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.NcToPlc</Name>
-					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<SubVar>
-						<Name>AxisState</Name>
-						<Comment>
-							<![CDATA[Present State Of The Axis Movement (continuous axis):
-0  = INACTIVE:		axis has no job
-1  = RUNNING:		axis is executing a motion job
-2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
-3  = PHASE_VELOCONST:	axis is moving at constant velocity
-4  = PHASE_ACCPOS:	axis is accelerating
-5  = PHASE_ACCNEG:	axis is decelerating
-Slaves only:
-11 = PREPHASE:		slave axis is in a motion pre-phase
-12 = SYNCHRONIZING:	slave axis is synchronizing
-13 = SYNCHRONOUS:	slave axis is moving synchronously
-External Setpoint Generation:
-41 = EXTSETGEN_MODE1:	external setpoint generation active
-42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>HomingState</Name>
-						<Comment>
-							<![CDATA[Axis Homing Status:
-0: idle
-1: start homing
-2: searching home switch
-3: stopping on home switch
-4: moving off home switch
-5: searching sync pulse
-6: stopping after homing
-]]>
-						</Comment>
-					</SubVar>
-					<SubVar>
-						<Name>CoupleState</Name>
-						<Comment>
-							<![CDATA[Axis Coupling Status:
-0: axis is a single axis (not coupled)
-1: axis is a master axis
-2: axis is master and slave
-3: axis is a slave axis
-]]>
-						</Comment>
-					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbFlowSwitch.bFlowOk</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.stEL6In</Name>
-					<Type GUID="{654164A4-E99B-4E74-9A0E-0CC2D5507763}" Namespace="Tc2_SerialCom">EL6inData22B</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -1557,6 +1323,494 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbYagThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbGige.fbGetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.fRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbGige.fbGetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.fRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbGige.fbGetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.fRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_LI1K4_IP1.fbLI1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbZStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.iRaw</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bError</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bUnderrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bOverrange</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.iRaw</Name>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -1778,7 +2032,29 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
+					<Comment>
+						<![CDATA[IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xInsertedLS</Name>
+					<Comment>
+						<![CDATA[IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xRetractedLS</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_TM1K4.fbTM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
 						<Name>AxisState</Name>
@@ -1827,26 +2103,69 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
-					<Comment>
-						<![CDATA[IO]]>
-					</Comment>
+					<Name>PRG_TM1K4.fbTM1K4.fbXStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.bError</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS</Name>
+					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.bUnderrange</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xInsertedLS</Name>
-					<Comment>
-						<![CDATA[IO]]>
-					</Comment>
+					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.bOverrange</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xRetractedLS</Name>
-					<Type>BOOL</Type>
+					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.iRaw</Name>
+					<Type>INT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_3_PMPS_POST.fbArbiterIO.i_stCurrentBP</Name>
@@ -3358,6 +3677,790 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>Main.M15.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M15.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M16.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M17.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M18.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M19.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M20.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M21.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.Axis.NcToPlc</Name>
+					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<SubVar>
+						<Name>AxisState</Name>
+						<Comment>
+							<![CDATA[Present State Of The Axis Movement (continuous axis):
+0  = INACTIVE:		axis has no job
+1  = RUNNING:		axis is executing a motion job
+2  = OVERRIDE_ZERO:	axis is executing a job but override is zero
+3  = PHASE_VELOCONST:	axis is moving at constant velocity
+4  = PHASE_ACCPOS:	axis is accelerating
+5  = PHASE_ACCNEG:	axis is decelerating
+Slaves only:
+11 = PREPHASE:		slave axis is in a motion pre-phase
+12 = SYNCHRONIZING:	slave axis is synchronizing
+13 = SYNCHRONOUS:	slave axis is moving synchronously
+External Setpoint Generation:
+41 = EXTSETGEN_MODE1:	external setpoint generation active
+42 = EXTSETGEN_MODE2:	internal and external setpoint gen. active
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>HomingState</Name>
+						<Comment>
+							<![CDATA[Axis Homing Status:
+0: idle
+1: start homing
+2: searching home switch
+3: stopping on home switch
+4: moving off home switch
+5: searching sync pulse
+6: stopping after homing
+]]>
+						</Comment>
+					</SubVar>
+					<SubVar>
+						<Name>CoupleState</Name>
+						<Comment>
+							<![CDATA[Axis Coupling Status:
+0: axis is a single axis (not coupled)
+1: axis is a master axis
+2: axis is master and slave
+3: axis is a slave axis
+]]>
+						</Comment>
+					</SubVar>
+				</Var>
+				<Var>
+					<Name>Main.M22.bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -3381,30 +4484,6 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbZoom.fbDriveVirtual.MasterAxis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbFocus.fbDriveVirtual.MasterAxis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_IM1K4_XTES.stEL6Out</Name>
-					<Type GUID="{0B6D84BA-D93E-4686-8E3E-4ACAFF6740CA}" Namespace="Tc2_SerialCom">EL6outData22B</Type>
-				</Var>
-				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -3422,6 +4501,75 @@ External Setpoint Generation:
 						<![CDATA[ Connect this output to the terminal]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbGige.iIlluminatorINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbGige.bGigePower</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbGige.fbSetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this output to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbGige.iIlluminatorINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbGige.bGigePower</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbGige.fbSetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this output to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbGige.iIlluminatorINT</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbGige.bGigePower</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbGige.fbSetIllPercent.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this output to the terminal]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_LI1K4_IP1.fbLI1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbZStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SL1K4_SCATTER.fbSL1K4.fbTopBlade.fbDriveVirtual.MasterAxis.PlcToNc</Name>
@@ -3462,10 +4610,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_ST1K4_TEST.fbMotion1.fbDriveVirtual.MasterAxis.PlcToNc</Name>
-					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -3480,6 +4624,14 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xRetract_DO</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_TM1K4.fbTM1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_TM1K4.fbTM1K4.fbXStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
 					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
@@ -3773,6 +4925,94 @@ External Setpoint Generation:
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
+				<Var>
+					<Name>Main.M15.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M15.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M16.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M17.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M18.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M19.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M20.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M21.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.Axis.PlcToNc</Name>
+					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>Main.M22.bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="8">
 				<Name>PlcTask Retains</Name>
@@ -3800,83 +5040,6 @@ External Setpoint Generation:
 	</Project>
 	<Mappings>
 		<OwnerA Name="tmo_motion Instance">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL1088-E5">
-				<Link VarA="PlcTask Inputs^Main.M7.bHome" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M8.bHome" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.fbIM1K4.bFocusEndBwd" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.fbIM1K4.bFocusEndFwd" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.fbIM1K4.bZoomEndBwd" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.fbIM1K4.bZoomEndFwd" VarB="Channel 1^Input" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL2004-E2">
-				<Link VarA="PlcTask Outputs^Main.M6.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbLED.bLEDPower" VarB="Channel 3^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.fbIM1K4.fbOpal.bOpalPower" VarB="Channel 2^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL5042-E3">
-				<Link VarA="PlcTask Inputs^Main.M6.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M7.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M8.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL6002-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[0]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 0" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[10]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 10" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[11]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 11" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[12]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 12" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[13]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 13" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[14]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 14" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[15]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 15" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[16]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 16" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[17]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 17" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[18]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 18" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[19]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 19" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[1]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 1" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[20]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 20" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[21]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 21" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[2]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 2" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[3]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 3" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[4]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 4" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[5]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 5" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[6]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 6" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[7]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 7" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[8]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 8" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^D[9]" VarB="COM TxPDO-Map Inputs Channel 1^Data In 9" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM1K4_XTES.stEL6In^Status" VarB="COM TxPDO-Map Inputs Channel 1^Status" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^Ctrl" VarB="COM RxPDO-Map Outputs Channel 1^Ctrl" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[0]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 0" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[10]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 10" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[11]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 11" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[12]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 12" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[13]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 13" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[14]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 14" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[15]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 15" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[16]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 16" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[17]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 17" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[18]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 18" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[19]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 19" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[1]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 1" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[20]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 20" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[21]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 21" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[2]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 2" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[3]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 3" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[4]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 4" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[5]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 5" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[6]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 6" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[7]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 7" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[8]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 8" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_IM1K4_XTES.stEL6Out^D[9]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 9" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X1 IM1K4-XTES (EK1100)^IM1K4-EL7041-E1">
-				<Link VarA="PlcTask Inputs^Main.M6.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL2202-E3">
-				<Link VarA="PlcTask Outputs^Main.M14.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X1 TMO FEE EC1 (EK1100)^FEE EC1 E1 (EK1122)^X2-ST1K4-TEST (EK1100)^ST1K4-EL7041-E4">
-				<Link VarA="PlcTask Inputs^Main.M14.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M14.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M14.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL2004-E3">
 				<Link VarA="PlcTask Outputs^Main.M1.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 			</OwnerB>
@@ -3946,6 +5109,135 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M9.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M9.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M15.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^PRG_IM3K4_PPM.fbIM3K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3062-E6">
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3314-E4">
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bOverrange" VarB="TC Inputs Channel 1^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.bUnderrange" VarB="TC Inputs Channel 1^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbThermoCouple.iRaw" VarB="TC Inputs Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bError" VarB="TC Inputs Channel 2^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bOverrange" VarB="TC Inputs Channel 2^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.bUnderrange" VarB="TC Inputs Channel 2^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbYagThermoCouple.iRaw" VarB="TC Inputs Channel 2^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL4004-E7">
+				<Link VarA="PlcTask Outputs^PRG_IM3K4_PPM.fbIM3K4.fbGige.iIlluminatorINT" VarB="AO Outputs Channel 1^Analog output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL5042-E2">
+				<Link VarA="PlcTask Inputs^Main.M15.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M15.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M15.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M16.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^PRG_IM4K4_PPM.fbIM4K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3062-E6">
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3314-E4">
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bOverrange" VarB="TC Inputs Channel 1^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.bUnderrange" VarB="TC Inputs Channel 1^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbThermoCouple.iRaw" VarB="TC Inputs Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bError" VarB="TC Inputs Channel 2^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bOverrange" VarB="TC Inputs Channel 2^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.bUnderrange" VarB="TC Inputs Channel 2^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbYagThermoCouple.iRaw" VarB="TC Inputs Channel 2^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL4004-E7">
+				<Link VarA="PlcTask Outputs^PRG_IM4K4_PPM.fbIM4K4.fbGige.iIlluminatorINT" VarB="AO Outputs Channel 1^Analog output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL5042-E2">
+				<Link VarA="PlcTask Inputs^Main.M16.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M16.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M16.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 6 (EK1122)^LI1K4-LIC (EK1100)^LI1K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M20.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 6 (EK1122)^LI1K4-LIC (EK1100)^LI1K4-EL5042-E2">
+				<Link VarA="PlcTask Inputs^Main.M20.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 6 (EK1122)^LI1K4-LIC (EK1100)^LI1K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M20.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M20.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^PF1K4-WFS (EK1100)^PF1K4-EL2004-E4">
+				<Link VarA="PlcTask Outputs^Main.M18.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^PF1K4-WFS (EK1100)^PF1K4-EL3314-E5">
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bOverrange" VarB="TC Inputs Channel 1^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.bUnderrange" VarB="TC Inputs Channel 1^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple1.iRaw" VarB="TC Inputs Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bError" VarB="TC Inputs Channel 2^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bOverrange" VarB="TC Inputs Channel 2^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.bUnderrange" VarB="TC Inputs Channel 2^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbThermoCouple2.iRaw" VarB="TC Inputs Channel 2^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^PF1K4-WFS (EK1100)^PF1K4-EL5042-E3">
+				<Link VarA="PlcTask Inputs^Main.M18.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M19.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^PF1K4-WFS (EK1100)^PF1K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M18.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M18.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL2004-E4">
+				<Link VarA="PlcTask Outputs^Main.M21.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL3314-E5">
+				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbThermoCouple1.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbThermoCouple1.bOverrange" VarB="TC Inputs Channel 1^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbThermoCouple1.bUnderrange" VarB="TC Inputs Channel 1^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbThermoCouple1.iRaw" VarB="TC Inputs Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL5042-E3">
+				<Link VarA="PlcTask Inputs^Main.M21.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M22.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M21.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M21.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL2004-E3">
+				<Link VarA="PlcTask Outputs^Main.M17.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^PRG_IM5K4_PPM.fbIM5K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3062-E6">
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3314-E4">
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bOverrange" VarB="TC Inputs Channel 1^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.bUnderrange" VarB="TC Inputs Channel 1^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbThermoCouple.iRaw" VarB="TC Inputs Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bError" VarB="TC Inputs Channel 2^Status^Error" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bOverrange" VarB="TC Inputs Channel 2^Status^Overrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.bUnderrange" VarB="TC Inputs Channel 2^Status^Underrange" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbYagThermoCouple.iRaw" VarB="TC Inputs Channel 2^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL4004-E7">
+				<Link VarA="PlcTask Outputs^PRG_IM5K4_PPM.fbIM5K4.fbGige.iIlluminatorINT" VarB="AO Outputs Channel 1^Analog output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL5042-E2">
+				<Link VarA="PlcTask Inputs^Main.M17.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL7041-E1">
+				<Link VarA="PlcTask Inputs^Main.M17.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M17.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PMPS_FFO">
 				<Link VarA="PlcTask Outputs^GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut" VarB="Channel 2^Output" AutoLink="true"/>
@@ -3960,9 +5252,41 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M1.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M1.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 15 IM3K4-PPM-MMS">
+				<Link VarA="PlcTask Inputs^Main.M15.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M15.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 16 IM4K4-PPM-MMS">
+				<Link VarA="PlcTask Inputs^Main.M16.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M16.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 17 IM5K4-PPM-MMS">
+				<Link VarA="PlcTask Inputs^Main.M17.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M17.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 18 PF1K4-WFS_TARGET-MMS-Y">
+				<Link VarA="PlcTask Inputs^Main.M18.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M18.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 19 PF1K4-WFS_TARGET-MMS-Z">
+				<Link VarA="PlcTask Inputs^Main.M19.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M19.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 2">
 				<Link VarA="PlcTask Inputs^Main.M2.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M2.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 20 LI1K4-IP1-MMS">
+				<Link VarA="PlcTask Inputs^Main.M20.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M20.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 21 TM1K4-MMS-Y">
+				<Link VarA="PlcTask Inputs^Main.M21.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M21.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 22 TM1K4-MMS-X">
+				<Link VarA="PlcTask Inputs^Main.M22.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M22.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 3">
 				<Link VarA="PlcTask Inputs^Main.M3.Axis.NcToPlc" VarB="Outputs^ToPlc"/>

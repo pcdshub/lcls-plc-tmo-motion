@@ -6,12 +6,14 @@ VAR
     fbArbiterIO: FB_SubSysToArbiter_IO;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbFastFaultOutput1.Execute();
-fbFastFaultOutput2.Execute();
-
-fbArbiterIO(
+      <ST><![CDATA[fbArbiterIO(
     Arbiter:=fbArbiter,
-    fbFFHWO:=fbFastFaultOutput1);]]></ST>
+    fbFFHWO:=fbFastFaultOutput1);
+
+fbFastFaultOutput1.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]);
+fbFastFaultOutput2.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]); // Eventually, also veto on ST4K4 using OR
+
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
