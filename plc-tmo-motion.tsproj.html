@@ -1164,7 +1164,7 @@ fbLI1K4.stTarget1.bValid := TRUE;
 
 fbLI1K4(
     fbArbiter := fbArbiter,
-    fbFFHWO := fbFastFaultOutput1,
+    fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M20);
 
 END_PROGRAM
@@ -1245,7 +1245,7 @@ fbPF1K4.stTarget5.bValid := TRUE;
 
 fbPF1K4(
     fbArbiter := fbArbiter,
-    fbFFHWO := fbFastFaultOutput1,
+    fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M18,
     stZStage := Main.M19);
 
@@ -1312,7 +1312,7 @@ fbSL1K4(stTopBlade:=  Main.M10,
         stNorthBlade:=  Main.M12,
         stSouthBlade:=  Main.M13,
         bExecuteMotion:=bExecuteMotion,
-        io_fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+        io_fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
         fbArbiter := GVL_PMPS.fbArbiter);
 
 fbSL1K4.M_CheckPMPS(2);
@@ -1346,7 +1346,7 @@ ST4K4(
     i_xReset:= ,
     stPneumaticActuator=&gt; ,
     xMPS_OK=&gt;  ,
-    io_fbFFHWO:= fbFastFaultOutput1  ); // Do Stoppers send MPS signal?
+    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS signal?
 
 END_PROGRAM
 </pre></div>
