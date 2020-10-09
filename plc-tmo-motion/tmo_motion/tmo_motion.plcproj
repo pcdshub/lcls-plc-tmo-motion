@@ -134,7 +134,7 @@
     <LibraryReference Include="lcls2-cc-lib,1.1.0,SLAC">
       <Namespace>lcls2_cc_lib</Namespace>
     </LibraryReference>
-    <LibraryReference Include="PMPS,0.13.1,SLAC - LCLS">
+    <LibraryReference Include="PMPS,newest,SLAC - LCLS">
       <Namespace>PMPS</Namespace>
     </LibraryReference>
   </ItemGroup>

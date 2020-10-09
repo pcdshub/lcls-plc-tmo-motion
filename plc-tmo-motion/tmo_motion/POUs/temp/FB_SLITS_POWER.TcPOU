@@ -51,13 +51,7 @@ END_VAR
 
    ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[ACT_init();
-
-// Instantiate Function block for all the blades
-ACT_Motion();
-//SET and GET the requested and Actual values
-ACT_CalculatePositions();
-//ACT_BLOCK();
+      <ST><![CDATA[
 ACT_RTDs();
 ]]></ST>
     </Implementation>
