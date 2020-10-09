@@ -59,7 +59,7 @@ fbSL1K4(stTopBlade:=  Main.M10,
         stNorthBlade:=  Main.M12,
         stSouthBlade:=  Main.M13,
         bExecuteMotion:=bExecuteMotion,
-        io_fbFFHWO := GVL_PMPS.fbFastFaultOutput1,
+        io_fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
         fbArbiter := GVL_PMPS.fbArbiter);
 
 fbSL1K4.M_CheckPMPS(2);
