@@ -4,14 +4,18 @@
     <Declaration><![CDATA[PROGRAM PRG_3_PMPS_POST
 VAR
     fbArbiterIO: FB_SubSysToArbiter_IO;
+    bST3K4_Veto: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbArbiterIO(
+      <ST><![CDATA[bST3K4_Veto := PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4];
+
+fbArbiterIO(
+    i_bVeto:=bST3K4_Veto,
     Arbiter:=fbArbiter,
     fbFFHWO:=fbFastFaultOutput1);
 
-fbFastFaultOutput1.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]);
-fbFastFaultOutput2.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]); // Eventually, also veto on ST4K4 using OR
+fbFastFaultOutput1.Execute(i_xVeto:=bST3K4_Veto);
+fbFastFaultOutput2.Execute(i_xVeto:=bST3K4_Veto); // Eventually, also veto on ST4K4 using OR
 
 ]]></ST>
     </Implementation>
