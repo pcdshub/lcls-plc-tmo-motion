@@ -1641,23 +1641,23 @@ record(bi, "AL1K4:L2SI:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "AL1K4:L2SI:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_AL1K4_L2SI.fbAL1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_AL1K4_L2SI.fbAL1...S.bArbiterEnabled")
+  # PRG_AL1K4_L2SI.fbAL1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_AL1K4_L2SI.fbAL1...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_AL1K4_L2SI.fbAL1K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_AL1K4_L2SI.fbAL1K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "AL1K4:L2SI:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_AL1K4_L2SI.fbAL1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_AL1K4_L2SI.fbAL1...S.bArbiterEnabled")
+  # PRG_AL1K4_L2SI.fbAL1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_AL1K4_L2SI.fbAL1...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_AL1K4_L2SI.fbAL1K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_AL1K4_L2SI.fbAL1K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -2859,23 +2859,23 @@ record(bi, "IM2K4:PPM:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "IM2K4:PPM:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_IM2K4_PPM.fbIM2K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM2K4_PPM.fbIM2K...S.bArbiterEnabled")
+  # PRG_IM2K4_PPM.fbIM2K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM2K4_PPM.fbIM2K...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM2K4_PPM.fbIM2K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM2K4_PPM.fbIM2K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "IM2K4:PPM:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_IM2K4_PPM.fbIM2K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM2K4_PPM.fbIM2K...S.bArbiterEnabled")
+  # PRG_IM2K4_PPM.fbIM2K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM2K4_PPM.fbIM2K...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM2K4_PPM.fbIM2K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM2K4_PPM.fbIM2K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -4363,23 +4363,23 @@ record(bi, "IM3K4:PPM:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "IM3K4:PPM:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_IM3K4_PPM.fbIM3K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM3K4_PPM.fbIM3K...S.bArbiterEnabled")
+  # PRG_IM3K4_PPM.fbIM3K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM3K4_PPM.fbIM3K...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM3K4_PPM.fbIM3K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM3K4_PPM.fbIM3K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "IM3K4:PPM:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_IM3K4_PPM.fbIM3K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM3K4_PPM.fbIM3K...S.bArbiterEnabled")
+  # PRG_IM3K4_PPM.fbIM3K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM3K4_PPM.fbIM3K...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM3K4_PPM.fbIM3K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM3K4_PPM.fbIM3K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -5867,23 +5867,23 @@ record(bi, "IM4K4:PPM:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "IM4K4:PPM:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_IM4K4_PPM.fbIM4K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM4K4_PPM.fbIM4K...S.bArbiterEnabled")
+  # PRG_IM4K4_PPM.fbIM4K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM4K4_PPM.fbIM4K...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM4K4_PPM.fbIM4K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM4K4_PPM.fbIM4K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "IM4K4:PPM:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_IM4K4_PPM.fbIM4K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM4K4_PPM.fbIM4K...S.bArbiterEnabled")
+  # PRG_IM4K4_PPM.fbIM4K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM4K4_PPM.fbIM4K...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM4K4_PPM.fbIM4K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM4K4_PPM.fbIM4K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -7371,23 +7371,23 @@ record(bi, "IM5K4:PPM:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "IM5K4:PPM:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_IM5K4_PPM.fbIM5K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM5K4_PPM.fbIM5K...S.bArbiterEnabled")
+  # PRG_IM5K4_PPM.fbIM5K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM5K4_PPM.fbIM5K...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM5K4_PPM.fbIM5K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_IM5K4_PPM.fbIM5K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "IM5K4:PPM:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_IM5K4_PPM.fbIM5K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_IM5K4_PPM.fbIM5K...S.bArbiterEnabled")
+  # PRG_IM5K4_PPM.fbIM5K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_IM5K4_PPM.fbIM5K...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM5K4_PPM.fbIM5K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_IM5K4_PPM.fbIM5K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -8875,23 +8875,23 @@ record(bi, "LI1K4:IP1:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "LI1K4:IP1:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_LI1K4_IP1.fbLI1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_LI1K4_IP1.fbLI1K...S.bArbiterEnabled")
+  # PRG_LI1K4_IP1.fbLI1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_LI1K4_IP1.fbLI1K...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_LI1K4_IP1.fbLI1K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_LI1K4_IP1.fbLI1K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "LI1K4:IP1:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_LI1K4_IP1.fbLI1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_LI1K4_IP1.fbLI1K...S.bArbiterEnabled")
+  # PRG_LI1K4_IP1.fbLI1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_LI1K4_IP1.fbLI1K...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_LI1K4_IP1.fbLI1K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_LI1K4_IP1.fbLI1K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -10088,23 +10088,23 @@ record(bi, "PF1K4:WFS:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "PF1K4:WFS:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_PF1K4_WFS_TARGET...S.bArbiterEnabled")
+  # PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_PF1K4_WFS_TARGET...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "PF1K4:WFS:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_PF1K4_WFS_TARGET...S.bArbiterEnabled")
+  # PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_PF1K4_WFS_TARGET...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PF1K4_WFS_TARGET.fbPF1K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
@@ -13352,23 +13352,23 @@ record(bi, "TM1K4:ATM:MMS:STATE:06:VALID_RBV") {
 }
 
 record(bi, "TM1K4:ATM:MMS:STATE:PMPS:ARB:ENABLE_RBV") {
-  # PRG_TM1K4.fbTM1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_TM1K4.fbTM1K4.fb...S.bArbiterEnabled")
+  # PRG_TM1K4.fbTM1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_TM1K4.fbTM1K4.fb...s.bArbiterEnabled")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
   field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_TM1K4.fbTM1K4.fbStates.fbStatePMPS.bArbiterEnabled?")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_TM1K4.fbTM1K4.fbStates.bArbiterEnabled?")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(archive, "VAL")
 }
 
 record(bo, "TM1K4:ATM:MMS:STATE:PMPS:ARB:ENABLE") {
-  # PRG_TM1K4.fbTM1K4.fbStates.fbStatePMPS.bArbiterEnabled
-  field(DESC, "PRG_TM1K4.fbTM1K4.fb...S.bArbiterEnabled")
+  # PRG_TM1K4.fbTM1K4.fbStates.bArbiterEnabled
+  field(DESC, "PRG_TM1K4.fbTM1K4.fb...s.bArbiterEnabled")
   field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_TM1K4.fbTM1K4.fbStates.fbStatePMPS.bArbiterEnabled=")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_TM1K4.fbTM1K4.fbStates.bArbiterEnabled=")
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
