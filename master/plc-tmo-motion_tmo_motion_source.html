@@ -913,13 +913,17 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROGRAM</span> <span class="n">PRG_3_PMPS_POST</span>
 <span class="n">VAR</span>
     <span class="n">fbArbiterIO</span><span class="p">:</span> <span class="n">FB_SubSysToArbiter_IO</span><span class="p">;</span>
+    <span class="n">bST3K4_Veto</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
 <span class="n">END_VAR</span>
+<span class="n">bST3K4_Veto</span> <span class="o">:=</span> <span class="n">PMPS_GVL</span><span class="o">.</span><span class="n">stCurrentBeamParameters</span><span class="o">.</span><span class="n">aStoppers</span><span class="p">[</span><span class="n">PMPS</span><span class="o">.</span><span class="n">K_Stopper</span><span class="o">.</span><span class="n">ST3K4</span><span class="p">];</span>
+
 <span class="n">fbArbiterIO</span><span class="p">(</span>
+    <span class="n">i_bVeto</span><span class="o">:=</span><span class="n">bST3K4_Veto</span><span class="p">,</span>
     <span class="n">Arbiter</span><span class="o">:=</span><span class="n">fbArbiter</span><span class="p">,</span>
     <span class="n">fbFFHWO</span><span class="o">:=</span><span class="n">fbFastFaultOutput1</span><span class="p">);</span>
 
-<span class="n">fbFastFaultOutput1</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">i_xVeto</span><span class="o">:=</span><span class="n">PMPS_GVL</span><span class="o">.</span><span class="n">stCurrentBeamParameters</span><span class="o">.</span><span class="n">aStoppers</span><span class="p">[</span><span class="n">PMPS</span><span class="o">.</span><span class="n">K_Stopper</span><span class="o">.</span><span class="n">ST3K4</span><span class="p">]);</span>
-<span class="n">fbFastFaultOutput2</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">i_xVeto</span><span class="o">:=</span><span class="n">PMPS_GVL</span><span class="o">.</span><span class="n">stCurrentBeamParameters</span><span class="o">.</span><span class="n">aStoppers</span><span class="p">[</span><span class="n">PMPS</span><span class="o">.</span><span class="n">K_Stopper</span><span class="o">.</span><span class="n">ST3K4</span><span class="p">]);</span> <span class="o">//</span> <span class="n">Eventually</span><span class="p">,</span> <span class="n">also</span> <span class="n">veto</span> <span class="n">on</span> <span class="n">ST4K4</span> <span class="n">using</span> <span class="n">OR</span>
+<span class="n">fbFastFaultOutput1</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">i_xVeto</span><span class="o">:=</span><span class="n">bST3K4_Veto</span><span class="p">);</span>
+<span class="n">fbFastFaultOutput2</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">i_xVeto</span><span class="o">:=</span><span class="n">bST3K4_Veto</span><span class="p">);</span> <span class="o">//</span> <span class="n">Eventually</span><span class="p">,</span> <span class="n">also</span> <span class="n">veto</span> <span class="n">on</span> <span class="n">ST4K4</span> <span class="n">using</span> <span class="n">OR</span>
 
 <span class="n">END_PROGRAM</span>
 </pre></div>
@@ -1286,14 +1290,14 @@
     <span class="n">stSiBP</span><span class="p">:</span> <span class="n">ST_BeamParams</span> <span class="o">:=</span> <span class="n">PMPS_GVL</span><span class="o">.</span><span class="n">cstFullBeam</span><span class="p">;</span>
 <span class="n">END_VAR</span>
 <span class="p">(</span><span class="o">*</span>
-   <span class="n">Avoid</span> <span class="n">damage</span> <span class="n">peak</span> <span class="n">between</span> <span class="mf">1.6</span> <span class="n">keV</span> <span class="ow">and</span> <span class="mf">3.2</span> <span class="n">keV</span>
+   <span class="n">Avoid</span> <span class="n">damage</span> <span class="n">peak</span> <span class="n">between</span> <span class="mf">3.2</span> <span class="n">keV</span> <span class="ow">and</span> <span class="mf">1.6</span> <span class="n">keV</span>
    <span class="n">Boundaries</span> <span class="n">are</span> <span class="n">upper</span> <span class="n">boundary</span> <span class="n">of</span> <span class="n">eV</span> <span class="nb">range</span>
-   <span class="mi">250</span><span class="p">,</span>    <span class="mi">270</span><span class="p">,</span>    <span class="mi">400</span><span class="p">,</span>    <span class="mi">540</span><span class="p">,</span>    <span class="mi">850</span><span class="p">,</span>   <span class="mf">1.15E3</span><span class="p">,</span> <span class="mf">1.25E3</span><span class="p">,</span> <span class="mf">1.45E3</span><span class="p">,</span>
-   <span class="mf">1.55E3</span><span class="p">,</span> <span class="mf">1.65E3</span><span class="p">,</span> <span class="mf">1.75E3</span><span class="p">,</span> <span class="mf">1.82E3</span><span class="p">,</span> <span class="mf">2.0E3</span><span class="p">,</span> <span class="mf">3.2E3</span><span class="p">,</span>  <span class="mf">5.0E3</span><span class="p">,</span>  <span class="mf">7.1E3</span>
-   <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>
-   <span class="mi">1</span>       <span class="mi">0</span>       <span class="mi">0</span>       <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">1</span>       <span class="mi">1</span>
+   <span class="mf">7.1E3</span><span class="p">,</span>  <span class="mf">5.0E3</span><span class="p">,</span>  <span class="mf">3.2E3</span><span class="p">,</span>  <span class="mf">2.0E3</span><span class="p">,</span> <span class="mf">1.82E3</span><span class="p">,</span> <span class="mf">1.75E3</span><span class="p">,</span> <span class="mf">1.65E3</span><span class="p">,</span> <span class="mf">1.55E3</span><span class="p">,</span>
+   <span class="mf">1.45E3</span><span class="p">,</span> <span class="mf">1.25E3</span><span class="p">,</span> <span class="mf">1.15E3</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span>   <span class="mi">540</span><span class="p">,</span>    <span class="mi">400</span><span class="p">,</span>    <span class="mi">270</span><span class="p">,</span>   <span class="mi">250</span><span class="p">,</span>
+   <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">0</span>       <span class="mi">0</span>      <span class="mi">0</span>       <span class="mi">0</span>       <span class="mi">0</span>       <span class="mi">1</span>
+   <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>       <span class="mi">1</span>
 <span class="o">*</span><span class="p">)</span>
-<span class="n">stSiBP</span><span class="o">.</span><span class="n">neVRange</span> <span class="o">:=</span> <span class="mi">2</span><span class="c1">#1111_1111_1000_0011;</span>
+<span class="n">stSiBP</span><span class="o">.</span><span class="n">neVRange</span> <span class="o">:=</span> <span class="mi">2</span><span class="c1">#1100_0001_1111_1111;</span>
 <span class="o">//</span> <span class="n">Drop</span> <span class="n">transmission</span> <span class="n">to</span> <span class="mi">20</span><span class="o">%</span>
 <span class="n">stSiBP</span><span class="o">.</span><span class="n">nTran</span> <span class="o">:=</span> <span class="mi">20</span><span class="p">;</span>
 

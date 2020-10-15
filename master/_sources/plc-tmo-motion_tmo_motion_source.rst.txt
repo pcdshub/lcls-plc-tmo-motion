@@ -744,13 +744,17 @@ PRG_3_PMPS_POST
     PROGRAM PRG_3_PMPS_POST
     VAR
         fbArbiterIO: FB_SubSysToArbiter_IO;
+        bST3K4_Veto: BOOL;
     END_VAR
+    bST3K4_Veto := PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4];
+
     fbArbiterIO(
+        i_bVeto:=bST3K4_Veto,
         Arbiter:=fbArbiter,
         fbFFHWO:=fbFastFaultOutput1);
 
-    fbFastFaultOutput1.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]);
-    fbFastFaultOutput2.Execute(i_xVeto:=PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4]); // Eventually, also veto on ST4K4 using OR
+    fbFastFaultOutput1.Execute(i_xVeto:=bST3K4_Veto);
+    fbFastFaultOutput2.Execute(i_xVeto:=bST3K4_Veto); // Eventually, also veto on ST4K4 using OR
 
     END_PROGRAM
 
@@ -1133,14 +1137,14 @@ PRG_PF1K4_WFS_TARGET
         stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
     END_VAR
     (*
-       Avoid damage peak between 1.6 keV and 3.2 keV
+       Avoid damage peak between 3.2 keV and 1.6 keV
        Boundaries are upper boundary of eV range
-       250,    270,    400,    540,    850,   1.15E3, 1.25E3, 1.45E3,
-       1.55E3, 1.65E3, 1.75E3, 1.82E3, 2.0E3, 3.2E3,  5.0E3,  7.1E3
-       1       1       1       1       1      1       1       1
-       1       0       0       0       0      0       1       1
+       7.1E3,  5.0E3,  3.2E3,  2.0E3, 1.82E3, 1.75E3, 1.65E3, 1.55E3,
+       1.45E3, 1.25E3, 1.15E3, 850,   540,    400,    270,   250,
+       1       1       0       0      0       0       0       1
+       1       1       1       1      1       1       1       1
     *)
-    stSiBP.neVRange := 2#1111_1111_1000_0011;
+    stSiBP.neVRange := 2#1100_0001_1111_1111;
     // Drop transmission to 20%
     stSiBP.nTran := 20;
 
