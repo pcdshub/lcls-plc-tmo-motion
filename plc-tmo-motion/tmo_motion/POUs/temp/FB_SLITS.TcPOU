@@ -196,10 +196,11 @@ VAR
         i_Desc := 'Fault occurs when center is greated than that requested',
         i_TypeCode := 16#1010);
 
-    AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
-    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
 
     bTest: BOOL;
+	
+	AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
 
 END_VAR
 
@@ -244,15 +245,9 @@ END_IF]]></ST>
         <ST><![CDATA[//check if requested center or gap has changed
 //check that the requested values are within acceptable motion range
 IF (rOldReqApertureSizeX <> rReqApertureSizeX) THEN
-    IF (rReqApertureSizeX <= AptArrayReq.Width)  THEN
         rOldReqApertureSizeX := rReqApertureSizeX;
         bExecuteMotionX := TRUE;
         fbLogger(sMsg:='Requested new X gap.', eSevr:=TcEventSeverity.Verbose);
-    ELSE
-        fbLogger(sMsg:='Requested new X gap is larger than PMPS request.', eSevr:=TcEventSeverity.Verbose);
-    END_IF
-  //  ELSE
-    //    rReqApertureSizeX := rActApertureSizeX;
 END_IF
 
 IF (rOldReqCenterX <> rReqCenterX) THEN
@@ -264,15 +259,10 @@ IF (rOldReqCenterX <> rReqCenterX) THEN
 END_IF
 
 IF (rOldReqApertureSizeY <> rReqApertureSizeY) THEN
-    IF rReqApertureSizeY <= AptArrayReq.Height THEN
         rOldReqApertureSizeY := rReqApertureSizeY;
         bExecuteMotionY := TRUE;
         fbLogger(sMsg:='Requested new Y gap.', eSevr:=TcEventSeverity.Verbose);
-    ELSE
-        fbLogger(sMsg:='Requested new Y gap is larger than PMPS request.', eSevr:=TcEventSeverity.Verbose);
-    END_IF
-   // ELSE
-       // rReqApertureSizeY := rActApertureSizeY;
+
 END_IF
 
 IF (rOldReqCenterY <> rReqCenterY) THEN
@@ -501,12 +491,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[//Keep updating the requested apertures size PMPS
-
- //Evaluate that the current center on the X and the y direction didn't exceed limits
-//Fast fault when it does.
-IF(rActApertureSizeX > (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Width))
-    OR (rActApertureSizeY > (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Height)) THEN
+        <ST><![CDATA[
+IF(rActApertureSizeX < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Width))
+    OR (rActApertureSizeY < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Height)) THEN
         FFO.i_xOK := FALSE;
     ELSE
         FFO.i_xOK := TRUE;
