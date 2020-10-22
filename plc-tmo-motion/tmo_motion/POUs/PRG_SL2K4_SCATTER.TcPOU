@@ -50,8 +50,8 @@ fbSL2K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
 fbSL2K4.rEncoderOffsetNorth := rEncoderOffsetNorth;
 fbSL2K4.rEncoderOffsetSouth := rEncoderOffsetSouth;
 
-fbSL2K4(stTopBlade:=  Main.M23,
-        stBottomBlade:= Main.M24,
+fbSL2K4(stTopBlade:=  Main.M24,
+        stBottomBlade:= Main.M23,
         stNorthBlade:=  Main.M25,
         stSouthBlade:=  Main.M26,
         bExecuteMotion:=bExecuteMotion,
