@@ -114,15 +114,6 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <PlaceholderResolution Include="LCLS General">
-      <Resolution>LCLS General, 2.4.2 (SLAC)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 1.3.3 (SLAC)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="PMPS">
-      <Resolution>PMPS, 0.15.0 (SLAC - LCLS)</Resolution>
-    </PlaceholderResolution>
     <PlaceholderResolution Include="SysFile">
       <Resolution>SysFile, 3.5.9.0 (System)</Resolution>
     </PlaceholderResolution>
@@ -173,13 +164,13 @@
     <LibraryReference Include="LCLS General,2.4.2,SLAC">
       <Namespace>LCLS_General</Namespace>
     </LibraryReference>
-    <LibraryReference Include="lcls-twincat-motion,1.3.3,SLAC">
+    <LibraryReference Include="lcls-twincat-motion,1.3.5,SLAC">
       <Namespace>lcls_twincat_motion</Namespace>
     </LibraryReference>
-    <LibraryReference Include="lcls2-cc-lib,1.1.0,SLAC">
+    <LibraryReference Include="lcls2-cc-lib,1.1.1,SLAC">
       <Namespace>lcls2_cc_lib</Namespace>
     </LibraryReference>
-    <LibraryReference Include="PMPS,newest,SLAC - LCLS">
+    <LibraryReference Include="PMPS,0.15.0,SLAC - LCLS">
       <Namespace>PMPS</Namespace>
     </LibraryReference>
   </ItemGroup>
