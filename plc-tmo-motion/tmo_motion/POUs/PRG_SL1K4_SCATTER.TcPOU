@@ -64,6 +64,12 @@ fbSL1K4(stTopBlade:=  Main.M11,
 
 fbSL1K4.M_CheckPMPS(2);
 
+//Homing routine
+fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
+
 END_IF
 
 
