@@ -54,8 +54,8 @@ fbSL1K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
 fbSL1K4.rEncoderOffsetNorth := rEncoderOffsetNorth;
 fbSL1K4.rEncoderOffsetSouth := rEncoderOffsetSouth;
 
-fbSL1K4(stTopBlade:=  Main.M10,
-        stBottomBlade:= Main.M11,
+fbSL1K4(stTopBlade:=  Main.M11,
+        stBottomBlade:= Main.M10,
         stNorthBlade:=  Main.M12,
         stSouthBlade:=  Main.M13,
         bExecuteMotion:=bExecuteMotion,
@@ -63,6 +63,12 @@ fbSL1K4(stTopBlade:=  Main.M10,
         fbArbiter := GVL_PMPS.fbArbiter);
 
 fbSL1K4.M_CheckPMPS(2);
+
+//Homing routine
+fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
+fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
 
 END_IF
 
