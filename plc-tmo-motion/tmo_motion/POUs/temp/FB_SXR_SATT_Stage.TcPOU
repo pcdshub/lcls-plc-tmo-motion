@@ -76,10 +76,10 @@ fbState(
     stFilter2:=stFilter2,
     stFilter3:=stFilter3,
     stFilter4:=stFilter4,
-	stFilter5:=stFilter5,
-	stFilter6:=stFilter6,
-	stFilter7:=stFilter7,
-	stFilter8:=stFilter8
+    stFilter5:=stFilter5,
+    stFilter6:=stFilter6,
+    stFilter7:=stFilter7,
+    stFilter8:=stFilter8
 );
 
 // stExtra.bVisuHighLim := NOT stAxis.bAllForwardEnable;

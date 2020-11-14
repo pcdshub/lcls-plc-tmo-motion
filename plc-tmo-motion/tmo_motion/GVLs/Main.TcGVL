@@ -12,17 +12,17 @@ VAR_GLOBAL
     M1: DUT_MotionStage := (sName := 'AL1K4:L2SI:MMS');
 
     // AT1K4-SOLID: 4 axes (Z=748)
-	(* Important note
-	
-		AT1K4 axes were mistakenly wired opposite to other solid attenuators.
-		The intended convention is:
-			MMS:01 should be the most upstream blade,
-			MMS:04 should be the most downstream blade.
-		
-		The fix applied here is to reverse the pytmc pragmas:
-			NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
-			NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
-	*)
+    (* Important note
+
+        AT1K4 axes were mistakenly wired opposite to other solid attenuators.
+        The intended convention is:
+            MMS:01 should be the most upstream blade,
+            MMS:04 should be the most downstream blade.
+
+        The fix applied here is to reverse the pytmc pragmas:
+            NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
+            NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
+    *)
     {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:04'}
     {attribute 'TcLinkTo' := '
         .bLimitForwardEnable  := TIIB[AT1K4-EL7047-01]^STM Status^Status^Digital input 1;
@@ -54,9 +54,9 @@ VAR_GLOBAL
         .nRawEncoderULINT     := TIIB[AT1K4-EL5042-02]^FB Inputs Channel 2^Position;
     '}
     M5: DUT_MotionStage := (sName := 'AT1K4:L2SI:MMS:01');
-	
-  	// SPARE: 3 Axes (formerly IM1K4-XTES)
-	M6: DUT_MotionStage;
+
+      // SPARE: 3 Axes (formerly IM1K4-XTES)
+    M6: DUT_MotionStage;
     M7: DUT_MotionStage;
     M8: DUT_MotionStage;
 
@@ -145,8 +145,8 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: TM1K4:ATM:MMS:X'}
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[TM1K4-EL5042-E3]^FB Inputs Channel 2^Position'}
     M22: DUT_MotionStage := (sName := 'TM1K4:ATM:MMS:X');
-	
-	 // SL2K4-SCATTER: 4 Axes
+
+     // SL2K4-SCATTER: 4 Axes
     {attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:BOTTOM'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL2K4-EL7031-E1]^STM Status^Status^Digital input 2;
                              .bLimitBackwardEnable := TIIB[SL2K4-EL7031-E1]^STM Status^Status^Digital input 1;

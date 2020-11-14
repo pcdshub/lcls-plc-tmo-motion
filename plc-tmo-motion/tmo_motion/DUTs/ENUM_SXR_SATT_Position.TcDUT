@@ -10,10 +10,10 @@ TYPE ENUM_SXR_SATT_Position :
     FILTER2 := 3,
     FILTER3 := 4,
     FILTER4 := 5,
-	FILTER5 := 6,
-	FILTER6 := 7,
-	FILTER7 := 8,
-	FILTER8 := 9
+    FILTER5 := 6,
+    FILTER6 := 7,
+    FILTER7 := 8,
+    FILTER8 := 9
 );
 END_TYPE
 ]]></Declaration>

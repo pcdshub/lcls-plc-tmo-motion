@@ -73,7 +73,7 @@ VAR
 
 END_VAR
 VAR CONSTANT
-	DEFAULT_VELOCITY : LREAL := 10;
+    DEFAULT_VELOCITY : LREAL := 10;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -85,24 +85,24 @@ ELSE
     nEnableMode := ENUM_StageEnableMode.ALWAYS;
 END_IF
 
-(* 
-	Important note
-	
-	AT1K4 axes were mistakenly wired opposite to other solid attenuators.
-	The intended convention is:
-		MMS:01 should be the most upstream blade,
-		MMS:04 should be the most downstream blade.
-	
-	The fix applied here is to reverse the pytmc pragmas:
-		NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
-		NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
-	
-	fbStage1 through fbStage4 correspond to axes 1 through 4 in the traveler.
-	To keep the correct convention in EPICS, these are *reversed* here.
-		fbStage1 (MMS:04)
-		fbStage2 (MMS:03)
-		fbStage3 (MMS:02)
-		fbStage4 (MMS:01)
+(*
+    Important note
+
+    AT1K4 axes were mistakenly wired opposite to other solid attenuators.
+    The intended convention is:
+        MMS:01 should be the most upstream blade,
+        MMS:04 should be the most downstream blade.
+
+    The fix applied here is to reverse the pytmc pragmas:
+        NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
+        NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
+
+    fbStage1 through fbStage4 correspond to axes 1 through 4 in the traveler.
+    To keep the correct convention in EPICS, these are *reversed* here.
+        fbStage1 (MMS:04)
+        fbStage2 (MMS:03)
+        fbStage3 (MMS:02)
+        fbStage4 (MMS:01)
 *)
 
 (* State setup - stage 1 *)
@@ -113,7 +113,7 @@ fbStage1.stOut.fDelta        := 140;
 fbStage1.stOut.fVelocity     := 10;
 fbStage1.stOut.bValid        := TRUE;
 fbStage1.stOut.bMoveOk       := TRUE;
-	
+
 fbStage1.stFilter1.sName     := 'Filter 1';
 fbStage1.stFilter1.fPosition := 500;
 fbStage1.stFilter1.fDelta    := 0;
