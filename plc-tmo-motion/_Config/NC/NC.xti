@@ -1351,10 +1351,10 @@ External Setpoint Generation:
 		<AxisFolder Name="TM1K4"/>
 		<AxisFolder Name="SL2K4-SCATTER"/>
 		<Axis File="Axis 1 AL1K4-L2SI-MMS.xti" Id="1"/>
-		<Axis File="Axis 2 AT1K4-SOLID MMS-04.xti" Id="5"/>
-		<Axis File="Axis 3 AT1K4-SOLID MMS-03.xti" Id="2"/>
-		<Axis File="Axis 4 AT1K4-SOLID MMS-02.xti" Id="3"/>
-		<Axis File="Axis 5 AT1K4-SOLID MMS-01.xti" Id="4"/>
+		<Axis File="Axis 2 AT1K4-SOLID-01 MMS-04.xti" Id="5"/>
+		<Axis File="Axis 3 AT1K4-SOLID-02 MMS-03.xti" Id="2"/>
+		<Axis File="Axis 4 AT1K4-SOLID-03 MMS-02.xti" Id="3"/>
+		<Axis File="Axis 5 AT1K4-SOLID-04 MMS-01.xti" Id="4"/>
 		<Axis File="Axis 6 IM1K4-XTES-MMS.xti" Id="6"/>
 		<Axis File="Axis 7 IM1K4-XTES-CLZ.xti" Id="7"/>
 		<Axis File="Axis 8 IM1K4-XTES-CLF.xti" Id="8"/>

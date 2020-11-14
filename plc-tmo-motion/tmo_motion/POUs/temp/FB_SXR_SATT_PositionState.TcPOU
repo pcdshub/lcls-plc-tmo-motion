@@ -39,10 +39,12 @@ END_VAR]]></Declaration>
     bInitialized := TRUE;
 
     arrStates[1] := stOut;
+	
     arrStates[2] := stFilter1;
     arrStates[3] := stFilter2;
     arrStates[4] := stFilter3;
     arrStates[5] := stFilter4;
+	
 	arrStates[6] := stFilter5;
 	arrStates[7] := stFilter6;
 	arrStates[8] := stFilter7;

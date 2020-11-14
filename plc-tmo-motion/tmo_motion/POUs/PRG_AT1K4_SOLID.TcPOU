@@ -9,7 +9,7 @@ VAR
 
     nEnableMode : ENUM_StageEnableMode;
 
-    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:01'}
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:04'}
     {attribute 'TcLinkTo' := '
 
         .fbRTD_1.iRaw := TIIB[AT1K4-EL3202-01]^RTD Inputs Channel 1^Value;
@@ -25,7 +25,7 @@ VAR
     '}
     fbStage1: FB_SXR_SATT_Stage;
 
-    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:02'}
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:03'}
     {attribute 'TcLinkTo' := '
 
         .fbRTD_1.iRaw := TIIB[AT1K4-EL3202-02]^RTD Inputs Channel 1^Value;
@@ -41,7 +41,7 @@ VAR
     '}
     fbStage2: FB_SXR_SATT_Stage;
 
-    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:03'}
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:02'}
     {attribute 'TcLinkTo' := '
 
         .fbRTD_1.iRaw := TIIB[AT1K4-EL3202-03]^RTD Inputs Channel 1^Value;
@@ -56,7 +56,7 @@ VAR
     '}
     fbStage3: FB_SXR_SATT_Stage;
 
-    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:04'}
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:01'}
     {attribute 'TcLinkTo' := '
 
         .fbRTD_1.iRaw := TIIB[AT1K4-EL3202-04]^RTD Inputs Channel 1^Value;
@@ -85,10 +85,31 @@ ELSE
     nEnableMode := ENUM_StageEnableMode.ALWAYS;
 END_IF
 
+(* 
+	Important note
+	
+	AT1K4 axes were mistakenly wired opposite to other solid attenuators.
+	The intended convention is:
+		MMS:01 should be the most upstream blade,
+		MMS:04 should be the most downstream blade.
+	
+	The fix applied here is to reverse the pytmc pragmas:
+		NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
+		NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
+	
+	fbStage1 through fbStage4 correspond to axes 1 through 4 in the traveler.
+	To keep the correct convention in EPICS, these are *reversed* here.
+		fbStage1 (MMS:04)
+		fbStage2 (MMS:03)
+		fbStage3 (MMS:02)
+		fbStage4 (MMS:01)
+*)
+
 (* State setup - stage 1 *)
+(* MMS:04 - downstream-most *)
 fbStage1.stOut.sName         := 'Out';
 fbStage1.stOut.fPosition     := 23.44;
-fbStage1.stOut.fDelta        := 100;
+fbStage1.stOut.fDelta        := 140;
 fbStage1.stOut.fVelocity     := 10;
 fbStage1.stOut.bValid        := TRUE;
 fbStage1.stOut.bMoveOk       := TRUE;
@@ -152,9 +173,11 @@ fbStage1.stFilter8.bMoveOk   := FALSE;
 fbStage1(stAxis:=Main.M1, nEnableMode:=nEnableMode);
 
 (* State setup - stage 2 *)
+(* MMS:03 - 2nd downstream-most *)
+
 fbStage2.stOut.sName         := 'Out';
 fbStage2.stOut.fPosition     := 23.24;
-fbStage2.stOut.fDelta        := 100;
+fbStage2.stOut.fDelta        := 140;
 fbStage2.stOut.fVelocity     := 10;
 fbStage2.stOut.bValid        := TRUE;
 fbStage2.stOut.bMoveOk       := TRUE;
@@ -218,9 +241,11 @@ fbStage2.stFilter8.bMoveOk   := FALSE;
 fbStage2(stAxis:=Main.M2, nEnableMode:=nEnableMode);
 
 (* State setup - stage 3 *)
+(* MMS:02 - 2nd upstream-most *)
+
 fbStage3.stOut.sName         := 'Out';
 fbStage3.stOut.fPosition     := 24.00;
-fbStage3.stOut.fDelta        := 100;
+fbStage3.stOut.fDelta        := 140;
 fbStage3.stOut.fVelocity     := 10;
 fbStage3.stOut.bValid        := TRUE;
 fbStage3.stOut.bMoveOk       := TRUE;
@@ -284,9 +309,10 @@ fbStage3.stFilter8.bMoveOk   := FALSE;
 fbStage3(stAxis:=Main.M3, nEnableMode:=nEnableMode);
 
 (* State setup - stage 4 *)
+(* MMS:01 - upstream-most *)
 fbStage4.stOut.sName         := 'Out';
 fbStage4.stOut.fPosition     := 22.70;
-fbStage4.stOut.fDelta        := 100;
+fbStage4.stOut.fDelta        := 140;
 fbStage4.stOut.fVelocity     := 10;
 fbStage4.stOut.bValid        := TRUE;
 fbStage4.stOut.bMoveOk       := TRUE;
