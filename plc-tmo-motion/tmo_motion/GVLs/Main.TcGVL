@@ -11,12 +11,52 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[AL1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
     M1: DUT_MotionStage := (sName := 'AL1K4:L2SI:MMS');
 
-    // SPARE: 7 Axes (formerly AT1K4-SOLID and IM1K4-XTES)
-    M2: DUT_MotionStage;
-    M3: DUT_MotionStage;
-    M4: DUT_MotionStage;
-    M5: DUT_MotionStage;
-    M6: DUT_MotionStage;
+    // AT1K4-SOLID: 4 axes (Z=748)
+	(* Important note
+	
+		AT1K4 axes were mistakenly wired opposite to other solid attenuators.
+		The intended convention is:
+			MMS:01 should be the most upstream blade,
+			MMS:04 should be the most downstream blade.
+		
+		The fix applied here is to reverse the pytmc pragmas:
+			NC axis 2 is linked to M2, but is the most downstream axis MMS:04.
+			NC axis 5 is linked to M5, but is the most upstream axis MMS:01.
+	*)
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:04'}
+    {attribute 'TcLinkTo' := '
+        .bLimitForwardEnable  := TIIB[AT1K4-EL7047-01]^STM Status^Status^Digital input 1;
+        .bLimitBackwardEnable := TIIB[AT1K4-EL7047-01]^STM Status^Status^Digital input 2;
+        .nRawEncoderULINT     := TIIB[AT1K4-EL5042-01]^FB Inputs Channel 1^Position;
+    '}
+    M2: DUT_MotionStage := (sName := 'AT1K4:L2SI:MMS:04');
+
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:03'}
+    {attribute 'TcLinkTo' := '
+        .bLimitForwardEnable  := TIIB[AT1K4-EL7047-02]^STM Status^Status^Digital input 1;
+        .bLimitBackwardEnable := TIIB[AT1K4-EL7047-02]^STM Status^Status^Digital input 2;
+        .nRawEncoderULINT     := TIIB[AT1K4-EL5042-01]^FB Inputs Channel 2^Position;
+    '}
+    M3: DUT_MotionStage := (sName := 'AT1K4:L2SI:MMS:03');
+
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:02'}
+    {attribute 'TcLinkTo' := '
+        .bLimitForwardEnable  := TIIB[AT1K4-EL7047-03]^STM Status^Status^Digital input 1;
+        .bLimitBackwardEnable := TIIB[AT1K4-EL7047-03]^STM Status^Status^Digital input 2;
+        .nRawEncoderULINT     := TIIB[AT1K4-EL5042-02]^FB Inputs Channel 1^Position;
+    '}
+    M4: DUT_MotionStage := (sName := 'AT1K4:L2SI:MMS:02');
+
+    {attribute 'pytmc' := 'pv: AT1K4:L2SI:MMS:01'}
+    {attribute 'TcLinkTo' := '
+        .bLimitForwardEnable  := TIIB[AT1K4-EL7047-04]^STM Status^Status^Digital input 1;
+        .bLimitBackwardEnable := TIIB[AT1K4-EL7047-04]^STM Status^Status^Digital input 2;
+        .nRawEncoderULINT     := TIIB[AT1K4-EL5042-02]^FB Inputs Channel 2^Position;
+    '}
+    M5: DUT_MotionStage := (sName := 'AT1K4:L2SI:MMS:01');
+	
+  	// SPARE: 3 Axes (formerly IM1K4-XTES)
+	M6: DUT_MotionStage;
     M7: DUT_MotionStage;
     M8: DUT_MotionStage;
 

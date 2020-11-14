@@ -15,6 +15,9 @@
     <LibraryReferences>{84341175-e12c-4e9b-9706-9693db60f176}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\ENUM_SXR_SATT_Position.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_HomeState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +33,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_1_PlcTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_AT1K4_SOLID.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_2_PMPS_PRE.TcPOU">
@@ -84,6 +90,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\temp\FB_SLITS_SCATTER.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\temp\FB_SXR_SATT_PositionState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\temp\FB_SXR_SATT_Stage.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

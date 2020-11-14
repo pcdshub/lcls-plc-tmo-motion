@@ -1351,10 +1351,10 @@ External Setpoint Generation:
 		<AxisFolder Name="TM1K4"/>
 		<AxisFolder Name="SL2K4-SCATTER"/>
 		<Axis File="Axis 1 AL1K4-L2SI-MMS.xti" Id="1"/>
-		<Axis File="Axis 2.xti" Id="2"/>
-		<Axis File="Axis 3.xti" Id="3"/>
-		<Axis File="Axis 4.xti" Id="4"/>
-		<Axis File="Axis 5.xti" Id="5"/>
+		<Axis File="Axis 2 AT1K4-SOLID MMS-04.xti" Id="5"/>
+		<Axis File="Axis 3 AT1K4-SOLID MMS-03.xti" Id="2"/>
+		<Axis File="Axis 4 AT1K4-SOLID MMS-02.xti" Id="3"/>
+		<Axis File="Axis 5 AT1K4-SOLID MMS-01.xti" Id="4"/>
 		<Axis File="Axis 6 IM1K4-XTES-MMS.xti" Id="6"/>
 		<Axis File="Axis 7 IM1K4-XTES-CLZ.xti" Id="7"/>
 		<Axis File="Axis 8 IM1K4-XTES-CLF.xti" Id="8"/>
@@ -1376,7 +1376,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{901C2423-655B-45CE-B7E3-21F174F0F99F}" Namespace="MC">NCENCODERSTRUCT_IN2B</Type>
-						<BitOffs>16960</BitOffs>
+						<BitOffs>18240</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1414,7 +1414,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{9CC50AB2-5D79-4869-A3C2-1FA7761BAFEA}" Namespace="MC">NCENCODERSTRUCT_OUT2</Type>
-						<BitOffs>27200</BitOffs>
+						<BitOffs>28480</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -1446,7 +1446,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{F95C7C69-0C87-46C4-9559-1285CCA5B23A}" Namespace="MC">NCDRIVESTRUCT_IN2</Type>
-						<BitOffs>17280</BitOffs>
+						<BitOffs>18560</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1484,7 +1484,7 @@ Drive Status 4 (manually linked):
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{644DC4BD-3D15-4DCB-94C7-24F3A5D579AA}" Namespace="MC">NCDRIVESTRUCT_OUT2</Type>
-						<BitOffs>27520</BitOffs>
+						<BitOffs>28800</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -1537,7 +1537,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>FromPlc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-					<BitOffs>15936</BitOffs>
+					<BitOffs>17216</BitOffs>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" InsertType="1">
@@ -1545,7 +1545,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>ToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<BitOffs>25152</BitOffs>
+					<BitOffs>26432</BitOffs>
 					<SubVar>
 						<Name>AxisState</Name>
 						<Comment>
@@ -1611,7 +1611,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{901C2423-655B-45CE-B7E3-21F174F0F99F}" Namespace="MC">NCENCODERSTRUCT_IN2B</Type>
-						<BitOffs>18624</BitOffs>
+						<BitOffs>19904</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1649,7 +1649,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{9CC50AB2-5D79-4869-A3C2-1FA7761BAFEA}" Namespace="MC">NCENCODERSTRUCT_OUT2</Type>
-						<BitOffs>29888</BitOffs>
+						<BitOffs>31168</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -1681,7 +1681,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{F95C7C69-0C87-46C4-9559-1285CCA5B23A}" Namespace="MC">NCDRIVESTRUCT_IN2</Type>
-						<BitOffs>18944</BitOffs>
+						<BitOffs>20224</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1719,7 +1719,7 @@ Drive Status 4 (manually linked):
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{644DC4BD-3D15-4DCB-94C7-24F3A5D579AA}" Namespace="MC">NCDRIVESTRUCT_OUT2</Type>
-						<BitOffs>30208</BitOffs>
+						<BitOffs>31488</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -1772,7 +1772,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>FromPlc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-					<BitOffs>17600</BitOffs>
+					<BitOffs>18880</BitOffs>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" InsertType="1">
@@ -1780,7 +1780,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>ToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<BitOffs>27840</BitOffs>
+					<BitOffs>29120</BitOffs>
 					<SubVar>
 						<Name>AxisState</Name>
 						<Comment>
@@ -1846,7 +1846,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{901C2423-655B-45CE-B7E3-21F174F0F99F}" Namespace="MC">NCENCODERSTRUCT_IN2B</Type>
-						<BitOffs>20288</BitOffs>
+						<BitOffs>21568</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1884,7 +1884,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{9CC50AB2-5D79-4869-A3C2-1FA7761BAFEA}" Namespace="MC">NCENCODERSTRUCT_OUT2</Type>
-						<BitOffs>32576</BitOffs>
+						<BitOffs>33856</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -1916,7 +1916,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{F95C7C69-0C87-46C4-9559-1285CCA5B23A}" Namespace="MC">NCDRIVESTRUCT_IN2</Type>
-						<BitOffs>20608</BitOffs>
+						<BitOffs>21888</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -1954,7 +1954,7 @@ Drive Status 4 (manually linked):
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{644DC4BD-3D15-4DCB-94C7-24F3A5D579AA}" Namespace="MC">NCDRIVESTRUCT_OUT2</Type>
-						<BitOffs>32896</BitOffs>
+						<BitOffs>34176</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -2007,7 +2007,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>FromPlc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-					<BitOffs>19264</BitOffs>
+					<BitOffs>20544</BitOffs>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" InsertType="1">
@@ -2015,7 +2015,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>ToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<BitOffs>30528</BitOffs>
+					<BitOffs>31808</BitOffs>
 					<SubVar>
 						<Name>AxisState</Name>
 						<Comment>
@@ -2081,7 +2081,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{901C2423-655B-45CE-B7E3-21F174F0F99F}" Namespace="MC">NCENCODERSTRUCT_IN2B</Type>
-						<BitOffs>21952</BitOffs>
+						<BitOffs>23232</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -2119,7 +2119,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{9CC50AB2-5D79-4869-A3C2-1FA7761BAFEA}" Namespace="MC">NCENCODERSTRUCT_OUT2</Type>
-						<BitOffs>35264</BitOffs>
+						<BitOffs>36544</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -2151,7 +2151,7 @@ External Setpoint Generation:
 					<Var>
 						<Name>In</Name>
 						<Type GUID="{F95C7C69-0C87-46C4-9559-1285CCA5B23A}" Namespace="MC">NCDRIVESTRUCT_IN2</Type>
-						<BitOffs>22272</BitOffs>
+						<BitOffs>23552</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataIn1</Name>
 						</SubVar>
@@ -2189,7 +2189,7 @@ Drive Status 4 (manually linked):
 					<Var>
 						<Name>Out</Name>
 						<Type GUID="{644DC4BD-3D15-4DCB-94C7-24F3A5D579AA}" Namespace="MC">NCDRIVESTRUCT_OUT2</Type>
-						<BitOffs>35584</BitOffs>
+						<BitOffs>36864</BitOffs>
 						<SubVar TypeFormatIndex="2">
 							<Name>nDataOut1</Name>
 						</SubVar>
@@ -2242,7 +2242,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>FromPlc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-					<BitOffs>20928</BitOffs>
+					<BitOffs>22208</BitOffs>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2" InsertType="1">
@@ -2250,7 +2250,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>ToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-					<BitOffs>33216</BitOffs>
+					<BitOffs>34496</BitOffs>
 					<SubVar>
 						<Name>AxisState</Name>
 						<Comment>
