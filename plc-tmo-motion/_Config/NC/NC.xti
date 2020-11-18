@@ -1338,8 +1338,7 @@ External Setpoint Generation:
 			<Name>NC-Task 1 SVB</Name>
 		</SvbTask>
 		<AxisFolder Name="AL1K4-L2SI"/>
-		<AxisFolder Name="AT1K4-SOLID"/>
-		<AxisFolder Name="IM1K4-XTES"/>
+		<AxisFolder Name="SPARE"/>
 		<AxisFolder Name="IM2K4-PPM"/>
 		<AxisFolder Name="SL1K4-SCATTER"/>
 		<AxisFolder Name="ST1K4-TEST"/>
