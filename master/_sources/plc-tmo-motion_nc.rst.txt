@@ -28,6 +28,10 @@ NC Settings
         20, Axis 20 LI1K4-IP1-MMS
         21, Axis 21 TM1K4-MMS-Y
         22, Axis 22 TM1K4-MMS-X
+        23, SL2K4-BOTTOM-M23
+        24, SL2K4-TOP-M24
+        25, SL2K4-NORTH-M25
+        26, SL2K4-SOUTH-M26
 
 
 
@@ -76,7 +80,7 @@ Axis 2: Axis 2
 
     Axis ID, 2
     Name, Axis 2
-    AxisFolder, AT1K4-SOLID
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 1
@@ -94,7 +98,7 @@ Axis 3: Axis 3
 
     Axis ID, 3
     Name, Axis 3
-    AxisFolder, AT1K4-SOLID
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 1
@@ -112,7 +116,7 @@ Axis 4: Axis 4
 
     Axis ID, 4
     Name, Axis 4
-    AxisFolder, AT1K4-SOLID
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 1
@@ -130,7 +134,7 @@ Axis 5: Axis 5
 
     Axis ID, 5
     Name, Axis 5
-    AxisFolder, AT1K4-SOLID
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 1
@@ -148,7 +152,7 @@ Axis 6: Axis 6 IM1K4-XTES-MMS
 
     Axis ID, 6
     Name, Axis 6 IM1K4-XTES-MMS
-    AxisFolder, IM1K4-XTES
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 29
@@ -175,7 +179,7 @@ Axis 7: Axis 7 IM1K4-XTES-CLZ
 
     Axis ID, 7
     Name, Axis 7 IM1K4-XTES-CLZ
-    AxisFolder, IM1K4-XTES
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 4
@@ -202,7 +206,7 @@ Axis 8: Axis 8 IM1K4-XTES-CLF
 
     Axis ID, 8
     Name, Axis 8 IM1K4-XTES-CLF
-    AxisFolder, IM1K4-XTES
+    AxisFolder, SPARE
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 4
@@ -650,5 +654,85 @@ Axis 22: Axis 22 TM1K4-MMS-X
     Id, 22
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 5
+
+
+
+Axis 23: SL2K4-BOTTOM-M23
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 23
+    Name, SL2K4-BOTTOM-M23
+    AxisFolder, SL2K4-SCATTER
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 4
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #x0000ffff
+    Id, 23
+    OtherSettings:AllowMotionCmdToSlave, true
+
+
+
+Axis 24: SL2K4-TOP-M24
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 24
+    Name, SL2K4-TOP-M24
+    AxisFolder, SL2K4-SCATTER
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 4
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #x0000ffff
+    Id, 24
+    OtherSettings:AllowMotionCmdToSlave, true
+
+
+
+Axis 25: SL2K4-NORTH-M25
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 25
+    Name, SL2K4-NORTH-M25
+    AxisFolder, SL2K4-SCATTER
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 4
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #x0000ffff
+    Id, 25
+    OtherSettings:AllowMotionCmdToSlave, true
+
+
+
+Axis 26: SL2K4-SOUTH-M26
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 26
+    Name, SL2K4-SOUTH-M26
+    AxisFolder, SL2K4-SCATTER
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 4
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #x0000ffff
+    Id, 26
+    OtherSettings:AllowMotionCmdToSlave, true
 
 

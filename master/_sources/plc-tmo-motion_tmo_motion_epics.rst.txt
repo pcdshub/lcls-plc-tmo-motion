@@ -247,6 +247,22 @@ FB_SLITS
         | io: output
 
 
+    * - $(PREFIX):Home_RBV
+      - bi
+      - $(SYMBOL).bHome
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - $(PREFIX):HOME_READY_RBV
+      - bi
+      - $(SYMBOL).bHomeReady
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
     * - $(PREFIX):NORTH:ACCL
       - ao
       - Acceleration to use for moves to this state
@@ -21563,7 +21579,7 @@ ST_PMPS_Aperture_IO
         | io: input
 
 
-                                                                      
+                                                                         
 Database Records
 ----------------
 
@@ -43512,6 +43528,22 @@ Database Records
         | io: output
 
 
+    * - SL1K4:SCATTER:Home_RBV
+      - bi
+      - PRG_SL1K4_SCATTER.fbSL1K4.bHome
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL1K4:SCATTER:HOME_READY_RBV
+      - bi
+      - PRG_SL1K4_SCATTER.fbSL1K4.bHomeReady
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
     * - SL1K4:SCATTER:MMS:BOTTOM:PLC:bAllBackwardEnable_RBV
       - bi
       - Summary of axis permission to move backward
@@ -45373,6 +45405,2134 @@ Database Records
     * - SL1K4:SCATTER:ZeroOffset_South_RBV
       - ai
       - PRG_SL1K4_SCATTER.fbSL1K4.rEncoderOffsetSouth
+      - | io: output
+
+
+    * - SL2K4:POWER:GO
+      - bo
+      - PRG_SL2K4_SCATTER.bExecuteMotion
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:POWER:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.bExecuteMotion
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_XCENTER
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_XCENTER_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_XWIDTH
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActApertureSizeX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_XWIDTH_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActApertureSizeX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_YCENTER
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_YCENTER_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_YWIDTH
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActApertureSizeY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ACTUAL_YWIDTH_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rActApertureSizeY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BLOCK
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.bBlock
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:BLOCK_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bBlock
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:ACCL
+      - ao
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:ACCL_RBV
+      - ai
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:AT_STATE_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bAtState
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:BUSY_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bBusy
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:DCCL
+      - ao
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:DCCL_RBV
+      - ai
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:DELTA
+      - ao
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:DELTA_RBV
+      - ai
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:DMOV_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bDone
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:ENCODER_RBV
+      - longin
+      - Encoder count associated with this state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:ERR_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bError
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:ERRMSG_RBV
+      - waveform
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.sError
+      - | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:GO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbBottom.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:LOCKED_RBV
+      - bi
+      - TRUE if state is immutable
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:MOVE_OK_RBV
+      - bi
+      - TRUE if the move would be safe
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:NAME_RBV
+      - waveform
+      - Name of this position state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:SETPOINT
+      - ao
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:SETPOINT_RBV
+      - ai
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:VALID_RBV
+      - bi
+      - TRUE if this is a real state
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:BOTTOM:VELO
+      - ao
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:BOTTOM:VELO_RBV
+      - ai
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:CLOSE
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.bClose
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:CLOSE_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bClose
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:Home_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bHome
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:HOME_READY_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bHomeReady
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bAllBackwardEnable_RBV
+      - bi
+      - Summary of axis permission to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bAllEnable_RBV
+      - bi
+      - Summary of axis permission to have power
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bAllForwardEnable_RBV
+      - bi
+      - Summary of axis permission to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bBrakeRelease_RBV
+      - bi
+      - TRUE if brake released
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bBusy_RBV
+      - bi
+      - TRUE if in the middle of a command
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bDone_RBV
+      - bi
+      - TRUE if command finished successfully
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bEnable
+      - bo
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bEnable_RBV
+      - bi
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bEnableDone_RBV
+      - bi
+      - TRUE if done enabling
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bError_RBV
+      - bi
+      - TRUE if we
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bExecute
+      - bo
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bExecute_RBV
+      - bi
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bGantryAxis_RBV
+      - bi
+      - TRUE if gantry EPS active
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bGantryBackwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bGantryForwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bHardwareEnable_RBV
+      - bi
+      - TRUE if STO not hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bHome_RBV
+      - bi
+      - TRUE if at homing switch
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bLimitBackwardEnable_RBV
+      - bi
+      - FALSE if reverse limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bLimitForwardEnable_RBV
+      - bi
+      - FALSE if forward limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bPowerSelf_RBV
+      - bi
+      - FALSE if axis is in PMPS
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bReset
+      - bo
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bReset_RBV
+      - bi
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:bSafetyReady_RBV
+      - bi
+      - TRUE if safe to start a move
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fAcceleration
+      - ao
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fAcceleration_RBV
+      - ai
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fDeceleration
+      - ao
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fDeceleration_RBV
+      - ai
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fHomePosition
+      - ao
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fHomePosition_RBV
+      - ai
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fPosition
+      - ao
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fPosition_RBV
+      - ai
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fVelocity
+      - ao
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:fVelocity_RBV
+      - ai
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nBrakeMode_RBV
+      - mbbi
+      - Describes when the brake will be released
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nCmdData
+      - longout
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nCmdData_RBV
+      - longin
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nCommand
+      - longout
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nCommand_RBV
+      - longin
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nEnableMode_RBV
+      - mbbi
+      - Describes when the axis will automatically get power
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nEncoderCount_RBV
+      - longin
+      - Count from encoder hardware
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nErrorId_RBV
+      - longin
+      - Error code if nonzero
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nHomingMode_RBV
+      - mbbi
+      - Describes our homing strategy
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:nMotionAxisID_RBV
+      - longin
+      - Unique ID assigned to each axis in the NC
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:sErrorMessage_RBV
+      - waveform
+      - Message to identify the error state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:BOTTOM:PLC:sName_RBV
+      - waveform
+      - PLC program name
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bAllBackwardEnable_RBV
+      - bi
+      - Summary of axis permission to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bAllEnable_RBV
+      - bi
+      - Summary of axis permission to have power
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bAllForwardEnable_RBV
+      - bi
+      - Summary of axis permission to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bBrakeRelease_RBV
+      - bi
+      - TRUE if brake released
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bBusy_RBV
+      - bi
+      - TRUE if in the middle of a command
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bDone_RBV
+      - bi
+      - TRUE if command finished successfully
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bEnable
+      - bo
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bEnable_RBV
+      - bi
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bEnableDone_RBV
+      - bi
+      - TRUE if done enabling
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bError_RBV
+      - bi
+      - TRUE if we
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bExecute
+      - bo
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bExecute_RBV
+      - bi
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bGantryAxis_RBV
+      - bi
+      - TRUE if gantry EPS active
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bGantryBackwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bGantryForwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bHardwareEnable_RBV
+      - bi
+      - TRUE if STO not hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bHome_RBV
+      - bi
+      - TRUE if at homing switch
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bLimitBackwardEnable_RBV
+      - bi
+      - FALSE if reverse limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bLimitForwardEnable_RBV
+      - bi
+      - FALSE if forward limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bPowerSelf_RBV
+      - bi
+      - FALSE if axis is in PMPS
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bReset
+      - bo
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bReset_RBV
+      - bi
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:bSafetyReady_RBV
+      - bi
+      - TRUE if safe to start a move
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fAcceleration
+      - ao
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fAcceleration_RBV
+      - ai
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fDeceleration
+      - ao
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fDeceleration_RBV
+      - ai
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fHomePosition
+      - ao
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fHomePosition_RBV
+      - ai
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fPosition
+      - ao
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fPosition_RBV
+      - ai
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fVelocity
+      - ao
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:fVelocity_RBV
+      - ai
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nBrakeMode_RBV
+      - mbbi
+      - Describes when the brake will be released
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nCmdData
+      - longout
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nCmdData_RBV
+      - longin
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nCommand
+      - longout
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nCommand_RBV
+      - longin
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nEnableMode_RBV
+      - mbbi
+      - Describes when the axis will automatically get power
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nEncoderCount_RBV
+      - longin
+      - Count from encoder hardware
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nErrorId_RBV
+      - longin
+      - Error code if nonzero
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nHomingMode_RBV
+      - mbbi
+      - Describes our homing strategy
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:nMotionAxisID_RBV
+      - longin
+      - Unique ID assigned to each axis in the NC
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:sErrorMessage_RBV
+      - waveform
+      - Message to identify the error state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:NORTH:PLC:sName_RBV
+      - waveform
+      - PLC program name
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bAllBackwardEnable_RBV
+      - bi
+      - Summary of axis permission to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bAllEnable_RBV
+      - bi
+      - Summary of axis permission to have power
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bAllForwardEnable_RBV
+      - bi
+      - Summary of axis permission to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bBrakeRelease_RBV
+      - bi
+      - TRUE if brake released
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bBusy_RBV
+      - bi
+      - TRUE if in the middle of a command
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bDone_RBV
+      - bi
+      - TRUE if command finished successfully
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bEnable
+      - bo
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bEnable_RBV
+      - bi
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bEnableDone_RBV
+      - bi
+      - TRUE if done enabling
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bError_RBV
+      - bi
+      - TRUE if we
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bExecute
+      - bo
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bExecute_RBV
+      - bi
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bGantryAxis_RBV
+      - bi
+      - TRUE if gantry EPS active
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bGantryBackwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bGantryForwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bHardwareEnable_RBV
+      - bi
+      - TRUE if STO not hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bHome_RBV
+      - bi
+      - TRUE if at homing switch
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bLimitBackwardEnable_RBV
+      - bi
+      - FALSE if reverse limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bLimitForwardEnable_RBV
+      - bi
+      - FALSE if forward limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bPowerSelf_RBV
+      - bi
+      - FALSE if axis is in PMPS
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bReset
+      - bo
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bReset_RBV
+      - bi
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:bSafetyReady_RBV
+      - bi
+      - TRUE if safe to start a move
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fAcceleration
+      - ao
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fAcceleration_RBV
+      - ai
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fDeceleration
+      - ao
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fDeceleration_RBV
+      - ai
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fHomePosition
+      - ao
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fHomePosition_RBV
+      - ai
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fPosition
+      - ao
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fPosition_RBV
+      - ai
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fVelocity
+      - ao
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:fVelocity_RBV
+      - ai
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nBrakeMode_RBV
+      - mbbi
+      - Describes when the brake will be released
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nCmdData
+      - longout
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nCmdData_RBV
+      - longin
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nCommand
+      - longout
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nCommand_RBV
+      - longin
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nEnableMode_RBV
+      - mbbi
+      - Describes when the axis will automatically get power
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nEncoderCount_RBV
+      - longin
+      - Count from encoder hardware
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nErrorId_RBV
+      - longin
+      - Error code if nonzero
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nHomingMode_RBV
+      - mbbi
+      - Describes our homing strategy
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:nMotionAxisID_RBV
+      - longin
+      - Unique ID assigned to each axis in the NC
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:sErrorMessage_RBV
+      - waveform
+      - Message to identify the error state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:SOUTH:PLC:sName_RBV
+      - waveform
+      - PLC program name
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bAllBackwardEnable_RBV
+      - bi
+      - Summary of axis permission to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bAllEnable_RBV
+      - bi
+      - Summary of axis permission to have power
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bAllForwardEnable_RBV
+      - bi
+      - Summary of axis permission to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bBrakeRelease_RBV
+      - bi
+      - TRUE if brake released
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bBusy_RBV
+      - bi
+      - TRUE if in the middle of a command
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bDone_RBV
+      - bi
+      - TRUE if command finished successfully
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bEnable
+      - bo
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bEnable_RBV
+      - bi
+      - Used internally to request enables
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bEnableDone_RBV
+      - bi
+      - TRUE if done enabling
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bError_RBV
+      - bi
+      - TRUE if we
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bExecute
+      - bo
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bExecute_RBV
+      - bi
+      - Used internally and by the IOC to start or stop
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bGantryAxis_RBV
+      - bi
+      - TRUE if gantry EPS active
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bGantryBackwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move backward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bGantryForwardEnable_RBV
+      - bi
+      - TRUE if gantry ok to move forward
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bHardwareEnable_RBV
+      - bi
+      - TRUE if STO not hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bHome_RBV
+      - bi
+      - TRUE if at homing switch
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bLimitBackwardEnable_RBV
+      - bi
+      - FALSE if reverse limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bLimitForwardEnable_RBV
+      - bi
+      - FALSE if forward limit hit
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bPowerSelf_RBV
+      - bi
+      - FALSE if axis is in PMPS
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bReset
+      - bo
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bReset_RBV
+      - bi
+      - Used internally to reset errors
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:bSafetyReady_RBV
+      - bi
+      - TRUE if safe to start a move
+      - | field: ONAM FALSE
+        | field: ZNAM TRUE
+        | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fAcceleration
+      - ao
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fAcceleration_RBV
+      - ai
+      - Used internally and by the IOC to set acceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fDeceleration
+      - ao
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fDeceleration_RBV
+      - ai
+      - Used internally and by the IOC to set deceleration
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fHomePosition
+      - ao
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fHomePosition_RBV
+      - ai
+      - Used internally and by the IOC to pick home position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fPosition
+      - ao
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fPosition_RBV
+      - ai
+      - Used internally and by the IOC as the set position
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fVelocity
+      - ao
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:fVelocity_RBV
+      - ai
+      - Used internally and by the IOC to set velocity
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nBrakeMode_RBV
+      - mbbi
+      - Describes when the brake will be released
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nCmdData
+      - longout
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nCmdData_RBV
+      - longin
+      - Used internally and by the IOC to pass extra args
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nCommand
+      - longout
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nCommand_RBV
+      - longin
+      - Used internally and by the IOC to pick move type
+      - | io: output
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nEnableMode_RBV
+      - mbbi
+      - Describes when the axis will automatically get power
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nEncoderCount_RBV
+      - longin
+      - Count from encoder hardware
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nErrorId_RBV
+      - longin
+      - Error code if nonzero
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nHomingMode_RBV
+      - mbbi
+      - Describes our homing strategy
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:nMotionAxisID_RBV
+      - longin
+      - Unique ID assigned to each axis in the NC
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:sErrorMessage_RBV
+      - waveform
+      - Message to identify the error state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:MMS:TOP:PLC:sName_RBV
+      - waveform
+      - PLC program name
+      - | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:ACCL
+      - ao
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:ACCL_RBV
+      - ai
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:AT_STATE_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bAtState
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:BUSY_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bBusy
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:DCCL
+      - ao
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:DCCL_RBV
+      - ai
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:DELTA
+      - ao
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:DELTA_RBV
+      - ai
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:DMOV_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bDone
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:ENCODER_RBV
+      - longin
+      - Encoder count associated with this state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:ERR_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bError
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:ERRMSG_RBV
+      - waveform
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.sError
+      - | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:GO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbNorth.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:LOCKED_RBV
+      - bi
+      - TRUE if state is immutable
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:MOVE_OK_RBV
+      - bi
+      - TRUE if the move would be safe
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:NAME_RBV
+      - waveform
+      - Name of this position state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:SETPOINT
+      - ao
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:SETPOINT_RBV
+      - ai
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:VALID_RBV
+      - bi
+      - TRUE if this is a real state
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:NORTH:VELO
+      - ao
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:NORTH:VELO_RBV
+      - ai
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:Offset_Top
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetTop
+      - | io: output
+
+
+    * - SL2K4:SCATTER:Offset_Top_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetTop
+      - | io: output
+
+
+    * - SL2K4:SCATTER:OPEN
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.bOpen
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:OPEN_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bOpen
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:PMPS_OK_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.bMoveOk
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:ACCL
+      - ao
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:ACCL_RBV
+      - ai
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:AT_STATE_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bAtState
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:BUSY_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bBusy
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:DCCL
+      - ao
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:DCCL_RBV
+      - ai
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:DELTA
+      - ao
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:DELTA_RBV
+      - ai
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:DMOV_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bDone
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:ENCODER_RBV
+      - longin
+      - Encoder count associated with this state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:ERR_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bError
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:ERRMSG_RBV
+      - waveform
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.sError
+      - | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:GO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbSouth.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:LOCKED_RBV
+      - bi
+      - TRUE if state is immutable
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:MOVE_OK_RBV
+      - bi
+      - TRUE if the move would be safe
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:NAME_RBV
+      - waveform
+      - Name of this position state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:SETPOINT
+      - ao
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:SETPOINT_RBV
+      - ai
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:VALID_RBV
+      - bi
+      - TRUE if this is a real state
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:SOUTH:VELO
+      - ao
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:SOUTH:VELO_RBV
+      - ai
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:ACCL
+      - ao
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:ACCL_RBV
+      - ai
+      - Acceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:AT_STATE_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bAtState
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:BUSY_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bBusy
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:DCCL
+      - ao
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:DCCL_RBV
+      - ai
+      - Deceleration to use for moves to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:DELTA
+      - ao
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:TOP:DELTA_RBV
+      - ai
+      - Max deviation from position at this state
+      - | field: DRVL 0.0
+        | io: output
+
+
+    * - SL2K4:SCATTER:TOP:DMOV_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bDone
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:ENCODER_RBV
+      - longin
+      - Encoder count associated with this state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:TOP:ERR_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bError
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:ERRMSG_RBV
+      - waveform
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.sError
+      - | io: input
+
+
+    * - SL2K4:SCATTER:TOP:GO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:TOP:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.fbTop.bExecute
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:TOP:LOCKED_RBV
+      - bi
+      - TRUE if state is immutable
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:MOVE_OK_RBV
+      - bi
+      - TRUE if the move would be safe
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:NAME_RBV
+      - waveform
+      - Name of this position state
+      - | io: input
+
+
+    * - SL2K4:SCATTER:TOP:SETPOINT
+      - ao
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:SETPOINT_RBV
+      - ai
+      - Axis position associated with this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:VALID_RBV
+      - bi
+      - TRUE if this is a real state
+      - | field: ONAM TRUE
+        | field: ZNAM FALSE
+        | io: input
+
+
+    * - SL2K4:SCATTER:TOP:VELO
+      - ao
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:TOP:VELO_RBV
+      - ai
+      - Speed at which to move to this state
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XCEN_REQ
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XCEN_REQ_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XCEN_SETZERO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.rSetCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XCEN_SETZERO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.rSetCenterX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XWID_REQ
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqApertureSizeX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:XWID_REQ_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqApertureSizeX
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YCEN_REQ
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YCEN_REQ_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YCEN_SETZERO
+      - bo
+      - PRG_SL2K4_SCATTER.fbSL2K4.rSetCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YCEN_SETZERO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.fbSL2K4.rSetCenterY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YWID_REQ
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqApertureSizeY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:YWID_REQ_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rReqApertureSizeY
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_Bottom
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetBottom
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_Bottom_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetBottom
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_North
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetNorth
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_North_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetNorth
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_South
+      - ao
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetSouth
+      - | io: output
+
+
+    * - SL2K4:SCATTER:ZeroOffset_South_RBV
+      - ai
+      - PRG_SL2K4_SCATTER.fbSL2K4.rEncoderOffsetSouth
       - | io: output
 
 
