@@ -45,6 +45,18 @@ mcPower[3](axis:=Main.M25.Axis, Enable:=bTest, enable_positive:=Main.M25.bLimitF
 mcPower[4](axis:=Main.M26.Axis, Enable:=bTest, enable_positive:=Main.M26.bLimitForwardEnable, enable_negative:=Main.M26.bLimitBackwardEnable);
 ELSE
 
+//Homing routine parameters
+Main.M24.fHomePosition:= 0;
+Main.M23.fHomePosition:= -30.6;
+Main.M25.fHomePosition:= 0;
+Main.M26.fHomePosition:= -30.51;
+
+Main.M24.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+Main.M23.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+Main.M25.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+Main.M26.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+
+
 fbSL2K4.rEncoderOffsetTop := rEncoderOffsetTop;
 fbSL2K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
 fbSL2K4.rEncoderOffsetNorth := rEncoderOffsetNorth;
@@ -58,7 +70,7 @@ fbSL2K4(stTopBlade:=  Main.M24,
         io_fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
         fbArbiter := GVL_PMPS.fbArbiter);
 
-fbSL2K4.M_CheckPMPS(2);
+//fbSL2K4.M_CheckPMPS(2);
 
 //Homing routine
 fbSL2K4.M_HomeBlade(stBlade:=Main.M24);
