@@ -1328,7 +1328,7 @@ External Setpoint Generation:
 		</Comment>
 		<Xml>Axis</Xml>
 		<AxisPara>
-			<Velo Maximum="2.2"/>
+			<Velo RefSearch="0.2" RefSync="0.05" Maximum="2.2"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="4">

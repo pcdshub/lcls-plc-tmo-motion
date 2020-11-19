@@ -1361,7 +1361,7 @@ External Setpoint Generation:
 		<Axis CreateSymbols="true" AxisType="1" AxisFolder="SL1K4-SCATTER" Id="10">
 			<Name>SL1K4-BOTTOM-M10</Name>
 			<AxisPara>
-				<Velo Maximum="2.2"/>
+				<Velo RefSearch="0.2" RefSync="0.05" Maximum="2.2"/>
 				<OtherSettings AllowMotionCmdToSlave="true"/>
 			</AxisPara>
 			<Encoder Name="Enc" EncType="4">
@@ -1596,7 +1596,7 @@ External Setpoint Generation:
 		<Axis CreateSymbols="true" AxisType="1" AxisFolder="SL1K4-SCATTER" Id="11">
 			<Name>SL1K4-TOP-M11</Name>
 			<AxisPara>
-				<Velo Maximum="2.2"/>
+				<Velo RefSearch="0.2" RefSync="0.05" Maximum="2.2"/>
 				<OtherSettings AllowMotionCmdToSlave="true"/>
 			</AxisPara>
 			<Encoder Name="Enc" EncType="4">
@@ -1831,7 +1831,7 @@ External Setpoint Generation:
 		<Axis CreateSymbols="true" AxisType="1" AxisFolder="SL1K4-SCATTER" Id="12">
 			<Name>SL1K4-NORTH-M12</Name>
 			<AxisPara>
-				<Velo Maximum="2.2"/>
+				<Velo RefSearch="0.2" RefSync="0.05" Maximum="2.2"/>
 				<OtherSettings AllowMotionCmdToSlave="true"/>
 			</AxisPara>
 			<Encoder Name="Enc" EncType="4">
@@ -2066,7 +2066,7 @@ External Setpoint Generation:
 		<Axis CreateSymbols="true" AxisType="1" AxisFolder="SL1K4-SCATTER" Id="13">
 			<Name>SL1K4-SOUTH-M13</Name>
 			<AxisPara>
-				<Velo Maximum="2.2"/>
+				<Velo RefSearch="0.2" RefSync="0.05" Maximum="2.2"/>
 				<OtherSettings AllowMotionCmdToSlave="true"/>
 			</AxisPara>
 			<Encoder Name="Enc" EncType="4">
