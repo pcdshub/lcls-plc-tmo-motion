@@ -16917,12 +16917,6 @@ PMPS.FB_Arbiter
       - Type
       - Description
       - Pragma
-    * - $(PREFIX):ActiveInArbitration_RBV
-      - bi
-      - True if this arbiter
-      - | io: input
-
-
     * - $(PREFIX):AP:Entry:001:Cohort_RBV
       - longin
       - Cohort inc on each arb cycle
@@ -37269,12 +37263,6 @@ Database Records
       - | field: EGU C
         | field: PREC 2
         | io: input
-
-
-    * - PLC:TMO:MOTION:ARB:ActiveInArbitration_RBV
-      - bi
-      - True if this arbiter
-      - | io: input
 
 
     * - PLC:TMO:MOTION:ARB:AP:Entry:001:Cohort_RBV

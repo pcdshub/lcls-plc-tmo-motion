@@ -1386,6 +1386,17 @@ PRG_SL1K4_SCATTER
     mcPower[4](axis:=Main.M13.Axis, Enable:=bTest, enable_positive:=Main.M13.bLimitForwardEnable, enable_negative:=Main.M13.bLimitBackwardEnable);
     ELSE
 
+    //Homing routine parameters
+    Main.M11.fHomePosition:= 0;
+    Main.M10.fHomePosition:= -31.5006;
+    Main.M12.fHomePosition:= 0;
+    Main.M13.fHomePosition:= -30.23;
+
+    Main.M11.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+    Main.M10.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+    Main.M12.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+    Main.M13.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+
     fbSL1K4.rEncoderOffsetTop := rEncoderOffsetTop;
     fbSL1K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
     fbSL1K4.rEncoderOffsetNorth := rEncoderOffsetNorth;
@@ -1401,11 +1412,12 @@ PRG_SL1K4_SCATTER
 
     fbSL1K4.M_CheckPMPS(2);
 
-    //Homing routine
-    fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
-    fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
-    fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
-    fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
+
+
+    //fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
+    //fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
+    //fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
+    //fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
 
     END_IF
 
@@ -1457,6 +1469,18 @@ PRG_SL2K4_SCATTER
     mcPower[4](axis:=Main.M26.Axis, Enable:=bTest, enable_positive:=Main.M26.bLimitForwardEnable, enable_negative:=Main.M26.bLimitBackwardEnable);
     ELSE
 
+    //Homing routine parameters
+    Main.M24.fHomePosition:= 0;
+    Main.M23.fHomePosition:= -30.6;
+    Main.M25.fHomePosition:= 0;
+    Main.M26.fHomePosition:= -30.51;
+
+    Main.M24.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+    Main.M23.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+    Main.M25.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+    Main.M26.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+
+
     fbSL2K4.rEncoderOffsetTop := rEncoderOffsetTop;
     fbSL2K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
     fbSL2K4.rEncoderOffsetNorth := rEncoderOffsetNorth;
@@ -1470,7 +1494,7 @@ PRG_SL2K4_SCATTER
             io_fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
             fbArbiter := GVL_PMPS.fbArbiter);
 
-    fbSL2K4.M_CheckPMPS(2);
+    //fbSL2K4.M_CheckPMPS(2);
 
     //Homing routine
     fbSL2K4.M_HomeBlade(stBlade:=Main.M24);

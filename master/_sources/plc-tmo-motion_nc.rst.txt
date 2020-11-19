@@ -281,6 +281,8 @@ Axis 10: SL1K4-BOTTOM-M10
     Id, 10
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -306,6 +308,8 @@ Axis 11: SL1K4-TOP-M11
     Id, 11
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -331,6 +335,8 @@ Axis 12: SL1K4-NORTH-M12
     Id, 12
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -355,6 +361,8 @@ Axis 13: SL1K4-SOUTH-M13
     Id, 13
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -672,8 +680,14 @@ Axis 23: SL2K4-BOTTOM-M23
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -30.61
     Id, 23
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -691,9 +705,18 @@ Axis 24: SL2K4-TOP-M24
     CreateSymbols, true
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:Inverse, true
     Enc:MaxCount, #x0000ffff
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -30.91
     Id, 24
     OtherSettings:AllowMotionCmdToSlave, true
+    PositionAreaControl:Range, 0.5
+    TargetPosControl:Range, 0.1
+    Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -711,9 +734,16 @@ Axis 25: SL2K4-NORTH-M25
     CreateSymbols, true
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:Inverse, true
     Enc:MaxCount, #x0000ffff
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -30.81
     Id, 25
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
 
@@ -732,7 +762,13 @@ Axis 26: SL2K4-SOUTH-M26
     Enc:EncType, 4
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #x0000ffff
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -30.52
     Id, 26
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 2.2
+    Velo:RefSearch, 0.2
+    Velo:RefSync, 0.05
 
 
