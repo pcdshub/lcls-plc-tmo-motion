@@ -507,8 +507,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-IF(rActApertureSizeX < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Width))
-    OR (rActApertureSizeY < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Height)) THEN
+IF(rActApertureSizeX < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Width)+0.001)
+    OR (rActApertureSizeY < (PMPS_GVL.stCurrentBeamParameters.astApertures[index].Height)+0.001) THEN
         FFO.i_xOK := FALSE;
     ELSE
         FFO.i_xOK := TRUE;

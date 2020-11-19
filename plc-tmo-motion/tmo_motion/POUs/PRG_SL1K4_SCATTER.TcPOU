@@ -48,6 +48,17 @@ mcPower[2](axis:=Main.M11.Axis, Enable:=bTest, enable_positive:=Main.M11.bLimitF
 mcPower[3](axis:=Main.M12.Axis, Enable:=bTest, enable_positive:=Main.M12.bLimitForwardEnable, enable_negative:=Main.M12.bLimitBackwardEnable);
 mcPower[4](axis:=Main.M13.Axis, Enable:=bTest, enable_positive:=Main.M13.bLimitForwardEnable, enable_negative:=Main.M13.bLimitBackwardEnable);
 ELSE
+	
+//Homing routine parameters
+Main.M11.fHomePosition:= 0;
+Main.M10.fHomePosition:= -31.5006;
+Main.M12.fHomePosition:= 0;
+Main.M13.fHomePosition:= -30.23;
+
+Main.M11.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+Main.M10.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+Main.M12.nHomingMode := ENUM_EpicsHomeCmd.HIGH_LIMIT;
+Main.M13.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
 
 fbSL1K4.rEncoderOffsetTop := rEncoderOffsetTop;
 fbSL1K4.rEncoderOffsetBottom := rEncoderOffsetBottom;
@@ -64,11 +75,12 @@ fbSL1K4(stTopBlade:=  Main.M11,
 
 fbSL1K4.M_CheckPMPS(2);
 
-//Homing routine
-fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
-fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
-fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
-fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
+
+
+//fbSL1K4.M_HomeBlade(stBlade:=Main.M11);
+//fbSL1K4.M_HomeBlade(stBlade:=Main.M10);
+//fbSL1K4.M_HomeBlade(stBlade:=Main.M12);
+//fbSL1K4.M_HomeBlade(stBlade:=Main.M13);
 
 END_IF
 
