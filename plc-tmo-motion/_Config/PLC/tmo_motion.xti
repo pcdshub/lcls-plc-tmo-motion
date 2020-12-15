@@ -5933,7 +5933,7 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^ST4K4-TERM (EP2338-0001)">
 				<Link VarA="PlcTask Inputs^PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS" VarB="Channel 4^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO" VarB="Channel 9^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO" VarB="Channel 9^Output" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E2">
 				<Link VarA="PlcTask Inputs^Main.M23.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>

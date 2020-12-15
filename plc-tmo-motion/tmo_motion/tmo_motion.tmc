@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{634CA3D2-8697-A6DD-C748-7DC8696038F2}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{091981D8-A346-320A-2EE2-04A5307B1395}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
@@ -209,31 +209,31 @@
         <Name>bBusy</Name>
         <Type>BOOL</Type>
         <BitSize>8</BitSize>
-        <GetCodeOffs>3248768</GetCodeOffs>
+        <GetCodeOffs>3248748</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>bError</Name>
         <Type>BOOL</Type>
         <BitSize>8</BitSize>
-        <GetCodeOffs>3248800</GetCodeOffs>
+        <GetCodeOffs>3248780</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>hrErrorCode</Name>
         <Type GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</Type>
         <BitSize>32</BitSize>
-        <GetCodeOffs>3248808</GetCodeOffs>
+        <GetCodeOffs>3248788</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>nStringSize</Name>
         <Type>UDINT</Type>
         <BitSize>32</BitSize>
-        <GetCodeOffs>3248792</GetCodeOffs>
+        <GetCodeOffs>3248772</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>sResult</Name>
         <Type>STRING(255)</Type>
         <BitSize>2048</BitSize>
-        <GetCodeOffs>3248804</GetCodeOffs>
+        <GetCodeOffs>3248784</GetCodeOffs>
       </PropertyItem>
       <Method>
         <Name RpcEnable="plc" VTableIndex="0">__getbBusy</Name>
@@ -1426,15 +1426,15 @@
         <Name>nId</Name>
         <Type>UDINT</Type>
         <BitSize>32</BitSize>
-        <GetCodeOffs>3248712</GetCodeOffs>
-        <SetCodeOffs>3248736</SetCodeOffs>
+        <GetCodeOffs>3248692</GetCodeOffs>
+        <SetCodeOffs>3248716</SetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>sName</Name>
         <Type>STRING(255)</Type>
         <BitSize>2048</BitSize>
-        <GetCodeOffs>3248748</GetCodeOffs>
-        <SetCodeOffs>3248760</SetCodeOffs>
+        <GetCodeOffs>3248728</GetCodeOffs>
+        <SetCodeOffs>3248740</SetCodeOffs>
       </PropertyItem>
       <Method>
         <Name RpcEnable="plc" VTableIndex="9">__setbCutInstancePathByLastInst</Name>
@@ -1702,31 +1702,31 @@
         <Name>eSeverity</Name>
         <Type GUID="{B57D3F4A-0836-49B0-81C3-BED5F4817EC9}">TcEventSeverity</Type>
         <BitSize>16</BitSize>
-        <GetCodeOffs>3248856</GetCodeOffs>
+        <GetCodeOffs>3248836</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>ipSourceInfo</Name>
         <Type Namespace="LCLS_General.Tc3_EventLogger">I_TcSourceInfo</Type>
         <BitSize>32</BitSize>
-        <GetCodeOffs>3248836</GetCodeOffs>
+        <GetCodeOffs>3248816</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>nEventId</Name>
         <Type>UDINT</Type>
         <BitSize>32</BitSize>
-        <GetCodeOffs>3248924</GetCodeOffs>
+        <GetCodeOffs>3248904</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>sEventClassName</Name>
         <Type>STRING(255)</Type>
         <BitSize>2048</BitSize>
-        <GetCodeOffs>3248884</GetCodeOffs>
+        <GetCodeOffs>3248864</GetCodeOffs>
       </PropertyItem>
       <PropertyItem>
         <Name>sEventText</Name>
         <Type>STRING(255)</Type>
         <BitSize>2048</BitSize>
-        <GetCodeOffs>3248928</GetCodeOffs>
+        <GetCodeOffs>3248908</GetCodeOffs>
       </PropertyItem>
       <Method>
         <Name>EqualsToEventClass</Name>
@@ -2299,7 +2299,7 @@
         <Name>nTimeSent</Name>
         <Type>ULINT</Type>
         <BitSize>64</BitSize>
-        <GetCodeOffs>3248952</GetCodeOffs>
+        <GetCodeOffs>3248932</GetCodeOffs>
       </PropertyItem>
       <Method>
         <Name>SetJsonAttribute</Name>
@@ -42275,7 +42275,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>3997696</ByteSize>
+          <ByteSize>3932160</ByteSize>
           <Symbol>
             <Name>LCLS_General.DefaultGlobals.stSys.I_EcatMaster1</Name>
             <Comment> AMS Net ID used for FB_EcatDiag, among others </Comment>
@@ -47225,7 +47225,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>3997696</ByteSize>
+          <ByteSize>3932160</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -48702,7 +48702,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>3997696</ByteSize>
+          <ByteSize>3932160</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -55265,7 +55265,7 @@ Digital outputs</Comment>
                 <Name>TcLinkTo</Name>
                 <Value>.i_xInsertedLS	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 3^Input;
-                                 .q_xInsert_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output
+                                 .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output
     </Value>
               </Property>
             </Properties>
@@ -55396,6 +55396,25 @@ Digital outputs</Comment>
             <BitSize>5785856</BitSize>
             <BaseType Namespace="LCLS_General">FB_LogHandler</BaseType>
             <BitOffs>18210176</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_PMPS.fbArbiter</Name>
+            <Comment> Arbiter linked to the FFO and the MPS</Comment>
+            <BitSize>372864</BitSize>
+            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>pv: PLC:TMO:MOTION:ARB</Value>
+              </Property>
+              <Property>
+                <Name>old_input_assignments</Name>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>23998912</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PMPS.fbFastFaultOutput1</Name>
@@ -56700,31 +56719,12 @@ Digital outputs</Comment>
             </Properties>
             <BitOffs>25900128</BitOffs>
           </Symbol>
-          <Symbol>
-            <Name>GVL_PMPS.fbArbiter</Name>
-            <Comment> Arbiter linked to the FFO and the MPS</Comment>
-            <BitSize>372864</BitSize>
-            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>pv: PLC:TMO:MOTION:ARB</Value>
-              </Property>
-              <Property>
-                <Name>old_input_assignments</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>30341952</BitOffs>
-          </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>3997696</ByteSize>
+          <ByteSize>3932160</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -56793,7 +56793,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2020-11-19T11:16:33</Value>
+          <Value>2020-11-25T14:23:02</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
