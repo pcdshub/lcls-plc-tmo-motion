@@ -155,7 +155,7 @@ GVL_PMPS
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_PMPS.fbArbiter, FB_Arbiter, 30341952 (372864)
+        GVL_PMPS.fbArbiter, FB_Arbiter, 23998912 (372864)
         GVL_PMPS.fbFastFaultOutput1, FB_HardwareFFOutput, 24371776 (465408)
         GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut, BOOL, 24371848 (8)
         GVL_PMPS.fbFastFaultOutput2, FB_HardwareFFOutput, 24837184 (465408)
