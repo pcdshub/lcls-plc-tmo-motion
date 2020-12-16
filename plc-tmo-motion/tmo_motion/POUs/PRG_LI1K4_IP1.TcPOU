@@ -17,12 +17,12 @@ END_VAR
       <ST><![CDATA[(*
    Avoid damage peak between 3.2 keV and 1.6 keV
    Boundaries are upper boundary of eV range
-   7.1E3,  5.0E3,  3.2E3,  2.0E3, 1.82E3, 1.75E3, 1.65E3, 1.55E3,
-   1.45E3, 1.25E3, 1.15E3, 850,   540,    400,    270,   250,
-   1       1       0       0      0       0       0       1
+   2.3E3,  2.0E3,  1.82E3, 1.75E3, 1.65E3, 1.55E3, 1.45E3, 1.25E3,
+   1.15E3, 850,    540,    450,    400,    350,    270,    250
+   0       0       0       0      0       1       1       1
    1       1       1       1      1       1       1       1
 *)
-stSiBP.neVRange := 2#1100_0001_1111_1111;
+stSiBP.neVRange := 2#0000_0111_1111_1111;
 // Drop transmission to 20%
 stSiBP.nTran := 20;
 
