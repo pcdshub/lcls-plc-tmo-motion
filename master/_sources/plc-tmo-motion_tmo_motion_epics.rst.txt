@@ -12392,7 +12392,7 @@ LCLS_General.ST_PendingEvent
       - | io: input
 
 
-                                                           
+                                                                   
 lcls_twincat_motion.DUT_MotionPneumaticActuator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -25699,7 +25699,7 @@ ST_PMPS_Aperture_IO
         | io: input
 
 
-                                                                         
+                                                                           
 Database Records
 ----------------
 
@@ -50189,22 +50189,6 @@ Database Records
       - | io: output
 
 
-    * - SL1K0:POWER:GO
-      - bo
-      - PRG_SL1K4_SCATTER.bExecuteMotion
-      - | field: ONAM True
-        | field: ZNAM False
-        | io: output
-
-
-    * - SL1K0:POWER:GO_RBV
-      - bi
-      - PRG_SL1K4_SCATTER.bExecuteMotion
-      - | field: ONAM True
-        | field: ZNAM False
-        | io: output
-
-
     * - SL1K4:SCATTER:ACTUAL_XCENTER
       - ao
       - PRG_SL1K4_SCATTER.fbSL1K4.rActCenterX
@@ -50432,6 +50416,22 @@ Database Records
     * - SL1K4:SCATTER:CLOSE_RBV
       - bi
       - PRG_SL1K4_SCATTER.fbSL1K4.bClose
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL1K4:SCATTER:GO
+      - bo
+      - PRG_SL1K4_SCATTER.bExecuteMotion
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL1K4:SCATTER:GO_RBV
+      - bi
+      - PRG_SL1K4_SCATTER.bExecuteMotion
       - | field: ONAM True
         | field: ZNAM False
         | io: output
@@ -52525,22 +52525,6 @@ Database Records
       - | io: output
 
 
-    * - SL2K4:POWER:GO
-      - bo
-      - PRG_SL2K4_SCATTER.bExecuteMotion
-      - | field: ONAM True
-        | field: ZNAM False
-        | io: output
-
-
-    * - SL2K4:POWER:GO_RBV
-      - bi
-      - PRG_SL2K4_SCATTER.bExecuteMotion
-      - | field: ONAM True
-        | field: ZNAM False
-        | io: output
-
-
     * - SL2K4:SCATTER:ACTUAL_XCENTER
       - ao
       - PRG_SL2K4_SCATTER.fbSL2K4.rActCenterX
@@ -52768,6 +52752,22 @@ Database Records
     * - SL2K4:SCATTER:CLOSE_RBV
       - bi
       - PRG_SL2K4_SCATTER.fbSL2K4.bClose
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:GO
+      - bo
+      - PRG_SL2K4_SCATTER.bExecuteMotion
+      - | field: ONAM True
+        | field: ZNAM False
+        | io: output
+
+
+    * - SL2K4:SCATTER:GO_RBV
+      - bi
+      - PRG_SL2K4_SCATTER.bExecuteMotion
       - | field: ONAM True
         | field: ZNAM False
         | io: output
