@@ -12,7 +12,7 @@ VAR
     // Default True until it is properly linked to PMPS bit
     bMoveOk:BOOL :=TRUE;
     {attribute 'pytmc' := '
-    pv: SL1K0:POWER:GO;
+    pv: SL1K4:SCATTER:GO;
     io: io;
     field: ZNAM False;
     field: ONAM True;
