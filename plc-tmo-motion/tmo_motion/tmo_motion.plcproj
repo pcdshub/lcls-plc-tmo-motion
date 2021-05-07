@@ -13,6 +13,12 @@
     <Implicit_KindOfTask>{52720e39-44f6-4ee3-9cdb-7dbf10ab08e5}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{a1ad1a30-91af-400b-bcbb-1b8302e9d456}</Implicit_Jitter_Distribution>
     <LibraryReferences>{84341175-e12c-4e9b-9706-9693db60f176}</LibraryReferences>
+    <CombineIds>false</CombineIds>
+    <Released>true</Released>
+    <ProjectVersion>0.0.0</ProjectVersion>
+    <Title>lcls-plc-tmo-motion</Title>
+    <Company>SLAC</Company>
+    <CompilerDefines>K</CompilerDefines>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\E_HomeState.TcDUT">
