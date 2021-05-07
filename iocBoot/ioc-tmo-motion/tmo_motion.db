@@ -2261,7 +2261,7 @@ record(ao, "AL1K4:L2SI:LAS:PCT") {
   info(archive, "VAL")
 }
 
-record(bi, "SL1K0:POWER:GO_RBV") {
+record(bi, "SL1K4:SCATTER:GO_RBV") {
   field(DESC, "PRG_SL1K4_SCATTER.bExecuteMotion")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -2273,7 +2273,7 @@ record(bi, "SL1K0:POWER:GO_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "SL1K0:POWER:GO") {
+record(bo, "SL1K4:SCATTER:GO") {
   field(DESC, "PRG_SL1K4_SCATTER.bExecuteMotion")
   field(DTYP, "asynInt32")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SL1K4_SCATTER.bExecuteMotion=")
@@ -15319,7 +15319,7 @@ record(bi, "SL1K4:SCATTER:HOME_READY_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "SL2K4:POWER:GO_RBV") {
+record(bi, "SL2K4:SCATTER:GO_RBV") {
   field(DESC, "PRG_SL2K4_SCATTER.bExecuteMotion")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -15331,7 +15331,7 @@ record(bi, "SL2K4:POWER:GO_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "SL2K4:POWER:GO") {
+record(bo, "SL2K4:SCATTER:GO") {
   field(DESC, "PRG_SL2K4_SCATTER.bExecuteMotion")
   field(DTYP, "asynInt32")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SL2K4_SCATTER.bExecuteMotion=")
