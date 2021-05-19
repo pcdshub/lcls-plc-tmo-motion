@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_PF1K4_WFS_TARGET" Id="{55cdfddd-07ab-43e7-a2b9-23f598a27404}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_PF1K4_WFS_TARGET
+    <Declaration><![CDATA[  PROGRAM PRG_PF1K4_WFS_TARGET
 VAR
     {attribute 'pytmc' := '
         pv: PF1K4:WFS
@@ -21,15 +21,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(*
-   Avoid damage peak between 3.2 keV and 1.6 keV
-   Boundaries are upper boundary of eV range
-   2.3E3,  2.0E3,  1.82E3, 1.75E3, 1.65E3, 1.55E3, 1.45E3, 1.25E3,
-   1.15E3, 850,    540,    450,    400,    350,    270,    250
-   0       0       0       0      0       1       1       1
-   1       1       1       1      1       1       1       1
-*)
-stSiBP.neVRange := 2#0000_0111_1111_1111;
+      <ST><![CDATA[// Exclusion range specified by M. Seaberg 2021-5-19
+stSiBP.neVRange := F_eVExcludeRange(1.75E3, 3.15E3);
 // Drop transmission to 20%
 stSiBP.nTran := 20;
 
