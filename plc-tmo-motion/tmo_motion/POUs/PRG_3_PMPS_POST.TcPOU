@@ -7,7 +7,7 @@ VAR
     bST3K4_Veto: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bST3K4_Veto := PMPS_GVL.stCurrentBeamParameters.aStoppers[PMPS.K_Stopper.ST3K4];
+      <ST><![CDATA[bST3K4_Veto := PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.ST3K4];
 
 fbArbiterIO(
     i_bVeto:=bST3K4_Veto,
