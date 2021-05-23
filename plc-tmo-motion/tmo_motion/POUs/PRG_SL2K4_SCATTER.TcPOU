@@ -72,11 +72,6 @@ fbSL2K4(stTopBlade:=  Main.M24,
 
 //fbSL2K4.M_CheckPMPS(2);
 
-//Homing routine
-fbSL2K4.M_HomeBlade(stBlade:=Main.M24);
-fbSL2K4.M_HomeBlade(stBlade:=Main.M23);
-fbSL2K4.M_HomeBlade(stBlade:=Main.M25);
-fbSL2K4.M_HomeBlade(stBlade:=Main.M26);
 
 
 END_IF
