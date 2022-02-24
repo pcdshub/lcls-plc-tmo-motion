@@ -73,7 +73,7 @@ fbSL1K4(stTopBlade:=  Main.M11,
         io_fbFFHWO := GVL_PMPS.fbFastFaultOutput2,
         fbArbiter := GVL_PMPS.fbArbiter);
 
-fbSL1K4.M_CheckPMPS(2);
+fbSL1K4.M_CheckPMPS(PMPS.K_Apertures.SL1K0);
 
 
 
