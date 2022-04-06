@@ -92,10 +92,20 @@
     <Compile Include="POUs\temp\FB_SLITS_SCATTER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\TM1K4\ENUM_TM1K4_States.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\TM1K4\FB_TM1K4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\TM1K4\FB_TM1K4_States.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\TM1K4" />
     <Folder Include="POUs\temp" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
