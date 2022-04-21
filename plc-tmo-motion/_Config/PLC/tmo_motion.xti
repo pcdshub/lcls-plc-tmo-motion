@@ -2262,17 +2262,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xInsertedLS</Name>
-					<Comment>
-						<![CDATA[IO]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.i_xRetractedLS</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_TM1K4.fbTM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -5258,14 +5247,6 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xInsert_DO</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_ST5K4_TMO_TERM_FIXED.ST4K4.q_xRetract_DO</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
