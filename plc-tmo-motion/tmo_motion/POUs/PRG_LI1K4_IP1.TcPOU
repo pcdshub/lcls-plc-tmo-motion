@@ -18,7 +18,7 @@ END_VAR
 // Exclusion range specified by P. Walter 2021-5-19
 stSiBP.neVRange := F_eVExcludeRange(1.6E3, 3.2E3);
 // Drop transmission to 20%
-stSiBP.nTran := 0.20;
+//stSiBP.nTran := 0.20;
 
 fbLI1K4.nTransitionAssertionID := 16#4140;
 fbLI1K4.nUnknownAssertionID := 16#4149;
