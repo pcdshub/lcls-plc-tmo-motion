@@ -23,7 +23,11 @@ END_VAR
     i_xReset:= ,
     stPneumaticActuator=> ,
     xMPS_OK=>  ,
-    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS FAULT?]]></ST>
+    io_fbFFHWO:= fbFastFaultOutput2  ); // Do Stoppers send MPS FAULT?
+	
+// For PMPS Veto
+GVL_PMPS.PMPS_ST4K4_IN := ST4K4.i_xInsertedLS;
+GVL_PMPS.PMPS_ST4K4_OUT := ST4K4.i_xRetractedLS;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
