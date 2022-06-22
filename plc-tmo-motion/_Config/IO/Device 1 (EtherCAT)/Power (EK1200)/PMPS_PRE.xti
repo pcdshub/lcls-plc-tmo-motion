@@ -286,7 +286,7 @@
 		<EtherCAT SlaveType="3" AdsServerAddress="ac1584180205eb03" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" EoeType="1" FoeType="1" VendorId="#x00000002" ProductCode="#x1a243052" RevisionNo="#x00120000" InfoDataAddr="true" InfoDataNetId="true" TimeoutMailbox2="2000" GenerateOwnNetId="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6692 EtherCAT Bridge terminal (Primary)" Desc="EL6692">
 			<SyncMan>001000012600010001000000800000040001001026010000</SyncMan>
 			<SyncMan>001400012200010002000000800000040001001422010000</SyncMan>
-			<SyncMan>0018d4002400010003000000000000000000001824010000</SyncMan>
+			<SyncMan>0018d6002400010003000000000000000000001824010000</SyncMan>
 			<SyncMan>001ed6002000010004000000000000000200001e20010000</SyncMan>
 			<Fmmu>0000000000000000001800020100000001000000000000000000000000000000</Fmmu>
 			<Fmmu>0000000000000000001e00010100000002000000000000000000000000000000</Fmmu>
@@ -474,8 +474,14 @@
 				</Entry>
 			</Pdo>
 			<Pdo Name="IO Outputs" Index="#x1600" InOut="1" Flags="#x0021" SyncMan="2">
-				<Entry Name="RequestedBP" BitLen="240" Index="#x7000" Sub="#x01">
+				<Entry Name="RequestedBP" Index="#x7000" Sub="#x01">
 					<Type GUID="{0C6A4924-E177-45F6-9AB0-6F9DB98D3474}">ST_BeamParams_IO</Type>
+				</Entry>
+				<Entry Name="bST4K4_IN" Index="#x7000" Sub="#x02">
+					<Type>BOOL</Type>
+				</Entry>
+				<Entry Name="bST4K4_OUT" Index="#x7000" Sub="#x03">
+					<Type>BOOL</Type>
 				</Entry>
 			</Pdo>
 			<CoeProfile ProfileNo="5001"/>
