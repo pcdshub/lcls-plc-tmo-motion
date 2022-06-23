@@ -1349,6 +1349,9 @@ External Setpoint Generation:
 		<AxisFolder Name="LI1K4-IP1"/>
 		<AxisFolder Name="TM1K4"/>
 		<AxisFolder Name="SL2K4-SCATTER"/>
+		<AxisFolder Name="TM2K4"/>
+		<AxisFolder Name="IM6K4-PPM"/>
+		<AxisFolder Name="PF2K4_WFS_TARGET"/>
 		<Axis File="Axis 1 AL1K4-L2SI-MMS.xti" Id="1"/>
 		<Axis File="Axis 2.xti" Id="2"/>
 		<Axis File="Axis 3.xti" Id="3"/>
@@ -2311,6 +2314,11 @@ External Setpoint Generation:
 		<Axis File="SL2K4-TOP-M24.xti" Id="24"/>
 		<Axis File="SL2K4-NORTH-M25.xti" Id="25"/>
 		<Axis File="SL2K4-SOUTH-M26.xti" Id="26"/>
+		<Axis File="Axis 30 TM2K4-MMS-Y.xti" Id="30"/>
+		<Axis File="Axis 31 TM2K4-MMS-X.xti" Id="31"/>
+		<Axis File="Axis 27 IM6K4-PPM-MMS.xti" Id="27"/>
+		<Axis File="Axis 28 PF2K4-WFS_TARGET-MMS-Y.xti" Id="28"/>
+		<Axis File="Axis 29 PF2K4-WFS_TARGET-MMS-Z.xti" Id="29"/>
 	</NC>
 	<Mappings>
 		<OwnerA Name="Axes^SL1K4-BOTTOM-M10">

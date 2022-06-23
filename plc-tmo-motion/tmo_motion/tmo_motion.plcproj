@@ -62,10 +62,16 @@
     <Compile Include="POUs\PRG_IM5K4_PPM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_IM6K4_PPM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_LI1K4_IP1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_PF1K4_WFS_TARGET.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_PF2K4_WFS_TARGET.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_SL1K4_SCATTER.TcPOU">
@@ -81,6 +87,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_TM1K4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_TM2K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\temp\FB_SLITS.TcPOU">
