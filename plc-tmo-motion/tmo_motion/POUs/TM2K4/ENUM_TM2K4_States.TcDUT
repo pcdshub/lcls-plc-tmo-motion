@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ENUM_TM2K4_States" Id="{f3c92633-68cb-466f-8e8c-2fc04f05fc6a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE ENUM_TM2K4_States :
+(
+	// Adapted from ENUM_ATM_States to add TARGET6
+
+    Unknown := 0,
+    OUT := 1,
+    TARGET1 := 2,
+    TARGET2 := 3,
+    TARGET3 := 4,
+    TARGET4 := 5
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
