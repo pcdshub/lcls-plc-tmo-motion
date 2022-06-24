@@ -51,7 +51,7 @@ fbIM6K4.stYag2.bValid := TRUE;
 
 fbIM6K4(
     fbArbiter := fbArbiter,
-    fbFFHWO := fbFastFaultOutput1,
+    fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M27);]]></ST>
     </Implementation>
   </POU>
