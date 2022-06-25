@@ -6783,10 +6783,6 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_PF2K4_WFS_TARGET.fbPF2K4.fbThermoCouple2.bUnderrange" VarB="TC Inputs Channel 2^Status^Underrange" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_PF2K4_WFS_TARGET.fbPF2K4.fbThermoCouple2.iRaw" VarB="TC Inputs Channel 2^Value" AutoLink="true"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 11 (EK1122)^PF2K4-WFS (EK1100)^PF2K4-EL5042-E3">
-				<Link VarA="PlcTask Inputs^Main.M28.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M29.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 11 (EK1122)^PF2K4-WFS (EK1100)^PF2K4-EL7041-E1">
 				<Link VarA="PlcTask Inputs^Main.M28.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M28.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
