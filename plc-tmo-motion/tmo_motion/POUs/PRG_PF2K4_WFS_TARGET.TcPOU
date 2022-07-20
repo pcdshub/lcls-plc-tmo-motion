@@ -35,7 +35,7 @@ fbPF2K4.stOut.nRequestAssertionID := 16#3241;
 fbPF2K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbPF2K4.stOut.bValid := TRUE;
 
-fbPF2K4.stTarget1.fPosition := -96.0127;
+fbPF2K4.stTarget1.fPosition := -96.127;
 fbPF2K4.stTarget1.bUseRawCounts := FALSE;
 fbPF2K4.stTarget1.nRequestAssertionID := 16#3242;
 fbPF2K4.stTarget1.stBeamParams := stSiBP;
