@@ -49,7 +49,7 @@ fbTM2K4.stTarget4.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stTarget4.bValid := TRUE;
 
 fbTM2K4(
-    fbArbiter := fbArbiter,
+    fbArbiter := fbArbiter2,
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M30,
     stXStage := Main.M31);]]></ST>
