@@ -29,37 +29,37 @@ stSiBP.nTran := 0.20;
 fbPF2K4.nTransitionAssertionID := 16#3240;
 fbPF2K4.nUnknownAssertionID := 16#3149;
 
-fbPF2K4.stOut.fPosition := -10.5;
+fbPF2K4.stOut.fPosition := -13.5;
 fbPF2K4.stOut.bUseRawCounts := FALSE;
 fbPF2K4.stOut.nRequestAssertionID := 16#3241;
 fbPF2K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbPF2K4.stOut.bValid := TRUE;
 
-fbPF2K4.stTarget1.fPosition := -93.033;
+fbPF2K4.stTarget1.fPosition := -96.0127;
 fbPF2K4.stTarget1.bUseRawCounts := FALSE;
 fbPF2K4.stTarget1.nRequestAssertionID := 16#3242;
 fbPF2K4.stTarget1.stBeamParams := stSiBP;
 fbPF2K4.stTarget1.bValid := TRUE;
 
-fbPF2K4.stTarget2.fPosition := -78.658;
+fbPF2K4.stTarget2.fPosition := -81.753;
 fbPF2K4.stTarget2.bUseRawCounts := FALSE;
 fbPF2K4.stTarget2.nRequestAssertionID := 16#3243;
 fbPF2K4.stTarget2.stBeamParams := stSiBP;
 fbPF2K4.stTarget2.bValid := TRUE;
 
-fbPF2K4.stTarget3.fPosition := -64.282;
+fbPF2K4.stTarget3.fPosition := -67.378;
 fbPF2K4.stTarget3.bUseRawCounts := FALSE;
 fbPF2K4.stTarget3.nRequestAssertionID := 16#3244;
 fbPF2K4.stTarget3.stBeamParams := stSiBP;
 fbPF2K4.stTarget3.bValid := TRUE;
 
-fbPF2K4.stTarget4.fPosition := -49.907;
+fbPF2K4.stTarget4.fPosition := -53.002;
 fbPF2K4.stTarget4.bUseRawCounts := FALSE;
 fbPF2K4.stTarget4.nRequestAssertionID := 16#3245;
 fbPF2K4.stTarget4.stBeamParams := stSiBP;
 fbPF2K4.stTarget4.bValid := TRUE;
 
-fbPF2K4.stTarget5.fPosition := -35.533;
+fbPF2K4.stTarget5.fPosition := -38.627;
 fbPF2K4.stTarget5.bUseRawCounts := FALSE;
 fbPF2K4.stTarget5.nRequestAssertionID := 16#3246;
 fbPF2K4.stTarget5.stBeamParams := stSiBP;
