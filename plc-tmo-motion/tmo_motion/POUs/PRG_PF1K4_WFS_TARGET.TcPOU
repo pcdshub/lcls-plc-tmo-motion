@@ -67,7 +67,7 @@ fbPF1K4.stTarget5.bValid := TRUE;
 
 fbPF1K4(
     fbArbiter := fbArbiter,
-    fbFFHWO := fbFastFaultOutput2,
+    fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M18,
     stZStage := Main.M19);
 ]]></ST>
