@@ -54,6 +54,11 @@ fbIM4K4.stYag2.nRequestAssertionID := 16#2444;
 fbIM4K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stYag2.bValid := TRUE;
 
+IF Main.M16.fVelocity > 1 AND Main.M16.fVelocity <> 15 AND Main.M16.bExecute THEN
+    Main.M16.bError := TRUE;
+    Main.M16.sCustomErrorMessage := 'Unsave IM4K4 velocity, try 1 or 15.';
+END_IF
+
 fbIM4K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
