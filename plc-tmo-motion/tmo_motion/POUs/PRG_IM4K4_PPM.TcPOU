@@ -19,6 +19,7 @@ VAR
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM4K4: FB_PPM;
+    fStartupVelo: LREAL := 15;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -26,28 +27,38 @@ END_VAR
 fbIM4K4.nUnknownAssertionID := 16#2449;
 
 fbIM4K4.stOut.fPosition := -9.29;
+fbIM4K4.stOut.fVelocity := fStartupVelo;
 fbIM4K4.stOut.bUseRawCounts := FALSE;
 fbIM4K4.stOut.nRequestAssertionID := 16#2441;
 fbIM4K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stOut.bValid := TRUE;
 
 fbIM4K4.stPower.fPosition := -48.39;
+fbIM4K4.stPower.fVelocity := fStartupVelo;
 fbIM4K4.stPower.bUseRawCounts := FALSE;
 fbIM4K4.stPower.nRequestAssertionID := 16#2442;
 fbIM4K4.stPower.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stPower.bValid := TRUE;
 
 fbIM4K4.stYag1.fPosition := -72.39;
+fbIM4K4.stYag1.fVelocity := fStartupVelo;
 fbIM4K4.stYag1.bUseRawCounts := FALSE;
 fbIM4K4.stYag1.nRequestAssertionID := 16#2443;
 fbIM4K4.stYag1.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stYag1.bValid := TRUE;
 
 fbIM4K4.stYag2.fPosition := -98.4;
+fbIM4K4.stYag2.fVelocity := fStartupVelo;
 fbIM4K4.stYag2.bUseRawCounts := FALSE;
 fbIM4K4.stYag2.nRequestAssertionID := 16#2444;
 fbIM4K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stYag2.bValid := TRUE;
+
+IF Main.M16.fVelocity > 1 AND Main.M16.fVelocity <> 15 AND Main.M16.bExecute THEN
+    Main.M16.bError := TRUE;
+    Main.M16.nErrorId := 16#4221;
+    Main.M16.sCustomErrorMessage := 'Unsafe velocity, try 1 or 15.';
+END_IF
 
 fbIM4K4(
     fbArbiter := fbArbiter,

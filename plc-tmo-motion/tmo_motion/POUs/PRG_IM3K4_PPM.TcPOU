@@ -19,6 +19,7 @@ VAR
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM3K4: FB_PPM;
+    fStartupVelo: LREAL := 12;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -26,24 +27,28 @@ END_VAR
 fbIM3K4.nUnknownAssertionID := 16#2349;
 
 fbIM3K4.stOut.fPosition := -5.82;
+fbIM3K4.stOut.fVelocity := fStartupVelo;
 fbIM3K4.stOut.bUseRawCounts := FALSE;
 fbIM3K4.stOut.nRequestAssertionID := 16#2341;
 fbIM3K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM3K4.stOut.bValid := TRUE;
 
 fbIM3K4.stPower.fPosition := -44.92;
+fbIM3K4.stPower.fVelocity := fStartupVelo;
 fbIM3K4.stPower.bUseRawCounts := FALSE;
 fbIM3K4.stPower.nRequestAssertionID := 16#2342;
 fbIM3K4.stPower.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM3K4.stPower.bValid := TRUE;
 
 fbIM3K4.stYag1.fPosition := -68.92;
+fbIM3K4.stYag1.fVelocity := fStartupVelo;
 fbIM3K4.stYag1.bUseRawCounts := FALSE;
 fbIM3K4.stYag1.nRequestAssertionID := 16#2343;
 fbIM3K4.stYag1.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM3K4.stYag1.bValid := TRUE;
 
 fbIM3K4.stYag2.fPosition := -94.93;
+fbIM3K4.stYag2.fVelocity := fStartupVelo;
 fbIM3K4.stYag2.bUseRawCounts := FALSE;
 fbIM3K4.stYag2.nRequestAssertionID := 16#2344;
 fbIM3K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
