@@ -6106,19 +6106,19 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_IN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xInsert_DO</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -6263,6 +6263,10 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -6604,10 +6608,6 @@ External Setpoint Generation:
 					<Comment>
 						<![CDATA[ NC Brake Output: TRUE to release brake]]>
 					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
 				</Var>
 			</Vars>

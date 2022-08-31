@@ -56,7 +56,8 @@ fbIM4K4.stYag2.bValid := TRUE;
 
 IF Main.M16.fVelocity > 1 AND Main.M16.fVelocity <> 15 AND Main.M16.bExecute THEN
     Main.M16.bError := TRUE;
-    Main.M16.sCustomErrorMessage := 'Unsave IM4K4 velocity, try 1 or 15.';
+    Main.M16.nErrorId := 16#4221;
+    Main.M16.sCustomErrorMessage := 'Unsafe velocity, try 1 or 15.';
 END_IF
 
 fbIM4K4(
