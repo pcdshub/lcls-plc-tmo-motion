@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SP1K4
+VAR
+    fbMotionLensX : FB_MotionStage;
+    fbMotionFoilX: FB_MotionStage;
+    fbMotionZPX : FB_MotionStage;
+    fbMotionZPY : FB_MotionStage;
+    fbMotionZPZ : FB_MotionStage;
+    fbMotionYAGX : FB_MotionStage;
+    fbMotionYAGY : FB_MotionStage;               
+    fbMotionYAGZ : FB_MotionStage;
+    fbMotionYAGR : FB_MotionStage;
+    
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1100)^LensX-EL1004^Channel 1^Input'}
+	bHallInput1 AT %I* : BOOL;
+
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1100)^LensX-EL1004^Channel 2^Input'}
+	bHallInput2 AT %I* : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Hardware Enable and fbMotionStage
+//Lens X
+Main.M32.bLimitForwardEnable := NOT bHallInput1;
+Main.M32.bLimitBackwardEnable := NOT bHallInput2;
+fbMotionLensX(stMotionStage:=Main.M32);
+
+// AL Foil X
+fbMotionFoilX(stMotionStage:=Main.M33);
+//Zone Plate
+fbMotionZPX(stMotionStage:=Main.M34);
+fbMotionZPY(stMotionStage:=Main.M35);
+fbMotionZPZ(stMotionStage:=Main.M36);
+// YAG
+fbMotionYAGX(stMotionStage:=Main.M37);
+fbMotionYAGY(stMotionStage:=Main.M38);
+fbMotionYAGZ(stMotionStage:=Main.M39);
+fbMotionYAGR(stMotionStage:=Main.M40);	
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
