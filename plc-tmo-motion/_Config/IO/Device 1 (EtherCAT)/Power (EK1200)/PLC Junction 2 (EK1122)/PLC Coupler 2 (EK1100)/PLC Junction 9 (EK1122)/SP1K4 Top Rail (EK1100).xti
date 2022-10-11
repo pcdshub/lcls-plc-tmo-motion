@@ -22,13 +22,13 @@
 		<Box File="Term 11 (EL9505).xti" Id="11">
 			<EtherCAT PortABoxInfo="#x0100000a"/>
 		</Box>
-		<Box File="Term 12 (EL1124).xti" Id="12">
+		<Box File="SP1K4-TL1-EL1124.xti" Id="12">
 			<EtherCAT PortABoxInfo="#x0100000b"/>
 		</Box>
 		<Box File="Term 13 (EL9505).xti" Id="13">
 			<EtherCAT PortABoxInfo="#x0100000c"/>
 		</Box>
-		<Box File="Term 14 (EL1124).xti" Id="14">
+		<Box File="SP1K4-TL2-EL1124.xti" Id="14">
 			<EtherCAT PortABoxInfo="#x0100000d"/>
 		</Box>
 		<Box File="Term 15 (EK1122).xti" Id="15">
