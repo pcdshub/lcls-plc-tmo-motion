@@ -3,20 +3,22 @@
   <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SP1K4
 VAR
-    fbMotionLensX : FB_MotionStage;
+    fbMotionLensX: FB_MotionStage;
     fbMotionFoilX: FB_MotionStage;
-    fbMotionZPX : FB_MotionStage;
-    fbMotionZPY : FB_MotionStage;
-    fbMotionZPZ : FB_MotionStage;
-    fbMotionYAGX : FB_MotionStage;
-    fbMotionYAGY : FB_MotionStage;               
-    fbMotionYAGZ : FB_MotionStage;
-    fbMotionYAGR : FB_MotionStage;
+    fbMotionZPX: FB_MotionStage;
+    fbMotionZPY: FB_MotionStage;
+    fbMotionZPZ: FB_MotionStage;
+    fbMotionYAGX: FB_MotionStage;
+    fbMotionYAGY: FB_MotionStage;               
+    fbMotionYAGZ: FB_MotionStage;
+    fbMotionYAGR: FB_MotionStage;
+    fbMotionTL1: FB_MotionStage;
+    fbMotionTL2: FB_MotionStage;
     
-	{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1100)^LensX-EL1004^Channel 1^Input'}
+	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 1^Input'}
 	bHallInput1 AT %I* : BOOL;
 
-	{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1100)^LensX-EL1004^Channel 2^Input'}
+	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 2^Input'}
 	bHallInput2 AT %I* : BOOL;
 END_VAR
 ]]></Declaration>
@@ -38,7 +40,9 @@ fbMotionYAGX(stMotionStage:=Main.M37);
 fbMotionYAGY(stMotionStage:=Main.M38);
 fbMotionYAGZ(stMotionStage:=Main.M39);
 fbMotionYAGR(stMotionStage:=Main.M40);	
-]]></ST>
+// Thorlabs
+fbMotionTL1(stMotionStage:=Main.M41);
+fbMotionTL2(stMotionStage:=Main.M42);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
