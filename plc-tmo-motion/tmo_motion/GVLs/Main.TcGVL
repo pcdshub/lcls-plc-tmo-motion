@@ -248,8 +248,8 @@ VAR_GLOBAL
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Yag Theta
-	{attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SP1K4-TL1-EL1124]^Channel 2^Input;
-                              .bLimitBackwardEnable:=TIIB[SP1K4-TL1-EL1124]^Channel 1^Input'}
+	{attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SP1K4-TL1-EL1124]^Channel 1^Input;
+                              .bLimitBackwardEnable:=TIIB[SP1K4-TL1-EL1124]^Channel 2^Input'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:10
     '}
@@ -258,8 +258,8 @@ VAR_GLOBAL
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Thorlabs1
- 	{attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SP1K4-TL2-EL1124]^Channel 2^Input;
-                              .bLimitBackwardEnable:=TIIB[SP1K4-TL2-EL1124]^Channel 1^Input'}
+ 	{attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[SP1K4-TL2-EL1124]^Channel 1^Input;
+                              .bLimitBackwardEnable:=TIIB[SP1K4-TL2-EL1124]^Channel 2^Input'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:11
     '}
