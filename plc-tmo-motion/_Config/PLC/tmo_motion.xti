@@ -7517,6 +7517,22 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1High</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL2High</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL2Low</Name>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -8732,12 +8748,12 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M36.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^SP1K4 Top Rail (EK1100)^SP1K4-TL1-EL1124">
-				<Link VarA="PlcTask Inputs^Main.M41.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M41.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL1High" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL1Low" VarB="Channel 2^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^SP1K4 Top Rail (EK1100)^SP1K4-TL2-EL1124">
-				<Link VarA="PlcTask Inputs^Main.M42.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M42.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL2High" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL2Low" VarB="Channel 2^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E2">
 				<Link VarA="PlcTask Inputs^Main.M23.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>
