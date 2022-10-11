@@ -80,6 +80,9 @@
     <Compile Include="POUs\PRG_SL2K4_SCATTER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_SP1K4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_ST4K4_TMO_TERM.TcPOU">
       <SubType>Code</SubType>
     </Compile>

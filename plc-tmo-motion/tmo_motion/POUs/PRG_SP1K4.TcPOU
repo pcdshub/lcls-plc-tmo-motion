@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SP1K4
+VAR
+    fbMotionLensX: FB_MotionStage;
+    fbMotionFoilX: FB_MotionStage;
+    fbMotionZPX: FB_MotionStage;
+    fbMotionZPY: FB_MotionStage;
+    fbMotionZPZ: FB_MotionStage;
+    fbMotionYAGX: FB_MotionStage;
+    fbMotionYAGY: FB_MotionStage;               
+    fbMotionYAGZ: FB_MotionStage;
+    fbMotionYAGR: FB_MotionStage;
+    fbMotionTL1: FB_MotionStage;
+    fbMotionTL2: FB_MotionStage;
+    
+	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 1^Input'}
+	bHallInput1 AT %I* : BOOL;
+
+	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 2^Input'}
+	bHallInput2 AT %I* : BOOL;
+
+    {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL1-EL1124]^Channel 1^Input'}
+    bTL1High AT %I*: BOOL;
+    nTL1HighCycles: UINT;
+    {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL1-EL1124]^Channel 2^Input'}
+    bTL1Low AT %I*: BOOL;
+    nTL1LowCycles: UINT;
+    {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL2-EL1124]^Channel 1^Input'}
+    bTL2High AT %I*: BOOL;
+    nTL2HighCycles: UINT;
+    {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL2-EL1124]^Channel 2^Input'}
+    bTL2Low AT %I*: BOOL;
+    nTL2LowCycles: UINT;
+    
+    nNumCyclesNeeded: UINT := 100;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Hardware Enable and fbMotionStage
+//Lens X
+Main.M32.bLimitForwardEnable := NOT bHallInput1;
+Main.M32.bLimitBackwardEnable := NOT bHallInput2;
+fbMotionLensX(stMotionStage:=Main.M32);
+
+// AL Foil X
+fbMotionFoilX(stMotionStage:=Main.M33);
+//Zone Plate
+fbMotionZPX(stMotionStage:=Main.M34);
+fbMotionZPY(stMotionStage:=Main.M35);
+fbMotionZPZ(stMotionStage:=Main.M36);
+// YAG
+fbMotionYAGX(stMotionStage:=Main.M37);
+fbMotionYAGY(stMotionStage:=Main.M38);
+fbMotionYAGZ(stMotionStage:=Main.M39);
+fbMotionYAGR(stMotionStage:=Main.M40);	
+// Thorlabs
+fbMotionTL1(stMotionStage:=Main.M41);
+fbMotionTL2(stMotionStage:=Main.M42);
+
+IF NOT bTL1High THEN
+    nTL1HighCycles := MIN(nTL1HighCycles + 1, nNumCyclesNeeded);
+ELSE
+    nTL1HighCycles := 0;
+END_IF
+IF NOT bTL1Low THEN
+    nTL1LowCycles := MIN(nTL1LowCycles + 1, nNumCyclesNeeded);
+ELSE
+    nTL1LowCycles := 0;
+END_IF
+IF NOT bTL2High THEN
+    nTL2HighCycles := MIN(nTL2HighCycles + 1, nNumCyclesNeeded);
+ELSE
+    nTL2HighCycles := 0;
+END_IF
+IF NOT bTL2Low THEN
+    nTL2LowCycles := MIN(nTL2LowCycles + 1, nNumCyclesNeeded);
+ELSE
+    nTL2LowCycles := 0;
+END_IF
+
+Main.M41.bLimitForwardEnable := nTL1HighCycles < nNumCyclesNeeded;
+Main.M41.bLimitBackwardEnable := nTL1LowCycles < nNumCyclesNeeded;
+Main.M42.bLimitForwardEnable := nTL2HighCycles < nNumCyclesNeeded;
+Main.M42.bLimitBackwardEnable := nTL2LowCycles < nNumCyclesNeeded;
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
