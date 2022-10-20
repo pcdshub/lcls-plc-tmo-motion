@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_ZonePlate_States" Id="{d27e90f5-8a3f-4562-a8f0-f90423b69349}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ZonePlate_States EXTENDS FB_PositionStateBase_WithPMPS
+VAR_INPUT
+	 {attribute 'pytmc' := '
+        pv: SET
+        io: io
+    '}
+    enumSet: ENUM_ZonePlate_States;
+	stOut: DUT_PositionState;
+	stYag: DUT_PositionState;
+	stNe1: DUT_PositionState;
+	stNe2: DUT_PositionState;
+    stNe3: DUT_PositionState;
+    st3w1: DUT_PositionState;
+	st3w2: DUT_PositionState;
+	stO2: DUT_PositionState;
+	stO1: DUT_PositionState;
+	stTi1: DUT_PositionState;
+	stTi2: DUT_PositionState;
+	stN1: DUT_PositionState;
+	stN2:DUT_PositionState;
+	stC1: DUT_PositionState;
+	stC2: DUT_PositionState;
+END_VAR
+VAR_OUTPUT
+	 {attribute 'pytmc' := '
+        pv: GET
+        io: i
+    '}
+    enumGet: ENUM_ZonePlate_States;
+END_VAR
+VAR
+	bInit: BOOL := TRUE;
+	// These are the default values
+    // Set values on states prior to passing in for non-default values
+    fInDelta: LREAL := 2;
+    fOutDelta: LREAL := 2;
+    fInVelocity: LREAL := 1;
+    fOutVelocity: LREAL := 1;
+    fAccel: LREAL := 200;
+    fOutDecel: LREAL := 25;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//State init
+IF (bInit) THEN
+	bInit := FALSE;
+	stOut.bUseRawCounts:= FALSE;
+	stOut.bValid := TRUE;
+	
+	//Add all other states
+	
+	arrStates[1] := stOut;
+	// we are limited to Max 9. Can we increase it to 16? what are the consequences?
+	
+END_IF
+
+setState := enumSet;
+Exec();
+enumGet := getState;
+enumSet := setState;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

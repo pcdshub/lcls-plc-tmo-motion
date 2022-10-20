@@ -3,6 +3,9 @@
   <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SP1K4
 VAR
+
+    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+	
     fbMotionLensX: FB_MotionStage;
     fbMotionFoilX: FB_MotionStage;
     fbMotionZPX: FB_MotionStage;
@@ -35,6 +38,11 @@ VAR
     nTL2LowCycles: UINT;
     
     nNumCyclesNeeded: UINT := 100;
+
+	bInit: BOOL :=TRUE;
+
+	fb_ZPS_X : FB_ZonePlate_States;
+	fb_ZPS_Y : FB_ZonePlate_States;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -50,6 +58,176 @@ fbMotionFoilX(stMotionStage:=Main.M33);
 fbMotionZPX(stMotionStage:=Main.M34);
 fbMotionZPY(stMotionStage:=Main.M35);
 fbMotionZPZ(stMotionStage:=Main.M36);
+
+
+IF (bInit) THEN
+	bInit := FALSE;
+	fb_ZPS_X.stOut.fPosition := -80;
+	fb_ZPS_Y.stOut.fPosition := -7.7;
+	//fbMotionZPZ.stOut.fPosition := 11;
+	fb_ZPS_X.stOut.nRequestAssertionID := 16#5300;
+	fb_ZPS_Y.stOut.nRequestAssertionID := 16#5301;
+	fb_ZPS_X.stOut.stBeamParams := fb_ZPS_Y.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+
+END_IF
+
+fb_ZPS_X(
+	stMotionStage:= , 
+	bEnable:= , 
+	bReset:= , 
+	bError=> , 
+	nErrorId=> , 
+	sErrorMessage=> , 
+	bBusy=> , 
+	bDone=> , 
+	fbArbiter:= , 
+	fbFFHWO:= , 
+	stTransitionBeam:= , 
+	nTransitionAssertionID:= , 
+	nUnknownAssertionID:= , 
+	bArbiterEnabled:= , 
+	tArbiterTimeout:= , 
+	bMoveOnArbiterTimeout:= , 
+	fStateBoundaryDeadband:= , 
+	bBPOKAutoReset:= , 
+	enumSet:= , 
+	stOut:= , 
+	stYag:= , 
+	stNe1:= , 
+	stNe2:= , 
+	stNe3:= , 
+	st3w1:= , 
+	st3w2:= , 
+	stO2:= , 
+	stO1:= , 
+	stTi1:= , 
+	stTi2:= , 
+	stN1:= , 
+	stN2:= , 
+	stC1:= , 
+	stC2:= , 
+	enumGet=> );
+
+fbMotionZPX.nTransitionAssertionID := 16#5341;
+fbMotionZPX.nUnknownAssertionID := 16#5441;
+
+
+fbMotionZPX.Yag.fPosition := -17;
+fbMotionZPY.Yag.fPosition := -2.7;
+fbMotionZPZ.Yag.fPosition := 11;
+fbMotionZPX.Yag.bUseRawCounts := FALSE;
+fbMotionZPX.Yag.nRequestAssertionID := 16#5343;
+fbMotionZPX.Yag.stBeamParams := stSiBP;
+fbMotionZPX.Yag.bValid := TRUE;
+
+fbMotionZPX.Ne3.fPosition := +13;
+fbMotionZPY.Ne3.fPosition := -2.7;
+fbMotionZPZ.Ne3.fPosition := 11;
+fbMotionZPX.Ne3.bUseRawCounts := FALSE;
+fbMotionZPX.Ne3.nRequestAssertionID := 16#5344;
+fbMotionZPX.Ne3.stBeamParams := stSiBP;
+fbMotionZPX.Ne3.bValid := TRUE;
+
+
+fbMotionZPX.Ne2.fPosition := +3;
+fbMotionZPY.Ne2.fPosition := -2.7;
+fbMotionZPZ.Ne2.fPosition := 11;
+fbMotionZPX.Ne2.bUseRawCounts := FALSE;
+fbMotionZPX.Ne2.nRequestAssertionID := 16#5345;
+fbMotionZPX.Ne2.stBeamParams := stSiBP;
+fbMotionZPX.Ne2.bValid := TRUE;
+
+fbMotionZPX.Ne1.fPosition := +13;
+fbMotionZPY.Ne1.fPosition := -12.7;
+fbMotionZPZ.Ne1.fPosition := 11;
+fbMotionZPX.Ne1.bUseRawCounts := FALSE;
+fbMotionZPX.Ne1.nRequestAssertionID := 16#5346;
+fbMotionZPX.Ne1.stBeamParams := stSiBP;
+fbMotionZPX.Ne1.bValid := TRUE;
+
+fbMotionZPX.3w2.fPosition := -7;
+fbMotionZPY.3w2.fPosition := -2.7;
+fbMotionZPZ.3w2.fPosition := 11;
+fbMotionZPX.3w2.bUseRawCounts := FALSE;
+fbMotionZPX.3w2.nRequestAssertionID := 16#5347;
+fbMotionZPX.3w2.stBeamParams := stSiBP;
+fbMotionZPX.3w2.bValid := TRUE;
+
+fbMotionZPX.3w1.fPosition := -17;
+fbMotionZPY.3w1.fPosition := -2.7;
+fbMotionZPZ.3w1.fPosition := 11;
+fbMotionZPX.3w1.bUseRawCounts := FALSE;
+fbMotionZPX.3w1.nRequestAssertionID := 16#5348;
+fbMotionZPX.3w1.stBeamParams := stSiBP;
+fbMotionZPX.3w1.bValid := TRUE;
+
+fbMotionZPX.O2.fPosition := -17;
+fbMotionZPY.O2.fPosition := -12.7;
+fbMotionZPZ.O2.fPosition := 11;
+fbMotionZPX.O2.bUseRawCounts := FALSE;
+fbMotionZPX.O2.nRequestAssertionID := 16#5349;
+fbMotionZPX.O2.stBeamParams := stSiBP;
+fbMotionZPX.O2.bValid := TRUE;
+
+fbMotionZPX.O1.fPosition := -27;
+fbMotionZPY.O1.fPosition := -12.7;
+fbMotionZPZ.O1.fPosition := 11;
+fbMotionZPX.O1.bUseRawCounts := FALSE;
+fbMotionZPX.O1.nRequestAssertionID := 16#5350;
+fbMotionZPX.O1.stBeamParams := stSiBP;
+fbMotionZPX.O1.bValid := TRUE;
+
+fbMotionZPX.Ti2.fPosition := +33;
+fbMotionZPY.Ti2.fPosition := -2.7;
+fbMotionZPZ.Ti2.fPosition := 11;
+fbMotionZPX.Ti2.bUseRawCounts := FALSE;
+fbMotionZPX.Ti2.nRequestAssertionID := 16#5351;
+fbMotionZPX.Ti2.stBeamParams := stSiBP;
+fbMotionZPX.Ti2.bValid := TRUE;
+
+fbMotionZPX.Ti1.fPosition := +23;
+fbMotionZPY.Ti1.fPosition := -2.7;
+fbMotionZPZ.Ti1.fPosition := 11;
+fbMotionZPX.Ti1.bUseRawCounts := FALSE;
+fbMotionZPX.Ti1.nRequestAssertionID := 16#5352;
+fbMotionZPX.Ti1.stBeamParams := stSiBP;
+fbMotionZPX.Ti1.bValid := TRUE;
+
+fbMotionZPX.N2.fPosition := +33;
+fbMotionZPY.N2.fPosition := -12.7;
+fbMotionZPZ.N2.fPosition := 11;
+fbMotionZPX.N2.bUseRawCounts := FALSE;
+fbMotionZPX.N2.nRequestAssertionID := 16#5353;
+fbMotionZPX.N2.stBeamParams := stSiBP;
+fbMotionZPX.N2.bValid := TRUE;
+
+fbMotionZPX.N1.fPosition := +23;
+fbMotionZPY.N1.fPosition := -12.7;
+fbMotionZPZ.N1.fPosition := 11;
+fbMotionZPX.N1.bUseRawCounts := FALSE;
+fbMotionZPX.N1.nRequestAssertionID := 16#5354;
+fbMotionZPX.N1.stBeamParams := stSiBP;
+fbMotionZPX.N1.bValid := TRUE;
+
+fbMotionZPX.C2.fPosition := +3;
+fbMotionZPY.C2.fPosition := -12.7;
+fbMotionZPZ.C2.fPosition := 11;
+fbMotionZPX.C2.bUseRawCounts := FALSE;
+fbMotionZPX.C2.nRequestAssertionID := 16#5355;
+fbMotionZPX.C2.stBeamParams := stSiBP;
+fbMotionZPX.C2.bValid := TRUE;
+
+fbMotionZPX.C1.fPosition := -7;
+fbMotionZPY.C1.fPosition := -12.7;
+fbMotionZPZ.C1.fPosition := 11;
+fbMotionZPX.C1.bUseRawCounts := FALSE;
+fbMotionZPX.C1.nRequestAssertionID := 16#5356;
+fbMotionZPX.C1.stBeamParams := stSiBP;
+fbMotionZPX.C1.bValid := TRUE;
+
+
+
+
 // YAG
 fbMotionYAGX(stMotionStage:=Main.M37);
 fbMotionYAGY(stMotionStage:=Main.M38);
