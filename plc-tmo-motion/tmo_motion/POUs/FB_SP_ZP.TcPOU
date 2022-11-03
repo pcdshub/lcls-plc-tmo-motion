@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_SP_ZP" Id="{9e7633b7-c6b9-4709-92c4-d466b7628291}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SP_ZP
+VAR_IN_out
+	 stXStage: DUT_MotionStage;
+	 stYStage: DUT_MotionStage;
+	 stZStage: DUT_MotionStage;
+    fbArbiter: FB_Arbiter;
+    fbFFHWO: FB_HardwareFFOutput;
+END_VAR
+VAR_INPUT
+	stOut: DUT_PositionState;
+	stYag: DUT_PositionState;
+	stNe1: DUT_PositionState;
+	stNe2: DUT_PositionState;
+    stNe3: DUT_PositionState;
+    st3w1: DUT_PositionState;
+	st3w2: DUT_PositionState;
+	stO2: DUT_PositionState;
+	stO1: DUT_PositionState;
+	stTi1: DUT_PositionState;
+	stTi2: DUT_PositionState;
+	stN1: DUT_PositionState;
+	stN2:DUT_PositionState;
+	stC1: DUT_PositionState;
+	stC2: DUT_PositionState;
+	    nTransitionAssertionID: UDINT;
+    nUnknownAssertionID: UDINT;
+	
+		  {attribute 'pytmc' := '
+        pv: MMS:X:STATE
+        io: i
+    '}
+    fbStates_x: FB_ZonePlate_States;
+
+	   {attribute 'pytmc' := '
+        pv: MMS:Y:STATE
+        io: i
+    '}
+    fbStates_y: FB_ZonePlate_States;
+	
+	zp_enumSet : ENUM_ZonePlate_States;
+END_VAR
+VAR
+	fbXStage: FB_MotionStage;
+	 fbYStage: FB_MotionStage;
+	 fbZStage: FB_MotionStage;
+	 
+	(*FFO*)
+	
+	FFO: FB_fastFault :=(
+		i_DevName:= 'SP1K4',
+		i_Desc := 'Fault Occures when the X and Y states d not match',
+		i_TypeCode := 16#300 //todo find a type code on confluence
+		);
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbXStage(stMotionStage:=stXStage);
+stXStage.bHardwareEnable := TRUE;
+stXStage.bPowerSelf := FALSE;
+stXStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+fbYStage(stMotionStage:=stYStage);
+stYStage.bHardwareEnable := TRUE;
+stYStage.bPowerSelf := FALSE;
+stYStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+fbZStage(stMotionStage:=stZStage);
+stZStage.bHardwareEnable := TRUE;
+stZStage.bPowerSelf := FALSE;
+stZStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+
+
+
+
+//TODO write the Y and X position before calling the function
+
+fbStates_X(
+    fbArbiter:=fbArbiter,
+    fbFFHWO:=fbFFHWO,
+    nTransitionAssertionID:=nTransitionAssertionID,
+    nUnknownAssertionID:=nUnknownAssertionID,
+    stMotionStage:=stXStage,
+    bEnable:=TRUE,
+	enumSet:= zp_enumSet,
+    stOut:=stOut); //TODO ADD all other states
+	
+	
+	
+	
+fbStates_Y(
+    fbArbiter:=fbArbiter,
+    fbFFHWO:=fbFFHWO,
+    nTransitionAssertionID:=nTransitionAssertionID,
+    nUnknownAssertionID:=nUnknownAssertionID,
+    stMotionStage:=stYStage,
+    bEnable:=TRUE,
+	enumSet:= zp_enumSet,
+    stOut:=stOut); //TODO ADD all other states
+
+	
+	FFO(i_xOK:= (fbStates_X.enumGet = fbStates_Y.enumGet),
+    io_fbFFHWO:= fbFFHWO,
+    i_xAutoReset := TRUE );]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

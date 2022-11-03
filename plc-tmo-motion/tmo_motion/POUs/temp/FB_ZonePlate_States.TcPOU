@@ -33,27 +33,36 @@ VAR_OUTPUT
 END_VAR
 VAR
 	bInit: BOOL := TRUE;
+	fbStateDefaults: FB_PositionState_Defaults;
 	// These are the default values
     // Set values on states prior to passing in for non-default values
-    fInDelta: LREAL := 2;
-    fOutDelta: LREAL := 2;
-    fInVelocity: LREAL := 1;
-    fOutVelocity: LREAL := 1;
+	//TODO correct these default positions
+    fDelta: LREAL := 1;
+    fVelocity: LREAL := 5;
     fAccel: LREAL := 200;
-    fOutDecel: LREAL := 25;
+    fDecel: LREAL := 25;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//State init
 IF (bInit) THEN
 	bInit := FALSE;
+	//Set theses for every state
+	stOut.sName := 'OUT';
 	stOut.bUseRawCounts:= FALSE;
 	stOut.bValid := TRUE;
-	
-	//Add all other states
+	    fbStateDefaults(
+        stPositionState:=stOut,
+        fVeloDefault:=fVelocity,
+        fDeltaDefault:=fDelta,
+        fAccelDefault:=fAccel,
+        fDecelDefault:=fDecel,
+    );
+	//TODO Add all other states
 	
 	arrStates[1] := stOut;
-	// we are limited to Max 9. Can we increase it to 16? what are the consequences?
+	arrStates[2] := stYag;
+	
 	
 END_IF
 

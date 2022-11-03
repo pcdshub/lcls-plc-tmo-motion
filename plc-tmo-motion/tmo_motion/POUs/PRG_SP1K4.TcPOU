@@ -41,8 +41,14 @@ VAR
 
 	bInit: BOOL :=TRUE;
 
-	fb_ZPS_X : FB_ZonePlate_States;
-	fb_ZPS_Y : FB_ZonePlate_States;
+	
+	////ZP states start
+	fb_ZPS : FB_SP_ZP;
+	 {attribute 'pytmc' := '
+        pv: ZonePlate:SET
+        io: io
+    '}
+    zp_enumSet: ENUM_ZonePlate_States;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -60,19 +66,24 @@ fbMotionZPY(stMotionStage:=Main.M35);
 fbMotionZPZ(stMotionStage:=Main.M36);
 
 
+//zone plates code startes
+//setting the beam parameters for each state
+//also setting different fposition for X and Y
 IF (bInit) THEN
 	bInit := FALSE;
-	fb_ZPS_X.stOut.fPosition := -80;
-	fb_ZPS_Y.stOut.fPosition := -7.7;
+	fb_ZPS.fbStates_x.stout.fPosition := -80;
+	fb_ZPS.fbStates_y.stout.fPosition := -7.7;
 	//fbMotionZPZ.stOut.fPosition := 11;
-	fb_ZPS_X.stOut.nRequestAssertionID := 16#5300;
-	fb_ZPS_Y.stOut.nRequestAssertionID := 16#5301;
-	fb_ZPS_X.stOut.stBeamParams := fb_ZPS_Y.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
-
+	fb_ZPS.stOut.nRequestAssertionID := 16#5300;
+	fb_ZPS.stOut.nRequestAssertionID := 16#5301;
+	fb_ZPS.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
+		//TODO write all details for every state
 END_IF
-
-fb_ZPS_X(
-	stMotionStage:= , 
+//TODO Give all positions
+fb_ZPS(
+	stXStage:= ,
+	stYStage:= , 
+	stZStage:= ,
 	bEnable:= , 
 	bReset:= , 
 	bError=> , 
@@ -90,7 +101,7 @@ fb_ZPS_X(
 	bMoveOnArbiterTimeout:= , 
 	fStateBoundaryDeadband:= , 
 	bBPOKAutoReset:= , 
-	enumSet:= , 
+	enumSet:= zp_enumSet , 
 	stOut:= , 
 	stYag:= , 
 	stNe1:= , 
