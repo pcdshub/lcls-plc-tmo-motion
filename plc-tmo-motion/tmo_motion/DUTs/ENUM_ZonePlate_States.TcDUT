@@ -5,7 +5,23 @@
 TYPE ENUM_ZonePlate_States :
 (
 	Unknown := 0,
-    OUT := 1
+    OUT := 1,
+	Yag := 2,
+	Ne1 := 3,
+	Ne2 := 4,
+	Ne3 := 5,
+	3w1 := 6,
+	3w2 := 7,
+	o2 := 8;
+	o1 := 9,
+	Ti1 := 10,
+	Ti2 := 11,
+	N1 := 12,
+	N2 := 13,
+	C1 := 14,
+	C2 := 15
+	
+	
 	//TODO: is add all therest
 );
 END_TYPE

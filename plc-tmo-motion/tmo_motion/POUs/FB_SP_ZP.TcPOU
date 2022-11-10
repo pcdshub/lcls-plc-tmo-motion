@@ -25,7 +25,7 @@ VAR_INPUT
 	stN2:DUT_PositionState;
 	stC1: DUT_PositionState;
 	stC2: DUT_PositionState;
-	    nTransitionAssertionID: UDINT;
+	nTransitionAssertionID: UDINT;
     nUnknownAssertionID: UDINT;
 	
 		  {attribute 'pytmc' := '
@@ -43,7 +43,7 @@ VAR_INPUT
 	zp_enumSet : ENUM_ZonePlate_States;
 END_VAR
 VAR
-	fbXStage: FB_MotionStage;
+	 fbXStage: FB_MotionStage;
 	 fbYStage: FB_MotionStage;
 	 fbZStage: FB_MotionStage;
 	 
@@ -88,7 +88,22 @@ fbStates_X(
     stMotionStage:=stXStage,
     bEnable:=TRUE,
 	enumSet:= zp_enumSet,
-    stOut:=stOut); //TODO ADD all other states
+    stOut:=stOut,
+    stYag :=stYag,
+    stNe1:=stNe1,
+	stNe2:=stNe2,
+	stNe3:=stNe3,
+	st3w1:=st3w1,
+	st3w2:=st3w2,
+	stO2:=stO2,
+	stO1:=stO1,
+	stTi1:=stTi1,
+	stTi2:=stTi2,
+	stN1:=stN1,
+	stN2:=stN2,
+	stC1:=stC1,
+	stC2:=stC2,
+  ); //TODO ADD all other states
 	
 	
 	
@@ -101,7 +116,22 @@ fbStates_Y(
     stMotionStage:=stYStage,
     bEnable:=TRUE,
 	enumSet:= zp_enumSet,
-    stOut:=stOut); //TODO ADD all other states
+    stOut:=stOut,
+    stYag:=stYag,
+    stNe1:=stNe1,
+	stNe2:=stNe2,
+	stNe3:=stNe3,
+	st3w1:=st3w1,
+	st3w2:=st3w2,
+	stO2:=stO2,
+	stO1:=stO1,
+	stTi1:=stTi1,
+	stTi2:=stTi2,
+	stN1:=stN1,
+	stN2:=stN2,
+	stC1:=stC1,
+	stC2:=stC2,
+);
 
 	
 	FFO(i_xOK:= (fbStates_X.enumGet = fbStates_Y.enumGet),
