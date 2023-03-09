@@ -15,44 +15,47 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbTM2K4.nTransitionAssertionID := 16#5240;
-fbTM2K4.nUnknownAssertionID := 16#5249;
+      <ST><![CDATA[
 
 fbTM2K4.stOut.fPosition := -2.558;
 fbTM2K4.stOut.bUseRawCounts := FALSE;
-fbTM2K4.stOut.nRequestAssertionID := 16#5241;
-fbTM2K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stOut.bValid := TRUE;
+fbTM2K4.stOut.stPMPS.sPmpsState := 'TM2K4:ATM-OUT';
 
 fbTM2K4.stTarget1.fPosition := -16.311;
 fbTM2K4.stTarget1.bUseRawCounts := FALSE;
-fbTM2K4.stTarget1.nRequestAssertionID := 16#5242;
-fbTM2K4.stTarget1.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stTarget1.bValid := TRUE;
+fbTM2K4.stTarget1.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1';
 
 fbTM2K4.stTarget2.fPosition := -25.282;
 fbTM2K4.stTarget2.bUseRawCounts := FALSE;
-fbTM2K4.stTarget2.nRequestAssertionID := 16#5243;
-fbTM2K4.stTarget2.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stTarget2.bValid := TRUE;
+fbTM2K4.stTarget2.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2';
 
 fbTM2K4.stTarget3.fPosition := -41.249;
 fbTM2K4.stTarget3.bUseRawCounts := FALSE;
-fbTM2K4.stTarget3.nRequestAssertionID := 16#5244;
-fbTM2K4.stTarget3.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stTarget3.bValid := TRUE;
+fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
 
 fbTM2K4.stTarget4.fPosition := -55.414;
 fbTM2K4.stTarget4.bUseRawCounts := FALSE;
-fbTM2K4.stTarget4.nRequestAssertionID := 16#5245;
-fbTM2K4.stTarget4.stBeamParams := PMPS_GVL.cstFullBeam;
 fbTM2K4.stTarget4.bValid := TRUE;
+fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET4';
+
+fbTM2K4.stTarget5.fPosition := -69;
+fbTM2K4.stTarget5.bUseRawCounts := FALSE;
+fbTM2K4.stTarget5.bValid := TRUE;
+fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET5';
+
 
 fbTM2K4(
     fbArbiter := fbArbiter2,
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M30,
-    stXStage := Main.M31);]]></ST>
+    stXStage := Main.M31,
+	sPmpsDeviceName := 'TM2K4:ATM',
+	sTransitionKey := 'TM2K4:ATM-TRANSITION',
+     );]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

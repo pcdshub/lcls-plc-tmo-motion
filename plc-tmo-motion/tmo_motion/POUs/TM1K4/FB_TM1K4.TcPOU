@@ -23,8 +23,8 @@ VAR_INPUT
     stTarget3b: DUT_PositionState;
     stTarget4: DUT_PositionState;
 	stTarget5: DUT_PositionState;
-    nTransitionAssertionID: UDINT;
-    nUnknownAssertionID: UDINT;
+    sPmpsDeviceName: STRING;
+	sTransitionKey: STRING;
 END_VAR
 VAR
     fbYStage: FB_MotionStage;
@@ -60,8 +60,8 @@ stXStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 fbStates(
     fbArbiter:=fbArbiter,
     fbFFHWO:=fbFFHWO,
-    nTransitionAssertionID:=nTransitionAssertionID,
-    nUnknownAssertionID:=nUnknownAssertionID,
+    sPmpsDeviceName:=sPmpsDeviceName,
+    sTransitionKey:=sTransitionKey,
     stMotionStage:=stYStage,
     bEnable := TRUE,
     stOut:=stOut,
