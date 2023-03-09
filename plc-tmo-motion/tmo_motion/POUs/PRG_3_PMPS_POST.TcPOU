@@ -24,7 +24,7 @@ fbArbiterIO(
 fb_vetoArbiter(bVeto:=bST4K4_Veto OR bST3K4_Veto OR bM1K1Veto,
                 HigherAuthority := GVL_PMPS.fbArbiter,
                 LowerAuthority := GVL_PMPS.fbArbiter2,
-                FFO := GVL_PMPS.fbFastFaultOutput2);
+                FFO := GVL_PMPS.fbFastFaultOutput2); 
 
 fbFastFaultOutput1.Execute(i_xVeto:=bST3K4_Veto OR bM1K1Veto);
 fbFastFaultOutput2.Execute(i_xVeto:=bST3K4_Veto OR bM1K1Veto OR bST4K4_Veto); // Eventually, also veto on ST4K4 using OR

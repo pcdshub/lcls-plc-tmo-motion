@@ -40,12 +40,12 @@ fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
 fbTM2K4.stTarget4.fPosition := -55.414;
 fbTM2K4.stTarget4.bUseRawCounts := FALSE;
 fbTM2K4.stTarget4.bValid := TRUE;
-fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET4';
+fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
 fbTM2K4.stTarget5.fPosition := -69;
 fbTM2K4.stTarget5.bUseRawCounts := FALSE;
 fbTM2K4.stTarget5.bValid := TRUE;
-fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET5';
+fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-DIODE';
 
 
 fbTM2K4(
