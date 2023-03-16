@@ -47,7 +47,7 @@ fbIM3K4.stYag2.fPosition := -94.93;
 fbIM3K4.stYag2.fVelocity := fStartupVelo;
 fbIM3K4.stYag2.bUseRawCounts := FALSE;
 fbIM3K4.stYag2.bValid := TRUE;
-fbIM3K4.stYag1.stPMPS.sPmpsState := 'IM3K4:PPM-YAG2';
+fbIM3K4.stYag2.stPMPS.sPmpsState := 'IM3K4:PPM-YAG2';
 
 fbIM3K4(
     fbArbiter := fbArbiter,

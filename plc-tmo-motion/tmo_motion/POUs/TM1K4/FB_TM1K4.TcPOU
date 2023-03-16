@@ -21,8 +21,8 @@ VAR_INPUT
     stTarget2b: DUT_PositionState;
     stTarget3a: DUT_PositionState;
     stTarget3b: DUT_PositionState;
-    stTarget4: DUT_PositionState;
-	stTarget5: DUT_PositionState;
+    stTarget4: DUT_PositionState;    // target 4 is Yag
+	stTarget5: DUT_PositionState;    //target 5 is Diode
     sPmpsDeviceName: STRING;
 	sTransitionKey: STRING;
 END_VAR
