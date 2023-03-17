@@ -15,14 +15,15 @@ VAR_INPUT
     stNe3: DUT_PositionState;
     st3w1: DUT_PositionState;
 	st3w2: DUT_PositionState;
-	stO2: DUT_PositionState;
 	stO1: DUT_PositionState;
+	stO2: DUT_PositionState;
 	stTi1: DUT_PositionState;
 	stTi2: DUT_PositionState;
 	stN1: DUT_PositionState;
 	stN2:DUT_PositionState;
 	stC1: DUT_PositionState;
 	stC2: DUT_PositionState;
+	stW1: DuT_PositionState;
 END_VAR
 VAR_OUTPUT
 	 {attribute 'pytmc' := '
@@ -32,7 +33,7 @@ VAR_OUTPUT
     enumGet: ENUM_ZonePlate_States;
 END_VAR
 VAR
-	bInit: BOOL := TRUE;
+	bInittwo: BOOL := TRUE;
 	fbStateDefaults: FB_PositionState_Defaults;
 	// These are the default values
     // Set values on states prior to passing in for non-default values
@@ -45,8 +46,8 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//State init
-IF (bInit) THEN
-	bInit := FALSE;
+IF (bInittwo) THEN
+	bInittwo := FALSE;
 	//Set theses for every state
 	stOut.sName := 'OUT';
 	stOut.bUseRawCounts:= FALSE;
@@ -118,16 +119,6 @@ IF (bInit) THEN
         fAccelDefault:=fAccel,
         fDecelDefault:=fDecel,
     );
-    stO2.sName := 'O2';
-	stO2.bUseRawCounts:= FALSE;
-	stO2.bValid := TRUE;
-	    fbStateDefaults(
-        stPositionState:=stO2,
-        fVeloDefault:=fVelocity,
-        fDeltaDefault:=fDelta,
-        fAccelDefault:=fAccel,
-        fDecelDefault:=fDecel,
-    ); 
 	stO1.sName := 'O1';
 	stO1.bUseRawCounts:= FALSE;
 	stO1.bValid := TRUE;
@@ -138,6 +129,17 @@ IF (bInit) THEN
         fAccelDefault:=fAccel,
         fDecelDefault:=fDecel,
     );
+    stO2.sName := 'O2';
+	stO2.bUseRawCounts:= FALSE;
+	stO2.bValid := TRUE;
+	    fbStateDefaults(
+        stPositionState:=stO2,
+        fVeloDefault:=fVelocity,
+        fDeltaDefault:=fDelta,
+        fAccelDefault:=fAccel,
+        fDecelDefault:=fDecel,
+    ); 
+	
     stTi1.sName := 'Ti1';
 	stTi1.bUseRawCounts:= FALSE;
 	stTi1.bValid := TRUE;
@@ -198,7 +200,16 @@ IF (bInit) THEN
         fAccelDefault:=fAccel,
         fDecelDefault:=fDecel,
     );
-
+    stW1.sName := 'W1';
+	stW1.bUseRawCounts:= FALSE;
+	stW1.bValid := TRUE;
+	    fbStateDefaults(
+        stPositionState:=stW1,
+        fVeloDefault:=fVelocity,
+        fDeltaDefault:=fDelta,
+        fAccelDefault:=fAccel,
+        fDecelDefault:=fDecel,
+    );
 
 //Add all states 
 	
@@ -209,14 +220,15 @@ IF (bInit) THEN
     arrStates[5] := stNe3;
     arrStates[6] := st3w1;
     arrStates[7] := st3w2;
-    arrStates[8] := stO2;
-    arrStates[9] := stO1;
+    arrStates[8] := stO1;
+    arrStates[9] := stO2;
     arrStates[10] := stTi1;
     arrStates[11] := stTi2;
     arrStates[12] := stN1;
     arrStates[13] := stN2;
     arrStates[14] := stC1;
-    arrStates[15] := stC2;	
+    arrStates[15] := stC2;
+ //   arrStates[16] := stW1;	
 	
 END_IF
 

@@ -25,8 +25,8 @@ VAR_INPUT
 	stN2:DUT_PositionState;
 	stC1: DUT_PositionState;
 	stC2: DUT_PositionState;
-	nTransitionAssertionID: UDINT;
-    nUnknownAssertionID: UDINT;
+	//nTransitionAssertionID: UDINT;
+    //nUnknownAssertionID: UDINT;
 	
 		  {attribute 'pytmc' := '
         pv: MMS:X:STATE
@@ -83,8 +83,8 @@ stZStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 fbStates_X(
     fbArbiter:=fbArbiter,
     fbFFHWO:=fbFFHWO,
-    nTransitionAssertionID:=nTransitionAssertionID,
-    nUnknownAssertionID:=nUnknownAssertionID,
+ //   nTransitionAssertionID:=nTransitionAssertionID,
+ //   nUnknownAssertionID:=nUnknownAssertionID,
     stMotionStage:=stXStage,
     bEnable:=TRUE,
 	enumSet:= zp_enumSet,
@@ -111,8 +111,8 @@ fbStates_X(
 fbStates_Y(
     fbArbiter:=fbArbiter,
     fbFFHWO:=fbFFHWO,
-    nTransitionAssertionID:=nTransitionAssertionID,
-    nUnknownAssertionID:=nUnknownAssertionID,
+ //   nTransitionAssertionID:=nTransitionAssertionID,
+//    nUnknownAssertionID:=nUnknownAssertionID,
     stMotionStage:=stYStage,
     bEnable:=TRUE,
 	enumSet:= zp_enumSet,

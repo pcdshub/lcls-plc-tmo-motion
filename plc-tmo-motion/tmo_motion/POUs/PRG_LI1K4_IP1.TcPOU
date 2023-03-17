@@ -16,41 +16,38 @@ END_VAR
     <Implementation>
       <ST><![CDATA[
 // Exclusion range specified by P. Walter 2021-5-19
-stSiBP.neVRange := F_eVExcludeRange(1.6E3, 3.2E3);
+//stSiBP.neVRange := F_eVExcludeRange(1.6E3, 3.2E3);
 // Drop transmission to 20%
 //stSiBP.nTran := 0.20;
 
-fbLI1K4.nTransitionAssertionID := 16#4140;
-fbLI1K4.nUnknownAssertionID := 16#4149;
 
 fbLI1K4.stOut.fPosition := 0.118;
 fbLI1K4.stOut.bUseRawCounts := FALSE;
-fbLI1K4.stOut.nRequestAssertionID := 16#4141;
-fbLI1K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbLI1K4.stOut.bValid := TRUE;
+fbLI1K4.stOut.stPMPS.sPmpsState := 'LI1K4:IP1-OUT';
 
 fbLI1K4.stMirror1.fPosition := -36.38;
 fbLI1K4.stMirror1.bUseRawCounts := FALSE;
-fbLI1K4.stMirror1.nRequestAssertionID := 16#4142;
-fbLI1K4.stMirror1.stBeamParams := stSiBP;
 fbLI1K4.stMirror1.bValid := TRUE;
+fbLI1K4.stMirror1.stPMPS.sPmpsState := 'LI1K4:IP1-MIRROR1';
 
 fbLI1K4.stMirror2.fPosition := -70.38;
 fbLI1K4.stMirror2.bUseRawCounts := FALSE;
-fbLI1K4.stMirror2.nRequestAssertionID := 16#4143;
-fbLI1K4.stMirror2.stBeamParams := stSiBP;
 fbLI1K4.stMirror2.bValid := TRUE;
+fbLI1K4.stMirror2.stPMPS.sPmpsState := 'LI1K4:IP1-MIRROR2';
 
 fbLI1K4.stTarget1.fPosition := -102.38;
 fbLI1K4.stTarget1.bUseRawCounts := FALSE;
-fbLI1K4.stTarget1.nRequestAssertionID := 16#4144;
-fbLI1K4.stTarget1.stBeamParams := stSiBP;
 fbLI1K4.stTarget1.bValid := TRUE;
+fbLI1K4.stTarget1.stPMPS.sPmpsState := 'LI1K4:IP1-TARGET1';
 
 fbLI1K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
-    stYStage := Main.M20);
+    stYStage := Main.M20,
+    sPmpsDeviceName := 'LI1K4:IP1',
+	sTransitionKey := 'LI1K4:IP1-TRANSITION',
+);
 ]]></ST>
     </Implementation>
   </POU>

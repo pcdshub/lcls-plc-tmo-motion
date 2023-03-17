@@ -13,8 +13,8 @@ TYPE ENUM_TM1K4_States :
     TARGET2b := 4,
     TARGET3a := 5,
     TARGET3b := 6,
-    TARGET4  := 7,
-	TARGET5  := 8
+    YAG := 7,
+	DIODE := 8
 );
 END_TYPE
 ]]></Declaration>

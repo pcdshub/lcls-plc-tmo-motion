@@ -4,9 +4,17 @@
     <Declaration><![CDATA[PROGRAM PRG_2_PMPS_PRE
 VAR
 END_VAR
+
+
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[MOTION_GVL.fbStandardPMPSDB(
+	io_fbFFHWO:=GVL_PMPS.fbFastFaultOutput1,
+	bEnable:=TRUE,
+	sPLCName:='plc-tmo-motion',
+	);
+	
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

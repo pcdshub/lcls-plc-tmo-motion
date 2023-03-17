@@ -23,36 +23,30 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbIM4K4.nTransitionAssertionID := 16#2440;
-fbIM4K4.nUnknownAssertionID := 16#2449;
-
+      <ST><![CDATA[
 fbIM4K4.stOut.fPosition := -9.29;
 fbIM4K4.stOut.fVelocity := fStartupVelo;
 fbIM4K4.stOut.bUseRawCounts := FALSE;
-fbIM4K4.stOut.nRequestAssertionID := 16#2441;
-fbIM4K4.stOut.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stOut.bValid := TRUE;
+fbIM4K4.stOut.stPMPS.sPmpsState := 'IM4K4:PPM-OUT';
 
 fbIM4K4.stPower.fPosition := -48.39;
 fbIM4K4.stPower.fVelocity := fStartupVelo;
 fbIM4K4.stPower.bUseRawCounts := FALSE;
-fbIM4K4.stPower.nRequestAssertionID := 16#2442;
-fbIM4K4.stPower.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stPower.bValid := TRUE;
+fbIM4K4.stPower.stPMPS.sPmpsState := 'IM4K4:PPM-POWERMETER';
 
 fbIM4K4.stYag1.fPosition := -72.39;
 fbIM4K4.stYag1.fVelocity := fStartupVelo;
 fbIM4K4.stYag1.bUseRawCounts := FALSE;
-fbIM4K4.stYag1.nRequestAssertionID := 16#2443;
-fbIM4K4.stYag1.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stYag1.bValid := TRUE;
+fbIM4K4.stYag1.stPMPS.sPmpsState := 'IM4K4:PPM-YAG1';
 
 fbIM4K4.stYag2.fPosition := -98.4;
 fbIM4K4.stYag2.fVelocity := fStartupVelo;
 fbIM4K4.stYag2.bUseRawCounts := FALSE;
-fbIM4K4.stYag2.nRequestAssertionID := 16#2444;
-fbIM4K4.stYag2.stBeamParams := PMPS_GVL.cstFullBeam;
 fbIM4K4.stYag2.bValid := TRUE;
+fbIM4K4.stYag2.stPMPS.sPmpsState := 'IM4K4:PPM-YAG2';
 
 IF Main.M16.fVelocity > 1 AND Main.M16.fVelocity <> 15 AND Main.M16.bExecute THEN
     Main.M16.bError := TRUE;
@@ -63,7 +57,10 @@ END_IF
 fbIM4K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
-    stYStage := Main.M16);]]></ST>
+    stYStage := Main.M16,
+	sPmpsDeviceName := 'IM4K4:PPM',
+	sTransitionKey := 'IM4K4:PPM-TRANSITION',
+);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
