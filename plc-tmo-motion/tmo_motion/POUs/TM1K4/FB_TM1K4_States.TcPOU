@@ -88,14 +88,14 @@ END_VAR
     stTarget3b.fDecel := fAccel;
     stTarget3b.bMoveOk := TRUE;
 	
-    stTarget4.sName := 'TARGET 4';
+    stTarget4.sName := 'YAG';
     stTarget4.fVelocity := fInVelocity;
     stTarget4.fDelta := fInDelta;
     stTarget4.fAccel := fAccel;
     stTarget4.fDecel := fAccel;
     stTarget4.bMoveOk := TRUE;
 	
-	stTarget5.sName := 'TARGET 5';
+	stTarget5.sName := 'DIODE';
     stTarget5.fVelocity := fInVelocity;
     stTarget5.fDelta := fInDelta;
     stTarget5.fAccel := fAccel;
