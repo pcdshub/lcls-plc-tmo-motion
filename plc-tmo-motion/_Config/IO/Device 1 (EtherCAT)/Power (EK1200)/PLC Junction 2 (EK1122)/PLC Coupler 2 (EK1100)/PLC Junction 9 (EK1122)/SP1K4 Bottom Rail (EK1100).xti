@@ -37,5 +37,8 @@
 		<Box File="YagTheta-EL7041.xti" Id="58">
 			<EtherCAT PortABoxInfo="#x01000039"/>
 		</Box>
+		<Box File="Term 301 (EL9011).xti" Id="301">
+			<EtherCAT PortABoxInfo="#x0100003a"/>
+		</Box>
 	</Box>
 </TcSmItem>
