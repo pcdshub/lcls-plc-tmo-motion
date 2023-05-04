@@ -28,8 +28,11 @@
 		<Box File="IM2K4-EL4004-E7.xti" Id="40">
 			<EtherCAT PortABoxInfo="#x01000027"/>
 		</Box>
-		<Box File="IM2K4-EL9011.xti" Id="49">
+		<Box File="IM2K4-EL1004-E8.xti" Id="140">
 			<EtherCAT PortABoxInfo="#x01000028"/>
+		</Box>
+		<Box File="IM2K4-EL9011.xti" Id="49">
+			<EtherCAT PortABoxInfo="#x0100008c"/>
 		</Box>
 	</Box>
 </TcSmItem>

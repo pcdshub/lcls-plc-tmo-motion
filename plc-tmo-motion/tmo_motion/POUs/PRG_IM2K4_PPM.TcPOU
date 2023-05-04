@@ -20,6 +20,7 @@ VAR
                               .fbYagThermoCouple.iRaw := TIIB[IM2K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM2K4: FB_PPM;
     fStartupVelo: LREAL := 13;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -52,8 +53,8 @@ fbIM2K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M9,
-	sPmpsDeviceName := 'IM2K4:PPM',
-	sTransitionKey := 'IM2K4:PPM-TRANSITION',
+    sPmpsDeviceName := 'IM2K4:PPM',
+    sTransitionKey := 'IM2K4:PPM-TRANSITION',
 );]]></ST>
     </Implementation>
   </POU>
