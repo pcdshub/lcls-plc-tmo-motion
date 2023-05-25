@@ -53,6 +53,7 @@ fbPF2K4.stTarget4.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET4';
 
 fbPF2K4.stTarget5.fPosition := -38.627;
 fbPF2K4.stTarget5.bUseRawCounts := FALSE;
+fbPF2K4.stTarget4.bValid := TRUE;
 fbPF2K4.stTarget5.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET5';
 
 fbPF2K4(
