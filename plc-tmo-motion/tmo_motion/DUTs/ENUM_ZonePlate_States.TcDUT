@@ -19,8 +19,8 @@ TYPE ENUM_ZonePlate_States :
 	FZP410_1 := 12,   //N1
 	FZP410_2 := 13,   //N2
 	FZP290_1 := 14,   // C1
-	FZP290_2 := 15,   //C2
-	FZP250_1 := 16    //w1
+	FZP290_2 := 15   //C2
+//	FZP250_1 := 16    //w1  ?
 	
 	
 	//TODO: is add all therest
