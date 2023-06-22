@@ -188,7 +188,8 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Zone Plate X
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 1'}
+                              .bLimitBackwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 1';
+							  .nRawEncoderULINT     := TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:04
     '}
@@ -198,7 +199,8 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Zone Plate Y
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 2'}
+                              .bLimitBackwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 2';
+							  .nRawEncoderULINT     := TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 2^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:05
     '}
@@ -208,7 +210,8 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Zone Plate Z
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1'}
+                              .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1';
+							  .nRawEncoderULINT     := TIIB[SP1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:06
     '}
