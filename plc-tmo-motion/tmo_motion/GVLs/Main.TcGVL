@@ -178,7 +178,8 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // AL Foil X
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 1'}
+                              .bLimitBackwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 1'
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:03
     '}
@@ -188,7 +189,7 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate X
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 1';
-                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 2^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:04
     '}
@@ -198,7 +199,7 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate Y
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 2';
-                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 2^Position'}
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:05
     '}
@@ -207,8 +208,8 @@ VAR_GLOBAL
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate Z
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
-                              .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1';
-                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
+                              .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1'}
+                              
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:06
     '}

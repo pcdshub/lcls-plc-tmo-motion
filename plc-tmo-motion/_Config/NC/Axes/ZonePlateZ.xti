@@ -1326,16 +1326,13 @@ External Setpoint Generation:
 		<AxisPara>
 			<Dynamic Acceleration="2" Deceleration="2"/>
 			<Velo SlowManual="0.1" FastManual="1" Maximum="1"/>
+			<TargetPosControl Range="0.3"/>
 			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.5" PulseDistanceNeg="0.5"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara ScaleFactorNumerator="5e-05" ScaleFactorDenominator="1.6" MaxCount="#xffffffff">
-				<SoftEndMinControl Enable="true"/>
-				<SoftEndMaxControl Enable="true"/>
+			<EncPara ScaleFactorNumerator="5e-05" ScaleFactorDenominator="1.6" Offset="-134207.665" MaxCount="#xffffffff">
 				<Inc RefSoftSyncMask="#x0000ffff"/>
-				<ParameterChanged>11</ParameterChanged>
 				<ParameterChanged>35</ParameterChanged>
-				<ParameterChanged>12</ParameterChanged>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
