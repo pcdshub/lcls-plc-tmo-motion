@@ -69,7 +69,8 @@ fbMotionZPZ(stMotionStage:=Main.M36);
 //zone plates code startes
 //setting the beam parameters for each state
 //also setting different fposition for X and Y
-IF (bInit) THEN
+{*
+ IF (bInit) THEN
 	bInit := FALSE;
 	fb_ZPS.fbStates_x.stout.fPosition := -80;
 	fb_ZPS.fbStates_y.stout.fPosition := -7.7;
@@ -227,7 +228,7 @@ fb_ZPS(
 );
 
 
-
+*}
 
 
 
