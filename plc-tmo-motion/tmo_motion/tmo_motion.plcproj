@@ -160,7 +160,7 @@
       <Parameters>
         <Parameter>
           <Key>MAX_FAST_FAULTS</Key>
-          <Value>55</Value>
+          <Value>100</Value>
         </Parameter>
       </Parameters>
     </PlaceholderReference>
