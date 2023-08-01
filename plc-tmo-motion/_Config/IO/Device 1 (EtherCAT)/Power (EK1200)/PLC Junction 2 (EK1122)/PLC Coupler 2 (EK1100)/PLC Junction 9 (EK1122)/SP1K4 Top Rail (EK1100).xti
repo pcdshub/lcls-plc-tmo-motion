@@ -19,10 +19,10 @@
 		<Box File="Term 10 (EL7041).xti" Id="10">
 			<EtherCAT PortABoxInfo="#x01000009"/>
 		</Box>
-		<Box File="SP1K4-EL7041-E5.xti" Id="242">
+		<Box File="FoilY-EL7041.xti" Id="242">
 			<EtherCAT PortABoxInfo="#x0100000a"/>
 		</Box>
-		<Box File="SP1K4-EL7031-E6.xti" Id="243">
+		<Box File="Thorlab-LenX-EL7031.xti" Id="243">
 			<EtherCAT PortABoxInfo="#x010000f2"/>
 		</Box>
 		<Box File="SP1K4-EL5042-E7.xti" Id="244">

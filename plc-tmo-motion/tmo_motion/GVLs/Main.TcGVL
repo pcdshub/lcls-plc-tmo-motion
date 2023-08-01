@@ -158,7 +158,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[TM2K4-EL5042-E3]^FB Inputs Channel 2^Position'}
     M31: DUT_MotionStage := (sName := 'TM2K4:ATM:MMS:X');
 
-    // SP1K4 11 Axes
+    // SP1K4 14 Axes
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:01
     '}
@@ -265,6 +265,26 @@ VAR_GLOBAL
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Thorlabs2
+		
+	//thorlab-lenX
+	{attribute 'pytmc' := '
+        pv: TMO:SPEC:MMS:12
+    '}
+    M43 : DUT_MotionStage := (
+        bHardwareEnable:=TRUE,
+        bPowerSelf:=TRUE,
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); 
+	//FOIL-Y
+	{attribute 'pytmc' := '
+        pv: TMO:SPEC:MMS:13
+    '}
+    M44 : DUT_MotionStage := (
+        bHardwareEnable:=TRUE,
+        bPowerSelf:=TRUE,
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); 
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
