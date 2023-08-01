@@ -2,24 +2,6 @@
 <TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNestedPlcProjDef">
 	<DataTypes>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
-			<BitSize>48</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>6</Elements>
-			</ArrayInfo>
-			<Format>
-				<Printf>%d.%d.%d.%d.%d.%d</Printf>
-				<Parameter>[0]</Parameter>
-				<Parameter>[1]</Parameter>
-				<Parameter>[2]</Parameter>
-				<Parameter>[3]</Parameter>
-				<Parameter>[4]</Parameter>
-				<Parameter>[5]</Parameter>
-			</Format>
-		</DataType>
-		<DataType>
 			<Name GUID="{4C3FC5AC-D5AA-44C6-AC5A-159774BA0F6D}" Namespace="MC" TcBaseType="true" HideType="true" IecDeclaration="DWORD;">NCTOPLC_AXIS_REF_STATE</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
@@ -1205,13 +1187,6 @@ External Setpoint Generation:
 			<Vars VarGrpType="1">
 				<Name>PlcTask Inputs</Name>
 				<Var>
-					<Name>LCLS_General.DefaultGlobals.stSys.I_EcatMaster1</Name>
-					<Comment>
-						<![CDATA[ AMS Net ID used for FB_EcatDiag, among others ]]>
-					</Comment>
-					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-				</Var>
-				<Var>
 					<Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2310,6 +2285,14 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_SP1K4.bHallInput1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bHallInput2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2528,22 +2511,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bHallInput1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL1High</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL1Low</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
 					<Comment>
 						<![CDATA[IO]]>
@@ -2555,11 +2522,11 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL2High</Name>
+					<Name>PRG_SP1K4.bTL1High</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL2Low</Name>
+					<Name>PRG_SP1K4.bTL1Low</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2675,6 +2642,14 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.iRaw</Name>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL2High</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL2Low</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_TM2K4.fbTM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -3428,7 +3403,7 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbXStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
 						<Name>AxisState</Name>
@@ -3477,7 +3452,56 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
 						<Name>AxisState</Name>
@@ -3526,7 +3550,56 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbZStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
 						<Name>AxisState</Name>
@@ -3573,6 +3646,55 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].bLimitForwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].bHome</Name>
+					<Comment>
+						<![CDATA[ NO Home Switch: TRUE if at home]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].bHardwareEnable</Name>
+					<Comment>
+						<![CDATA[ NC STO Input: TRUE if ok to move]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].nRawEncoderULINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for ULINT (Biss-C)]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].nRawEncoderUINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].nRawEncoderINT</Name>
+					<Comment>
+						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
+					</Comment>
+					<Type>INT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_3_PMPS_POST.fbArbiterIO.i_stCurrentBP</Name>
@@ -8314,16 +8436,37 @@ External Setpoint Generation:
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbXStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.fb_ZPS.fbZStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[2].bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[3].bBrakeRelease</Name>
+					<Comment>
+						<![CDATA[ NC Brake Output: TRUE to release brake]]>
+					</Comment>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_IN</Name>

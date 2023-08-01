@@ -24,7 +24,7 @@ TYPE ENUM_ZonePlate_States :
 	
 	
 	//TODO: is add all therest
-);
+) UINT;
 END_TYPE
 ]]></Declaration>
   </DUT>
