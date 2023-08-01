@@ -272,8 +272,8 @@ Main.M41.bLimitForwardEnable := nTL1HighCycles < nNumCyclesNeeded;
 Main.M41.bLimitBackwardEnable := nTL1LowCycles < nNumCyclesNeeded;
 Main.M42.bLimitForwardEnable := nTL2HighCycles < nNumCyclesNeeded;
 Main.M42.bLimitBackwardEnable := nTL2LowCycles < nNumCyclesNeeded;
-Main.M43.bLimitBackwardEnable := nTL2LowCycles < nNumCyclesNeeded;
-
+Main.M43.bLimitBackwardEnable := True;
+Main.M43.bLimitForwardEnable := True;
 ]]></ST>
     </Implementation>
   </POU>
