@@ -2331,6 +2331,8 @@ External Setpoint Generation:
 		<Axis File="YagTheta.xti" Id="40"/>
 		<Axis File="Thorlabs1.xti" Id="41"/>
 		<Axis File="Thorlabs2.xti" Id="42"/>
+		<Axis File="Thorlab-LenX.xti" Id="43"/>
+		<Axis File="FoilY.xti" Id="44"/>
 	</NC>
 	<Mappings>
 		<OwnerA Name="Axes^SL1K4-BOTTOM-M10">

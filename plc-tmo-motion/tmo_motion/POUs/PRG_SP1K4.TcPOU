@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SP1K4
+    <Declaration><![CDATA[ PROGRAM PRG_SP1K4
 VAR
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
@@ -17,6 +17,8 @@ VAR
     fbMotionYAGR: FB_MotionStage;
     fbMotionTL1: FB_MotionStage;
     fbMotionTL2: FB_MotionStage;
+	fbMotionTLX: FB_MotionStage;
+	fbMotionFoilY: FB_MotionStage;
     
 	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 1^Input'}
 	bHallInput1 AT %I* : BOOL;
@@ -240,6 +242,10 @@ fbMotionYAGR(stMotionStage:=Main.M40);
 // Thorlabs
 fbMotionTL1(stMotionStage:=Main.M41);
 fbMotionTL2(stMotionStage:=Main.M42);
+//Thorlab-LenX
+fbMotionTLX(stMotionStage:=Main.M43);
+//FOIL Y
+fbMotionFoilY(stMotionStage:=Main.M44);
 
 IF NOT bTL1High THEN
     nTL1HighCycles := MIN(nTL1HighCycles + 1, nNumCyclesNeeded);
@@ -266,6 +272,8 @@ Main.M41.bLimitForwardEnable := nTL1HighCycles < nNumCyclesNeeded;
 Main.M41.bLimitBackwardEnable := nTL1LowCycles < nNumCyclesNeeded;
 Main.M42.bLimitForwardEnable := nTL2HighCycles < nNumCyclesNeeded;
 Main.M42.bLimitBackwardEnable := nTL2LowCycles < nNumCyclesNeeded;
+Main.M43.bLimitBackwardEnable := True;
+Main.M43.bLimitForwardEnable := True;
 ]]></ST>
     </Implementation>
   </POU>
