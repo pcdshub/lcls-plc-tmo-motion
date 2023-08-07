@@ -9434,6 +9434,10 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M36.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M36.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^SP1K4 Top Rail (EK1100)^FoilY-EL7041">
+				<Link VarA="PlcTask Inputs^Main.M44.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M44.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^SP1K4 Top Rail (EK1100)^SP1K4-TL1-EL1124">
 				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL1High" VarB="Channel 1^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_SP1K4.bTL1Low" VarB="Channel 2^Input" AutoLink="true"/>
