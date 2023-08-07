@@ -209,7 +209,7 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate Z
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1'}
-                              
+
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:06
     '}
@@ -265,26 +265,29 @@ VAR_GLOBAL
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Thorlabs2
-		
-	//thorlab-lenX
-	{attribute 'pytmc' := '
+
+    //thorlab-lenX
+    {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:12
     '}
     M43 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); 
-	//FOIL-Y
-	{attribute 'pytmc' := '
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
+    //FOIL-Y
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 2'}
+
+    {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:13
     '}
     M44 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); 
-	
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
