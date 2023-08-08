@@ -162,131 +162,149 @@ VAR_GLOBAL
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:01
     '}
+    // Lens X (not use it after July 2023)
     M32 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Lens X
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilX-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[FoilX-EL7041]^STM Status^Status^Digital input 2'}
+                              .bLimitBackwardEnable:=TIIB[FoilX-EL7041]^STM Status^Status^Digital input 2'
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E2]^FB Inputs Channel 2^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:02
     '}
+    // solid atten X(Foil X)
     M33: DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // AL Foil X
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        sName := 'TMO:SPEC:MMS:02');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 1'
                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:03
     '}
+    // Zone Plate X
     M34 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
-        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate X
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        sName := 'TMO:SPEC:MMS:03');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 1';
                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E1]^FB Inputs Channel 2^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:04
     '}
+    // Zone Plate Y
     M35 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
-        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate Y
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        sName := 'TMO:SPEC:MMS:04');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 2';
                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E2]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:05
     '}
+    // Zone Plate Z
     M36 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
-        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION); // Zone Plate Z
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        sName := 'TMO:SPEC:MMS:05');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1'}
 
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:06
     '}
+    // Yag X
     M37 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);; // Yag X
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:07
     '}
+    // Yag Y
     M38 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Yag Y
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
 
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 1'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:08
     '}
+    // Yag Z
     M39 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Yag Z
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagTheta-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[YagTheta-EL7041]^STM Status^Status^Digital input 2'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:09
     '}
+    // Yag Theta
     M40 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Yag Theta
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:10
     '}
+    // Thorlabs1
     M41 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Thorlabs1
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:11
     '}
+    // Thorlabs2
     M42 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET); // Thorlabs2
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
 
-    //thorlab-lenX
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:12
     '}
+    //thorlab-lenX
     M43 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
-    //FOIL-Y
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 2'}
 
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 2';
+                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E7]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:13
     '}
+     //Solid att Y(FOIL-Y)
     M44 : DUT_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        sName := 'TMO:SPEC:MMS:13');
 
 END_VAR]]></Declaration>
   </GVL>
