@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{02255D21-1806-ED87-A7BB-328C74B83FB7}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{B793D80A-AA9E-744E-2567-C5D6094A4810}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -78398,7 +78398,8 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M32</Name>
-            <Comment> SP1K4 14 Axes</Comment>
+            <Comment> SP1K4 14 Axes
+ Lens X (not use it after July 2023)</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78434,7 +78435,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M33</Name>
-            <Comment> Lens X</Comment>
+            <Comment> solid atten X(Foil X)</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78453,6 +78454,10 @@ TODO: is add all therest</Comment>
               <SubItem>
                 <Name>.nHomingMode</Name>
                 <Value>15</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sName</Name>
+                <String>TMO:SPEC:MMS:02</String>
               </SubItem>
             </Default>
             <Properties>
@@ -78475,7 +78480,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M34</Name>
-            <Comment> AL Foil X</Comment>
+            <Comment> Zone Plate X</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78490,6 +78495,10 @@ TODO: is add all therest</Comment>
               <SubItem>
                 <Name>.nEnableMode</Name>
                 <Value>2</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sName</Name>
+                <String>TMO:SPEC:MMS:03</String>
               </SubItem>
             </Default>
             <Properties>
@@ -78512,7 +78521,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M35</Name>
-            <Comment> Zone Plate X</Comment>
+            <Comment> Zone Plate Y</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78527,6 +78536,10 @@ TODO: is add all therest</Comment>
               <SubItem>
                 <Name>.nEnableMode</Name>
                 <Value>2</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sName</Name>
+                <String>TMO:SPEC:MMS:04</String>
               </SubItem>
             </Default>
             <Properties>
@@ -78549,7 +78562,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M36</Name>
-            <Comment> Zone Plate Y</Comment>
+            <Comment> Zone Plate Z</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78564,6 +78577,10 @@ TODO: is add all therest</Comment>
               <SubItem>
                 <Name>.nEnableMode</Name>
                 <Value>2</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sName</Name>
+                <String>TMO:SPEC:MMS:05</String>
               </SubItem>
             </Default>
             <Properties>
@@ -78586,7 +78603,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M37</Name>
-            <Comment> Zone Plate Z</Comment>
+            <Comment> Yag X</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78627,7 +78644,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M38</Name>
-            <Comment> Yag X</Comment>
+            <Comment> Yag Y</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78668,7 +78685,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M39</Name>
-            <Comment> Yag Y</Comment>
+            <Comment> Yag Z</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78709,7 +78726,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M40</Name>
-            <Comment> Yag Z</Comment>
+            <Comment> Yag Theta</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78750,7 +78767,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M41</Name>
-            <Comment> Yag Theta</Comment>
+            <Comment> Thorlabs1</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78786,7 +78803,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M42</Name>
-            <Comment> Thorlabs1</Comment>
+            <Comment> Thorlabs2</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78822,8 +78839,7 @@ TODO: is add all therest</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M43</Name>
-            <Comment> Thorlabs2
-thorlab-lenX</Comment>
+            <Comment>thorlab-lenX</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78859,7 +78875,7 @@ thorlab-lenX</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M44</Name>
-            <Comment>FOIL-Y</Comment>
+            <Comment>Solid att Y(FOIL-Y)</Comment>
             <BitSize>25216</BitSize>
             <BaseType Namespace="lcls_twincat_motion">DUT_MotionStage</BaseType>
             <Default>
@@ -78878,6 +78894,10 @@ thorlab-lenX</Comment>
               <SubItem>
                 <Name>.nHomingMode</Name>
                 <Value>15</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sName</Name>
+                <String>TMO:SPEC:MMS:13</String>
               </SubItem>
             </Default>
             <Properties>
@@ -79633,11 +79653,11 @@ thorlab-lenX</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-08-07T12:10:07</Value>
+          <Value>2023-08-08T16:09:23</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>847872</Value>
+          <Value>851968</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>
