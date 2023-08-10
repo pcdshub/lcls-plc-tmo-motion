@@ -4,26 +4,26 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ENUM_ZonePlate_States :
 (
-	Unknown := 0,
+    Unknown := 0,
     OUT := 1,
-	Yag := 2,
-	FZP860_1 := 3,   //Ne1
-	FZP860_2 := 4,   //Ne2
-	FZP860_3 := 5,   //Ne3
-	FZP750_1 := 6,   //3w1
-	FZP750_2 := 7,   //3w2
-	FZP530_1 := 8,   //o1
-	FZP530_2 := 9,   //o2
-	FZP460_1 := 10,   //Ti1
-	FZP460_2 := 11,   //Ti2
-	FZP410_1 := 12,   //N1
-	FZP410_2 := 13,   //N2
-	FZP290_1 := 14,   // C1
-	FZP290_2 := 15   //C2
-//	FZP250_1 := 16    //w1  ?
-	
-	
-	//TODO: is add all therest
+    Yag := 2,
+    FZP860_1 := 3,   //Ne1
+    FZP860_2 := 4,   //Ne2
+    FZP860_3 := 5,   //Ne3
+    FZP750_1 := 6,   //3w1
+    FZP750_2 := 7,   //3w2
+    FZP530_1 := 8,   //o1
+    FZP530_2 := 9,   //o2
+    FZP460_1 := 10,   //Ti1
+    FZP460_2 := 11,   //Ti2
+    FZP410_1 := 12,   //N1
+    FZP410_2 := 13,   //N2
+    FZP290_1 := 14,   // C1
+    FZP290_2 := 15   //C2
+//	FZP250_1 := 16    //w1
+
+
+
 ) UINT;
 END_TYPE
 ]]></Declaration>

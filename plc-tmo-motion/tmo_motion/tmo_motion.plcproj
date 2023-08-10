@@ -21,6 +21,9 @@
     <CompilerDefines>K</CompilerDefines>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\ENUM_SolidAttenuator_Staes.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ENUM_ZonePlate_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
