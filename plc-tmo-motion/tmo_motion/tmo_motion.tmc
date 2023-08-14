@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{5B46E39C-4ABC-F349-FFB0-90A893E75B7E}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{57922ABF-CB1F-4436-D907-6EC80DF55899}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -52688,11 +52688,11 @@ Digital outputs</Comment>
         <Text>FZP290_2</Text>
         <Enum>15</Enum>
         <Comment>C2
-	FZP250_1 := 16    //w1  </Comment>
+	FZP250_1 := 16    //w1</Comment>
       </EnumInfo>
     </DataType>
     <DataType>
-      <Name>ENUM_SolidAttenuator_Staes</Name>
+      <Name>ENUM_SolidAttenuator_States</Name>
       <BitSize>16</BitSize>
       <BaseType>UINT</BaseType>
       <EnumInfo>
@@ -59492,7 +59492,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>85458944</ByteSize>
+          <ByteSize>85524480</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
             <BitSize>2048</BitSize>
@@ -68491,7 +68491,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>85458944</ByteSize>
+          <ByteSize>85524480</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -71083,7 +71083,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>85458944</ByteSize>
+          <ByteSize>85524480</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -78347,7 +78347,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>PRG_SP1K4.att_enumSet</Name>
             <BitSize>16</BitSize>
-            <BaseType>ENUM_SolidAttenuator_Staes</BaseType>
+            <BaseType>ENUM_SolidAttenuator_States</BaseType>
             <Properties>
               <Property>
                 <Name>pytmc</Name>
@@ -78362,7 +78362,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>PRG_SP1K4.att_enumGet</Name>
             <BitSize>16</BitSize>
-            <BaseType>ENUM_SolidAttenuator_Staes</BaseType>
+            <BaseType>ENUM_SolidAttenuator_States</BaseType>
             <Properties>
               <Property>
                 <Name>pytmc</Name>
@@ -80567,7 +80567,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>85458944</ByteSize>
+          <ByteSize>85524480</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -80647,7 +80647,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-08-10T14:32:44</Value>
+          <Value>2023-08-14T10:14:06</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

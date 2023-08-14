@@ -78,12 +78,12 @@ VAR
         pv: SP1K4:ATT:STATE:SET
         io: io
     '}
-    att_enumSet: ENUM_SolidAttenuator_Staes;
+    att_enumSet: ENUM_SolidAttenuator_States;
      {attribute 'pytmc' := '
         pv: SP1K4:ATT:STATE:GET
         io: io
     '}
-    att_enumGet: ENUM_SolidAttenuator_Staes;
+    att_enumGet: ENUM_SolidAttenuator_States;
     fbATTSetup: FB_StateSetupHelper;
     fbATTDefault: ST_PositionState := (
         fDelta:=0.5,
@@ -175,7 +175,7 @@ fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.FZP290_2], sName:='F
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.FZP290_2], sName:='FZP-290-C2', fPosition:=0);
 
 
-bAttIn := att_enumGet <> ENUM_SolidAttenuator_Staes.OUT AND  att_enumGet <> ENUM_SolidAttenuator_Staes.Unknown;
+bAttIn := att_enumGet <> ENUM_SolidAttenuator_States.OUT AND  att_enumGet <> ENUM_SolidAttenuator_States.Unknown;
 
 IF bAttIn THEN
     // Attenuator is in, pick the ATT_IN states
@@ -214,6 +214,7 @@ ELSE
     aZPXStates[ENUM_ZonePlate_States.FZP290_2].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_OUT';
 END_IF
 
+
 fbZPStates(
     stMotionStage1:=Main.M34,
     stMotionStage2:=Main.M35,
@@ -250,26 +251,33 @@ fbMotionTLX(stMotionStage:=Main.M43);
 //FOIL Y (Solid-ATT-Y)
 fbMotionFoilY(stMotionStage:=Main.M44);
 
-
+// SP1K4-SOLID-ATT PMPS
 fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.OUT], sName:='OUT', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.OUT], sName:='OUT', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.Target1], sName:='TARGET1', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.Target1], sName:='TARGET1', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.Target2], sName:='TARGET2', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.Target2], sName:='TARGET2', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.Target3], sName:='TARGET3', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.Target3], sName:='TARGET3', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.Target4], sName:='TARGET4', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.Target4], sName:='TARGET4', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_Staes.Target5], sName:='TARGET5', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_Staes.Target5], sName:='TARGET5', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+
+aATTXStates[ENUM_SolidAttenuator_States.OUT].stPMPS.sPmpsState := 'SP1K4:ATT-OUT';
+aATTXStates[ENUM_SolidAttenuator_States.Target1].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET1';
+aATTXStates[ENUM_SolidAttenuator_States.Target2].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET2';
+aATTXStates[ENUM_SolidAttenuator_States.Target3].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET3';
+aATTXStates[ENUM_SolidAttenuator_States.Target4].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET4';
+aATTXStates[ENUM_SolidAttenuator_States.Target5].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET5';
 
 fbATTStates(
     stMotionStage1:=Main.M33,

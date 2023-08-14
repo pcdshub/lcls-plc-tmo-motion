@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
-  <DUT Name="ENUM_SolidAttenuator_Staes" Id="{a9b56f49-37af-4519-bf3c-f4ee10056eb1}">
+  <DUT Name="ENUM_SolidAttenuator_States" Id="{a9b56f49-37af-4519-bf3c-f4ee10056eb1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
-TYPE ENUM_SolidAttenuator_Staes :
+TYPE ENUM_SolidAttenuator_States :
 (
 
     Unknown := 0,
