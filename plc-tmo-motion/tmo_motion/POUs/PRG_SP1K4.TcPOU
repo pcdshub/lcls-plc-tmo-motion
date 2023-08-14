@@ -9,19 +9,19 @@ VAR
     fbMotionZPY: FB_MotionStage;
     fbMotionZPZ: FB_MotionStage;
     fbMotionYAGX: FB_MotionStage;
-    fbMotionYAGY: FB_MotionStage;               
+    fbMotionYAGY: FB_MotionStage;
     fbMotionYAGZ: FB_MotionStage;
     fbMotionYAGR: FB_MotionStage;
     fbMotionTL1: FB_MotionStage;
     fbMotionTL2: FB_MotionStage;
-	fbMotionTLX: FB_MotionStage;
-	fbMotionFoilY: FB_MotionStage;
-    
-	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 1^Input'}
-	bHallInput1 AT %I* : BOOL;
+    fbMotionTLX: FB_MotionStage;
+    fbMotionFoilY: FB_MotionStage;
 
-	{attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 2^Input'}
-	bHallInput2 AT %I* : BOOL;
+    {attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 1^Input'}
+    bHallInput1 AT %I* : BOOL;
+
+    {attribute 'TcLinkTo' := 'TIIB[LensX_EL1004]^Channel 2^Input'}
+    bHallInput2 AT %I* : BOOL;
 
     {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL1-EL1124]^Channel 1^Input'}
     bTL1High AT %I*: BOOL;
@@ -35,39 +35,68 @@ VAR
     {attribute 'TcLinkTo' := 'TIIB[SP1K4-TL2-EL1124]^Channel 2^Input'}
     bTL2Low AT %I*: BOOL;
     nTL2LowCycles: UINT;
-    
+
     nNumCyclesNeeded: UINT := 100;
 
-	bInit: BOOL :=TRUE;
+    bInit: BOOL :=TRUE;
 
-	// Placeholder, later this should be TRUE if the attenuator is in and FALSE otherwise
-	bAttIn: BOOL;
-	
-	////ZP states start
-	{attribute 'pytmc' := '
+    // Placeholder, later this should be TRUE if the attenuator is in and FALSE otherwise
+    bAttIn: BOOL;
+
+    ////ZP states start
+    {attribute 'pytmc' := '
         pv: SP1K4:FZP
     '}
-	fbZPStates: FB_PositionStatePMPS3D;
-	{attribute 'pytmc' := '
+    fbZPStates: FB_PositionStatePMPS3D;
+    {attribute 'pytmc' := '
         pv: SP1K4:FZP:STATE:SET
         io: io
     '}
     zp_enumSet: ENUM_ZonePlate_States;
-	 {attribute 'pytmc' := '
+     {attribute 'pytmc' := '
         pv: SP1K4:FZP:STATE:GET
         io: io
     '}
     zp_enumGet: ENUM_ZonePlate_States;
-	fbZPSetup: FB_StateSetupHelper;
-	fbZPDefault: ST_PositionState := (
-		fDelta:=0.5,
-		fVelocity:=1,
-		bMoveOk:=TRUE,
-		bValid:=TRUE
-	);
-	aZPXStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
-	aZPYStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
-	aZPZStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbZPSetup: FB_StateSetupHelper;
+    fbZPDefault: ST_PositionState := (
+        fDelta:=0.5,
+        fVelocity:=1,
+        bMoveOk:=TRUE,
+        bValid:=TRUE
+    );
+    aZPXStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    aZPYStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    aZPZStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+
+    ////Solid-ATT states start
+    {attribute 'pytmc' := '
+        pv: SP1K4:ATT
+    '}
+    fbATTStates: FB_PositionStatePMPS2D;
+    {attribute 'pytmc' := '
+        pv: SP1K4:ATT:STATE:SET
+        io: io
+    '}
+    att_enumSet: ENUM_SolidAttenuator_States;
+     {attribute 'pytmc' := '
+        pv: SP1K4:ATT:STATE:GET
+        io: io
+    '}
+    att_enumGet: ENUM_SolidAttenuator_States;
+    fbATTSetup: FB_StateSetupHelper;
+    fbATTDefault: ST_PositionState := (
+        fDelta:=0.5,
+        fVelocity:=1,
+        bMoveOk:=TRUE,
+        bValid:=TRUE
+    );
+    aATTXStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    aATTYStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+
+
+
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -77,8 +106,7 @@ Main.M32.bLimitForwardEnable := NOT bHallInput1;
 Main.M32.bLimitBackwardEnable := NOT bHallInput2;
 fbMotionLensX(stMotionStage:=Main.M32);
 
-// AL Foil X
-fbMotionFoilX(stMotionStage:=Main.M33);
+
 //Zone Plate
 fbMotionZPX(stMotionStage:=Main.M34);
 fbMotionZPY(stMotionStage:=Main.M35);
@@ -147,240 +175,132 @@ fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.FZP290_2], sName:='F
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.FZP290_2], sName:='FZP-290-C2', fPosition:=0);
 
 
-
+bAttIn := att_enumGet <> ENUM_SolidAttenuator_States.OUT AND  att_enumGet <> ENUM_SolidAttenuator_States.Unknown;
 
 IF bAttIn THEN
-	// Attenuator is in, pick the ATT_IN states
-	aZPXStates[ENUM_ZonePlate_States.OUT].stPMPS.sPmpsState := 'SP1K4:FZP-OUT';
-	aZPXStates[ENUM_ZonePlate_States.Yag].stPMPS.sPmpsState := 'SP1K4:FZP-YAG';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_1].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_2].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne2_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_3].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne3_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP750_1].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP750_2].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS2_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP530_1].stPMPS.sPmpsState := 'SP1K4:FZP-530-O1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP530_2].stPMPS.sPmpsState := 'SP1K4:FZP-530-O2_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP460_1].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP460_2].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti2_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP410_1].stPMPS.sPmpsState := 'SP1K4:FZP-410-N1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP410_2].stPMPS.sPmpsState := 'SP1K4:FZP-410-N2_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP290_1].stPMPS.sPmpsState := 'SP1K4:FZP-290-C1_ATT_IN';
-	aZPXStates[ENUM_ZonePlate_States.FZP290_2].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_IN';
-	
+    // Attenuator is in, pick the ATT_IN states
+    aZPXStates[ENUM_ZonePlate_States.OUT].stPMPS.sPmpsState := 'SP1K4:FZP-OUT';
+    aZPXStates[ENUM_ZonePlate_States.Yag].stPMPS.sPmpsState := 'SP1K4:FZP-YAG';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_1].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_2].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne2_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_3].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne3_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP750_1].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP750_2].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS2_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP530_1].stPMPS.sPmpsState := 'SP1K4:FZP-530-O1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP530_2].stPMPS.sPmpsState := 'SP1K4:FZP-530-O2_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP460_1].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP460_2].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti2_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP410_1].stPMPS.sPmpsState := 'SP1K4:FZP-410-N1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP410_2].stPMPS.sPmpsState := 'SP1K4:FZP-410-N2_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP290_1].stPMPS.sPmpsState := 'SP1K4:FZP-290-C1_ATT_IN';
+    aZPXStates[ENUM_ZonePlate_States.FZP290_2].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_IN';
+
 ELSE
-	// Attenuator is out, pick the ATT_OUT states
-	aZPXStates[ENUM_ZonePlate_States.OUT].stPMPS.sPmpsState := 'SP1K4:FZP-OUT';
-	aZPXStates[ENUM_ZonePlate_States.Yag].stPMPS.sPmpsState := 'SP1K4:FZP-YAG';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_1].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_2].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne2_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP860_3].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne3_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP750_1].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP750_2].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS2_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP530_1].stPMPS.sPmpsState := 'SP1K4:FZP-530-O1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP530_2].stPMPS.sPmpsState := 'SP1K4:FZP-530-O2_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP460_1].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP460_2].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti2_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP410_1].stPMPS.sPmpsState := 'SP1K4:FZP-410-N1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP410_2].stPMPS.sPmpsState := 'SP1K4:FZP-410-N2_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP290_1].stPMPS.sPmpsState := 'SP1K4:FZP-290-C1_ATT_OUT';
-	aZPXStates[ENUM_ZonePlate_States.FZP290_2].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_OUT';
+    // Attenuator is out, pick the ATT_OUT states
+    aZPXStates[ENUM_ZonePlate_States.OUT].stPMPS.sPmpsState := 'SP1K4:FZP-OUT';
+    aZPXStates[ENUM_ZonePlate_States.Yag].stPMPS.sPmpsState := 'SP1K4:FZP-YAG';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_1].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_2].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP860_3].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne3_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP750_1].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP750_2].stPMPS.sPmpsState := 'SP1K4:FZP-750-XPS2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP530_1].stPMPS.sPmpsState := 'SP1K4:FZP-530-O1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP530_2].stPMPS.sPmpsState := 'SP1K4:FZP-530-O2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP460_1].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP460_2].stPMPS.sPmpsState := 'SP1K4:FZP-460-Ti2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP410_1].stPMPS.sPmpsState := 'SP1K4:FZP-410-N1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP410_2].stPMPS.sPmpsState := 'SP1K4:FZP-410-N2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP290_1].stPMPS.sPmpsState := 'SP1K4:FZP-290-C1_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP290_2].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_OUT';
 END_IF
+
 
 fbZPStates(
-	stMotionStage1:=Main.M34,
-	stMotionStage2:=Main.M35,
-	stMotionStage3:=Main.M36,
-	astPositionState1:=aZPXStates,
-	astPositionState2:=aZPYStates,
-	astPositionState3:=aZPZStates,
-	eEnumSet:=zp_enumSet,
-	eEnumGet:=zp_enumGet,
-	fbFFHWO:=fbFastFaultOutput1,
-	fbArbiter:=fbArbiter,
-	bEnableMotion:=TRUE,
-	bEnableBeamParams:=TRUE,
-	bEnablePositionLimits:=TRUE,
-	sDeviceName:='SP1K4:FZP',
-	sTransitionKey:='SP1K4:FZP-TRANSITION',
-);
-	
-
-
-{*
- IF (bInit) THEN
-	bInit := FALSE;
-	fb_ZPS.fbStates_x.stout.fPosition := -80;
-	fb_ZPS.fbStates_y.stout.fPosition := -7.7;
-	//fbMotionZPZ.stOut.fPosition := 11;
-//	fb_ZPS.fbStates_x.stOut.nRequestAssertionID := 16#5300;
-//	fb_ZPS.fbStates_y.stOut.nRequestAssertionID := 16#5301;
-	fb_ZPS.fbStates_x.stOut.stPMPS.sPmpsState := 'SP1K4:FZP-OUT_X';
-	fb_ZPS.fbStates_y.stOut.stPMPS.sPmpsState := 'SP1K4:FZP-OUT_Y';
-	
-	fb_ZPS.fbStates_x.stYag.fPosition := -17;
-	fb_ZPS.fbStates_y.stYag.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.stYag.nRequestAssertionID := 16#5302;
-//	fb_ZPS.fbStates_y.stYag.nRequestAssertionID := 16#5303;
-	fb_ZPS.fbStates_x.stYag.stPMPS.sPmpsState := 'SP1K4:FZP-YAG_X';
-	fb_ZPS.fbStates_y.stYag.stPMPS.sPmpsState := 'SP1K4:FZP-YAG_Y';
-	
-	fb_ZPS.fbStates_x.stNe1.fPosition := +13;
-	fb_ZPS.fbStates_y.stNe1.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stNe1.nRequestAssertionID := 16#5304;
-//	fb_ZPS.fbStates_y.stNe1.nRequestAssertionID := 16#5305;
-	fb_ZPS.fbStates_x.stNe1.stPMPS.sPmpsState := 'SP1K4:FZP-860_1_X';
-	fb_ZPS.fbStates_y.stNe1.stPMPS.sPmpsState := 'SP1K4:FZP-860_1_Y';
-	
-	fb_ZPS.fbStates_x.stNe2.fPosition := +3;
-	fb_ZPS.fbStates_y.stNe2.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.stNe2.nRequestAssertionID := 16#5306;
-//	fb_ZPS.fbStates_y.stNe2.nRequestAssertionID := 16#5307;
-	fb_ZPS.fbStates_x.stNe2.stPMPS.sPmpsState := 'SP1K4:FZP-860_2_X';
-	fb_ZPS.fbStates_y.stNe2.stPMPS.sPmpsState := 'SP1K4:FZP-860_2_Y';
-	
-	fb_ZPS.fbStates_x.stNe3.fPosition := +13;
-	fb_ZPS.fbStates_y.stNe3.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.stNe3.nRequestAssertionID := 16#5308;
-//	fb_ZPS.fbStates_y.stNe3.nRequestAssertionID := 16#5309;
-	fb_ZPS.fbStates_x.stNe3.stPMPS.sPmpsState := 'SP1K4:FZP-860_3_X';
-	fb_ZPS.fbStates_y.stNe3.stPMPS.sPmpsState := 'SP1K4:FZP-860_3_Y';
-	
-	fb_ZPS.fbStates_x.st3w1.fPosition := -17;
-	fb_ZPS.fbStates_y.st3w1.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.st3w1.nRequestAssertionID := 16#5310;
-//	fb_ZPS.fbStates_y.st3w1.nRequestAssertionID := 16#5311;
-	fb_ZPS.fbStates_x.st3w1.stPMPS.sPmpsState := 'SP1K4:FZP-750_1_X';
-	fb_ZPS.fbStates_y.st3w1.stPMPS.sPmpsState := 'SP1K4:FZP-750_1_Y';
-	
-	fb_ZPS.fbStates_x.st3w2.fPosition := -7;
-	fb_ZPS.fbStates_y.st3w2.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.st3w2.nRequestAssertionID := 16#5312;
-//	fb_ZPS.fbStates_y.st3w2.nRequestAssertionID := 16#5313;
-	fb_ZPS.fbStates_x.st3w2.stPMPS.sPmpsState := 'SP1K4:FZP-750_2_X';
-	fb_ZPS.fbStates_y.st3w2.stPMPS.sPmpsState := 'SP1K4:FZP-750_2_Y';
-	
-	fb_ZPS.fbStates_x.stO1.fPosition := -27;
-	fb_ZPS.fbStates_y.stO1.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stO1.nRequestAssertionID := 16#5314;
-//	fb_ZPS.fbStates_y.stO1.nRequestAssertionID := 16#5315;
-	fb_ZPS.fbStates_x.stO1.stPMPS.sPmpsState := 'SP1K4:FZP-530_1_X';
-	fb_ZPS.fbStates_y.stO1.stPMPS.sPmpsState := 'SP1K4:FZP-530_1_Y';
-	
-	fb_ZPS.fbStates_x.stO2.fPosition := -17;
-	fb_ZPS.fbStates_y.stO2.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stO2.nRequestAssertionID := 16#5316;
-//	fb_ZPS.fbStates_y.stO2.nRequestAssertionID := 16#5317;
-	fb_ZPS.fbStates_x.stO2.stPMPS.sPmpsState := 'SP1K4:FZP-530_2_X';
-	fb_ZPS.fbStates_y.stO2.stPMPS.sPmpsState := 'SP1K4:FZP-530_2_Y';
-	
-	fb_ZPS.fbStates_x.stTi1.fPosition := +23;
-	fb_ZPS.fbStates_y.stTi1.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.stTi1.nRequestAssertionID := 16#5318;
-//	fb_ZPS.fbStates_y.stTi1.nRequestAssertionID := 16#5319;
-	fb_ZPS.fbStates_x.stTi1.stPMPS.sPmpsState := 'SP1K4:FZP-460_1_X';
-	fb_ZPS.fbStates_y.stTi1.stPMPS.sPmpsState := 'SP1K4:FZP-460_1_Y';
-	
-	fb_ZPS.fbStates_x.stTi2.fPosition := +33;
-	fb_ZPS.fbStates_y.stTi2.fPosition := -2.7;
-//	fb_ZPS.fbStates_x.stTi2.nRequestAssertionID := 16#5320;
-//	fb_ZPS.fbStates_y.stTi2.nRequestAssertionID := 16#5321;
-	fb_ZPS.fbStates_x.stTi2.stPMPS.sPmpsState := 'SP1K4:FZP-460_2_X';
-	fb_ZPS.fbStates_y.stTi2.stPMPS.sPmpsState := 'SP1K4:FZP-460_2_Y';
-	
-	fb_ZPS.fbStates_x.stN1.fPosition := +23;
-	fb_ZPS.fbStates_y.stN1.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stN1.nRequestAssertionID := 16#5322;
-//	fb_ZPS.fbStates_y.stN1.nRequestAssertionID := 16#5323;
-	fb_ZPS.fbStates_x.stN1.stPMPS.sPmpsState := 'SP1K4:FZP-410_1_X';
-	fb_ZPS.fbStates_y.stN1.stPMPS.sPmpsState := 'SP1K4:FZP-410_1_Y';
-	
-	fb_ZPS.fbStates_x.stN2.fPosition := +33;
-	fb_ZPS.fbStates_y.stN2.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stN2.nRequestAssertionID := 16#5324;
-//	fb_ZPS.fbStates_y.stN2.nRequestAssertionID := 16#5325;
-	fb_ZPS.fbStates_x.stN2.stPMPS.sPmpsState := 'SP1K4:FZP-410_2_X';
-	fb_ZPS.fbStates_y.stN2.stPMPS.sPmpsState := 'SP1K4:FZP-410_2_Y';
-	
-	fb_ZPS.fbStates_x.stC1.fPosition := -7;
-	fb_ZPS.fbStates_y.stC1.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stC1.nRequestAssertionID := 16#5326;
-//	fb_ZPS.fbStates_y.stC1.nRequestAssertionID := 16#5327;
-	fb_ZPS.fbStates_x.stC1.stPMPS.sPmpsState := 'SP1K4:FZP-290_1_X';
-	fb_ZPS.fbStates_y.stC1.stPMPS.sPmpsState := 'SP1K4:FZP-290_1_Y';
-	
-	fb_ZPS.fbStates_x.stC2.fPosition := +3;
-	fb_ZPS.fbStates_y.stC2.fPosition := -12.7;
-//	fb_ZPS.fbStates_x.stC2.nRequestAssertionID := 16#5328;
-//	fb_ZPS.fbStates_y.stC2.nRequestAssertionID := 16#5329;
-	fb_ZPS.fbStates_x.stC2.stPMPS.sPmpsState := 'SP1K4:FZP-290_2_X';
-	fb_ZPS.fbStates_y.stC2.stPMPS.sPmpsState := 'SP1K4:FZP-290_2_Y';
-	
-	
-	
-		//TODO write all details for every state
-END_IF
-//TODO Give all positions
-fb_ZPS(
-	stXStage := Main.M34,
-	stYStage := Main.M35, 
-	stZStage := Main.M36,
-	fbArbiter:= fbArbiter, 
-	fbFFHWO:= fbFastFaultOutput1,
- //   sPmpsDeviceName := 'SP1K4:FZP',
-//	sTransitionKey :=  
-(*	bEnable:= TRUE, 
-	bReset:= , 
-	bError=> , 
-	nErrorId=> , 
-	sErrorMessage=> , 
-	bBusy=> , 
-	bDone=> , 
-	fbArbiter:= fbArbiter, 
-	fbFFHWO:= fbFastFaultOutput1, 
-	stTransitionBeam:= , 
-	nTransitionAssertionID:= , 
-	nUnknownAssertionID:= , 
-	bArbiterEnabled:= , 
-	tArbiterTimeout:= , 
-	bMoveOnArbiterTimeout:= , 
-	fStateBoundaryDeadband:= , 
-	bBPOKAutoReset:= , 
-	enumSet:= zp_enumSet , 
-	stOut:=stOut, 
-	stYag:=stYag , 
-	stNe1:= , 
-	stNe2:= , 
-	stNe3:= , 
-	st3w1:= , 
-	st3w2:= , 
-	stO2:= , 
-	stO1:= , 
-	stTi1:= , 
-	stTi2:= , 
-	stN1:= , 
-	stN2:= , 
-	stC1:= , 
-	stC2:= , 
-	enumGet=> *)
+    stMotionStage1:=Main.M34,
+    stMotionStage2:=Main.M35,
+    stMotionStage3:=Main.M36,
+    astPositionState1:=aZPXStates,
+    astPositionState2:=aZPYStates,
+    astPositionState3:=aZPZStates,
+    eEnumSet:=zp_enumSet,
+    eEnumGet:=zp_enumGet,
+    fbFFHWO:=fbFastFaultOutput1,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=TRUE,
+    bEnableBeamParams:=TRUE,
+    bEnablePositionLimits:=TRUE,
+    sDeviceName:='SP1K4:FZP',
+    sTransitionKey:='SP1K4:FZP-TRANSITION',
 );
 
 
-*}
-
+// Foil X (Solid-ATT-X)
+fbMotionFoilX(stMotionStage:=Main.M33);
 
 
 // YAG
 fbMotionYAGX(stMotionStage:=Main.M37);
 fbMotionYAGY(stMotionStage:=Main.M38);
 fbMotionYAGZ(stMotionStage:=Main.M39);
-fbMotionYAGR(stMotionStage:=Main.M40);	
+fbMotionYAGR(stMotionStage:=Main.M40);
 // Thorlabs
 fbMotionTL1(stMotionStage:=Main.M41);
 fbMotionTL2(stMotionStage:=Main.M42);
 //Thorlab-LenX
 fbMotionTLX(stMotionStage:=Main.M43);
-//FOIL Y
+//FOIL Y (Solid-ATT-Y)
 fbMotionFoilY(stMotionStage:=Main.M44);
+
+// SP1K4-SOLID-ATT PMPS
+fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+
+aATTXStates[ENUM_SolidAttenuator_States.OUT].stPMPS.sPmpsState := 'SP1K4:ATT-OUT';
+aATTXStates[ENUM_SolidAttenuator_States.Target1].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET1';
+aATTXStates[ENUM_SolidAttenuator_States.Target2].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET2';
+aATTXStates[ENUM_SolidAttenuator_States.Target3].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET3';
+aATTXStates[ENUM_SolidAttenuator_States.Target4].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET4';
+aATTXStates[ENUM_SolidAttenuator_States.Target5].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET5';
+
+fbATTStates(
+    stMotionStage1:=Main.M33,
+    stMotionStage2:=Main.M44,
+    astPositionState1:=aATTXStates,
+    astPositionState2:=aATTYStates,
+    eEnumSet:=att_enumSet,
+    eEnumGet:=att_enumGet,
+    fbFFHWO:=fbFastFaultOutput1,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=TRUE,
+    bEnableBeamParams:=TRUE,
+    bEnablePositionLimits:=TRUE,
+    sDeviceName:='SP1K4:ATT',
+    sTransitionKey:='SP1K4:ATT-TRANSITION',
+);
+
+
+
+
+
+
+
 
 IF NOT bTL1High THEN
     nTL1HighCycles := MIN(nTL1HighCycles + 1, nNumCyclesNeeded);
