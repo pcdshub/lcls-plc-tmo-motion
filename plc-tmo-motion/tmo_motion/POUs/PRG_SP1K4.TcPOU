@@ -81,7 +81,7 @@ VAR
     att_enumSet: ENUM_SolidAttenuator_States;
      {attribute 'pytmc' := '
         pv: SP1K4:ATT:STATE:GET
-        io: io
+        io: i
     '}
     att_enumGet: ENUM_SolidAttenuator_States;
     fbATTSetup: FB_StateSetupHelper;
