@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{57922ABF-CB1F-4436-D907-6EC80DF55899}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{019B9B34-B5E0-94EB-1305-41F0A47AF844}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -78368,7 +78368,7 @@ Digital outputs</Comment>
                 <Name>pytmc</Name>
                 <Value>
         pv: SP1K4:ATT:STATE:GET
-        io: io
+        io: i
     </Value>
               </Property>
             </Properties>
@@ -80647,7 +80647,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-08-14T10:14:06</Value>
+          <Value>2023-08-16T08:57:16</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
