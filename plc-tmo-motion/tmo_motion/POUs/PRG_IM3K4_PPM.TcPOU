@@ -53,8 +53,8 @@ fbIM3K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M15,
-	sPmpsDeviceName := 'IM3K4:PPM',
-	sTransitionKey := 'IM3K4:PPM-TRANSITION',
+    sPmpsDeviceName := 'IM3K4:PPM',
+    sTransitionKey := 'IM3K4:PPM-TRANSITION',
 );]]></ST>
     </Implementation>
   </POU>

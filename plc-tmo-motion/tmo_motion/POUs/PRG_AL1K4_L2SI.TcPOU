@@ -29,8 +29,8 @@ fbAL1K4(
     stYStage := Main.M1,
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
-	sPmpsDeviceName := 'AL1K4:L2SI',
-	sTransitionKey := 'AL1K4:L2SI-TRANSITION',
+    sPmpsDeviceName := 'AL1K4:L2SI',
+    sTransitionKey := 'AL1K4:L2SI-TRANSITION',
 );]]></ST>
     </Implementation>
   </POU>

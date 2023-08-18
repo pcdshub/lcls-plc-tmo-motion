@@ -3,7 +3,7 @@
   <POU Name="PRG_PF2K4_WFS_TARGET" Id="{eca3a9b8-cbcf-48fb-b835-0fd9af0cb164}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_PF2K4_WFS_TARGET
 VAR
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: PF2K4:WFS
         io: io
     '}
@@ -62,7 +62,7 @@ fbPF2K4(
     stYStage := Main.M28,
     stZStage := Main.M29,
     sPmpsDeviceName := 'PF2K4:WFS',
-	sTransitionKey := 'PF2K4:WFS-TRANSITION',
+    sTransitionKey := 'PF2K4:WFS-TRANSITION',
 );
 ]]></ST>
     </Implementation>

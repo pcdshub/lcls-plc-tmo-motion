@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ENUM_TM2K4_States :
 (
-	// Adapted from ENUM_ATM_States to add TARGET6
+    // Adapted from ENUM_ATM_States to add TARGET6
 
     Unknown := 0,
     OUT := 1,
@@ -12,7 +12,7 @@ TYPE ENUM_TM2K4_States :
     TARGET2 := 3,
     TARGET3 := 4,
     YAG := 5,
-	DIODE := 6
+    DIODE := 6
 );
 END_TYPE
 ]]></Declaration>
