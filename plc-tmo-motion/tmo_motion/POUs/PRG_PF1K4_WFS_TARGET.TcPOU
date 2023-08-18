@@ -63,7 +63,7 @@ fbPF1K4(
     stYStage := Main.M18,
     stZStage := Main.M19,
     sPmpsDeviceName := 'PF1K4:WFS',
-	sTransitionKey := 'PF1K4:WFS-TRANSITION',
+    sTransitionKey := 'PF1K4:WFS-TRANSITION',
 );
 ]]></ST>
     </Implementation>

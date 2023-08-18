@@ -20,9 +20,9 @@ VAR_INPUT
     stTarget2: DUT_PositionState;
     stTarget3: DUT_PositionState;
     stTarget4: DUT_PositionState;   // target 4 is YAG
-	stTarget5: DUT_PositionState;    // target 5 is Diode
+    stTarget5: DUT_PositionState;    // target 5 is Diode
     sPmpsDeviceName: STRING;
-	sTransitionKey: STRING;
+    sTransitionKey: STRING;
 END_VAR
 VAR
     fbYStage: FB_MotionStage;
@@ -67,7 +67,7 @@ fbStates(
     stTarget2:=stTarget2,
     stTarget3:=stTarget3,
     stTarget4:=stTarget4,
-	stTarget5:=stTarget5,
+    stTarget5:=stTarget5,
 );
 
 fbThermoCouple1();]]></ST>

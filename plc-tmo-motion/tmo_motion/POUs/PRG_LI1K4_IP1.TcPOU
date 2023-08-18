@@ -10,7 +10,7 @@ VAR
     fbLI1K4: FB_LIC;
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
-    
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -46,7 +46,7 @@ fbLI1K4(
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M20,
     sPmpsDeviceName := 'LI1K4:IP1',
-	sTransitionKey := 'LI1K4:IP1-TRANSITION',
+    sTransitionKey := 'LI1K4:IP1-TRANSITION',
 );
 ]]></ST>
     </Implementation>
