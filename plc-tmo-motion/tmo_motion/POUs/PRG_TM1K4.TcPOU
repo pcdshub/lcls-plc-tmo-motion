@@ -62,8 +62,8 @@ fbTM1K4(
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M21,
     stXStage := Main.M22,
-	sPmpsDeviceName := 'TM1K4:ATM',
-	sTransitionKey := 'TM1K4:ATM-TRANSITION',
+    sPmpsDeviceName := 'TM1K4:ATM',
+    sTransitionKey := 'TM1K4:ATM-TRANSITION',
 );
 ]]></ST>
     </Implementation>

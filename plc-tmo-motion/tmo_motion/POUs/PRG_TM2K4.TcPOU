@@ -3,7 +3,7 @@
   <POU Name="PRG_TM2K4" Id="{37b34b48-9c31-400a-af8d-201b93d6c030}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_TM2K4
 VAR
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: TM2K4:ATM
         io: io
     '}
@@ -53,8 +53,8 @@ fbTM2K4(
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M30,
     stXStage := Main.M31,
-	sPmpsDeviceName := 'TM2K4:ATM',
-	sTransitionKey := 'TM2K4:ATM-TRANSITION',
+    sPmpsDeviceName := 'TM2K4:ATM',
+    sTransitionKey := 'TM2K4:ATM-TRANSITION',
      );]]></ST>
     </Implementation>
   </POU>
