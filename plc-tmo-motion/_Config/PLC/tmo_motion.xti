@@ -1326,7 +1326,10 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM2K4_PPM.fbIM2K4.fbFlowMeter.fRaw</Name>
+					<Name>PRG_IM2K4_PPM.fbIM2K4.fbFlowMeter.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -1429,7 +1432,10 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.fRaw</Name>
+					<Name>PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -1532,7 +1538,10 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.fRaw</Name>
+					<Name>PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -1635,7 +1644,10 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.fRaw</Name>
+					<Name>PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -1738,7 +1750,10 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.fRaw</Name>
+					<Name>PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.iRaw</Name>
+					<Comment>
+						<![CDATA[ Connect this input to the terminal]]>
+					</Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
@@ -2067,6 +2082,14 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
+					<Name>PRG_SP1K4.bHallInput1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bHallInput2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_SL1K4_SCATTER.fbSL1K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2283,14 +2306,6 @@ External Setpoint Generation:
 							<![CDATA[status of aperture, false if error or in motion]]>
 						</Comment>
 					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -9556,6 +9571,9 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL2004-E3">
 				<Link VarA="PlcTask Outputs^Main.M16.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM4K4_PPM.fbIM4K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3052-E5">
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3062-E6">
 				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
