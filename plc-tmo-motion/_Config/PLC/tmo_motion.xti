@@ -2082,14 +2082,6 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bHallInput1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SL1K4_SCATTER.fbSL1K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2526,6 +2518,22 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_SP1K4.bHallInput1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bHallInput2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1High</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
 					<Comment>
 						<![CDATA[IO]]>
@@ -2537,11 +2545,11 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1High</Name>
+					<Name>PRG_SP1K4.bTL2High</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Name>PRG_SP1K4.bTL2Low</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -2657,14 +2665,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_TM1K4.fbTM1K4.fbThermoCouple1.iRaw</Name>
 					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL2High</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL2Low</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_TM2K4.fbTM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -8815,6 +8815,10 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
 					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
 					<SubVar>
@@ -8950,10 +8954,6 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -9545,6 +9545,9 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^Main.M15.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM3K4_PPM.fbIM3K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3052-E5">
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3062-E6">
 				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
@@ -9633,6 +9636,9 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^Main.M27.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM6K4_PPM.fbIM6K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL3052-E5">
+				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL3062-E6">
 				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
@@ -9714,6 +9720,9 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL2004-E3">
 				<Link VarA="PlcTask Outputs^Main.M17.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM5K4_PPM.fbIM5K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3052-E5">
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3062-E6">
 				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
