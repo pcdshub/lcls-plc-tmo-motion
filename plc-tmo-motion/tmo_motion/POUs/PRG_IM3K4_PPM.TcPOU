@@ -17,7 +17,8 @@ VAR
                               .fbYagThermoCouple.bError 				:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
                               .fbYagThermoCouple.bUnderrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
-                              .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value'}
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value;
+                              .fbFlowMeter.iRaw                         := TIIB[IM3K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM3K4: FB_PPM;
     fStartupVelo: LREAL := 12;
 END_VAR
