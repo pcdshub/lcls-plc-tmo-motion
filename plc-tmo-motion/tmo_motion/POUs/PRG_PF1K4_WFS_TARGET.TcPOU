@@ -62,8 +62,12 @@ fbPF1K4(
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M18,
     stZStage := Main.M19,
-    sPmpsDeviceName := 'PF1K4:WFS',
+    sDeviceName := 'PF1K4:WFS',
     sTransitionKey := 'PF1K4:WFS-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
+    eEnumGet => GVL_TcGVL.ePF1K4State,
 );
 ]]></ST>
     </Implementation>

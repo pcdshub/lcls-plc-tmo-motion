@@ -58,8 +58,11 @@ fbIM4K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M16,
-    sPmpsDeviceName := 'IM4K4:PPM',
+    sDeviceName := 'IM4K4:PPM',
     sTransitionKey := 'IM4K4:PPM-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
 );]]></ST>
     </Implementation>
   </POU>

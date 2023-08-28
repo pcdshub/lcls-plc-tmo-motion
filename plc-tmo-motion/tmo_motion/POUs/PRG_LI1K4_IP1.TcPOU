@@ -45,8 +45,11 @@ fbLI1K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M20,
-    sPmpsDeviceName := 'LI1K4:IP1',
+    sDeviceName := 'LI1K4:IP1',
     sTransitionKey := 'LI1K4:IP1-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
 );
 ]]></ST>
     </Implementation>
