@@ -31,23 +31,27 @@ fbIM5K4.stOut.fPosition := -5.13;
 fbIM5K4.stOut.fVelocity := fStartupVelo;
 fbIM5K4.stOut.bUseRawCounts := FALSE;
 fbIM5K4.stOut.bValid := TRUE;
+fbIM5K4.stOut.bMoveOk := TRUE;
 fbIM5K4.stOut.stPMPS.sPmpsState := 'IM5K4:PPM-OUT';
 
 fbIM5K4.stPower.fPosition := -44.23;
 fbIM5K4.stPower.fVelocity := fStartupVelo;
 fbIM5K4.stPower.bUseRawCounts := FALSE;
 fbIM5K4.stPower.bValid := TRUE;
+fbIM5K4.stPower.bMoveOk := TRUE;
 fbIM5K4.stPower.stPMPS.sPmpsState := 'IM5K4:PPM-POWERMETER';
 
 fbIM5K4.stYag1.fPosition := -68.23;
 fbIM5K4.stYag1.fVelocity := fStartupVelo;
 fbIM5K4.stYag1.bUseRawCounts := FALSE;
+fbIM5K4.stYag1.bMoveOk := TRUE;
 fbIM5K4.stYag1.bValid := TRUE;
 
 
 fbIM5K4.stYag2.fPosition := -94.24;
 fbIM5K4.stYag2.fVelocity := fStartupVelo;
 fbIM5K4.stYag2.bUseRawCounts := FALSE;
+fbIM5K4.stYag2.bMoveOk := TRUE;
 fbIM5K4.stYag2.bValid := TRUE;
 
 

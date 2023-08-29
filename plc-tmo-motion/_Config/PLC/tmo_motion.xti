@@ -4946,14 +4946,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bHallInput1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -5172,6 +5164,22 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_SP1K4.bHallInput1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bHallInput2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1High</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
 					<Comment>
 						<![CDATA[IO]]>
@@ -5297,11 +5305,11 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1High</Name>
+					<Name>PRG_SP1K4.bTL2High</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Name>PRG_SP1K4.bTL2Low</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -6054,14 +6062,6 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL2High</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL2Low</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SP1K4.fbZPStates.astMotionStageMax[1].Axis.NcToPlc</Name>
@@ -11758,10 +11758,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
 					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
 					<SubVar>
@@ -11897,6 +11893,10 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>

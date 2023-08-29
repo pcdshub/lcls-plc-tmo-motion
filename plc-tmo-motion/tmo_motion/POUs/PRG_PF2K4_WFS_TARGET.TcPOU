@@ -29,31 +29,37 @@ END_VAR
 fbPF2K4.stOut.fPosition := -13.5;
 fbPF2K4.stOut.bUseRawCounts := FALSE;
 fbPF2K4.stOut.bValid := TRUE;
+fbPF2K4.stOut.bMoveOk := TRUE;
 fbPF2K4.stOut.stPMPS.sPmpsState := 'PF2K4:WFS-OUT';
 
 fbPF2K4.stTarget1.fPosition := -96.127;
 fbPF2K4.stTarget1.bUseRawCounts := FALSE;
 fbPF2K4.stTarget1.bValid := TRUE;
+fbPF2K4.stTarget1.bMoveOk := TRUE;
 fbPF2K4.stTarget1.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET1';
 
 fbPF2K4.stTarget2.fPosition := -81.753;
 fbPF2K4.stTarget2.bUseRawCounts := FALSE;
 fbPF2K4.stTarget2.bValid := TRUE;
+fbPF2K4.stTarget2.bMoveOk := TRUE;
 fbPF2K4.stTarget2.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET2';
 
 fbPF2K4.stTarget3.fPosition := -67.378;
 fbPF2K4.stTarget3.bUseRawCounts := FALSE;
 fbPF2K4.stTarget3.bValid := TRUE;
+fbPF2K4.stTarget3.bMoveOk := TRUE;
 fbPF2K4.stTarget3.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET3';
 
 fbPF2K4.stTarget4.fPosition := -53.002;
 fbPF2K4.stTarget4.bUseRawCounts := FALSE;
 fbPF2K4.stTarget4.bValid := TRUE;
+fbPF2K4.stTarget4.bMoveOk := TRUE;
 fbPF2K4.stTarget4.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET4';
 
 fbPF2K4.stTarget5.fPosition := -38.627;
 fbPF2K4.stTarget5.bUseRawCounts := FALSE;
 fbPF2K4.stTarget5.bValid := TRUE;
+fbPF2K4.stTarget5.bMoveOk := TRUE;
 fbPF2K4.stTarget5.stPMPS.sPmpsState := 'PF2K4:WFS-TARGET5';
 
 fbPF2K4(

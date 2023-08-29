@@ -24,21 +24,25 @@ END_VAR
 fbLI1K4.stOut.fPosition := 0.118;
 fbLI1K4.stOut.bUseRawCounts := FALSE;
 fbLI1K4.stOut.bValid := TRUE;
+fbLI1K4.stOut.bMoveOk := TRUE;
 fbLI1K4.stOut.stPMPS.sPmpsState := 'LI1K4:IP1-OUT';
 
 fbLI1K4.stMirror1.fPosition := -36.38;
 fbLI1K4.stMirror1.bUseRawCounts := FALSE;
 fbLI1K4.stMirror1.bValid := TRUE;
+fbLI1K4.stMirror1.bMoveOk := TRUE;
 fbLI1K4.stMirror1.stPMPS.sPmpsState := 'LI1K4:IP1-MIRROR1';
 
 fbLI1K4.stMirror2.fPosition := -70.38;
 fbLI1K4.stMirror2.bUseRawCounts := FALSE;
 fbLI1K4.stMirror2.bValid := TRUE;
+fbLI1K4.stMirror2.bMoveOk := TRUE;
 fbLI1K4.stMirror2.stPMPS.sPmpsState := 'LI1K4:IP1-MIRROR2';
 
 fbLI1K4.stTarget1.fPosition := -102.38;
 fbLI1K4.stTarget1.bUseRawCounts := FALSE;
 fbLI1K4.stTarget1.bValid := TRUE;
+fbLI1K4.stTarget1.bMoveOk := TRUE;
 fbLI1K4.stTarget1.stPMPS.sPmpsState := 'LI1K4:IP1-TARGET1';
 
 fbLI1K4(
