@@ -17,7 +17,8 @@ VAR
                               .fbYagThermoCouple.bError 				:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
                               .fbYagThermoCouple.bUnderrange 			:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
-                              .fbYagThermoCouple.iRaw 					:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Value'}
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Value';
+                              .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM4K4: FB_PPM;
     fStartupVelo: LREAL := 15;
 END_VAR
@@ -63,6 +64,7 @@ fbIM4K4(
     bEnableMotion := TRUE,
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
+    fFlowOffset := 0.4,
 );]]></ST>
     </Implementation>
   </POU>
