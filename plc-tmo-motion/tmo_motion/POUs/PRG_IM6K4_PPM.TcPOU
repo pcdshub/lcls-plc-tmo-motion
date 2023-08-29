@@ -17,7 +17,8 @@ VAR
                               .fbYagThermoCouple.bError 				:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
                               .fbYagThermoCouple.bUnderrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
-                              .fbYagThermoCouple.iRaw 					:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Value'}
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Value;
+                              .fbFlowMeter.iRaw                         := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM6K4: FB_PPM;
     fStartupVelo: LREAL := 13;
 END_VAR
@@ -54,6 +55,7 @@ fbIM6K4(
     stYStage := Main.M27,
     sPmpsDeviceName := 'IM6K4:PPM',
     sTransitionKey := 'IM6K4:PPM-TRANSITION',
+    fFlowOffset := 0.6,
 );]]></ST>
     </Implementation>
   </POU>
