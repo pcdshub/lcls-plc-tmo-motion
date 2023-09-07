@@ -21,6 +21,7 @@ VAR
                               .fbFlowMeter.iRaw                         := TIIB[IM5K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM5K4: FB_PPM;
     fStartupVelo: LREAL := 12;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -30,32 +31,50 @@ fbIM5K4.stOut.fPosition := -5.13;
 fbIM5K4.stOut.fVelocity := fStartupVelo;
 fbIM5K4.stOut.bUseRawCounts := FALSE;
 fbIM5K4.stOut.bValid := TRUE;
+fbIM5K4.stOut.bMoveOk := TRUE;
 fbIM5K4.stOut.stPMPS.sPmpsState := 'IM5K4:PPM-OUT';
 
 fbIM5K4.stPower.fPosition := -44.23;
 fbIM5K4.stPower.fVelocity := fStartupVelo;
 fbIM5K4.stPower.bUseRawCounts := FALSE;
 fbIM5K4.stPower.bValid := TRUE;
+fbIM5K4.stPower.bMoveOk := TRUE;
 fbIM5K4.stPower.stPMPS.sPmpsState := 'IM5K4:PPM-POWERMETER';
 
 fbIM5K4.stYag1.fPosition := -68.23;
 fbIM5K4.stYag1.fVelocity := fStartupVelo;
 fbIM5K4.stYag1.bUseRawCounts := FALSE;
+fbIM5K4.stYag1.bMoveOk := TRUE;
 fbIM5K4.stYag1.bValid := TRUE;
-fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
+
 
 fbIM5K4.stYag2.fPosition := -94.24;
 fbIM5K4.stYag2.fVelocity := fStartupVelo;
 fbIM5K4.stYag2.bUseRawCounts := FALSE;
+fbIM5K4.stYag2.bMoveOk := TRUE;
 fbIM5K4.stYag2.bValid := TRUE;
-fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
+
+
+CASE GVL_TcGVL.ePF1K4State OF
+    E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
+        // Known state targets: allow less strict pmps
+        fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_WFS_IN';
+        fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_WFS_IN';
+ELSE
+    // Out, Unknown, or an unexpected state: full pmps
+    fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
+    fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
+END_CASE
 
 fbIM5K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M17,
-    sPmpsDeviceName := 'IM5K4:PPM',
+    sDeviceName := 'IM5K4:PPM',
     sTransitionKey := 'IM5K4:PPM-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
     fFlowOffset := 0.8,
 
 );]]></ST>
