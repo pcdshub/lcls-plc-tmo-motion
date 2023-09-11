@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="GVL_TcGVL" Id="{e55d56fd-1b98-4fb3-b5c9-b090cee52dfb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+    ePF1K4State: E_WFS_States;
+    ePF2K4State:E_WFS_States;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
