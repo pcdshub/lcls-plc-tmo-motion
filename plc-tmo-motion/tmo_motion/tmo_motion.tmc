@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{0F12739F-5C25-5C7A-BE7F-347F55021D9C}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{FD26F0E3-7FD4-D910-8FE6-7B468AC7A2AD}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -79710,6 +79710,7 @@ Digital outputs</Comment>
           </Symbol>
           <Symbol>
             <Name>PRG_IM3K4_PPM.fbIM3K4</Name>
+            <Comment>IM3K4 and IM4K4 share the same flow meter</Comment>
             <BitSize>2514240</BitSize>
             <BaseType Namespace="lcls_twincat_common_components">FB_PPM</BaseType>
             <Properties>
@@ -79733,7 +79734,7 @@ Digital outputs</Comment>
                               .fbYagThermoCouple.bUnderrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value;
-                              .fbFlowMeter.iRaw                         := TIIB[IM3K4-EL3052-E5]^AI Standard Channel 1^Value</Value>
+                              .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value</Value>
               </Property>
             </Properties>
             <BitOffs>644786752</BitOffs>
@@ -82646,7 +82647,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-09-06T10:07:28</Value>
+          <Value>2023-09-11T12:06:57</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

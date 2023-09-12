@@ -12488,9 +12488,6 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^Main.M15.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_IM3K4_PPM.fbIM3K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3052-E5">
-				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3062-E6">
 				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
@@ -12519,6 +12516,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM4K4_PPM.fbIM4K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3052-E5">
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3062-E6">

@@ -15,6 +15,8 @@ VAR
                               .fbThermoCouple2.bUnderrange 	:= TIIB[PF1K4-EL3314-E5]^TC Inputs Channel 2^Status^Underrange;
                               .fbThermoCouple2.bOverrange 	:= TIIB[PF1K4-EL3314-E5]^TC Inputs Channel 2^Status^Overrange;
                               .fbThermoCouple2.iRaw 		:= TIIB[PF1K4-EL3314-E5]^TC Inputs Channel 2^Value'}
+
+
     fbPF1K4: FB_WFS;
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
@@ -74,7 +76,7 @@ fbPF1K4(
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
     eEnumGet => GVL_TcGVL.ePF1K4State,
-);
+    );
 ]]></ST>
     </Implementation>
   </POU>

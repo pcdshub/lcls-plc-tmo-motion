@@ -77,7 +77,7 @@ fbIM6K4(
     bEnableMotion := TRUE,
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
-    fFlowOffset := 0.6,
+    fFlowOffset := 0.7,
 );]]></ST>
     </Implementation>
   </POU>
