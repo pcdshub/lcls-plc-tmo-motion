@@ -200,7 +200,7 @@
       <Resolution>lcls-twincat-common-components, 3.0.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 4.0.1 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 4.0.2 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 3.0.14 (SLAC - LCLS)</Resolution>
