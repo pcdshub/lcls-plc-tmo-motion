@@ -21,32 +21,33 @@ VAR
                               .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM4K4: FB_PPM;
     fStartupVelo: LREAL := 15;
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-fbIM4K4.stOut.fPosition := -9.29;
+//fbIM4K4.stOut.fPosition := -9.29;
 fbIM4K4.stOut.fVelocity := fStartupVelo;
 fbIM4K4.stOut.bUseRawCounts := FALSE;
 fbIM4K4.stOut.bValid := TRUE;
 fbIM4K4.stOut.bMoveOk := TRUE;
 fbIM4K4.stOut.stPMPS.sPmpsState := 'IM4K4:PPM-OUT';
 
-fbIM4K4.stPower.fPosition := -48.39;
+//fbIM4K4.stPower.fPosition := -48.39;
 fbIM4K4.stPower.fVelocity := fStartupVelo;
 fbIM4K4.stPower.bUseRawCounts := FALSE;
 fbIM4K4.stPower.bValid := TRUE;
 fbIM4K4.stPower.bMoveOk := TRUE;
 fbIM4K4.stPower.stPMPS.sPmpsState := 'IM4K4:PPM-POWERMETER';
 
-fbIM4K4.stYag1.fPosition := -72.39;
+//fbIM4K4.stYag1.fPosition := -72.39;
 fbIM4K4.stYag1.fVelocity := fStartupVelo;
 fbIM4K4.stYag1.bUseRawCounts := FALSE;
 fbIM4K4.stYag1.bValid := TRUE;
 fbIM4K4.stYag1.bMoveOk := TRUE;
 fbIM4K4.stYag1.stPMPS.sPmpsState := 'IM4K4:PPM-YAG1';
 
-fbIM4K4.stYag2.fPosition := -98.4;
+//fbIM4K4.stYag2.fPosition := -98.4;
 fbIM4K4.stYag2.fVelocity := fStartupVelo;
 fbIM4K4.stYag2.bUseRawCounts := FALSE;
 fbIM4K4.stYag2.bValid := TRUE;
@@ -58,6 +59,16 @@ IF Main.M16.fVelocity > 1 AND Main.M16.fVelocity <> 15 AND Main.M16.bExecute THE
     Main.M16.nErrorId := 16#4221;
     Main.M16.sCustomErrorMessage := 'Unsafe velocity, try 1 or 15.';
 END_IF
+
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM4K4.stOut.fPosition := -9.29;
+   fbIM4K4.stPower.fPosition := -48.39;
+   fbIM4K4.stYag1.fPosition := -72.39;
+   fbIM4K4.stYag2.fPosition := -98.4;
+END_IF
+
+
 
 fbIM4K4(
     fbArbiter := fbArbiter,

@@ -21,32 +21,33 @@ VAR
                               .fbFlowMeter.iRaw                         := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM6K4: FB_PPM;
     fStartupVelo: LREAL := 13;
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-fbIM6K4.stOut.fPosition := -7.4;
+//fbIM6K4.stOut.fPosition := -7.4;
 fbIM6K4.stOut.fVelocity := fStartupVelo;
 fbIM6K4.stOut.bUseRawCounts := FALSE;
 fbIM6K4.stOut.bValid := TRUE;
 fbIM6K4.stOut.bMoveOk := TRUE;
 fbIM6K4.stOut.stPMPS.sPmpsState := 'IM6K4:PPM-OUT';
 
-fbIM6K4.stPower.fPosition := -46.5;
+//fbIM6K4.stPower.fPosition := -46.5;
 fbIM6K4.stPower.fVelocity := fStartupVelo;
 fbIM6K4.stPower.bUseRawCounts := FALSE;
 fbIM6K4.stPower.bValid := TRUE;
 fbIM6K4.stPower.bMoveOk := TRUE;
 fbIM6K4.stPower.stPMPS.sPmpsState := 'IM6K4:PPM-POWERMETER';
 
-fbIM6K4.stYag1.fPosition := -70.5;
+//fbIM6K4.stYag1.fPosition := -70.5;
 fbIM6K4.stYag1.fVelocity := fStartupVelo;
 fbIM6K4.stYag1.bUseRawCounts := FALSE;
 fbIM6K4.stYag1.bValid := TRUE;
 fbIM6K4.stYag1.bMoveOk := TRUE;
 
 
-fbIM6K4.stYag2.fPosition := -96.51;
+//fbIM6K4.stYag2.fPosition := -96.51;
 fbIM6K4.stYag2.fVelocity := fStartupVelo;
 fbIM6K4.stYag2.bUseRawCounts := FALSE;
 fbIM6K4.stYag2.bValid := TRUE;
@@ -64,8 +65,13 @@ ELSE
     fbIM6K4.stYag2.stPMPS.sPmpsState := 'IM6K4:PPM-YAG2';
 END_CASE
 
-
-
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM6K4.stOut.fPosition := -7.4;
+   fbIM6K4.stPower.fPosition := -46.5;
+   fbIM6K4.stYag1.fPosition := -70.5;
+   fbIM6K4.stYag2.fPosition := -96.51;
+END_IF
 
 
 fbIM6K4(

@@ -21,38 +21,47 @@ VAR
                               .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'} //IM3K4 and IM4K4 share the same flow meter
     fbIM3K4: FB_PPM;
     fStartupVelo: LREAL := 12;
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 
-fbIM3K4.stOut.fPosition := -5.82;
+//fbIM3K4.stOut.fPosition := -5.82;
 fbIM3K4.stOut.fVelocity := fStartupVelo;
 fbIM3K4.stOut.bUseRawCounts := FALSE;
 fbIM3K4.stOut.bValid := TRUE;
 fbIM3K4.stOut.bMoveOk := TRUE;
 fbIM3K4.stOut.stPMPS.sPmpsState := 'IM3K4:PPM-OUT';
 
-fbIM3K4.stPower.fPosition := -44.92;
+//fbIM3K4.stPower.fPosition := -44.92;
 fbIM3K4.stPower.fVelocity := fStartupVelo;
 fbIM3K4.stPower.bUseRawCounts := FALSE;
 fbIM3K4.stPower.bValid := TRUE;
 fbIM3K4.stPower.bMoveOk := TRUE;
 fbIM3K4.stPower.stPMPS.sPmpsState := 'IM3K4:PPM-POWERMETER';
 
-fbIM3K4.stYag1.fPosition := -68.92;
+//fbIM3K4.stYag1.fPosition := -68.92;
 fbIM3K4.stYag1.fVelocity := fStartupVelo;
 fbIM3K4.stYag1.bUseRawCounts := FALSE;
 fbIM3K4.stYag1.bValid := TRUE;
 fbIM3K4.stYag1.bMoveOk := TRUE;
 fbIM3K4.stYag1.stPMPS.sPmpsState := 'IM3K4:PPM-YAG1';
 
-fbIM3K4.stYag2.fPosition := -94.93;
+//fbIM3K4.stYag2.fPosition := -94.93;
 fbIM3K4.stYag2.fVelocity := fStartupVelo;
 fbIM3K4.stYag2.bUseRawCounts := FALSE;
 fbIM3K4.stYag2.bValid := TRUE;
 fbIM3K4.stYag2.bMoveOk := TRUE;
 fbIM3K4.stYag2.stPMPS.sPmpsState := 'IM3K4:PPM-YAG2';
+
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM3K4.stOut.fPosition := -5.82;
+   fbIM3K4.stPower.fPosition := -44.92;
+   fbIM3K4.stYag1.fPosition := -68.92;
+   fbIM3K4.stYag2.fPosition := -94.93;
+END_IF
 
 fbIM3K4(
     fbArbiter := fbArbiter,
