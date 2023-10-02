@@ -4950,10 +4950,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -5297,11 +5293,11 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1High</Name>
+					<Name>PRG_SP1K4.bHallInput2</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Name>PRG_SP1K4.bTL1High</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -6054,6 +6050,10 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1Low</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SP1K4.bTL2High</Name>

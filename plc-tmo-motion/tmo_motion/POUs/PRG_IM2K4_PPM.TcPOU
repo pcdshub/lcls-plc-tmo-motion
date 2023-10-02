@@ -20,38 +20,48 @@ VAR
                               .fbYagThermoCouple.iRaw := TIIB[IM2K4-EL3314-E4]^TC Inputs Channel 2^Value'}
     fbIM2K4: FB_PPM;
     fStartupVelo: LREAL := 13;
-
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-fbIM2K4.stOut.fPosition := -8.59;
+//fbIM2K4.stOut.fPosition := -8.59;
 fbIM2K4.stOut.fVelocity := fStartupVelo;
 fbIM2K4.stOut.bUseRawCounts := FALSE;
 fbIM2K4.stOut.bValid := TRUE;
 fbIM2K4.stOut.bMoveOk := TRUE;
 fbIM2K4.stOut.stPMPS.sPmpsState := 'IM2K4:PPM-OUT';
 
-fbIM2K4.stPower.fPosition := -47.69;
+//fbIM2K4.stPower.fPosition := -47.69;
 fbIM2K4.stPower.fVelocity := fStartupVelo;
 fbIM2K4.stPower.bUseRawCounts := FALSE;
 fbIM2K4.stPower.bValid := TRUE;
 fbIM2K4.stPower.bMoveOk := TRUE;
 fbIM2K4.stPower.stPMPS.sPmpsState := 'IM2K4:PPM-POWERMETER';
 
-fbIM2K4.stYag1.fPosition := -71.69;
+//fbIM2K4.stYag1.fPosition := -71.69;
 fbIM2K4.stYag1.fVelocity := fStartupVelo;
 fbIM2K4.stYag1.bUseRawCounts := FALSE;
 fbIM2K4.stYag1.bValid := TRUE;
 fbIM2K4.stYag1.bMoveOk := TRUE;
 fbIM2K4.stYag1.stPMPS.sPmpsState := 'IM2K4:PPM-YAG1';
 
-fbIM2K4.stYag2.fPosition := -97.70;
+//fbIM2K4.stYag2.fPosition := -97.70;
 fbIM2K4.stYag2.fVelocity := fStartupVelo;
 fbIM2K4.stYag2.bUseRawCounts := FALSE;
 fbIM2K4.stYag2.bValid := TRUE;
 fbIM2K4.stYag2.bMoveOk := TRUE;
 fbIM2K4.stYag2.stPMPS.sPmpsState := 'IM2K4:PPM-YAG2';
+
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM2K4.stOut.fPosition := -8.59;
+   fbIM2K4.stPower.fPosition := -47.69;
+   fbIM2K4.stYag1.fPosition := -71.69;
+   fbIM2K4.stYag2.fPosition := -97.70;
+
+END_IF
+
 
 fbIM2K4(
     fbArbiter := fbArbiter,

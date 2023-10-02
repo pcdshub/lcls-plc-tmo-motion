@@ -20,6 +20,8 @@ VAR
     fbPF1K4: FB_WFS;
 
     stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -29,41 +31,53 @@ END_VAR
 //stSiBP.nTran := 0.20;
 
 
-fbPF1K4.stOut.fPosition := -10.5;
+//fbPF1K4.stOut.fPosition := -10.5;
 fbPF1K4.stOut.bUseRawCounts := FALSE;
 fbPF1K4.stOut.bValid := TRUE;
 fbPF1K4.stOut.bMoveOk := TRUE;
 fbPF1K4.stOut.stPMPS.sPmpsState := 'PF1K4:WFS-OUT';
 
-fbPF1K4.stTarget1.fPosition := -93.033;
+//fbPF1K4.stTarget1.fPosition := -93.033;
 fbPF1K4.stTarget1.bUseRawCounts := FALSE;
 fbPF1K4.stTarget1.bValid := TRUE;
 fbPF1K4.stTarget1.bMoveOk := TRUE;
 fbPF1K4.stTarget1.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET1';
 
-fbPF1K4.stTarget2.fPosition := -78.658;
+//fbPF1K4.stTarget2.fPosition := -78.658;
 fbPF1K4.stTarget2.bUseRawCounts := FALSE;
 fbPF1K4.stTarget2.bValid := TRUE;
 fbPF1K4.stTarget2.bMoveOk := TRUE;
 fbPF1K4.stTarget2.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET2';
 
-fbPF1K4.stTarget3.fPosition := -64.282;
+//fbPF1K4.stTarget3.fPosition := -64.282;
 fbPF1K4.stTarget3.bUseRawCounts := FALSE;
 fbPF1K4.stTarget3.bValid := TRUE;
 fbPF1K4.stTarget3.bMoveOk := TRUE;
 fbPF1K4.stTarget3.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET3';
 
-fbPF1K4.stTarget4.fPosition := -49.907;
+//fbPF1K4.stTarget4.fPosition := -49.907;
 fbPF1K4.stTarget4.bUseRawCounts := FALSE;
 fbPF1K4.stTarget4.bValid := TRUE;
 fbPF1K4.stTarget4.bMoveOk := TRUE;
 fbPF1K4.stTarget4.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET4';
 
-fbPF1K4.stTarget5.fPosition := -35.533;
+//fbPF1K4.stTarget5.fPosition := -35.533;
 fbPF1K4.stTarget5.bUseRawCounts := FALSE;
 fbPF1K4.stTarget5.bValid := TRUE;
 fbPF1K4.stTarget5.bMoveOk := TRUE;
 fbPF1K4.stTarget5.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET5';
+
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbPF1K4.stOut.fPosition := -10.5;
+   fbPF1K4.stTarget1.fPosition := -93.033;
+   fbPF1K4.stTarget2.fPosition := -78.658;
+   fbPF1K4.stTarget3.fPosition := -64.282;
+   fbPF1K4.stTarget4.fPosition := -49.907;
+   fbPF1K4.stTarget5.fPosition := -35.533;
+
+END_IF
+
 
 fbPF1K4(
     fbArbiter := fbArbiter,
