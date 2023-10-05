@@ -5,6 +5,9 @@
 VAR_GLOBAL
     ePF1K4State: E_WFS_States;
     ePF2K4State:E_WFS_States;
+    eSP1K4ATT:ENUM_SolidAttenuator_States;
+    eSP1K4FZP:ENUM_ZonePlate_States;
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -62,7 +62,7 @@ VAR
     fbZPDefault: ST_PositionState := (
         fDelta:=0.5,
         fVelocity:=1,
-        bMoveOk:=TRUE,
+ //       bMoveOk:=TRUE,
         bValid:=TRUE
     );
     aZPXStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
@@ -88,19 +88,20 @@ VAR
     fbATTDefault: ST_PositionState := (
         fDelta:=0.5,
         fVelocity:=1,
-        bMoveOk:=TRUE,
+//        bMoveOk:=TRUE,
         bValid:=TRUE
     );
     aATTXStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aATTYStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
-
+    bPF1K4Out: BOOL;
 
 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Hardware Enable and fbMotionStage
+      <ST><![CDATA[bPF1K4Out := GVL_TcGVL.ePF1K4State = E_WFS_States.OUT;
+// Hardware Enable and fbMotionStage
 //Lens X
 Main.M32.bLimitForwardEnable := NOT bHallInput1;
 Main.M32.bLimitBackwardEnable := NOT bHallInput2;
@@ -175,7 +176,59 @@ fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.FZP290_2], sName:='F
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.FZP290_2], sName:='FZP-290-C2', fPosition:=0);
 
 
+aZPXStates[ENUM_ZonePlate_States.OUT].bMoveOk := TRUE;
+aZPXStates[ENUM_ZonePlate_States.Yag].bMoveOk := bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP860_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP860_2].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP860_3].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP750_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP750_2].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP530_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP530_2].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP460_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP460_2].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP410_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP410_2].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP290_1].bMoveOK :=bPF1K4Out;
+aZPXStates[ENUM_ZonePlate_States.FZP290_2].bMoveOK :=bPF1K4Out;
+
+aZPYStates[ENUM_ZonePlate_States.OUT].bMoveOk := TRUE;
+aZPYStates[ENUM_ZonePlate_States.Yag].bMoveOk := bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP860_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP860_2].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP860_3].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP750_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP750_2].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP530_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP530_2].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP460_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP460_2].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP410_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP410_2].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP290_1].bMoveOK :=bPF1K4Out;
+aZPYStates[ENUM_ZonePlate_States.FZP290_2].bMoveOK :=bPF1K4Out;
+
+aZPZStates[ENUM_ZonePlate_States.OUT].bMoveOk := TRUE;
+aZPZStates[ENUM_ZonePlate_States.Yag].bMoveOk := bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP860_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP860_2].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP860_3].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP750_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP750_2].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP530_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP530_2].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP460_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP460_2].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP410_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP410_2].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP290_1].bMoveOK :=bPF1K4Out;
+aZPZStates[ENUM_ZonePlate_States.FZP290_2].bMoveOK :=bPF1K4Out;
+
+
+
+
 bAttIn := att_enumGet <> ENUM_SolidAttenuator_States.OUT AND  att_enumGet <> ENUM_SolidAttenuator_States.Unknown;
+
 
 IF bAttIn THEN
     // Attenuator is in, pick the ATT_IN states
@@ -251,11 +304,14 @@ fbMotionTLX(stMotionStage:=Main.M43);
 //FOIL Y (Solid-ATT-Y)
 fbMotionFoilY(stMotionStage:=Main.M44);
 
+
+
+
 // SP1K4-SOLID-ATT PMPS
 fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=8.0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=45.05);
 
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
@@ -271,6 +327,24 @@ fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sN
 
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+
+aATTXStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
+aATTXStates[ENUM_SolidAttenuator_States.Target1].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target2].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+
+aATTYStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
+aATTYStates[ENUM_SolidAttenuator_States.Target1].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target2].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+
+
+
+
 
 aATTXStates[ENUM_SolidAttenuator_States.OUT].stPMPS.sPmpsState := 'SP1K4:ATT-OUT';
 aATTXStates[ENUM_SolidAttenuator_States.Target1].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET1';
@@ -329,6 +403,12 @@ Main.M42.bLimitForwardEnable := nTL2HighCycles < nNumCyclesNeeded;
 Main.M42.bLimitBackwardEnable := nTL2LowCycles < nNumCyclesNeeded;
 Main.M43.bLimitBackwardEnable := True;
 Main.M43.bLimitForwardEnable := True;
+
+GVL_TcGVL.eSP1K4FZP := zp_enumGet;
+GVL_TcGVL.eSP1K4ATT := att_enumGet;
+
+
+
 ]]></ST>
     </Implementation>
   </POU>

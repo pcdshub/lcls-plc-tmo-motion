@@ -20,13 +20,25 @@ VAR
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value;
                               .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'} //IM3K4 and IM4K4 share the same flow meter
     fbIM3K4: FB_PPM;
-    fStartupVelo: LREAL := 12;
-    bInit: BOOL;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 12,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+ //   fStartupVelo: LREAL := 12;
+ //   bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
 
+fbStateSetup(StPositionState:=fbIM3K4.stOut, fposition:=-5.82, sPmpsState := 'IM3K4:PPM-OUT');
+fbStateSetup(StPositionState:=fbIM3K4.stPower, fposition:=-44.92, sPmpsState := 'IM3K4:PPM-POWERMETER');
+fbStateSetup(StPositionState:=fbIM3K4.stYag1, fposition:=-68.92, sPmpsState := 'IM3K4:PPM-YAG1');
+fbStateSetup(StPositionState:=fbIM3K4.stYag2, fposition:=-94.93, sPmpsState := 'IM3K4:PPM-YAG2');
+
+{*
 //fbIM3K4.stOut.fPosition := -5.82;
 fbIM3K4.stOut.fVelocity := fStartupVelo;
 fbIM3K4.stOut.bUseRawCounts := FALSE;
@@ -62,7 +74,7 @@ IF NOT bInit THEN
    fbIM3K4.stYag1.fPosition := -68.92;
    fbIM3K4.stYag2.fPosition := -94.93;
 END_IF
-
+*}
 fbIM3K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
