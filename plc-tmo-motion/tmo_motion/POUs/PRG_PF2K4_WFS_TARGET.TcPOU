@@ -16,9 +16,15 @@ VAR
                               .fbThermoCouple2.bOverrange 	:= TIIB[PF2K4-EL3314-E5]^TC Inputs Channel 2^Status^Overrange;
                               .fbThermoCouple2.iRaw 		:= TIIB[PF2K4-EL3314-E5]^TC Inputs Channel 2^Value'}
     fbPF2K4: FB_WFS;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 1,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
 
-    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
-    bInit: BOOL;
+//    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+//    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -27,6 +33,15 @@ END_VAR
 // Drop transmission to 20%
 //stSiBP.nTran := 0.20;
 
+fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
+
+fbStateSetup(StPositionState:=fbPF2K4.stOut, fposition:=-13.5, sPmpsState := 'PF2K4:WFS-OUT');
+fbStateSetup(StPositionState:=fbPF2K4.stTarget1, fposition:=-96.127, sPmpsState := 'PF2K4:WFS-TARGET1');
+fbStateSetup(StPositionState:=fbPF2K4.stTarget2, fposition:=-81.753, sPmpsState := 'PF2K4:WFS-TARGET2');
+fbStateSetup(StPositionState:=fbPF2K4.stTarget3, fposition:=-67.378, sPmpsState := 'PF2K4:WFS-TARGET3');
+fbStateSetup(StPositionState:=fbPF2K4.stTarget4, fposition:=-53.002, sPmpsState := 'PF2K4:WFS-TARGET4');
+fbStateSetup(StPositionState:=fbPF2K4.stTarget5, fposition:=-38.627, sPmpsState := 'PF2K4:WFS-TARGET5');
+{*
 //fbPF2K4.stOut.fPosition := -13.5;
 fbPF2K4.stOut.bUseRawCounts := FALSE;
 fbPF2K4.stOut.bValid := TRUE;
@@ -74,7 +89,7 @@ IF NOT bInit THEN
 
 END_IF
 
-
+*}
 
 fbPF2K4(
     fbArbiter := fbArbiter2,

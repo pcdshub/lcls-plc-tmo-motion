@@ -9,8 +9,14 @@ VAR
     '}
     fbLI1K4: FB_LIC;
 
-    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
-    bInit: BOOL;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 1,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+//    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+//    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -19,9 +25,14 @@ END_VAR
 //stSiBP.neVRange := F_eVExcludeRange(1.6E3, 3.2E3);
 // Drop transmission to 20%
 //stSiBP.nTran := 0.20;
+fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
 
+fbStateSetup(StPositionState:=fbLI1K4.stOut, fposition:=0.118, sPmpsState := 'LI1K4:IP1-OUT');
+fbStateSetup(StPositionState:=fbLI1K4.stMirror1, fposition:=-36.38, sPmpsState := 'LI1K4:IP1-MIRROR1');
+fbStateSetup(StPositionState:=fbLI1K4.stMirror2, fposition:=-70.38, sPmpsState := 'LI1K4:IP1-MIRROR2');
+fbStateSetup(StPositionState:=fbLI1K4.stTarget1, fposition:=-102.38, sPmpsState := 'LI1K4:IP1-TARGET1');
 
-//fbLI1K4.stOut.fPosition := 0.118;
+{* //fbLI1K4.stOut.fPosition := 0.118;
 fbLI1K4.stOut.bUseRawCounts := FALSE;
 fbLI1K4.stOut.bValid := TRUE;
 fbLI1K4.stOut.bMoveOk := TRUE;
@@ -52,7 +63,7 @@ IF NOT bInit THEN
    fbLI1K4.stMirror2.fPosition := -70.38;
    fbLI1K4.stTarget1.fPosition := -102.38;
 END_IF
-
+*}
 fbLI1K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,

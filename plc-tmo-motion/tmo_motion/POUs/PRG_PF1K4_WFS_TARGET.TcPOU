@@ -19,18 +19,51 @@ VAR
 
     fbPF1K4: FB_WFS;
 
-    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+    fbStateSetup: FB_StateSetupHelper;
 
-    bInit: BOOL;
+    stDefault: ST_PositionState :=(
+        fVelocity := 1,
+//		bMoveOK := TRUE,
+        bValid := TRUE
+    );
+
+//    stSiBP: ST_BeamParams := PMPS_GVL.cstFullBeam;
+
+//    bInit: BOOL;
+    bSP1K4AttOut: BOOL;
+    bSP1K4FzpOut: BOOL;
+    bSP1K4Out: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Exclusion range specified by M. Seaberg 2021-5-19
+      <ST><![CDATA[bSP1K4AttOut := GVL_TcGVL.eSP1K4ATT = ENUM_SolidAttenuator_States.OUT;
+bSP1K4FzpOut := GVL_TcGVL.eSP1K4FZP = ENUM_ZonePlate_States.OUT;
+bSP1K4Out := bSP1K4AttOut AND bSP1K4FzpOut;
+
+
+
+// Exclusion range specified by M. Seaberg 2021-5-19
 //stSiBP.neVRange := F_eVExcludeRange(1.75E3, 3.15E3);
 // Drop transmission to 20%
 //stSiBP.nTran := 0.20;
 
+fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
 
+fbStateSetup(StPositionState:=fbPF1K4.stOut, fposition:=-10.5, sPmpsState := 'PF1K4:WFS-OUT');
+fbStateSetup(StPositionState:=fbPF1K4.stTarget1, fposition:=-93.033, sPmpsState := 'PF1K4:WFS-TARGET1');
+fbStateSetup(StPositionState:=fbPF1K4.stTarget2, fposition:=-78.658, sPmpsState := 'PF1K4:WFS-TARGET2');
+fbStateSetup(StPositionState:=fbPF1K4.stTarget3, fposition:=-64.282, sPmpsState := 'PF1K4:WFS-TARGET3');
+fbStateSetup(StPositionState:=fbPF1K4.stTarget4, fposition:=-49.907, sPmpsState := 'PF1K4:WFS-TARGET4');
+fbStateSetup(StPositionState:=fbPF1K4.stTarget5, fposition:=-35.533, sPmpsState := 'PF1K4:WFS-TARGET5');
+
+fbPF1K4.stOut.bMoveOk := TRUE;
+fbPF1K4.stTarget1.bMoveOk := bSP1K4Out;
+fbPF1K4.stTarget2.bMoveOk := bSP1K4Out;
+fbPF1K4.stTarget3.bMoveOk := bSP1K4Out;
+fbPF1K4.stTarget4.bMoveOk := bSP1K4Out;
+fbPF1K4.stTarget5.bMoveOk := bSP1K4Out;
+
+{*
 //fbPF1K4.stOut.fPosition := -10.5;
 fbPF1K4.stOut.bUseRawCounts := FALSE;
 fbPF1K4.stOut.bValid := TRUE;
@@ -67,7 +100,7 @@ fbPF1K4.stTarget5.bValid := TRUE;
 fbPF1K4.stTarget5.bMoveOk := TRUE;
 fbPF1K4.stTarget5.stPMPS.sPmpsState := 'PF1K4:WFS-TARGET5';
 
-IF NOT bInit THEN
+ IF NOT bInit THEN
    bInit := TRUE;
    fbPF1K4.stOut.fPosition := -10.5;
    fbPF1K4.stTarget1.fPosition := -93.033;
@@ -77,7 +110,7 @@ IF NOT bInit THEN
    fbPF1K4.stTarget5.fPosition := -35.533;
 
 END_IF
-
+*}
 
 fbPF1K4(
     fbArbiter := fbArbiter,

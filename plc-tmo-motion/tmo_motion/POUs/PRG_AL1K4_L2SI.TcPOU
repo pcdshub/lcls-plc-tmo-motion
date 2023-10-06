@@ -10,12 +10,21 @@ VAR
     {attribute 'TcLinkTo' := '.fbLaser.iLaserINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 1^Analog output;
                               .fbLaser.iShutdownINT := TIIB[AL1K4-EL4004-E4]^AO Outputs Channel 2^Analog output'}
     fbAL1K4: FB_REF;
-    bInit: BOOL;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 1,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+//    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-
+fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
+fbStateSetup(StPositionState:=fbAL1K4.stOut, fposition:=-33.5, sPmpsState := 'AL1K4:L2SI-OUT');
+fbStateSetup(StPositionState:=fbAL1K4.stIn, fposition:=-75, sPmpsState := 'AL1K4:L2SI-IN');
+{*
 //fbAL1K4.stOut.fPosition := -33.5; // Upper limit
 fbAL1K4.stOut.bUseRawCounts := FALSE;
 fbAL1K4.stOut.bValid := TRUE;
@@ -33,7 +42,7 @@ IF NOT bInit THEN
    fbAL1K4.stOut.fPosition := -33.5;
    fbAL1K4.stIn.fPosition := -75;
 END_IF
-
+*}
 fbAL1K4(
     stYStage := Main.M1,
     fbArbiter := fbArbiter,

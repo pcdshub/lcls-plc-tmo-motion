@@ -20,13 +20,25 @@ VAR
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Value;
                               .fbFlowMeter.iRaw                         := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM6K4: FB_PPM;
-    fStartupVelo: LREAL := 13;
-    bInit: BOOL;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 13,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+//  fStartupVelo: LREAL := 13;
+//   bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-//fbIM6K4.stOut.fPosition := -7.4;
+      <ST><![CDATA[fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
+
+fbStateSetup(StPositionState:=fbIM6K4.stOut, fposition:=-7.4, sPmpsState := 'IM6K4:PPM-OUT');
+fbStateSetup(StPositionState:=fbIM6K4.stPower, fposition:=-46.5, sPmpsState := 'IM6K4:PPM-POWERMETER');
+fbStateSetup(StPositionState:=fbIM6K4.stYag1, fposition:=-70.5, sPmpsState := 'IM6K4:PPM-YAG1');
+fbStateSetup(StPositionState:=fbIM6K4.stYag2, fposition:=-96.51, sPmpsState := 'IM6K4:PPM-YAG2');
+
+{*//fbIM6K4.stOut.fPosition := -7.4;
 fbIM6K4.stOut.fVelocity := fStartupVelo;
 fbIM6K4.stOut.bUseRawCounts := FALSE;
 fbIM6K4.stOut.bValid := TRUE;
@@ -53,7 +65,7 @@ fbIM6K4.stYag2.bUseRawCounts := FALSE;
 fbIM6K4.stYag2.bValid := TRUE;
 fbIM6K4.stYag2.bMoveOk := TRUE;
 
-
+*}
 CASE GVL_TcGVL.ePF2K4State OF
     E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
         // Known state targets: allow less strict pmps
@@ -65,14 +77,14 @@ ELSE
     fbIM6K4.stYag2.stPMPS.sPmpsState := 'IM6K4:PPM-YAG2';
 END_CASE
 
-IF NOT bInit THEN
+{*IF NOT bInit THEN
    bInit := TRUE;
    fbIM6K4.stOut.fPosition := -7.4;
    fbIM6K4.stPower.fPosition := -46.5;
    fbIM6K4.stYag1.fPosition := -70.5;
    fbIM6K4.stYag2.fPosition := -96.51;
 END_IF
-
+*}
 
 fbIM6K4(
     fbArbiter := fbArbiter2,

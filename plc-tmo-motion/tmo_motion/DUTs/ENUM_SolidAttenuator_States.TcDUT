@@ -5,7 +5,6 @@
 {attribute 'strict'}
 TYPE ENUM_SolidAttenuator_States :
 (
-
     Unknown := 0,
     OUT := 1,
     Target1 := 2,
