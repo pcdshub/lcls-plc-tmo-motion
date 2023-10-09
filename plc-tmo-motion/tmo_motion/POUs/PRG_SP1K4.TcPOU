@@ -310,8 +310,8 @@ fbMotionFoilY(stMotionStage:=Main.M44);
 // SP1K4-SOLID-ATT PMPS
 fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=8.0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=45.05);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=-1.90);
 
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
