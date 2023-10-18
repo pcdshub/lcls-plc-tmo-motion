@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{2DC5EB2F-BF4A-2A53-1ABB-E4889D1646FF}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{8579D94E-7972-EA1D-87B9-D8604CC3D520}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -6256,11 +6256,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_BOOL</Name>
@@ -6393,11 +6388,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -6557,11 +6547,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>GetNumberOfSuccessfulTests</Name>
@@ -6668,11 +6653,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -6806,11 +6786,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -7291,11 +7266,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -8064,11 +8034,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_TIME</Name>
@@ -8460,11 +8425,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_INT</Name>
@@ -8556,11 +8516,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -8688,11 +8643,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LWORD</Name>
@@ -8794,11 +8744,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9115,11 +9060,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AreAllTestsFinished</Name>
@@ -9284,11 +9224,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9473,11 +9408,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LREAL</Name>
@@ -9575,11 +9505,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -17625,7 +17550,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Name>
       <BitSize>8</BitSize>
       <BaseType>BYTE</BaseType>
       <EnumInfo>
@@ -17804,7 +17729,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </EnumInfo>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Name>
       <BitSize>6192</BitSize>
       <SubItem>
         <Name>TestName</Name>
@@ -17838,7 +17763,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>FailureType</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
         <BitSize>8</BitSize>
         <BitOffs>6160</BitOffs>
       </SubItem>
@@ -17850,7 +17775,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Name>
       <BitSize>621296</BitSize>
       <SubItem>
         <Name>Name</Name>
@@ -17880,7 +17805,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TestCaseResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>100</Elements>
@@ -17890,7 +17815,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Name>
       <BitSize>621296064</BitSize>
       <SubItem>
         <Name>NumberOfTestSuites</Name>
@@ -17922,7 +17847,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TestSuiteResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -17933,7 +17858,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Name>
       <BitSize>32</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -17943,7 +17868,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Method>
       <Method>
         <Name>GetTestSuiteResults</Name>
-        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
+        <ReturnType Namespace="lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
         <ReturnBitSize>32</ReturnBitSize>
       </Method>
     </DataType>
@@ -17963,13 +17888,13 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Name>
       <Comment> This function block holds results of the complete test run, i.e. results for all test suites </Comment>
       <BitSize>621296256</BitSize>
-      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Implements>
+      <Implements Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Implements>
       <SubItem>
         <Name>TestSuiteResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Type>
         <Comment> Test results </Comment>
         <BitSize>621296064</BitSize>
         <BitOffs>64</BitOffs>
@@ -18012,7 +17937,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Method>
       <Method>
         <Name>GetTestSuiteResults</Name>
-        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
+        <ReturnType Namespace="lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
         <ReturnBitSize>32</ReturnBitSize>
       </Method>
       <Properties>
@@ -18023,7 +17948,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Name>
       <BitSize>32</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -18046,17 +17971,17 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Name>
       <Comment>
     This function block reports the results from the tests using the built-in ADSLOGSTR functionality
     provided by the Tc2_System library. This sends the result using ADS, which is consumed by the "Error List"
     of Visual Studio (which can print Errors, Warnings and Messages).
 </Comment>
       <BitSize>224</BitSize>
-      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
+      <Implements Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
         <BitSize>32</BitSize>
         <BitOffs>64</BitOffs>
       </SubItem>
@@ -18090,7 +18015,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Name>LogTestSuiteResults</Name>
         <Local>
           <Name>TcUnitTestResults</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
           <BitSize>32</BitSize>
         </Local>
         <Local>
@@ -18182,7 +18107,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       <BaseType PointerTo="1">BYTE</BaseType>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Name>
       <Comment>
     This functionblock can open, close, read, write and delete files on the local filesystem
 </Comment>
@@ -18288,7 +18213,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Name>
       <BitSize>8</BitSize>
       <BaseType>BYTE</BaseType>
       <EnumInfo>
@@ -18309,7 +18234,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </EnumInfo>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Name>
       <Comment>
     This functionblock acts as a stream buffer for use with FB_XmlControl
 </Comment>
@@ -18354,7 +18279,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Parameter>
         <Parameter>
           <Name>XmlError</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
           <BitSize>8</BitSize>
           <Properties>
             <Property>
@@ -18568,7 +18493,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Parameter>
         <Parameter>
           <Name>XmlError</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
           <BitSize>8</BitSize>
           <Properties>
             <Property>
@@ -18606,7 +18531,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Name>
       <Comment>
     Organizes parsing and composing of XML data. Data can be treated as STRING or char array.
     Buffer size of file can be set via GVL_Param_TcUnit (xUnitBufferSize)
@@ -18614,13 +18539,13 @@ contributing fast faults, unless the FFO is currently vetoed.
       <BitSize>5696</BitSize>
       <SubItem>
         <Name>XmlBuffer</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>128</BitSize>
         <BitOffs>32</BitOffs>
       </SubItem>
       <SubItem>
         <Name>TagListBuffer</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>128</BitSize>
         <BitOffs>160</BitOffs>
       </SubItem>
@@ -18632,7 +18557,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TagListSeekBuffer</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>128</BitSize>
         <BitOffs>2336</BitOffs>
       </SubItem>
@@ -18644,7 +18569,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TagBuffer</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>128</BitSize>
         <BitOffs>3136</BitOffs>
       </SubItem>
@@ -18880,15 +18805,15 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Name>
       <Comment>
     Publishes test results into an xUnit compatible Xml file
 </Comment>
       <BitSize>530304</BitSize>
-      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
+      <Implements Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
         <Comment> Dependancy Injection via FB_Init</Comment>
         <BitSize>32</BitSize>
         <BitOffs>64</BitOffs>
@@ -18905,13 +18830,13 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>File</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Type>
         <BitSize>96</BitSize>
         <BitOffs>128</BitOffs>
       </SubItem>
       <SubItem>
         <Name>Xml</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Type>
         <BitSize>5696</BitSize>
         <BitOffs>224</BitOffs>
       </SubItem>
@@ -18955,7 +18880,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Name>LogTestSuiteResults</Name>
         <Local>
           <Name>UnitTestResults</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
           <BitSize>32</BitSize>
         </Local>
         <Local>
@@ -18997,7 +18922,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</Name>
       <Comment>
     This function block is responsible for holding track of the tests and executing them.
 </Comment>
@@ -19014,14 +18939,14 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Type>
         <Comment> Test result information </Comment>
         <BitSize>621296256</BitSize>
         <BitOffs>64</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AdsTestResultLogger</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Type>
         <Comment> Prints the results to ADS so that Visual Studio can display the results.
        This test result formatter can be replaced with something else than ADS </Comment>
         <BitSize>224</BitSize>
@@ -19034,7 +18959,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>TestResultLogger</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
         <BitSize>32</BitSize>
         <BitOffs>621296544</BitOffs>
       </SubItem>
@@ -19048,7 +18973,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>xUnitXmlPublisher</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Type>
         <Comment> Publishes a xUnit compatible XML file </Comment>
         <BitSize>530304</BitSize>
         <BitOffs>621296608</BitOffs>
@@ -19060,7 +18985,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>XmlTestResultPublisher</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
         <BitSize>32</BitSize>
         <BitOffs>621826912</BitOffs>
       </SubItem>
@@ -19161,7 +19086,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_Test</Name>
       <Comment>
     This function block holds all data that defines a test.
 </Comment>
@@ -19216,14 +19141,14 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>AssertionType</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
         <Comment> Assertion type for the first assertion in this test</Comment>
         <BitSize>8</BitSize>
         <BitOffs>4184</BitOffs>
       </SubItem>
       <Method>
         <Name>GetAssertionType</Name>
-        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</ReturnType>
+        <ReturnType Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</ReturnType>
         <ReturnBitSize>8</ReturnBitSize>
       </Method>
       <Method>
@@ -19293,7 +19218,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Name>SetAssertionType</Name>
         <Parameter>
           <Name>AssertType</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
           <BitSize>8</BitSize>
         </Parameter>
       </Method>
@@ -19335,7 +19260,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Name>
       <BitSize>4096</BitSize>
       <SubItem>
         <Name>boolExpectedOrActual</Name>
@@ -19477,17 +19402,17 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Name>
       <BitSize>12288</BitSize>
       <SubItem>
         <Name>Expected</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
         <BitSize>4096</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
       <SubItem>
         <Name>Actual</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
         <BitSize>4096</BitSize>
         <BitOffs>4096</BitOffs>
       </SubItem>
@@ -19505,11 +19430,11 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Name>
       <BitSize>12352</BitSize>
       <SubItem>
         <Name>AssertResult</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
         <BitSize>12288</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
@@ -19529,7 +19454,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Name>
       <Comment>
     This function block is responsible for keeping track of which asserts that have been made. The reason we need to
     keep track of these is because if the user does the same assert twice (because of running a test suite over several
@@ -19543,7 +19468,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       <BitSize>24640320</BitSize>
       <SubItem>
         <Name>AssertResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -19571,7 +19496,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>AssertResultInstances</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -19920,7 +19845,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Name>
       <BitSize>4224</BitSize>
       <SubItem>
         <Name>ExpectedsSize</Name>
@@ -19964,11 +19889,11 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Name>
       <BitSize>4256</BitSize>
       <SubItem>
         <Name>AssertArrayResult</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
         <BitSize>4224</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
@@ -19988,7 +19913,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Name>
       <Comment>
     This function block is responsible for keeping track of which array-asserts that have been made.
     The reason we need to keep track of these is because if the user does the same assert twice
@@ -20004,7 +19929,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       <BitSize>8480256</BitSize>
       <SubItem>
         <Name>AssertArrayResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -20032,7 +19957,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>AssertArrayResultInstances</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -20331,7 +20256,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Name>
       <BitSize>32</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -20359,7 +20284,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Method>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Name>
       <Comment>
     This function block is responsible for making sure that the asserted test instance path and test message are not
     loo long. The total printed message can not be more than 253 characters long.
@@ -20457,14 +20382,14 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Name>
       <Comment>
     This function block is responsible for printing the results of the assertions using the built-in
     ADSLOGSTR functionality provided by the Tc2_System library. This sends the result using ADS, which
     is consumed by the error list of Visual Studio.
 </Comment>
       <BitSize>64</BitSize>
-      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Implements>
+      <Implements Namespace="lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Implements>
       <Method>
         <Name>LogAssertFailure</Name>
         <Parameter>
@@ -20489,7 +20414,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Parameter>
         <Local>
           <Name>AdjustAssertFailureMessageToMax253CharLength</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Type>
           <BitSize>11584</BitSize>
         </Local>
         <Local>
@@ -20526,7 +20451,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</Name>
       <Comment> This function block is responsible for holding the internal state of the test suite.
    Every test suite can have one or more tests, and every test can do one or more asserts.
    It's also responsible for providing all the assert-methods for asserting different data types.
@@ -20568,7 +20493,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>Tests</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_Test</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>100</Elements>
@@ -20602,19 +20527,19 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>AssertResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Type>
         <BitSize>24640320</BitSize>
         <BitOffs>431040</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AssertArrayResults</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Type>
         <BitSize>8480256</BitSize>
         <BitOffs>25071360</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AdsAssertMessageFormatter</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Type>
         <Comment> Prints the failed asserts to ADS so that Visual Studio can display the assert message.
        This assert formatter can be replaced with something else than ADS </Comment>
         <BitSize>64</BitSize>
@@ -20622,7 +20547,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>AssertMessageFormatter</Name>
-        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Type>
+        <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Type>
         <BitSize>32</BitSize>
         <BitOffs>33551680</BitOffs>
       </SubItem>
@@ -20766,11 +20691,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -20931,7 +20851,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Method>
       <Method>
         <Name>GetTestByPosition</Name>
-        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</ReturnType>
+        <ReturnType Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_Test</ReturnType>
         <ReturnBitSize>4192</ReturnBitSize>
         <Parameter>
           <Name>Position</Name>
@@ -21029,11 +20949,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -21138,11 +21053,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -21302,11 +21212,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_LTIME</Name>
@@ -21429,11 +21334,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -21575,11 +21475,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -22341,11 +22236,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>SetHasStartedRunning</Name>
@@ -22354,7 +22244,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Name>SetTestFailed</Name>
         <Parameter>
           <Name>AssertionType</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
           <BitSize>8</BitSize>
         </Parameter>
         <Parameter>
@@ -22506,11 +22396,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>GetHasStartedRunning</Name>
@@ -22613,11 +22498,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -22772,11 +22652,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_DINT</Name>
@@ -22899,11 +22774,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -23079,11 +22949,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -23366,11 +23231,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -24167,11 +24027,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_UDINT</Name>
@@ -24266,11 +24121,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Properties>
         <Property>
@@ -24286,7 +24136,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Name>
       <BitSize>4128</BitSize>
       <SubItem>
         <Name>MsgCtrlMask</Name>
@@ -24314,7 +24164,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</Name>
+      <Name Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</Name>
       <Comment> This function block is responsible for making sure that the ADSLOGSTR-messages to the ADS-router are transmitted
    cyclically and not in a burst. The reason this is necessary is because that if too many messages are sent at the
    same time some get lost and are never printed to the error list output
@@ -24406,7 +24256,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Parameter>
         <Local>
           <Name>AdsLogStringMessage</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
           <BitSize>4128</BitSize>
         </Local>
       </Method>
@@ -24414,7 +24264,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Name>GetAndRemoveLogFromQueue</Name>
         <Parameter>
           <Name>AdsLogStringMessage</Name>
-          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
+          <Type Namespace="lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
           <BitSize>4128</BitSize>
           <Properties>
             <Property>
@@ -46725,7 +46575,7 @@ The BPTM will throw an error if the arbiter does not have enough space for the t
         <Default>
           <SubItem>
             <Name>.iTermBits</Name>
-            <Value>12</Value>
+            <Value>15</Value>
           </SubItem>
           <SubItem>
             <Name>.fTermMax</Name>
@@ -46734,10 +46584,6 @@ The BPTM will throw an error if the arbiter does not have enough space for the t
           <SubItem>
             <Name>.fTermMin</Name>
             <Value>0</Value>
-          </SubItem>
-          <SubItem>
-            <Name>.fResolution</Name>
-            <Value>0.1</Value>
           </SubItem>
         </Default>
         <Properties>
@@ -58894,6 +58740,44 @@ Digital outputs</Comment>
       </Properties>
     </DataType>
     <DataType>
+      <Name GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Name>
+      <DisplayName TxtId="">Log event</DisplayName>
+      <EventId>
+        <Name Id="0">Critical</Name>
+        <DisplayName TxtId="">Critical</DisplayName>
+        <Severity>Critical</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="1">Error</Name>
+        <DisplayName TxtId="">Error</DisplayName>
+        <Severity>Error</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="2">Warning</Name>
+        <DisplayName TxtId="">Warning</DisplayName>
+        <Severity>Warning</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="3">Info</Name>
+        <DisplayName TxtId="">Info</DisplayName>
+        <Severity>Info</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="4">Verbose</Name>
+        <DisplayName TxtId="">Verbose</DisplayName>
+        <Severity>Verbose</Severity>
+      </EventId>
+      <Hides>
+        <Hide GUID="{E50B8F82-4C54-4F5A-855E-90970D01354A}"/>
+        <Hide GUID="{772B0B6F-412E-46FD-9006-6E00BFFE1C3D}"/>
+        <Hide GUID="{8FAD87A4-C885-4A4F-85AF-8AB324945AE2}"/>
+        <Hide GUID="{16BEE339-E307-4BC2-8E77-D5FB1794DF5A}"/>
+        <Hide GUID="{B7E60A74-CB5C-4A02-B59C-74B86A888DE9}"/>
+        <Hide GUID="{6B58EF80-AB34-4F6C-81D0-B0589F4FC534}"/>
+        <Hide GUID="{9E76D1D7-D744-4E3D-B111-F6F94B60E6AB}"/>
+      </Hides>
+    </DataType>
+    <DataType>
       <Name GUID="{11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31}" TcBaseType="true" CName="TcSystemEventClass">TcSystemEventClass</Name>
       <DisplayName TxtId="">TcSystemEventClass</DisplayName>
       <EventId>
@@ -59697,44 +59581,6 @@ Digital outputs</Comment>
       </EventId>
       <Hides>
         <Hide GUID="{3FEAA938-D042-4B1E-8ADD-BB2F7BE872B0}"/>
-      </Hides>
-    </DataType>
-    <DataType>
-      <Name GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Name>
-      <DisplayName TxtId="">Log event</DisplayName>
-      <EventId>
-        <Name Id="0">Critical</Name>
-        <DisplayName TxtId="">Critical</DisplayName>
-        <Severity>Critical</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="1">Error</Name>
-        <DisplayName TxtId="">Error</DisplayName>
-        <Severity>Error</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="2">Warning</Name>
-        <DisplayName TxtId="">Warning</DisplayName>
-        <Severity>Warning</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="3">Info</Name>
-        <DisplayName TxtId="">Info</DisplayName>
-        <Severity>Info</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="4">Verbose</Name>
-        <DisplayName TxtId="">Verbose</DisplayName>
-        <Severity>Verbose</Severity>
-      </EventId>
-      <Hides>
-        <Hide GUID="{E50B8F82-4C54-4F5A-855E-90970D01354A}"/>
-        <Hide GUID="{772B0B6F-412E-46FD-9006-6E00BFFE1C3D}"/>
-        <Hide GUID="{8FAD87A4-C885-4A4F-85AF-8AB324945AE2}"/>
-        <Hide GUID="{16BEE339-E307-4BC2-8E77-D5FB1794DF5A}"/>
-        <Hide GUID="{B7E60A74-CB5C-4A02-B59C-74B86A888DE9}"/>
-        <Hide GUID="{6B58EF80-AB34-4F6C-81D0-B0589F4FC534}"/>
-        <Hide GUID="{9E76D1D7-D744-4E3D-B111-F6F94B60E6AB}"/>
       </Hides>
     </DataType>
   </DataTypes>
@@ -79296,7 +79142,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>GVL_TcUnit.TcUnitRunner</Name>
             <BitSize>621827200</BitSize>
-            <BaseType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</BaseType>
+            <BaseType Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -79308,7 +79154,7 @@ Digital outputs</Comment>
             <Name>GVL_TcUnit.CurrentTestSuiteBeingCalled</Name>
             <Comment> Pointer to current test suite being called </Comment>
             <BitSize>32</BitSize>
-            <BaseType PointerTo="1" Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
+            <BaseType PointerTo="1" Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -79369,7 +79215,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>GVL_TcUnit.TestSuiteAddresses</Name>
             <BitSize>32000</BitSize>
-            <BaseType PointerTo="1" Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
+            <BaseType PointerTo="1" Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
             <ArrayInfo>
               <LBound>1</LBound>
               <Elements>1000</Elements>
@@ -79411,7 +79257,7 @@ Digital outputs</Comment>
             <Name>GVL_TcUnit.AdsMessageQueue</Name>
             <Comment> Buffered ADS message queue for output to the error list </Comment>
             <BitSize>8320864</BitSize>
-            <BaseType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</BaseType>
+            <BaseType Namespace="lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -79665,6 +79511,46 @@ Digital outputs</Comment>
               </SubItem>
             </Default>
             <BitOffs>642359424</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Version.stLibVersion_lcls_twincat_common_components</Name>
+            <BitSize>288</BitSize>
+            <BaseType GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}">ST_LibVersion</BaseType>
+            <Default>
+              <SubItem>
+                <Name>.iMajor</Name>
+                <Value>3</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.iMinor</Name>
+                <Value>1</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.iBuild</Name>
+                <Value>0</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.iRevision</Name>
+                <Value>0</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.nFlags</Name>
+                <Value>0</Value>
+              </SubItem>
+              <SubItem>
+                <Name>.sVersion</Name>
+                <String>3.1.0</String>
+              </SubItem>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>const_non_replaced</Name>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>642363552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_SL1K4_SCATTER.bTest</Name>
@@ -82334,6 +82220,29 @@ Digital outputs</Comment>
             <BitOffs>686174208</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>TC_EVENTS.LCLSGeneralEventClass</Name>
+            <Comment> ST_LCLSGeneralEventClass</Comment>
+            <BitSize>960</BitSize>
+            <BaseType GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">ST_LCLSGeneralEventClass</BaseType>
+            <Properties>
+              <Property>
+                <Name>tc_no_symbol</Name>
+                <Value>unused</Value>
+              </Property>
+              <Property>
+                <Name>const_non_replaced</Name>
+              </Property>
+              <Property>
+                <Name>suppress_warning_0</Name>
+                <Value>C0228</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>686217536</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>TC_EVENT_CLASSES.TcSystemEventClass</Name>
             <Comment> 11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31</Comment>
             <BitSize>128</BitSize>
@@ -82400,7 +82309,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686187584</BitOffs>
+            <BitOffs>686226560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcGeneralAdsEventClass</Name>
@@ -82469,7 +82378,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686187712</BitOffs>
+            <BitOffs>686226688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRouterEventClass</Name>
@@ -82538,7 +82447,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686187840</BitOffs>
+            <BitOffs>686226816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRTimeEventClass</Name>
@@ -82607,7 +82516,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686187968</BitOffs>
+            <BitOffs>686226944</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.Win32EventClass</Name>
@@ -82676,7 +82585,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686188096</BitOffs>
+            <BitOffs>686227072</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.LCLSGeneralEventClass</Name>
@@ -82745,30 +82654,7 @@ Digital outputs</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>686188224</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>TC_EVENTS.LCLSGeneralEventClass</Name>
-            <Comment> ST_LCLSGeneralEventClass</Comment>
-            <BitSize>960</BitSize>
-            <BaseType GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">ST_LCLSGeneralEventClass</BaseType>
-            <Properties>
-              <Property>
-                <Name>tc_no_symbol</Name>
-                <Value>unused</Value>
-              </Property>
-              <Property>
-                <Name>const_non_replaced</Name>
-              </Property>
-              <Property>
-                <Name>suppress_warning_0</Name>
-                <Value>C0228</Value>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>686218560</BitOffs>
+            <BitOffs>686227200</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -82830,6 +82716,9 @@ Digital outputs</Comment>
       <Deployment/>
       <EventClasses>
         <EventClass>
+          <Type GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Type>
+        </EventClass>
+        <EventClass>
           <Type GUID="{11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31}">TcSystemEventClass</Type>
         </EventClass>
         <EventClass>
@@ -82844,9 +82733,6 @@ Digital outputs</Comment>
         <EventClass>
           <Type GUID="{1D0C4BAC-ECF3-4F33-8F20-A12E77AB6387}">Win32EventClass</Type>
         </EventClass>
-        <EventClass>
-          <Type GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Type>
-        </EventClass>
       </EventClasses>
       <Properties>
         <Property>
@@ -82855,15 +82741,15 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-10-07T09:58:39</Value>
+          <Value>2023-10-18T14:10:13</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>1077248</Value>
+          <Value>1032192</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>
-          <Value>85360640</Value>
+          <Value>85303296</Value>
         </Property>
       </Properties>
     </Module>
