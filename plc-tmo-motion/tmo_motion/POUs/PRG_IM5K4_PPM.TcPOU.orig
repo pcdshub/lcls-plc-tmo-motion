@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_IM5K4_PPM" Id="{70ab2a3c-97c1-4d17-a072-939f2529a358}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_IM5K4_PPM
+VAR
+    {attribute 'pytmc' := '
+        pv: IM5K4:PPM
+        io: io
+    '}
+    {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT 					:= TIIB[IM5K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
+                              .fbGige.bGigePower 						:= TIIB[IM5K4-EL2004-E3]^Channel 2^Output;
+                              .fbPowerMeter.iVoltageINT 				:= TIIB[IM5K4-EL3062-E6]^AI Standard Channel 1^Value;
+                              .fbPowerMeter.fbThermoCouple.bError 		:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
+                              .fbPowerMeter.fbThermoCouple.bUnderrange	:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
+                              .fbPowerMeter.fbThermoCouple.bOverrange 	:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
+                              .fbPowerMeter.fbThermoCouple.iRaw 		:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 1^Value;
+                              .fbYagThermoCouple.bError 				:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
+                              .fbYagThermoCouple.bUnderrange 			:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
+                              .fbYagThermoCouple.bOverrange 			:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM5K4-EL3314-E4]^TC Inputs Channel 2^Value;
+                              .fbFlowMeter.iRaw                         := TIIB[IM5K4-EL3052-E5]^AI Standard Channel 1^Value'}
+    fbIM5K4: FB_PPM;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 12,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+//    fStartupVelo: LREAL := 12;
+//    bInit: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
+
+fbStateSetup(StPositionState:=fbIM5K4.stOut, fposition:=-5.13, sPmpsState := 'IM5K4:PPM-OUT');
+fbStateSetup(StPositionState:=fbIM5K4.stPower, fposition:=-44.23, sPmpsState := 'IM5K4:PPM-POWERMETER');
+fbStateSetup(StPositionState:=fbIM5K4.stYag1, fposition:=-68.23, sPmpsState := 'IM5K4:PPM-YAG1');
+fbStateSetup(StPositionState:=fbIM5K4.stYag2, fposition:=-94.24, sPmpsState := 'IM5K4:PPM-YAG2');
+
+{*//fbIM5K4.stOut.fPosition := -5.13;
+fbIM5K4.stOut.fVelocity := fStartupVelo;
+fbIM5K4.stOut.bUseRawCounts := FALSE;
+fbIM5K4.stOut.bValid := TRUE;
+fbIM5K4.stOut.bMoveOk := TRUE;
+fbIM5K4.stOut.stPMPS.sPmpsState := 'IM5K4:PPM-OUT';
+
+//fbIM5K4.stPower.fPosition := -44.23;
+fbIM5K4.stPower.fVelocity := fStartupVelo;
+fbIM5K4.stPower.bUseRawCounts := FALSE;
+fbIM5K4.stPower.bValid := TRUE;
+fbIM5K4.stPower.bMoveOk := TRUE;
+fbIM5K4.stPower.stPMPS.sPmpsState := 'IM5K4:PPM-POWERMETER';
+
+//fbIM5K4.stYag1.fPosition := -68.23;
+fbIM5K4.stYag1.fVelocity := fStartupVelo;
+fbIM5K4.stYag1.bUseRawCounts := FALSE;
+fbIM5K4.stYag1.bMoveOk := TRUE;
+fbIM5K4.stYag1.bValid := TRUE;
+
+
+//fbIM5K4.stYag2.fPosition := -94.24;
+fbIM5K4.stYag2.fVelocity := fStartupVelo;
+fbIM5K4.stYag2.bUseRawCounts := FALSE;
+fbIM5K4.stYag2.bMoveOk := TRUE;
+fbIM5K4.stYag2.bValid := TRUE;
+
+*}
+CASE GVL_TcGVL.ePF1K4State OF
+    E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
+        // Known state targets: allow less strict pmps
+        fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_WFS_IN';
+        fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_WFS_IN';
+ELSE
+    // Out, Unknown, or an unexpected state: full pmps
+    fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
+    fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
+END_CASE
+{*
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM5K4.stOut.fPosition := -5.13;
+   fbIM5K4.stPower.fPosition := -44.23;
+   fbIM5K4.stYag1.fPosition := -68.23;
+   fbIM5K4.stYag2.fPosition := -94.24;
+END_IF
+*}
+
+fbIM5K4(
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
+    stYStage := Main.M17,
+    sDeviceName := 'IM5K4:PPM',
+    sTransitionKey := 'IM5K4:PPM-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
+<<<<<<< HEAD
+    fFlowOffset := 0,
+=======
+    fFlowOffset := 0.0,
+>>>>>>> new-flow-meter-scaling
+
+);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

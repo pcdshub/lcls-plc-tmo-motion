@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_IM3K4_PPM" Id="{4f3c5bdc-b3fa-44e0-8d88-13d3bdf3bfeb}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_IM3K4_PPM
+VAR
+    {attribute 'pytmc' := '
+        pv: IM3K4:PPM
+        io: io
+    '}
+    {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT 					:= TIIB[IM3K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
+                              .fbGige.bGigePower 						:= TIIB[IM3K4-EL2004-E3]^Channel 2^Output;
+                              .fbPowerMeter.iVoltageINT 				:= TIIB[IM3K4-EL3062-E6]^AI Standard Channel 1^Value;
+                              .fbPowerMeter.fbThermoCouple.bError 		:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
+                              .fbPowerMeter.fbThermoCouple.bUnderrange	:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
+                              .fbPowerMeter.fbThermoCouple.bOverrange 	:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
+                              .fbPowerMeter.fbThermoCouple.iRaw 		:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 1^Value;
+                              .fbYagThermoCouple.bError 				:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
+                              .fbYagThermoCouple.bUnderrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
+                              .fbYagThermoCouple.bOverrange 			:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
+                              .fbYagThermoCouple.iRaw 					:= TIIB[IM3K4-EL3314-E4]^TC Inputs Channel 2^Value;
+                              .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'} //IM3K4 and IM4K4 share the same flow meter
+    fbIM3K4: FB_PPM;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fVelocity := 12,
+        bMoveOK := TRUE,
+        bValid := TRUE
+    );
+ //   fStartupVelo: LREAL := 12;
+ //   bInit: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbStateSetup(StPositionState:=stDefault, bSetDefault:=TRUE);
+
+fbStateSetup(StPositionState:=fbIM3K4.stOut, fposition:=-5.82, sPmpsState := 'IM3K4:PPM-OUT');
+fbStateSetup(StPositionState:=fbIM3K4.stPower, fposition:=-44.92, sPmpsState := 'IM3K4:PPM-POWERMETER');
+fbStateSetup(StPositionState:=fbIM3K4.stYag1, fposition:=-68.92, sPmpsState := 'IM3K4:PPM-YAG1');
+fbStateSetup(StPositionState:=fbIM3K4.stYag2, fposition:=-94.93, sPmpsState := 'IM3K4:PPM-YAG2');
+
+{*
+//fbIM3K4.stOut.fPosition := -5.82;
+fbIM3K4.stOut.fVelocity := fStartupVelo;
+fbIM3K4.stOut.bUseRawCounts := FALSE;
+fbIM3K4.stOut.bValid := TRUE;
+fbIM3K4.stOut.bMoveOk := TRUE;
+fbIM3K4.stOut.stPMPS.sPmpsState := 'IM3K4:PPM-OUT';
+
+//fbIM3K4.stPower.fPosition := -44.92;
+fbIM3K4.stPower.fVelocity := fStartupVelo;
+fbIM3K4.stPower.bUseRawCounts := FALSE;
+fbIM3K4.stPower.bValid := TRUE;
+fbIM3K4.stPower.bMoveOk := TRUE;
+fbIM3K4.stPower.stPMPS.sPmpsState := 'IM3K4:PPM-POWERMETER';
+
+//fbIM3K4.stYag1.fPosition := -68.92;
+fbIM3K4.stYag1.fVelocity := fStartupVelo;
+fbIM3K4.stYag1.bUseRawCounts := FALSE;
+fbIM3K4.stYag1.bValid := TRUE;
+fbIM3K4.stYag1.bMoveOk := TRUE;
+fbIM3K4.stYag1.stPMPS.sPmpsState := 'IM3K4:PPM-YAG1';
+
+//fbIM3K4.stYag2.fPosition := -94.93;
+fbIM3K4.stYag2.fVelocity := fStartupVelo;
+fbIM3K4.stYag2.bUseRawCounts := FALSE;
+fbIM3K4.stYag2.bValid := TRUE;
+fbIM3K4.stYag2.bMoveOk := TRUE;
+fbIM3K4.stYag2.stPMPS.sPmpsState := 'IM3K4:PPM-YAG2';
+
+IF NOT bInit THEN
+   bInit := TRUE;
+   fbIM3K4.stOut.fPosition := -5.82;
+   fbIM3K4.stPower.fPosition := -44.92;
+   fbIM3K4.stYag1.fPosition := -68.92;
+   fbIM3K4.stYag2.fPosition := -94.93;
+END_IF
+*}
+fbIM3K4(
+    fbArbiter := fbArbiter,
+    fbFFHWO := fbFastFaultOutput1,
+    stYStage := Main.M15,
+    sDeviceName := 'IM3K4:PPM',
+    sTransitionKey := 'IM3K4:PPM-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
+<<<<<<< HEAD
+    fFlowOffset := 0
+=======
+    fFlowOffset := 0.0,
+>>>>>>> new-flow-meter-scaling
+);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
