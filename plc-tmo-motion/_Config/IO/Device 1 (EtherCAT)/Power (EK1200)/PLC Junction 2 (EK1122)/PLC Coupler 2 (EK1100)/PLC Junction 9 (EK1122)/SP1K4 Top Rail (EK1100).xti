@@ -46,8 +46,14 @@
 		<Box File="SP1K4-TL2-EL1124.xti" Id="14">
 			<EtherCAT PortABoxInfo="#x0100000d"/>
 		</Box>
-		<Box File="Term 15 (EK1122).xti" Id="15">
+		<Box File="SP1K4- EL3202-E9A.xti" Id="257">
 			<EtherCAT PortABoxInfo="#x0100000e"/>
+		</Box>
+		<Box File="SP1K4-EL3202-E9B.xti" Id="258">
+			<EtherCAT PortABoxInfo="#x01000101"/>
+		</Box>
+		<Box File="Term 15 (EK1122).xti" Id="15">
+			<EtherCAT PortABoxInfo="#x01000102"/>
 		</Box>
 		<Box File="Term 300 (EL9011).xti" Id="300">
 			<EtherCAT PortABoxInfo="#x0200000f"/>
