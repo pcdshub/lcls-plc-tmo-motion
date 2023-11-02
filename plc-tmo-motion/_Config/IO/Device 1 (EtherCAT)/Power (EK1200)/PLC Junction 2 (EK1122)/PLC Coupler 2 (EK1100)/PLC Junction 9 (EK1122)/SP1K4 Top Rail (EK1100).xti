@@ -46,7 +46,7 @@
 		<Box File="SP1K4-TL2-EL1124.xti" Id="14">
 			<EtherCAT PortABoxInfo="#x0100000d"/>
 		</Box>
-		<Box File="SP1K4- EL3202-E9A.xti" Id="257">
+		<Box File="SP1K4-EL3202-E9A.xti" Id="257">
 			<EtherCAT PortABoxInfo="#x0100000e"/>
 		</Box>
 		<Box File="SP1K4-EL3202-E9B.xti" Id="258">

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SP1K4" Id="{cb7a4ca3-c4c8-4f3d-892b-f36c5516f8fa}" SpecialFunc="None">
-    <Declaration><![CDATA[ PROGRAM PRG_SP1K4
+    <Declaration><![CDATA[  PROGRAM PRG_SP1K4
 VAR
     fbMotionLensX: FB_MotionStage;
     fbMotionFoilX: FB_MotionStage;
@@ -431,8 +431,8 @@ Main.M43.bLimitForwardEnable := True;
 GVL_TcGVL.eSP1K4FZP := zp_enumGet;
 GVL_TcGVL.eSP1K4ATT := att_enumGet;
 
-
-
+SP1K4_ATT_RTD_01(fResolution:=0.01);
+SP1K4_ATT_RTD_02(fResolution:=0.01);
 ]]></ST>
     </Implementation>
   </POU>
