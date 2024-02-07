@@ -3,9 +3,16 @@
   <POU Name="PRG_LI2K4_IP1" Id="{90796e54-85a2-4580-a821-f0ffc741543f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_LI2K4_IP1
 VAR
+
+
+    {attribute 'pytmc' := '
+        pv: LI2K4:IP1
+        io: io
+    '}
     fbMotionLI2K4X: FB_MotionStage;
     fbMotionLI2K4Y: FB_MotionStage;
-    {attribute 'pytmc' := '
+
+(*   {attribute 'pytmc' := '
         pv: LI2K4:IP1
         io: io
     '}
@@ -19,16 +26,15 @@ VAR
     aLI2K4XStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aLI2K4YStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
-
+*)
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbMotionLI2K4Y(stMotionStage:=Main.M45);
 fbMotionLI2K4X(stMotionStage:=Main.M46);
+
 //LI2K4 PMPS
-
-
-
+(*
 fbLI2K4States(
     stMotionStage1:=Main.M45,
     stMotionStage2:=Main.M46,
@@ -38,7 +44,8 @@ fbLI2K4States(
     stOut2 := aLI2K4YStates,
     fbFFHWO:=fbFastFaultOutput1,
     fbArbiter:=fbArbiter,
-);]]></ST>
+);
+*)]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

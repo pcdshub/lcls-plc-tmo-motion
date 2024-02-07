@@ -3,10 +3,10 @@
   <POU Name="FB_SLITS" Id="{b20ac175-27c9-0d05-3c79-6a95fe08ff7d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_SLITS
 VAR_IN_OUT
-    stTopBlade: DUT_MotionStage;
-    stBottomBlade: DUT_MotionStage;
-    stNorthBlade: DUT_MotionStage;
-    stSouthBlade: DUT_MotionStage;
+    stTopBlade: ST_MotionStage;
+    stBottomBlade: ST_MotionStage;
+    stNorthBlade: ST_MotionStage;
+    stSouthBlade: ST_MotionStage;
     bExecuteMotion:BOOL ;
     io_fbFFHWO    :    FB_HardwareFFOutput;
     fbArbiter: FB_Arbiter();
@@ -524,7 +524,7 @@ FFO(i_xOK := ,
     <Method Name="M_HomeBlade" Id="{8cbb5b1e-da93-4c77-b208-73c680cd39fe}">
       <Declaration><![CDATA[METHOD M_HomeBlade : BOOL
 VAR_IN_OUT
-      stBlade: DUT_MotionStage;
+      stBlade: ST_MotionStage;
 END_VAR
 VAR
     fPosBlade: LREAL;
