@@ -102,7 +102,7 @@ VAR
                               .bOverrange := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 1^Status^Overrange;
                               .bError := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 1^Status^Error'}
     {attribute 'pytmc' := '
-        pv: SP1K4:ATT:RTD:01
+        pv: SP1K4:SPEC:ATT:RTD:01
         field: EGU C
         io: i
     '}
@@ -113,7 +113,7 @@ VAR
                               .bOverrange := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 2^Status^Overrange;
                               .bError := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 2^Status^Error'}
     {attribute 'pytmc' := '
-        pv: SP1K4:ATT:RTD:02
+        pv: SP1K4:SPEC:ATT:RTD:02
         field: EGU C
         io: i
     '}

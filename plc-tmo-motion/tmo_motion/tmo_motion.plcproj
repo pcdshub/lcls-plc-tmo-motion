@@ -81,6 +81,9 @@
     <Compile Include="POUs\PRG_LI1K4_IP1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_LI2K4_IP1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_PF1K4_WFS_TARGET.TcPOU">
       <SubType>Code</SubType>
     </Compile>

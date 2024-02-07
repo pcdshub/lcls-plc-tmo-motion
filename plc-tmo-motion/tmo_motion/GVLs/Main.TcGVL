@@ -306,6 +306,50 @@ VAR_GLOBAL
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
         sName := 'TMO:SPEC:MMS:13');
 
+ // LI2K4-MMS: Y
+
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[LI2K4Y-EL7047-E1]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[LI2K4Y-EL7047-E1]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[LI2K4-EL5042-E2]^FB Inputs Channel 1^Position'}
+    {attribute 'pytmc' := '
+        pv: LI2K4:MMS:Y
+    '}
+
+    M45: DUT_MotionStage := (
+        bHardwareEnable:=TRUE,
+        bPowerSelf:=TRUE,
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        sName := 'LI2K4:MMS:Y');
+// LI2K4-MMS: X
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[LI2K4X-EL7047-E3]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[LI2K4X-EL7047-E3]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[LI2K4-EL5042-E2]^FB Inputs Channel 2^Position'}
+    {attribute 'pytmc' := '
+        pv: LI2K4:MMS:X
+    '}
+    M46: DUT_MotionStage := (
+        bHardwareEnable:=TRUE,
+        bPowerSelf:=TRUE,
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        sName := 'LI2K4:MMS:X');
+
+    //CF1K4-MMS-FILT
+    {attribute 'pytmc' := 'pv: CF1K4:MMS:FILT'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[CF1K4-EL7047-E4]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[CF1K4-EL7047-E4]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[CF1K4-EL5042-E5]^FB Inputs Channel 1^Position'}
+    {attribute 'pytmc' := '
+        pv: CF1K4:MMS:FILT
+    '}
+    M47: DUT_MotionStage := (
+        bHardwareEnable:=TRUE,
+        bPowerSelf:=TRUE,
+        nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
+        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        sName := 'CF1K4:MMS:FILT');
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

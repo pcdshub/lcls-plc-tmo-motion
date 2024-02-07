@@ -1353,6 +1353,8 @@ External Setpoint Generation:
 		<AxisFolder Name="IM6K4-PPM"/>
 		<AxisFolder Name="PF2K4_WFS_TARGET"/>
 		<AxisFolder Name="SP1K4"/>
+		<AxisFolder Name="LI2K4"/>
+		<AxisFolder Name="CF1K4"/>
 		<Axis File="Axis 1 AL1K4-L2SI-MMS.xti" Id="1"/>
 		<Axis File="Axis 2.xti" Id="2"/>
 		<Axis File="Axis 3.xti" Id="3"/>
@@ -2333,6 +2335,9 @@ External Setpoint Generation:
 		<Axis File="Thorlabs2.xti" Id="42"/>
 		<Axis File="Thorlab-LenX.xti" Id="43"/>
 		<Axis File="FoilY.xti" Id="44"/>
+		<Axis File="Axis 45 LI2K4-MMS-Y.xti" Id="45"/>
+		<Axis File="Axis 46 LI2K4-MMS-X.xti" Id="46"/>
+		<Axis File="Axis 47 CF1K4-MMS-FILT.xti" Id="47"/>
 	</NC>
 	<Mappings>
 		<OwnerA Name="Axes^SL1K4-BOTTOM-M10">
