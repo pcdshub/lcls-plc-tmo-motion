@@ -24,6 +24,9 @@
     <Compile Include="DUTs\ENUM_SolidAttenuator_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ENUM_LaserCoupling_States.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ENUM_ZonePlate_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -203,7 +206,7 @@
       <Resolution>lcls-twincat-common-components, 3.3.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 4.0.4 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 4.0.7 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 3.0.14 (SLAC - LCLS)</Resolution>

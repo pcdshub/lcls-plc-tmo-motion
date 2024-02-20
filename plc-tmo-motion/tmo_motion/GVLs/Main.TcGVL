@@ -179,7 +179,7 @@ VAR_GLOBAL
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'TMO:SPEC:MMS:02');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[ZonePlateX-EL7041]^STM Status^Status^Digital input 1'
@@ -303,7 +303,7 @@ VAR_GLOBAL
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'TMO:SPEC:MMS:13');
 
  // LI2K4-MMS: Y
@@ -319,7 +319,7 @@ VAR_GLOBAL
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'LI2K4:MMS:Y');
 // LI2K4-MMS: X
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[LI2K4X-EL7047-E3]^STM Status^Status^Digital input 1;
@@ -332,7 +332,7 @@ VAR_GLOBAL
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'LI2K4:MMS:X');
 
     //CF1K4-MMS-FILT
@@ -347,7 +347,7 @@ VAR_GLOBAL
         bHardwareEnable:=TRUE,
         bPowerSelf:=TRUE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
-        nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET,
+        nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'CF1K4:MMS:FILT');
 
 END_VAR]]></Declaration>

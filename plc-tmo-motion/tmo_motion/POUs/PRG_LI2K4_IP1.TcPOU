@@ -4,48 +4,62 @@
     <Declaration><![CDATA[PROGRAM PRG_LI2K4_IP1
 VAR
 
-
-    {attribute 'pytmc' := '
-        pv: LI2K4:IP1
-        io: io
-    '}
     fbMotionLI2K4X: FB_MotionStage;
     fbMotionLI2K4Y: FB_MotionStage;
 
-(*   {attribute 'pytmc' := '
+   {attribute 'pytmc' := '
         pv: LI2K4:IP1
         io: io
     '}
-    fbLI2K4States: FB_PositionStatePMPS2D_InOut;
+    fbLI2K4States: FB_PositionStatePMPS2D;
+    {attribute 'pytmc' := '
+        pv: LI2K4:IP1:STATE:SET
+        io: io
+    '}
+    li2k4_enumSet: ENUM_LaserCoupling_States;
+     {attribute 'pytmc' := '
+        pv: LI2K4:IP1:STATE:GET
+        io: i
+    '}
+    li2k4_enumGet: ENUM_LaserCoupling_States;
     fbStateSetup: FB_StateSetupHelper;
     stDefault: ST_PositionState :=(
-        fVelocity := 1,
+        fVelocity := 0.5,
         bMoveOK := TRUE,
         bValid := TRUE
     );
     aLI2K4XStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aLI2K4YStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
-*)
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbMotionLI2K4Y(stMotionStage:=Main.M45);
 fbMotionLI2K4X(stMotionStage:=Main.M46);
 
-//LI2K4 PMPS
-(*
+//LI2K4 2DPMPS
+fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=0.0);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=0.0);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=0.0);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=0.0);
+
+aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
+aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
+
 fbLI2K4States(
     stMotionStage1:=Main.M45,
     stMotionStage2:=Main.M46,
-    stIn1 := aLI2K4XStates,
-    stOut1 := aLI2K4XStates,
-    stIn2 := aLI2K4YStates,
-    stOut2 := aLI2K4YStates,
+    astPositionState1:=aLI2K4XStates,
+    astPositionState2:=aLI2K4YStates,
+    eEnumSet:=li2k4_enumSet,
+    eEnumGet:=li2k4_enumGet,
+    sDeviceName := 'LI2K4:IP1',
+    sTransitionKey := 'LI2K4:IP1-TRANSITION',
     fbFFHWO:=fbFastFaultOutput1,
     fbArbiter:=fbArbiter,
 );
-*)]]></ST>
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
