@@ -24,28 +24,54 @@ VAR
     li2k4_enumGet: ENUM_LaserCoupling_States;
     fbStateSetup: FB_StateSetupHelper;
     stDefault: ST_PositionState :=(
+        fDelta :=0.5,
         fVelocity := 0.5,
-        bMoveOK := TRUE,
         bValid := TRUE
     );
     aLI2K4XStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aLI2K4YStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
+
+    bLI2K4XOut: BOOL;
+    bLI2K4YIn: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbMotionLI2K4Y(stMotionStage:=Main.M45);
+      <ST><![CDATA[
+fbMotionLI2K4Y(stMotionStage:=Main.M45);
 fbMotionLI2K4X(stMotionStage:=Main.M46);
 
 //LI2K4 2DPMPS
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
-fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=0.0);
-fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=0.0);
-fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=0.0);
-fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=0.0);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=-0.75);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=-33.125);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=-84.375);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=-3.375);
 
 aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
-aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
+aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
+
+//LI2K4 EPS condition: OUT->In move Y then move X + IN->OUT move X thenm move Y
+
+bLI2K4XOut := F_AtPositionState(stMotionStage:=Main.M46, stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT]);
+bLI2K4YIn := F_AtPositionState(stMotionStage:=Main.M45, stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1]);
+
+aLI2K4XStates[ENUM_LaserCoupling_States.OUT].bMoveOk := FALSE;
+aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := FALSE;
+aLI2K4YStates[ENUM_LaserCoupling_States.OUT].bMoveOk := FALSE;
+aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := FALSE;
+
+IF bLI2K4YIn THEN
+     aLI2K4XStates[ENUM_LaserCoupling_States.OUT].bMoveOk := TRUE;
+     aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := TRUE;
+END_IF
+
+IF bLI2K4XOut THEN
+     aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := TRUE;
+     aLI2K4YStates[ENUM_LaserCoupling_States.OUT].bMoveOk := TRUE;
+END_IF
+
+//LI2K4 sequenct move : OUT->IN Y move first and then X moves IN->OUT X moves first then Y
 
 fbLI2K4States(
     stMotionStage1:=Main.M45,

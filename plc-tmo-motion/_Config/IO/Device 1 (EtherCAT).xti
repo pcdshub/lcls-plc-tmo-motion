@@ -46,6 +46,7 @@
 		</Box>
 		<EtherCAT EnableVirtualSwitch="true" MaxSwitchPorts="2" MaxSwitchFrames="120">
 			<SyncUnit Name="SL2K4" NoDeleteIfUnused="true"/>
+			<SyncUnit Name="LI2K4" NoDeleteIfUnused="true"/>
 		</EtherCAT>
 	</Device>
 </TcSmItem>
