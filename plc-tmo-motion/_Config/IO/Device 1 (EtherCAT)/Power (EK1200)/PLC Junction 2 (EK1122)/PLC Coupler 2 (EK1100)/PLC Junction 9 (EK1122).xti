@@ -10,6 +10,9 @@
 		<Box File="X2 SL2K4-SCATTER.xti" Id="109">
 			<EtherCAT PortABoxInfo="#x0100005b"/>
 		</Box>
+		<Box File="LI2K4-CF1K4 (EK1100).xti" Id="236">
+			<EtherCAT PortABoxInfo="#x0300005b"/>
+		</Box>
 		<Box File="SP1K4 Top Rail (EK1100).xti" Id="6">
 			<EtherCAT PortABoxInfo="#x0100005b"/>
 		</Box>

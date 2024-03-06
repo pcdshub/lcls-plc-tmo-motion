@@ -9,8 +9,8 @@
     - Swap out FB_ATM_States for FB_TM1K4_States
 *)
 VAR_IN_OUT
-    stYStage: DUT_MotionStage;
-    stXStage: DUT_MotionStage;
+    stYStage: ST_MotionStage;
+    stXStage: ST_MotionStage;
     fbArbiter: FB_Arbiter;
     fbFFHWO: FB_HardwareFFOutput;
 END_VAR

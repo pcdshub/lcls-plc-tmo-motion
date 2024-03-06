@@ -3,9 +3,9 @@
   <POU Name="FB_SP_ZP" Id="{9e7633b7-c6b9-4709-92c4-d466b7628291}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_SP_ZP
 VAR_IN_out
-     stXStage: DUT_MotionStage;
-     stYStage: DUT_MotionStage;
-     stZStage: DUT_MotionStage;
+     stXStage: ST_MotionStage;
+     stYStage: ST_MotionStage;
+     stZStage: ST_MotionStage;
     fbArbiter: FB_Arbiter;
     fbFFHWO: FB_HardwareFFOutput;
 END_VAR
