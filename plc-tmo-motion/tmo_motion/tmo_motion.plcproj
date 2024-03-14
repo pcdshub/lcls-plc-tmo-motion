@@ -27,6 +27,9 @@
     <Compile Include="DUTs\ENUM_LaserCoupling_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ENUM_Sample_Calibration_States.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ENUM_ZonePlate_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_AL1K4_L2SI.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_CF1K4_CAL.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_IM2K4_PPM.TcPOU">
