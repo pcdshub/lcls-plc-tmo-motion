@@ -1324,13 +1324,14 @@ External Setpoint Generation:
 	<Axis Id="47" CreateSymbols="true" AxisType="1" AxisFolder="CF1K4">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Velo Maximum="35"/>
+			<Velo Maximum="27"/>
 			<PositionAreaControl Range="0.1"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara MaxCount="#xffffffff">
+			<EncPara ScaleFactorDenominator="2" MaxCount="#xffffffff">
 				<Inc RefSoftSyncMask="#x0000ffff"/>
+				<ParameterChanged>8</ParameterChanged>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
@@ -1373,7 +1374,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="31.25" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="25.4" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1463,7 +1464,7 @@ Drive Status 4 (manually linked):
 		</Drive>
 		<Controller Name="Ctrl" CtrType="1">
 			<CtrPara PriorControlFactor="1">
-				<PosDiffControl Range="0.8"/>
+				<PosDiffControl Range="0.3"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
@@ -1534,13 +1535,13 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-CF1K4 (EK1100)^CF1K4-EL5042-E5">
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 2^Position"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^Diag" Size="1" OffsA="12"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^Error" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^Input cycle counter" Size="2" OffsA="14"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^Ready" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^TxPDO State" Size="1" OffsA="13"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 2^Status^Warning"/>
+				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 1^Position"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Diag" Size="1" OffsA="12"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Error" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Input cycle counter" Size="2" OffsA="14"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Ready" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^TxPDO State" Size="1" OffsA="13"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Warning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-CF1K4 (EK1100)^CF1K4-EL7047-E4">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
