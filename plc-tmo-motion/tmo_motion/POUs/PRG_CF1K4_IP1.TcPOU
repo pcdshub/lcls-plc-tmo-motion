@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
-  <POU Name="PRG_CF1K4_CAL" Id="{3b3608b5-fe23-47f9-92d0-d7907172c21f}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_CF1K4_CAL
+  <POU Name="PRG_CF1K4_IP1" Id="{3b3608b5-fe23-47f9-92d0-d7907172c21f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_CF1K4_IP1
 VAR
     fbMotionCF1K4: FB_MotionStage;{attribute 'pytmc' := '
         pv: CF1K4:IP1

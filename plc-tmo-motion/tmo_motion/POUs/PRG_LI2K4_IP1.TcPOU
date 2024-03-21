@@ -24,16 +24,20 @@ VAR
     li2k4_enumGet: ENUM_LaserCoupling_States;
     fbStateSetup: FB_StateSetupHelper;
     stDefault: ST_PositionState :=(
-        fDelta :=0.5,
+  //      fDelta :=0.5,
         fVelocity := 0.5,
+        bMoveOk := TRUE,
         bValid := TRUE
     );
     aLI2K4XStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aLI2K4YStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
 
-    bLI2K4XOut: BOOL;
-    bLI2K4YIn: BOOL;
+
+    EPS_LI2K4Y_Positive : FB_EPS;
+    EPS_LI2K4Y_Negative : FB_EPS;
+    EPS_LI2K4X_Positive : FB_EPS;
+    EPS_LI2K4X_Negative : FB_EPS;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -43,15 +47,26 @@ fbMotionLI2K4X(stMotionStage:=Main.M46);
 
 //LI2K4 2DPMPS
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
-fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=-0.75);
-fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], sName := 'OUT', fPosition:=-33.125);
-fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=-2.1245);
-fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1], sName := 'MIRROR1', fPosition:=-84.5);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5, sName := 'OUT', fPosition:=-0.75);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5,  sName := 'OUT', fPosition:=33.125);
+fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 1.5, sName := 'MIRROR1', fPosition:=-3.375);
+fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 0.5, sName := 'MIRROR1', fPosition:=84.5);
 
 aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
 aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
 
 //LI2K4 EPS condition: OUT->In move Y then move X + IN->OUT move X thenm move Y
+//Y only can move up and down when X is OUT
+EPS_LI2K4Y_Positive(eps:=Main.M45.stEPSForwardEnable);
+EPS_LI2K4Y_Positive.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8);
+EPS_LI2K4Y_Negative(eps:=Main.M45.stEPSBackwardEnable);
+EPS_LI2K4Y_Negative.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8);
+
+EPS_LI2K4X_Positive(eps:=Main.M46.stEPSForwardEnable);
+EPS_LI2K4X_Positive.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition > 84);
+EPS_LI2K4X_Negative(eps:=Main.M46.stEPSBackwardEnable);
+EPS_LI2K4X_Negative.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition > 84);
+
 {*
 
 bLI2K4XOut := F_AtPositionState(stMotionStage:=Main.M46, stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT]);

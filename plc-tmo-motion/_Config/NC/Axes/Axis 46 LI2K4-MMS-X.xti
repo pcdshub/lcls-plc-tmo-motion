@@ -1324,12 +1324,14 @@ External Setpoint Generation:
 	<Axis Id="46" CreateSymbols="true" AxisType="1" AxisFolder="LI2K4">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Velo Maximum="7"/>
+			<Velo RefSearch="0.1" RefSync="0.1" SlowManual="0.1" FastManual="0.1" Maximum="7"/>
 			<PositionAreaControl Range="0.1"/>
-			<OtherSettings AllowMotionCmdToSlave="true"/>
+			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.1" PulseDistanceNeg="0.1"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
 			<EncPara ScaleFactorNumerator="5e-05" Offset="-214728.674" MaxCount="#xffffffff">
+				<SoftEndMinControl Enable="true" Range="-4"/>
+				<SoftEndMaxControl Enable="true" Range="1.5"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
