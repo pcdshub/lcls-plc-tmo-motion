@@ -69,7 +69,7 @@
     <Compile Include="POUs\PRG_AL1K4_L2SI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_CF1K4_CAL.TcPOU">
+    <Compile Include="POUs\PRG_CF1K4_IP1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_IM2K4_PPM.TcPOU">
