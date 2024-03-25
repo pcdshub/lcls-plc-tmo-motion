@@ -10,7 +10,8 @@ VAR
      {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
                               .fbThermoCouple1.bUnderrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
                               .fbThermoCouple1.bOverrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
-                              .fbThermoCouple1.iRaw := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Value'}
+                              .fbThermoCouple1.iRaw := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Value;
+                              .fbFlowMeter.iRaw := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'} // same as IM6K4
     fbTM2K4: FB_TM2K4;
 END_VAR
 ]]></Declaration>

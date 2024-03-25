@@ -40,6 +40,11 @@ VAR
         io: input
     '}
     fbThermoCouple1: FB_TempSensor;
+    {attribute 'pytmc' := '
+        pv: FWM
+        EGU: lpm
+    '}
+    fbFlowMeter: FB_AnalogInput := (iTermBits:=15, fTermMax:=60, fTermMin:=0);
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -70,7 +75,8 @@ fbStates(
     stTarget5:=stTarget5,
 );
 
-fbThermoCouple1();]]></ST>
+fbThermoCouple1();
+fbFlowMeter();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
