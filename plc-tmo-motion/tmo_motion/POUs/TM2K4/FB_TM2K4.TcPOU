@@ -42,7 +42,7 @@ VAR
     fbThermoCouple1: FB_TempSensor;
     {attribute 'pytmc' := '
         pv: FWM
-        EGU: lpm
+        field: EGU lpm
     '}
     fbFlowMeter: FB_AnalogInput := (iTermBits:=15, fTermMax:=60, fTermMin:=0);
 END_VAR
