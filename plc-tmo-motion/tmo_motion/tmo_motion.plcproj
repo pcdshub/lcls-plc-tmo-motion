@@ -181,6 +181,10 @@
           <Key>MAX_FAST_FAULTS</Key>
           <Value>200</Value>
         </Parameter>
+        <Parameter>
+          <Key>MAX_ASSERTIONS</Key>
+          <Value>30</Value>
+        </Parameter>
       </Parameters>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_MC2">

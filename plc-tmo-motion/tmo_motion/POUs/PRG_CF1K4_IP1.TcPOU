@@ -36,11 +36,11 @@ END_VAR
 
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
 fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.OUT], sName := 'OUT', fPosition:=102.7);
-fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target1], sName := 'TARGET1', fPosition:=102.7);
-fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target2], sName := 'TARGET2', fPosition:=102.7);
-fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target3], sName := 'TARGET3', fPosition:=102.7);
-fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target4], sName := 'TARGET4', fPosition:=102.7);
-fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target5], sName := 'TARGET5', fPosition:=102.7);
+fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target1], sName := 'TARGET1', fPosition:=200);
+fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target2], sName := 'TARGET2', fPosition:=201);
+fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target3], sName := 'TARGET3', fPosition:=203);
+fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target4], sName := 'TARGET4', fPosition:=205);
+fbStateSetup(stPositionState:=aCF1K4States[ENUM_Sample_Calibration_States.Target5], sName := 'TARGET5', fPosition:=209);
 //PMPS
 aCF1K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'CF1K4:IP1-OUT';
 aCF1K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'CF1K4:IP1-TARGET1';
