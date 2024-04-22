@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_2_PMPS_PRE" Id="{e40e4129-bf40-4846-99f4-d462494e205c}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_2_PMPS_PRE
 VAR
@@ -12,6 +12,7 @@ END_VAR
     io_fbFFHWO:=GVL_PMPS.fbFastFaultOutput1,
     bEnable:=TRUE,
     sPLCName:='plc-tmo-motion',
+	sDirectory:='/home/ecs-user/pmpsdb/'
     );
 
 ]]></ST>
