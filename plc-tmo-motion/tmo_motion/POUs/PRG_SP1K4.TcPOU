@@ -124,7 +124,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bPF1K4Out := GVL_TcGVL.ePF1K4State = E_WFS_States.OUT;
+      <ST><![CDATA[ bPF1K4Out := GVL_TcGVL.ePF1K4State = E_WFS_States.OUT;
 // Hardware Enable and fbMotionStage
 //Lens X
 Main.M32.bLimitForwardEnable := NOT bHallInput1;
@@ -337,20 +337,20 @@ fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=-1.90);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=-1.9);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=53);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=-1.9);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=71);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=-1.9);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=88);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=-1.9);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=107);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=-1.9);
 
 aATTXStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
 aATTXStates[ENUM_SolidAttenuator_States.Target1].bMoveOk := bPF1K4Out;
