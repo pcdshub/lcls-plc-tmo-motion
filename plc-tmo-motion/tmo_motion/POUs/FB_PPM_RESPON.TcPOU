@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_PPM_RESPON" Id="{6e476e2b-3897-4a4a-889b-a4fd22502b33}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PPM_RESPON EXTENDS FB_PPM
+VAR_INPUT
+    {attribute 'pytmc' := '
+        pv: Responsivity
+        io: io
+        field: EGU V/W
+    '}
+    fResponsivity: LREAL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+    {attribute 'pytmc' := '
+        pv: BeamRateFromEpics
+        link: TPG:SYS0:1:DST04:RATE
+    '}
+    fFrequency: UINT;
+
+    {attribute 'pytmc' := '
+        pv: ResponMJ
+        io: i
+        field: EGU mJ
+    '}
+    fResponMJ: LREAL;
+
+    {attribute 'pytmc' := '
+        pv: ResponMJ_BUFFER
+        io: i
+        field: EGU mJ
+    '}
+    fResponMJBuffer: ARRAY[1..1000] OF LREAL;
+    fbResponMJBuffer: FB_LREALBuffer;
+
+    {attribute 'pytmc' := '
+        pv: ResponWattage
+        io: i
+        field: EGU W
+    '}
+    fResponWattage: LREAL;
+
+    {attribute 'pytmc' := '
+        pv: Background
+        io: io
+        field: EGU V
+    '}
+    fBackground: LREAL;
+
+    {attribute 'pytmc' := '
+        pv: BackgroundCollect
+        io: i
+    '}
+    fBackgroundCollect: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: BackgroundCollectionTime
+        io: io
+        field: EGU s
+    '}
+    fBackgroundCollectionTime: UINT;
+    fBackgroundCollectionCycles: UDINT;
+    fBackgroundCollectionCyclesDone: UDINT;
+    fBackgroundCollectionSum: LREAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+SUPER^(fbArbiter := fbArbiter,
+    fbFFHWO := fbFFHWO,
+    stYStage := stYStage,
+    sDeviceName := sDeviceName,
+    sTransitionKey := sTransitionKey,
+    bEnableMotion := bEnableMotion,
+    bEnableBeamParams := bEnableBeamParams,
+    bEnablePositionLimits := bEnablePositionLimits,
+    stOut := stOut,
+    stPower := stPower,
+    stYag1 := stYag1,
+    stYag2 := stYag2,
+    eEnumSet := eEnumSet,
+    bReadDBNow := bReadDBNow,
+    fFlowOffset := fFlowOffset
+);
+
+IF fBackgroundCollect = TRUE THEN
+    fBackgroundCollect := FALSE;
+    fBackgroundCollectionCycles := 10_000_000 * fBackgroundCollectionTime / _TaskInfo[GETCURTASKINDEXEX()].CycleTime;
+    fBackgroundCollectionCyclesDone := 0;
+    fBackgroundCollectionSum := 0;
+END_IF
+
+IF fBackgroundCollectionCycles <> 0 THEN
+    fBackgroundCollectionSum := fBackgroundCollectionSum + fbPowerMeter.fVoltage;
+    fBackgroundCollectionCycles := fBackgroundCollectionCycles - 1;
+    fBackgroundCollectionCyclesDone := fBackgroundCollectionCyclesDone + 1;
+    fBackground := fBackgroundCollectionSum / fBackgroundCollectionCyclesDone;
+END_IF
+
+IF fResponsivity <> 0 AND fFrequency <> 0 THEN
+    fResponWattage := (fbPowerMeter.fVoltage - fBackground) / fResponsivity;
+    fResponMJ := fResponWattage / fFrequency;
+END_IF
+
+fbResponMJBuffer(
+bExecute := TRUE,
+fInput := fResponMJ,
+arrOutput => fResponMJBuffer);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
