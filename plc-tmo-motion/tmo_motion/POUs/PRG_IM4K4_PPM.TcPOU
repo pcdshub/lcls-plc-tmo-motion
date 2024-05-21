@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_IM4K4_PPM" Id="{2178a3b7-171c-484e-b654-ceeb2fca3426}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_IM4K4_PPM
 VAR
@@ -19,7 +19,7 @@ VAR
                               .fbYagThermoCouple.bOverrange 			:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
                               .fbYagThermoCouple.iRaw 					:= TIIB[IM4K4-EL3314-E4]^TC Inputs Channel 2^Value;
                               .fbFlowMeter.iRaw                         := TIIB[IM4K4-EL3052-E5]^AI Standard Channel 1^Value'}
-    fbIM4K4: FB_PPM;
+    fbIM4K4: FB_PPM_RESPON;
     fbStateSetup: FB_StateSetupHelper;
     stDefault: ST_PositionState :=(
         fVelocity := 15,
@@ -92,6 +92,7 @@ fbIM4K4(
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
     fFlowOffset := 0.0,
+    fResponsivity := 0.0721,
 );]]></ST>
     </Implementation>
   </POU>
