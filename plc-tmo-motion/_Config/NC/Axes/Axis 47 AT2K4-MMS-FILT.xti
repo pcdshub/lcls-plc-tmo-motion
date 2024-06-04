@@ -1315,7 +1315,7 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 	</DataTypes>
-	<Axis Id="47" CreateSymbols="true" AxisType="1" AxisFolder="CF1K4">
+	<Axis Id="47" CreateSymbols="true" AxisType="1" AxisFolder="AT2K4">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
 			<Velo Maximum="27"/>
@@ -1323,7 +1323,7 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara ScaleFactorDenominator="2" MaxCount="#xffffffff">
+			<EncPara ScaleFactorNumerator="5e-05" MaxCount="#xffffffff">
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
@@ -1454,7 +1454,7 @@ External Setpoint Generation:
 	</Axis>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-CF1K4 (EK1100)^CF1K4-EL5042-E5">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^AT2K4-EL5042-E5">
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState" Size="1"/>
 				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 1^Position"/>
@@ -1465,7 +1465,7 @@ External Setpoint Generation:
 				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^TxPDO State" Size="1" OffsA="13"/>
 				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Warning" Size="1"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-CF1K4 (EK1100)^CF1K4-EL7047-E4">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^AT2K4-EL7047-E4">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Motor stall" Size="1" OffsA="7"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving negative" Size="1" OffsA="5"/>

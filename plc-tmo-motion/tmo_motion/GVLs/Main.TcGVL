@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <GVL Name="Main" Id="{1691e643-5c47-48e9-bb1a-9f3fc0d078a1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -177,7 +177,7 @@ VAR_GLOBAL
     // solid atten X(Foil X)
     M33: ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'TMO:SPEC:MMS:02');
@@ -190,7 +190,7 @@ VAR_GLOBAL
     // Zone Plate X
     M34 : ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         sName := 'TMO:SPEC:MMS:03');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateY-EL7041]^STM Status^Status^Digital input 2;
@@ -202,7 +202,7 @@ VAR_GLOBAL
     // Zone Plate Y
     M35 : ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         sName := 'TMO:SPEC:MMS:04');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[ZonePlateZ-EL7041]^STM Status^Status^Digital input 1;
@@ -214,7 +214,7 @@ VAR_GLOBAL
     // Zone Plate Z
     M36 : ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         sName := 'TMO:SPEC:MMS:05');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
@@ -301,7 +301,7 @@ VAR_GLOBAL
      //Solid att Y(FOIL-Y)
     M44 : ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'TMO:SPEC:MMS:13');
@@ -317,7 +317,7 @@ VAR_GLOBAL
 
     M45: ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'LI2K4:IP1:MMS:Y');
@@ -330,25 +330,25 @@ VAR_GLOBAL
     '}
     M46: ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'LI2K4:IP1:MMS:X');
 
-    //CF1K4-MMS-FILT
-    {attribute 'pytmc' := 'pv: CF1K4:MMS:FILT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[CF1K4-EL7047-E4]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[CF1K4-EL7047-E4]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[CF1K4-EL5042-E5]^FB Inputs Channel 1^Position'}
+    //AT2K4-MMS-FILT
+    {attribute 'pytmc' := 'pv: AT2K4:MMS:FILT'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[AT2K4-EL5042-E5]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
-        pv: CF1K4:IP1:MMS
+        pv: AT2K4:IP1:MMS
     '}
     M47: ST_MotionStage := (
         bHardwareEnable:=TRUE,
-        bPowerSelf:=TRUE,
+        bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
-        sName := 'CF1K4:IP1:MMS');
+        sName := 'AT2K4:IP1:MMS');
 
 END_VAR]]></Declaration>
   </GVL>

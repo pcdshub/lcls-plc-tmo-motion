@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_AT2K4_IP1" Id="{3b3608b5-fe23-47f9-92d0-d7907172c21f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_AT2K4_IP1
+VAR
+    fbMotionAT2K4: FB_MotionStage;{attribute 'pytmc' := '
+        pv: AT2K4:IP1
+        io: io
+    '}
+    fbAT2K4States: FB_PositionStatePMPS1D;
+    {attribute 'pytmc' := '
+        pv: AT2K4:IP1:STATE:SET
+        io: io
+    '}
+    at2k4_enumSet: ENUM_Sample_Calibration_States;
+     {attribute 'pytmc' := '
+        pv: AT2K4:IP1:STATE:GET
+        io: i
+    '}
+    at2k4_enumGet: ENUM_Sample_Calibration_States;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fDelta :=0.5,
+        fVelocity := 1.0,
+        bMoveOk := TRUE,
+        bValid := TRUE
+    );
+    aAT2K4States: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbMotionAT2K4(stMotionStage:=Main.M47);
+
+fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.OUT], sName := 'OUT', fPosition:=102.7);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.Target1], sName := 'TARGET1', fPosition:=200);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.Target2], sName := 'TARGET2', fPosition:=201);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.Target3], sName := 'TARGET3', fPosition:=203);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.Target4], sName := 'TARGET4', fPosition:=205);
+fbStateSetup(stPositionState:=aAT2K4States[ENUM_Sample_Calibration_States.Target5], sName := 'TARGET5', fPosition:=209);
+//PMPS
+aAT2K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'AT2K4:IP1-OUT';
+aAT2K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'AT2K4:IP1-TARGET1';
+aAT2K4States[ENUM_Sample_Calibration_States.Target2].stPMPS.sPmpsState := 'AT2K4:IP1-TARGET2';
+aAT2K4States[ENUM_Sample_Calibration_States.Target3].stPMPS.sPmpsState := 'AT2K4:IP1-TARGET3';
+aAT2K4States[ENUM_Sample_Calibration_States.Target4].stPMPS.sPmpsState := 'AT2K4:IP1-TARGET4';
+aAT2K4States[ENUM_Sample_Calibration_States.Target5].stPMPS.sPmpsState := 'AT2K4:IP1-TARGET5';
+
+
+fbAT2K4States(
+    stMotionStage:=Main.M47,
+    astPositionState:=aAT2K4States,
+    eEnumSet:=at2k4_enumSet,
+    eEnumGet:=at2k4_enumGet,
+    sDeviceName := 'AT2K4:IP1',
+    sTransitionKey := 'AT2K4:IP1-TRANSITION',
+    fbFFHWO:=fbFastFaultOutput1,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=TRUE,
+    bEnableBeamParams:=TRUE,
+    bEnablePositionLimits:=TRUE,
+);
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_LI2K4_IP1" Id="{90796e54-85a2-4580-a821-f0ffc741543f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_LI2K4_IP1
 VAR
@@ -41,13 +41,25 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[IF Main.M46.stAxisStatus.fActPosition < -0.85 THEN
+   Main.M45.fVelocity := 0.01;
+END_IF
+IF Main.M45.stAxisStatus.fActPosition > 85 THEN
+   Main.M46.bExecute := FALSE;
+END_IF
+
 fbMotionLI2K4Y(stMotionStage:=Main.M45);
 fbMotionLI2K4X(stMotionStage:=Main.M46);
 
 //LI2K4 2DPMPS
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5, sName := 'OUT', fPosition:=-0.75);
+
+{*aLI2K4XStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 1;
+aLI2K4YStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 2;
+aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 2;
+aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 1; *}
+
 fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5,  sName := 'OUT', fPosition:=133.0);
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 1.5, sName := 'MIRROR1', fPosition:=-3.375);
 fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 0.5, sName := 'MIRROR1', fPosition:=84.5);
@@ -58,35 +70,16 @@ aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1
 //LI2K4 EPS condition: OUT->In move Y then move X + IN->OUT move X thenm move Y
 //Y only can move up and down when X is OUT
 EPS_LI2K4Y_Positive(eps:=Main.M45.stEPSForwardEnable);
-EPS_LI2K4Y_Positive.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8);
+EPS_LI2K4Y_Positive.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8 OR Main.M45.stAxisStatus.fActPosition < 85);
 EPS_LI2K4Y_Negative(eps:=Main.M45.stEPSBackwardEnable);
-EPS_LI2K4Y_Negative.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8);
+EPS_LI2K4Y_Negative.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.8 OR Main.M45.stAxisStatus.fActPosition > 84);
 
 EPS_LI2K4X_Positive(eps:=Main.M46.stEPSForwardEnable);
-EPS_LI2K4X_Positive.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition < 85);
+EPS_LI2K4X_Positive.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition < 85 OR Main.M46.stAxisStatus.fActPosition < -0.65);
 EPS_LI2K4X_Negative(eps:=Main.M46.stEPSBackwardEnable);
-EPS_LI2K4X_Negative.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition < 85);
+EPS_LI2K4X_Negative.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPosition < 85 OR Main.M46.stAxisStatus.fActPosition > -0.85);
 
-{*
 
-bLI2K4XOut := F_AtPositionState(stMotionStage:=Main.M46, stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT]);
-bLI2K4YIn := F_AtPositionState(stMotionStage:=Main.M45, stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1]);
-
-aLI2K4XStates[ENUM_LaserCoupling_States.OUT].bMoveOk := FALSE;
-aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := FALSE;
-aLI2K4YStates[ENUM_LaserCoupling_States.OUT].bMoveOk := FALSE;
-aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := FALSE;
-
-IF bLI2K4YIn THEN
-     aLI2K4XStates[ENUM_LaserCoupling_States.OUT].bMoveOk := TRUE;
-     aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := TRUE;
-END_IF
-
-IF bLI2K4XOut THEN
-     aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].bMoveOk := TRUE;
-     aLI2K4YStates[ENUM_LaserCoupling_States.OUT].bMoveOk := TRUE;
-END_IF
-*}
 
 //LI2K4 sequenct move : OUT->IN Y move first and then X moves IN->OUT X moves first then Y
 
