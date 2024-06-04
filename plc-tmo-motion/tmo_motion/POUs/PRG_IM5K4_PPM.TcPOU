@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_IM5K4_PPM" Id="{70ab2a3c-97c1-4d17-a072-939f2529a358}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_IM5K4_PPM
 VAR

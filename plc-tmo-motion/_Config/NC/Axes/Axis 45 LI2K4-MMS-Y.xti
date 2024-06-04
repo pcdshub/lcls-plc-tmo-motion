@@ -1319,7 +1319,7 @@ External Setpoint Generation:
 		<Name>__FILENAME__</Name>
 		<AxisPara>
 			<Dynamic Acceleration="2" Deceleration="2"/>
-			<Velo RefSearch="0.1" RefSync="0.1" SlowManual="0.1" FastManual="0.1" Maximum="27"/>
+			<Velo RefSearch="0.1" RefSync="0.1" SlowManual="0.1" FastManual="0.1" Maximum="5"/>
 			<PositionAreaControl Range="0.05"/>
 			<TargetPosControl Range="0.1"/>
 			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.1" PulseDistanceNeg="0.1"/>
@@ -1363,7 +1363,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="25.4" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="20.9" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
