@@ -52,7 +52,7 @@ END_CASE
 //IM5K4 is vetoed by SP1K4-FZP
 CASE GVL_TcGVL.eSP1K4FZP OF
     ENUM_ZonePlate_States.FZP290_1, ENUM_ZonePlate_States.FZP290_2, ENUM_ZonePlate_States.FZP410_1, ENUM_ZonePlate_States.FZP410_2, ENUM_ZonePlate_States.FZP460_1, ENUM_ZonePlate_States.FZP460_2, ENUM_ZonePlate_States.FZP530_1,
-    ENUM_ZonePlate_States.FZP530_2, ENUM_ZonePlate_States.FZP750_1, ENUM_ZonePlate_States.FZP750_2, ENUM_ZonePlate_States.FZP860_1, ENUM_ZonePlate_States.FZP860_2, ENUM_ZonePlate_States.FZP860_3:
+    ENUM_ZonePlate_States.FZP530_2, ENUM_ZonePlate_States.FZP750_1, ENUM_ZonePlate_States.FZP750_2, ENUM_ZonePlate_States.FZP860_1, ENUM_ZonePlate_States.FZP860_2, ENUM_ZonePlate_States.FZP860_3, ENUM_ZonePlate_States.Yag:
         // Known state targets: allow less strict pmps
         fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_SP1K4_IN';
         fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_SP1K4_IN';
