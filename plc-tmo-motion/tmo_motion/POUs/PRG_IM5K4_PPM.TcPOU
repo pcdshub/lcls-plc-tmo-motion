@@ -38,34 +38,7 @@ fbStateSetup(StPositionState:=fbIM5K4.stPower, fposition:=-44.23, sPmpsState := 
 fbStateSetup(StPositionState:=fbIM5K4.stYag1, fposition:=-68.23, sPmpsState := 'IM5K4:PPM-YAG1');
 fbStateSetup(StPositionState:=fbIM5K4.stYag2, fposition:=-94.24, sPmpsState := 'IM5K4:PPM-YAG2');
 
-{*//fbIM5K4.stOut.fPosition := -5.13;
-fbIM5K4.stOut.fVelocity := fStartupVelo;
-fbIM5K4.stOut.bUseRawCounts := FALSE;
-fbIM5K4.stOut.bValid := TRUE;
-fbIM5K4.stOut.bMoveOk := TRUE;
-fbIM5K4.stOut.stPMPS.sPmpsState := 'IM5K4:PPM-OUT';
-
-//fbIM5K4.stPower.fPosition := -44.23;
-fbIM5K4.stPower.fVelocity := fStartupVelo;
-fbIM5K4.stPower.bUseRawCounts := FALSE;
-fbIM5K4.stPower.bValid := TRUE;
-fbIM5K4.stPower.bMoveOk := TRUE;
-fbIM5K4.stPower.stPMPS.sPmpsState := 'IM5K4:PPM-POWERMETER';
-
-//fbIM5K4.stYag1.fPosition := -68.23;
-fbIM5K4.stYag1.fVelocity := fStartupVelo;
-fbIM5K4.stYag1.bUseRawCounts := FALSE;
-fbIM5K4.stYag1.bMoveOk := TRUE;
-fbIM5K4.stYag1.bValid := TRUE;
-
-
-//fbIM5K4.stYag2.fPosition := -94.24;
-fbIM5K4.stYag2.fVelocity := fStartupVelo;
-fbIM5K4.stYag2.bUseRawCounts := FALSE;
-fbIM5K4.stYag2.bMoveOk := TRUE;
-fbIM5K4.stYag2.bValid := TRUE;
-
-*}
+//IM5K4 is vetoed by PF1K4
 CASE GVL_TcGVL.ePF1K4State OF
     E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
         // Known state targets: allow less strict pmps
@@ -76,15 +49,18 @@ ELSE
     fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
     fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
 END_CASE
-{*
-IF NOT bInit THEN
-   bInit := TRUE;
-   fbIM5K4.stOut.fPosition := -5.13;
-   fbIM5K4.stPower.fPosition := -44.23;
-   fbIM5K4.stYag1.fPosition := -68.23;
-   fbIM5K4.stYag2.fPosition := -94.24;
-END_IF
-*}
+//IM5K4 is vetoed by SP1K4-FZP
+CASE GVL_TcGVL.eSP1K4FZP OF
+    ENUM_ZonePlate_States.FZP290_1, ENUM_ZonePlate_States.FZP290_2, ENUM_ZonePlate_States.FZP410_1, ENUM_ZonePlate_States.FZP410_2, ENUM_ZonePlate_States.FZP460_1, ENUM_ZonePlate_States.FZP460_2, ENUM_ZonePlate_States.FZP530_1,
+    ENUM_ZonePlate_States.FZP530_2, ENUM_ZonePlate_States.FZP750_1, ENUM_ZonePlate_States.FZP750_2, ENUM_ZonePlate_States.FZP860_1, ENUM_ZonePlate_States.FZP860_2, ENUM_ZonePlate_States.FZP860_3:
+        // Known state targets: allow less strict pmps
+        fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_SP1K4_IN';
+        fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_SP1K4_IN';
+ELSE
+    // Out, Unknown, or an unexpected state: full pmps
+    fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
+    fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
+END_CASE
 
 fbIM5K4(
     fbArbiter := fbArbiter,
