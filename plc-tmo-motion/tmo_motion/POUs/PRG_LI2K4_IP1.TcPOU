@@ -54,8 +54,8 @@ fbMotionLI2K4X(stMotionStage:=Main.M46);
 //LI2K4 2DPMPS
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5, sName := 'OUT', fPosition:=-0.75);
-
-{*aLI2K4XStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 1;
+{*
+aLI2K4XStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 1;
 aLI2K4YStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 2;
 aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 2;
 aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 1; *}
