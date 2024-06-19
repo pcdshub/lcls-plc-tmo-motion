@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{F34E3290-FEC3-F202-8049-D17B82E29D39}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{71418142-7B0C-F945-5838-6A6F4A2C04AF}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -19264,21 +19264,6 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Properties>
     </DataType>
     <DataType>
-      <Name>USINT (USINT#1..255)</Name>
-      <BitSize>8</BitSize>
-      <BaseType>USINT</BaseType>
-      <Properties>
-        <Property>
-          <Name>LowerBorder</Name>
-          <Value>1</Value>
-        </Property>
-        <Property>
-          <Name>UpperBorder</Name>
-          <Value>255</Value>
-        </Property>
-      </Properties>
-    </DataType>
-    <DataType>
       <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.Tc3_IPCDiag">E_IPCDiag_Datatype</Name>
       <Comment> parameter datatype 1..15</Comment>
       <BitSize>8</BitSize>
@@ -20886,7 +20871,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Parameter>
         <Local>
           <Name>nParameterIdx</Name>
-          <Type>USINT (USINT#1..255)</Type>
+          <Type>USINT (1..255)</Type>
           <BitSize>8</BitSize>
         </Local>
         <Local>
@@ -24747,7 +24732,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </Method>
     </DataType>
     <DataType>
-      <Name>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Name>
+      <Name>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Name>
       <BitSize>16</BitSize>
       <BaseType>UINT</BaseType>
       <Properties>
@@ -24758,6 +24743,21 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Property>
           <Name>UpperBorder</Name>
           <Value>100</Value>
+        </Property>
+      </Properties>
+    </DataType>
+    <DataType>
+      <Name>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Name>
+      <BitSize>16</BitSize>
+      <BaseType>UINT</BaseType>
+      <Properties>
+        <Property>
+          <Name>LowerBorder</Name>
+          <Value>1</Value>
+        </Property>
+        <Property>
+          <Name>UpperBorder</Name>
+          <Value>1000</Value>
         </Property>
       </Properties>
     </DataType>
@@ -24778,7 +24778,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>PrintingTestSuiteResultNumber</Name>
-        <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+        <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
         <BitSize>16</BitSize>
         <BitOffs>192</BitOffs>
       </SubItem>
@@ -24816,12 +24816,12 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>TestsInTestSuiteCounter</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Type>
           <BitSize>16</BitSize>
         </Local>
         <Local>
           <Name>MaxNumberOfTestsToPrint</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Type>
           <BitSize>16</BitSize>
         </Local>
         <Local>
@@ -25754,7 +25754,7 @@ contributing fast faults, unless the FFO is currently vetoed.
       </SubItem>
       <SubItem>
         <Name>WritingTestSuiteResultNumber</Name>
-        <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+        <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
         <BitSize>16</BitSize>
         <BitOffs>530752</BitOffs>
       </SubItem>
@@ -26153,21 +26153,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         <Property>
           <Name>PouType</Name>
           <Value>FunctionBlock</Value>
-        </Property>
-      </Properties>
-    </DataType>
-    <DataType>
-      <Name>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Name>
-      <BitSize>16</BitSize>
-      <BaseType>UINT</BaseType>
-      <Properties>
-        <Property>
-          <Name>LowerBorder</Name>
-          <Value>1</Value>
-        </Property>
-        <Property>
-          <Name>UpperBorder</Name>
-          <Value>100</Value>
         </Property>
       </Properties>
     </DataType>
@@ -27794,7 +27779,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>NumberOfTestsToAnalyse</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
           <BitSize>16</BitSize>
         </Local>
         <Local>
@@ -30084,7 +30069,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>NumberOfTestsToAnalyse</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
           <BitSize>16</BitSize>
         </Local>
       </Method>
@@ -30532,7 +30517,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>NumberOfTestsToAnalyse</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
           <BitSize>16</BitSize>
         </Local>
       </Method>
@@ -30552,7 +30537,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>NumberOfTestsToAnalyse</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
           <BitSize>16</BitSize>
         </Local>
       </Method>
@@ -30717,7 +30702,7 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>NumberOfTestsToAnalyse</Name>
-          <Type>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
+          <Type>UINT (1..GVL_Param_TcUnit.MaxNumberOfTestSuites)</Type>
           <BitSize>16</BitSize>
         </Local>
       </Method>
@@ -31240,6 +31225,21 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Property>
         <Property>
           <Name>reflection</Name>
+        </Property>
+      </Properties>
+    </DataType>
+    <DataType>
+      <Name>UINT (UINT#1..GVL_Param_TcUnit.MaxNumberOfTestsForEachTestSuite)</Name>
+      <BitSize>16</BitSize>
+      <BaseType>UINT</BaseType>
+      <Properties>
+        <Property>
+          <Name>LowerBorder</Name>
+          <Value>1</Value>
+        </Property>
+        <Property>
+          <Name>UpperBorder</Name>
+          <Value>100</Value>
         </Property>
       </Properties>
     </DataType>
@@ -58450,70 +58450,58 @@ Digital outputs</Comment>
         <Enum>2</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP860_1</Text>
-        <Enum>3</Enum>
-        <Comment>Ne1</Comment>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>FZP860_2</Text>
-        <Enum>4</Enum>
-        <Comment>Ne2</Comment>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>FZP860_3</Text>
-        <Enum>5</Enum>
-        <Comment>Ne3</Comment>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>FZP750_1</Text>
-        <Enum>6</Enum>
-        <Comment>3w1</Comment>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>FZP750_2</Text>
-        <Enum>7</Enum>
-        <Comment>3w2</Comment>
-      </EnumInfo>
-      <EnumInfo>
         <Text>FZP530_1</Text>
-        <Enum>8</Enum>
-        <Comment>o1</Comment>
+        <Enum>3</Enum>
+        <Comment> first version of targets paddle 1
+second version of targets paddle 2</Comment>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>FZP806</Text>
+        <Enum>4</Enum>
       </EnumInfo>
       <EnumInfo>
         <Text>FZP530_2</Text>
+        <Enum>5</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>FZP1212_1</Text>
+        <Enum>6</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>FZP404_1212_1</Text>
+        <Enum>7</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>FZP262_524</Text>
+        <Enum>8</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>FZP404_1212_2</Text>
         <Enum>9</Enum>
-        <Comment>o2</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP460_1</Text>
+        <Text>FZP400_1</Text>
         <Enum>10</Enum>
-        <Comment>Ti1</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP460_2</Text>
+        <Text>FZP290</Text>
         <Enum>11</Enum>
-        <Comment>Ti2</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP410_1</Text>
+        <Text>FZP400_2</Text>
         <Enum>12</Enum>
-        <Comment>N1</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP410_2</Text>
+        <Text>FZP350</Text>
         <Enum>13</Enum>
-        <Comment>N2</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP290_1</Text>
+        <Text>FZP1212_2</Text>
         <Enum>14</Enum>
-        <Comment> C1</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP290_2</Text>
+        <Text>FZP875</Text>
         <Enum>15</Enum>
-        <Comment>C2
-	FZP250_1 := 16    //w1</Comment>
       </EnumInfo>
       <Properties>
         <Property>
@@ -78187,7 +78175,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>87818240</ByteSize>
+          <ByteSize>87883776</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
             <BitSize>2048</BitSize>
@@ -90072,7 +90060,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>87818240</ByteSize>
+          <ByteSize>87883776</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -93100,7 +93088,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>87818240</ByteSize>
+          <ByteSize>87883776</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -100789,7 +100777,7 @@ Digital outputs</Comment>
               </SubItem>
               <SubItem>
                 <Name>.fVelocity</Name>
-                <Value>1</Value>
+                <Value>3</Value>
               </SubItem>
               <SubItem>
                 <Name>.bValid</Name>
@@ -101016,6 +101004,7 @@ Digital outputs</Comment>
           </Symbol>
           <Symbol>
             <Name>PRG_3_PMPS_POST.bM1K1Veto</Name>
+            <Comment>	bST1K4_Veto: BOOL;</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
             <BitOffs>677904568</BitOffs>
@@ -101033,7 +101022,7 @@ Digital outputs</Comment>
             <Default>
               <SubItem>
                 <Name>.fVelocity</Name>
-                <Value>0.5</Value>
+                <Value>2</Value>
               </SubItem>
               <SubItem>
                 <Name>.bMoveOk</Name>
@@ -103569,7 +103558,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>87818240</ByteSize>
+          <ByteSize>87883776</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -103655,11 +103644,11 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-06-05T13:49:09</Value>
+          <Value>2024-06-19T13:24:07</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>1212416</Value>
+          <Value>1220608</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>

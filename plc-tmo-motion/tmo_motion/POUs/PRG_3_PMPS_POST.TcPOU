@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_3_PMPS_POST" Id="{ec0299d5-08dd-4c37-8c55-47b9e81fd84b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_3_PMPS_POST
 VAR
@@ -7,11 +7,13 @@ VAR
     fb_vetoArbiter: FB_VetoArbiter;
 
     bST3K4_Veto: BOOL;
+//	bST1K4_Veto: BOOL;
     bM1K1Veto: BOOL;
     bST4K4_Veto:BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[bST3K4_Veto := PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.ST3K4];
+//bST1K4_Veto := PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.ST1K4];
 bST4K4_Veto := PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.ST4K4];
 bM1K1Veto := NOT PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.MR1K1_OUT]
                 AND PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.MR1K1_IN];
