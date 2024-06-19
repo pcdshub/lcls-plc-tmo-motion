@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <DUT Name="ENUM_ZonePlate_States" Id="{a5fb2a43-e584-4fa2-92ec-551e5e3c8e2b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ENUM_ZonePlate_States :
@@ -7,7 +7,8 @@ TYPE ENUM_ZonePlate_States :
     Unknown := 0,
     OUT := 1,
     Yag := 2,
-    FZP860_1 := 3,   //Ne1
+    // first version of targets paddle 1
+{*   FZP860_1 := 3,   //Ne1
     FZP860_2 := 4,   //Ne2
     FZP860_3 := 5,   //Ne3
     FZP750_1 := 6,   //3w1
@@ -21,9 +22,21 @@ TYPE ENUM_ZonePlate_States :
     FZP290_1 := 14,   // C1
     FZP290_2 := 15   //C2
 //	FZP250_1 := 16    //w1
-
-
-
+*}
+    //second version of targets paddle 2
+    FZP530_1 := 3,
+    FZP806 := 4,
+    FZP530_2 := 5,
+    FZP1212_1 := 6,
+    FZP404_1212_1 := 7,
+    FZP262_524 := 8,
+    FZP404_1212_2 := 9,
+    FZP400_1 := 10,
+    FZP290 := 11,
+    FZP400_2 := 12,
+    FZP350 := 13,
+    FZP1212_2 := 14,
+    FZP875 := 15
 ) UINT;
 END_TYPE
 ]]></Declaration>
