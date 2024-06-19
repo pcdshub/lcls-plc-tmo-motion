@@ -61,7 +61,7 @@ VAR
     fbZPSetup: FB_StateSetupHelper;
     fbZPDefault: ST_PositionState := (
         fDelta:=1.5,
-        fVelocity:=1,
+        fVelocity:=3.0,
  //       bMoveOk:=TRUE,
         bValid:=TRUE
     );
@@ -429,7 +429,7 @@ ELSE
     aZPXStates[ENUM_ZonePlate_States.FZP400_2].stPMPS.sPmpsState := 'SP1K4:FZP-410-N2_ATT_OUT';
     aZPXStates[ENUM_ZonePlate_States.FZP350].stPMPS.sPmpsState := 'SP1K4:FZP-290-C2_ATT_OUT';
     aZPXStates[ENUM_ZonePlate_States.FZP1212_2].stPMPS.sPmpsState := 'SP1K4:FZP-1212-2_ATT_OUT';
-    aZPXStates[ENUM_ZonePlate_States.FZP875].stPMPS.sPmpsState := 'SP1K4:FZP-86-Ne2_ATT_OUT';
+    aZPXStates[ENUM_ZonePlate_States.FZP875].stPMPS.sPmpsState := 'SP1K4:FZP-860-Ne2_ATT_OUT';
 END_IF
 
 fbZPStates(
