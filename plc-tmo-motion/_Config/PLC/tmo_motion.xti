@@ -1260,7 +1260,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{9DD0BA81-4A92-4D5E-8BD9-E101C02702D4}" Name="tmo_motion" PrjFilePath="..\..\tmo_motion\tmo_motion.plcproj" TmcFilePath="..\..\tmo_motion\tmo_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{71D9AF80-0111-60BD-E642-58E77DBD9A91}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{3F3BEE99-C468-53EE-14E9-A7CFD12D9488}">
 			<Name>tmo_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -2745,6 +2745,10 @@ External Setpoint Generation:
 					<Type GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Type>
 				</Var>
 				<Var>
+					<Name>PRG_SP1K4.bHallInput1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
@@ -2763,18 +2767,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_SL2K4_SCATTER.fbSL2K4.AptArrayReq</Name>
 					<Type GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput1</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bHallInput2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SP1K4.bTL1High</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.ST4K4.i_xInsertedLS</Name>
@@ -2894,6 +2886,14 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_SP1K4.fbMotionFoilY.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bHallInput2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SP1K4.bTL1High</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SP1K4.bTL1Low</Name>
@@ -5869,16 +5869,16 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
-					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
-				</Var>
-				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_IN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
+					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
