@@ -336,8 +336,7 @@ VAR_GLOBAL
         sName := 'LI2K4:IP1:MMS:X');
 
     //AT2K4-MMS-FILT
-    {attribute 'pytmc' := 'pv: AT2K4:MMS:FILT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 1;
+     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[AT2K4-EL5042-E5]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
