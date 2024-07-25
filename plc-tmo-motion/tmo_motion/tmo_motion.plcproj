@@ -120,6 +120,9 @@
     <Compile Include="POUs\PRG_TM2K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Sequence_Mover\FB_SequenceMover2D.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\temp\FB_SLITS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -154,6 +157,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Sequence_Mover" />
     <Folder Include="POUs\TM2K4" />
     <Folder Include="POUs\TM1K4" />
     <Folder Include="POUs\temp" />

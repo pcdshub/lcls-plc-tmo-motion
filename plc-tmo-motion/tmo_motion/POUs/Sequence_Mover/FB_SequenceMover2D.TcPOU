@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SequenceMover2D" Id="{a63f23fb-65f2-4a77-987b-d3b574c6f9d5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SequenceMover2D
+VAR_IN_OUT
+    // Set this to a nonzero value to request a new move. It will be reset to zero every cycle. This should be hooked up to a user's EPICS enum input.
+    eEnumSet: UINT;
+    // The current state index, or zero if we are not at a state. This should be hooked up to a user's EPICS enum output.
+    eEnumGet: UINT;
+    // The fast fault output to fault to.
+    fbFFHWO: FB_HardwareFFOutput;
+    // The arbiter to request beam conditions from.
+    fbArbiter: FB_Arbiter;
+
+    // The motor to move.
+    stMotionStage1: ST_MotionStage;
+    // All possible position states, including unused/invalid states.
+    astPositionState1: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    // The motor to move.
+    stMotionStage2: ST_MotionStage;
+    // All possible position states, including unused/invalid states.
+    astPositionState2: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+
+    fbPositionState1D1 : FB_PositionStatePMPS1D;
+    fbPositionState1D2 : FB_PositionStatePMPS1D;
+END_VAR
+VAR_INPUT
+    bReset : BOOL;
+
+    // Index is state enum value. Value at index is sequence order for that state as a goal for the specified axis number.
+    // e.g. if state number 2 needs axis 1 to move second, then in index 2 put a 2 for axis 1 and for index 2 on axis 2 put a 1.
+    anStateSequenceOrder1 : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
+    anStateSequenceOrder2 : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
+
+    // Set this to TRUE to enable input state moves, or FALSE to disable them.
+    bEnableMotion: BOOL;
+    // Set this to TRUE to enable beam parameter checks, or FALSE to disable them.
+    bEnableBeamParams: BOOL;
+    // Set this to TRUE to enable position limit checks, or FALSE to disable them.
+    bEnablePositionLimits: BOOL;
+    // The name of the device for use in the PMPS DB lookup and diagnostic screens.
+    sDeviceName: STRING;
+    // The name of the transition state in the PMPS database.
+    sTransitionKey: STRING;
+    // Normal EPICS inputs, gathered into a single struct
+    stEpicsToPlc: ST_StateEpicsToPlc;
+    // PMPS EPICS inputs, gathered into a single struct
+    stPMPSEpicsToPlc: ST_StatePMPSEpicsToPlc;
+    // Set this to TRUE to re-read the loaded database immediately (useful for debug)
+    bReadDBNow: BOOL;
+END_VAR
+VAR
+    tonStateSequenceTimeout : TON;
+    tStateSequenceTimeoutTime : TIME := T#5s;
+    nGoal: UINT;
+    nState: UINT;
+    // The current state index of the 1st axis state mover
+    eEnumGet1: UINT;
+    // The current state index of the 2nd axis state mover
+    eEnumGet2: UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bReset THEN
+    bReset := FALSE;
+    nState := 0;
+END_IF
+
+CASE nState OF
+    0:
+        IF eEnumSet <> 0 THEN
+            nGoal := eEnumSet;
+            nState := nState + 1;
+        ELSE
+            fbPositionState1D1(
+                stMotionStage:=stMotionStage1,
+                astPositionState:=astPositionState1,
+                eEnumSet:=eEnumSet,
+                eEnumGet:=eEnumGet1,
+                sDeviceName:=sDeviceName,
+                sTransitionKey:=sTransitionKey,
+                fbFFHWO:=fbFFHWO,
+                fbArbiter:=fbArbiter,
+                bEnableMotion:=bEnableMotion,
+                bEnableBeamParams:=bEnableBeamParams,
+                bEnablePositionLimits:=bEnablePositionLimits,
+            );
+            fbPositionState1D2(
+                stMotionStage:=stMotionStage2,
+                astPositionState:=astPositionState2,
+                eEnumSet:=eEnumSet,
+                eEnumGet:=eEnumGet2,
+                sDeviceName:=sDeviceName,
+                sTransitionKey:=sTransitionKey,
+                fbFFHWO:=fbFFHWO,
+                fbArbiter:=fbArbiter,
+                bEnableMotion:=bEnableMotion,
+                bEnableBeamParams:=bEnableBeamParams,
+                bEnablePositionLimits:=bEnablePositionLimits,
+            );
+        END_IF
+        tonStateSequenceTimeout(IN:=FALSE);
+    1:
+        IF anStateSequenceOrder1[nGoal] <= anStateSequenceOrder2[nGoal] THEN
+            // Move 1 then 2
+            fbPositionState1D1(
+                stMotionStage:=stMotionStage1,
+                astPositionState:=astPositionState1,
+                eEnumSet:=eEnumSet,
+                eEnumGet:=eEnumGet1,
+                sDeviceName:=sDeviceName,
+                sTransitionKey:=sTransitionKey,
+                fbFFHWO:=fbFFHWO,
+                fbArbiter:=fbArbiter,
+                bEnableMotion:=bEnableMotion,
+                bEnableBeamParams:=bEnableBeamParams,
+                bEnablePositionLimits:=bEnablePositionLimits,
+            );
+            tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
+            IF eEnumGet1 = nGoal THEN
+                eEnumSet := nGoal;
+                tonStateSequenceTimeout(IN:=FALSE);
+                nState := 10;
+            ELSIF tonStateSequenceTimeout.Q THEN
+                nState := 0;
+            END_IF
+        ELSIF anStateSequenceOrder1[nGoal] > anStateSequenceOrder2[nGoal] THEN
+            // Move 2 then 1
+            fbPositionState1D2(
+                stMotionStage:=stMotionStage2,
+                astPositionState:=astPositionState2,
+                eEnumSet:=eEnumSet,
+                eEnumGet:=eEnumGet2,
+                sDeviceName:=sDeviceName,
+                sTransitionKey:=sTransitionKey,
+                fbFFHWO:=fbFFHWO,
+                fbArbiter:=fbArbiter,
+                bEnableMotion:=bEnableMotion,
+                bEnableBeamParams:=bEnableBeamParams,
+                bEnablePositionLimits:=bEnablePositionLimits,
+            );
+            tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
+            IF eEnumGet2 = nGoal THEN
+                eEnumSet := nGoal;
+                tonStateSequenceTimeout(IN:=FALSE);
+                nState := 20;
+            ELSIF tonStateSequenceTimeout.Q THEN
+                nState := 0;
+            END_IF
+        END_IF
+    10: // Move 2 after 1
+        fbPositionState1D2(
+            stMotionStage:=stMotionStage2,
+            astPositionState:=astPositionState2,
+            eEnumSet:=eEnumSet,
+            eEnumGet:=eEnumGet2,
+            sDeviceName:=sDeviceName,
+            sTransitionKey:=sTransitionKey,
+            fbFFHWO:=fbFFHWO,
+            fbArbiter:=fbArbiter,
+            bEnableMotion:=bEnableMotion,
+            bEnableBeamParams:=bEnableBeamParams,
+            bEnablePositionLimits:=bEnablePositionLimits,
+        );
+        tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
+        IF eEnumGet2 = nGoal THEN
+            nState := 0;
+            tonStateSequenceTimeout(IN:=FALSE);
+        ELSIF tonStateSequenceTimeout.Q THEN
+            nState := 0;
+        END_IF
+    20: // Move 1 after 2
+        fbPositionState1D1(
+            stMotionStage:=stMotionStage1,
+            astPositionState:=astPositionState1,
+            eEnumSet:=eEnumSet,
+            eEnumGet:=eEnumGet1,
+            sDeviceName:=sDeviceName,
+            sTransitionKey:=sTransitionKey,
+            fbFFHWO:=fbFFHWO,
+            fbArbiter:=fbArbiter,
+            bEnableMotion:=bEnableMotion,
+            bEnableBeamParams:=bEnableBeamParams,
+            bEnablePositionLimits:=bEnablePositionLimits,
+        );
+        tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
+        IF eEnumGet1 = nGoal THEN
+            nState := 0;
+            tonStateSequenceTimeout(IN:=FALSE);
+        ELSIF tonStateSequenceTimeout.Q THEN
+            nState := 0;
+        END_IF
+END_CASE
+
+IF eEnumGet1 = eEnumGet2 THEN
+    eEnumGet := eEnumGet1;
+ELSE
+    eEnumGet := 0;
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

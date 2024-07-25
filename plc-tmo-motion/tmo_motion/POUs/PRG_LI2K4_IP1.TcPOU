@@ -7,11 +7,18 @@ VAR
     fbMotionLI2K4X: FB_MotionStage;
     fbMotionLI2K4Y: FB_MotionStage;
 
-   {attribute 'pytmc' := '
-        pv: LI2K4:IP1
-        io: io
-    '}
-    fbLI2K4States: FB_PositionStatePMPS2D;
+   //{attribute 'pytmc' := '
+   //     pv: LI2K4:IP1
+   //    io: io
+   // '}
+   // fbLI2K4States: FB_PositionStatePMPS2D;
+    bLI2K4StatesReset : BOOL;
+    anStateSequenceOrderLI2K4Y : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
+    anStateSequenceOrderLI2K4X : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
+    fbLI2K4YStates: FB_PositionStatePMPS1D;
+    fbLI2K4XStates: FB_PositionStatePMPS1D;
+    fbLI2K4States : FB_SequenceMover2D;
+
     {attribute 'pytmc' := '
         pv: LI2K4:IP1:STATE:SET
         io: io
@@ -32,8 +39,6 @@ VAR
     aLI2K4XStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     aLI2K4YStates: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
-
-
     EPS_LI2K4Y_Positive : FB_EPS;
     EPS_LI2K4Y_Negative : FB_EPS;
     EPS_LI2K4X_Positive : FB_EPS;
@@ -41,12 +46,12 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF Main.M46.stAxisStatus.fActPosition < -0.85 THEN
-   Main.M45.fVelocity := 0.01;
-END_IF
-IF Main.M45.stAxisStatus.fActPosition > 85 THEN
-   Main.M46.bExecute := FALSE;
-END_IF
+      <ST><![CDATA[//IF Main.M46.stAxisStatus.fActPosition < -0.85 THEN
+//   Main.M45.fVelocity := 0.01;
+//END_IF
+//IF Main.M45.stAxisStatus.fActPosition > 85 THEN
+//   Main.M46.bExecute := FALSE;
+//END_IF
 
 fbMotionLI2K4Y(stMotionStage:=Main.M45);
 fbMotionLI2K4X(stMotionStage:=Main.M46);
@@ -54,11 +59,6 @@ fbMotionLI2K4X(stMotionStage:=Main.M46);
 //LI2K4 2DPMPS
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5, sName := 'OUT', fPosition:=-0.75);
-{*
-aLI2K4XStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 1;
-aLI2K4YStates[ENUM_LaserCoupling_States.OUT].nMoveOrder := 2;
-aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 2;
-aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].nMoveOrder := 1; *}
 
 fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], fDelta := 0.5,  sName := 'OUT', fPosition:=133.0);
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 1.5, sName := 'MIRROR1', fPosition:=-3.375);
@@ -83,7 +83,31 @@ EPS_LI2K4X_Negative.setBit(nBits := 0, bValue:= Main.M45.stAxisStatus.fActPositi
 
 //LI2K4 sequenct move : OUT->IN Y move first and then X moves IN->OUT X moves first then Y
 
+(*fbLI2K4States(
+    stMotionStage1:=Main.M45,
+    stMotionStage2:=Main.M46,
+    astPositionState1:=aLI2K4YStates,
+    astPositionState2:=aLI2K4XStates,
+    eEnumSet:=li2k4_enumSet,
+    eEnumGet:=li2k4_enumGet,
+    sDeviceName := 'LI2K4:IP1',
+    sTransitionKey := 'LI2K4:IP1-TRANSITION',
+    fbFFHWO:=fbFastFaultOutput1,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=TRUE,
+    bEnableBeamParams:=TRUE,
+    bEnablePositionLimits:=TRUE,
+);*)
+anStateSequenceOrderLI2K4Y[ENUM_LaserCoupling_States.Out] := 2;
+anStateSequenceOrderLI2K4Y[ENUM_LaserCoupling_States.Mirror1] := 1;
+anStateSequenceOrderLI2K4X[ENUM_LaserCoupling_States.Out] := 1;
+anStateSequenceOrderLI2K4X[ENUM_LaserCoupling_States.Mirror1] := 2;
 fbLI2K4States(
+    bReset:=bLI2K4StatesReset,
+    anStateSequenceOrder1:=anStateSequenceOrderLI2K4Y,
+    anStateSequenceOrder2:=anStateSequenceOrderLI2K4X,
+    fbPositionState1D1:=fbLI2K4YStates,
+    fbPositionState1D2:=fbLI2K4XStates,
     stMotionStage1:=Main.M45,
     stMotionStage2:=Main.M46,
     astPositionState1:=aLI2K4YStates,
