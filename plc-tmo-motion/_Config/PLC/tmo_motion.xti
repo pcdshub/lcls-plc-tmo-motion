@@ -6013,16 +6013,16 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
-					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
-				</Var>
-				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_IN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
+					<Type GUID="{292CD354-C7C0-4A61-AAD0-1C85DD69646B}">ST_BeamParams_IO</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
