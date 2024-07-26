@@ -15,10 +15,20 @@ VAR_IN_OUT
     // The motor to move.
     stMotionStage1: ST_MotionStage;
     // All possible position states, including unused/invalid states.
+    {attribute 'pytmc' := '
+        pv: STATE:M1
+        io: io
+        expand: :%.2d
+    '}
     astPositionState1: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
     // The motor to move.
     stMotionStage2: ST_MotionStage;
     // All possible position states, including unused/invalid states.
+    {attribute 'pytmc' := '
+        pv: STATE:M2
+        io: io
+        expand: :%.2d
+    '}
     astPositionState2: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
 
     fbPositionState1D1 : FB_PositionStatePMPS1D;
@@ -43,11 +53,23 @@ VAR_INPUT
     // The name of the transition state in the PMPS database.
     sTransitionKey: STRING;
     // Normal EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
     stEpicsToPlc: ST_StateEpicsToPlc;
     // PMPS EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
     stPMPSEpicsToPlc: ST_StatePMPSEpicsToPlc;
     // Set this to TRUE to re-read the loaded database immediately (useful for debug)
     bReadDBNow: BOOL;
+END_VAR
+VAR_OUTPUT
+    // Normal EPICS outputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stPlcToEpics: ST_StatePlcToEpics;
+    // PMPS EPICS outputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stPMPSPlcToEpics: ST_StatePMPSPlcToEpics;
+    // The PMPS database lookup associated with the current position state.
+    stDbStateParams: ST_DbStateParams;
 END_VAR
 VAR
     tonStateSequenceTimeout : TON;
@@ -85,6 +107,11 @@ CASE nState OF
                 bEnableMotion:=bEnableMotion,
                 bEnableBeamParams:=bEnableBeamParams,
                 bEnablePositionLimits:=bEnablePositionLimits,
+                stEpicsToPlc:=stEpicsToPlc,
+                stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+                stDbStateParams=>stDbStateParams,
+                stPlcToEpics=>stPlcToEpics,
+                stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
             fbPositionState1D2(
                 stMotionStage:=stMotionStage2,
@@ -98,6 +125,11 @@ CASE nState OF
                 bEnableMotion:=bEnableMotion,
                 bEnableBeamParams:=bEnableBeamParams,
                 bEnablePositionLimits:=bEnablePositionLimits,
+                stEpicsToPlc:=stEpicsToPlc,
+                stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+                stDbStateParams=>stDbStateParams,
+                stPlcToEpics=>stPlcToEpics,
+                stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
         END_IF
         tonStateSequenceTimeout(IN:=FALSE);
@@ -116,6 +148,11 @@ CASE nState OF
                 bEnableMotion:=bEnableMotion,
                 bEnableBeamParams:=bEnableBeamParams,
                 bEnablePositionLimits:=bEnablePositionLimits,
+                stEpicsToPlc:=stEpicsToPlc,
+                stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+                stDbStateParams=>stDbStateParams,
+                stPlcToEpics=>stPlcToEpics,
+                stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
             tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
             IF eEnumGet1 = nGoal THEN
@@ -139,6 +176,11 @@ CASE nState OF
                 bEnableMotion:=bEnableMotion,
                 bEnableBeamParams:=bEnableBeamParams,
                 bEnablePositionLimits:=bEnablePositionLimits,
+                stEpicsToPlc:=stEpicsToPlc,
+                stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+                stDbStateParams=>stDbStateParams,
+                stPlcToEpics=>stPlcToEpics,
+                stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
             tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
             IF eEnumGet2 = nGoal THEN
@@ -162,6 +204,11 @@ CASE nState OF
             bEnableMotion:=bEnableMotion,
             bEnableBeamParams:=bEnableBeamParams,
             bEnablePositionLimits:=bEnablePositionLimits,
+            stEpicsToPlc:=stEpicsToPlc,
+            stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+            stDbStateParams=>stDbStateParams,
+            stPlcToEpics=>stPlcToEpics,
+            stPMPSPlcToEpics=>stPMPSPlcToEpics,
         );
         tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
         IF eEnumGet2 = nGoal THEN
@@ -183,6 +230,11 @@ CASE nState OF
             bEnableMotion:=bEnableMotion,
             bEnableBeamParams:=bEnableBeamParams,
             bEnablePositionLimits:=bEnablePositionLimits,
+            stEpicsToPlc:=stEpicsToPlc,
+            stPMPSEpicsToPlc:=stPMPSEpicsToPlc,
+            stDbStateParams=>stDbStateParams,
+            stPlcToEpics=>stPlcToEpics,
+            stPMPSPlcToEpics=>stPMPSPlcToEpics,
         );
         tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
         IF eEnumGet1 = nGoal THEN

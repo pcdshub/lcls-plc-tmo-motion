@@ -7,17 +7,19 @@ VAR
     fbMotionLI2K4X: FB_MotionStage;
     fbMotionLI2K4Y: FB_MotionStage;
 
-   //{attribute 'pytmc' := '
-   //     pv: LI2K4:IP1
-   //    io: io
-   // '}
-   // fbLI2K4States: FB_PositionStatePMPS2D;
     bLI2K4StatesReset : BOOL;
     anStateSequenceOrderLI2K4Y : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
     anStateSequenceOrderLI2K4X : ARRAY[1...GeneralConstants.MAX_STATES] OF UINT;
     fbLI2K4YStates: FB_PositionStatePMPS1D;
     fbLI2K4XStates: FB_PositionStatePMPS1D;
+    fbFastFault: FB_FastFault;
+
+    {attribute 'pytmc' := '
+        pv: LI2K4:IP1
+        io: io
+    '}
     fbLI2K4States : FB_SequenceMover2D;
+    //fbLI2K4States : FB_PositionStatePMPS2D;
 
     {attribute 'pytmc' := '
         pv: LI2K4:IP1:STATE:SET
@@ -64,6 +66,8 @@ fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.OUT], fDel
 fbStateSetup(stPositionState:=aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 1.5, sName := 'MIRROR1', fPosition:=-3.375);
 fbStateSetup(stPositionState:=aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1],fDelta := 0.5, sName := 'MIRROR1', fPosition:=84.5);
 
+aLI2K4YStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
+aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
 aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
 aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
 
@@ -102,6 +106,16 @@ anStateSequenceOrderLI2K4Y[ENUM_LaserCoupling_States.Out] := 2;
 anStateSequenceOrderLI2K4Y[ENUM_LaserCoupling_States.Mirror1] := 1;
 anStateSequenceOrderLI2K4X[ENUM_LaserCoupling_States.Out] := 1;
 anStateSequenceOrderLI2K4X[ENUM_LaserCoupling_States.Mirror1] := 2;
+
+fbFastFault(
+    i_xOK:=li2k4_enumGet<>0,
+    i_xAutoReset:=TRUE,
+    i_DevName:='LI2K4:IP1',
+    i_Desc:='LI2K4 is in a transition state.',
+    i_TypeCode:=16#1005,
+    io_fbFFHWO:=fbFastFaultOutput1
+);
+
 fbLI2K4States(
     bReset:=bLI2K4StatesReset,
     anStateSequenceOrder1:=anStateSequenceOrderLI2K4Y,
