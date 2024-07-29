@@ -12,7 +12,7 @@ END_VAR
     io_fbFFHWO:=GVL_PMPS.fbFastFaultOutput1,
     bEnable:=TRUE,
     sPLCName:='plc-tmo-motion',
-	sDirectory:='/home/ecs-user/pmpsdb/'
+    sDirectory:='/home/ecs-user/pmpsdb/'
     );
 
 ]]></ST>
