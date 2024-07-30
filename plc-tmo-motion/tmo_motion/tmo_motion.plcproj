@@ -141,16 +141,10 @@
     <Compile Include="POUs\TM1K4\FB_TM1K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\TM1K4\FB_TM1K4_States.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\TM2K4\ENUM_TM2K4_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\TM2K4\FB_TM2K4.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\TM2K4\FB_TM2K4_States.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

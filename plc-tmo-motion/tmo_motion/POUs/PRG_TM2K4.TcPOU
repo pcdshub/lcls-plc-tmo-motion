@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_TM2K4" Id="{37b34b48-9c31-400a-af8d-201b93d6c030}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_TM2K4
 VAR
@@ -7,46 +7,50 @@ VAR
         pv: TM2K4:ATM
         io: io
     '}
-     {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
-                              .fbThermoCouple1.bUnderrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
-                              .fbThermoCouple1.bOverrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
-                              .fbThermoCouple1.iRaw := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Value;
+    {attribute 'TcLinkTo' := '.fbTempSensor1.bError := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
+                              .fbTempSensor1.bUnderrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
+                              .fbTempSensor1.bOverrange := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
+                              .fbTempSensor1.iRaw := TIIB[TM2K4-EL3314-E5]^TC Inputs Channel 1^Value;
                               .fbFlowMeter.iRaw := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'} // same as IM6K4
     fbTM2K4: FB_TM2K4;
+
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 
-fbTM2K4.stOut.fPosition := -2.558;
-fbTM2K4.stOut.bUseRawCounts := FALSE;
-fbTM2K4.stOut.bValid := TRUE;
-fbTM2K4.stOut.stPMPS.sPmpsState := 'TM2K4:ATM-OUT';
+IF NOT bInit THEN
+    fbTM2K4.stOut.fPosition := -2.558;
+    fbTM2K4.stOut.bUseRawCounts := FALSE;
+    fbTM2K4.stOut.bValid := TRUE;
+    fbTM2K4.stOut.stPMPS.sPmpsState := 'TM2K4:ATM-OUT';
 
-fbTM2K4.stTarget1.fPosition := -16.311;
-fbTM2K4.stTarget1.bUseRawCounts := FALSE;
-fbTM2K4.stTarget1.bValid := TRUE;
-fbTM2K4.stTarget1.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1';
+    fbTM2K4.stTarget1.fPosition := -16.311;
+    fbTM2K4.stTarget1.bUseRawCounts := FALSE;
+    fbTM2K4.stTarget1.bValid := TRUE;
+    fbTM2K4.stTarget1.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1';
 
-fbTM2K4.stTarget2.fPosition := -25.282;
-fbTM2K4.stTarget2.bUseRawCounts := FALSE;
-fbTM2K4.stTarget2.bValid := TRUE;
-fbTM2K4.stTarget2.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2';
+    fbTM2K4.stTarget2.fPosition := -25.282;
+    fbTM2K4.stTarget2.bUseRawCounts := FALSE;
+    fbTM2K4.stTarget2.bValid := TRUE;
+    fbTM2K4.stTarget2.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2';
 
-fbTM2K4.stTarget3.fPosition := -41.249;
-fbTM2K4.stTarget3.bUseRawCounts := FALSE;
-fbTM2K4.stTarget3.bValid := TRUE;
-fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
+    fbTM2K4.stTarget3.fPosition := -41.249;
+    fbTM2K4.stTarget3.bUseRawCounts := FALSE;
+    fbTM2K4.stTarget3.bValid := TRUE;
+    fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
 
-fbTM2K4.stTarget4.fPosition := -55.414;
-fbTM2K4.stTarget4.bUseRawCounts := FALSE;
-fbTM2K4.stTarget4.bValid := TRUE;
-fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
+    fbTM2K4.stTarget4.fPosition := -55.414;
+    fbTM2K4.stTarget4.bUseRawCounts := FALSE;
+    fbTM2K4.stTarget4.bValid := TRUE;
+    fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
-fbTM2K4.stTarget5.fPosition := -69;
-fbTM2K4.stTarget5.bUseRawCounts := FALSE;
-fbTM2K4.stTarget5.bValid := TRUE;
-fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-DIODE';
+    fbTM2K4.stTarget5.fPosition := -69;
+    fbTM2K4.stTarget5.bUseRawCounts := FALSE;
+    fbTM2K4.stTarget5.bValid := TRUE;
+    fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-DIODE';
+END_IF
 
 
 fbTM2K4(
@@ -54,9 +58,12 @@ fbTM2K4(
     fbFFHWO := fbFastFaultOutput2,
     stYStage := Main.M30,
     stXStage := Main.M31,
-    sPmpsDeviceName := 'TM2K4:ATM',
+    sDeviceName := 'TM2K4:ATM',
     sTransitionKey := 'TM2K4:ATM-TRANSITION',
-     );]]></ST>
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
+);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

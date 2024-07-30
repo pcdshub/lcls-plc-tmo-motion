@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_TM1K4" Id="{c02e8350-6bfd-4c3f-8509-cf01c04221fa}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_TM1K4
 VAR
@@ -7,64 +7,73 @@ VAR
         pv: TM1K4:ATM
         io: io
     '}
-    {attribute 'TcLinkTo' := '.fbThermoCouple1.bError := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
-                              .fbThermoCouple1.bUnderrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
-                              .fbThermoCouple1.bOverrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
-                              .fbThermoCouple1.iRaw := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Value;
+    {attribute 'TcLinkTo' := '.fbTempSensor1.bError := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Error;
+                              .fbTempSensor1.bUnderrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Underrange;
+                              .fbTempSensor1.bOverrange := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Status^Overrange;
+                              .fbTempSensor1.iRaw := TIIB[TM1K4-EL3314-E5]^TC Inputs Channel 1^Value;
                               .fbFlowMeter.iRaw := TIIB[IM5K4-EL3052-E5]^AI Standard Channel 1^Value'} // same cooling loop as IM5K4
     fbTM1K4: FB_TM1K4;
+
+    bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 
-fbTM1K4.stOut.fPosition := -2.558;
-fbTM1K4.stOut.bUseRawCounts := FALSE;
-fbTM1K4.stOut.bValid := TRUE;
-fbTM1K4.stOut.stPMPS.sPmpsState := 'TM1K4:ATM-OUT';
+IF NOT bInit THEN
+    fbTM1K4.stOut.fPosition := -2.558;
+    fbTM1K4.stOut.bUseRawCounts := FALSE;
+    fbTM1K4.stOut.bValid := TRUE;
+    fbTM1K4.stOut.stPMPS.sPmpsState := 'TM1K4:ATM-OUT';
 
-fbTM1K4.stTarget1a.fPosition := -16.311;
-fbTM1K4.stTarget1a.bUseRawCounts := FALSE;
-fbTM1K4.stTarget1a.bValid := TRUE;
-fbTM1K4.stTarget1a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1a';
+    fbTM1K4.stTarget1a.fPosition := -16.311;
+    fbTM1K4.stTarget1a.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget1a.bValid := TRUE;
+    fbTM1K4.stTarget1a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1a';
 
-fbTM1K4.stTarget1b.fPosition := -25.282;
-fbTM1K4.stTarget1b.bUseRawCounts := FALSE;
-fbTM1K4.stTarget1b.bValid := TRUE;
-fbTM1K4.stTarget1b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1b';
+    fbTM1K4.stTarget1b.fPosition := -25.282;
+    fbTM1K4.stTarget1b.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget1b.bValid := TRUE;
+    fbTM1K4.stTarget1b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1b';
 
-fbTM1K4.stTarget2b.fPosition := -41.249;
-fbTM1K4.stTarget2b.bUseRawCounts := FALSE;
-fbTM1K4.stTarget2b.bValid := TRUE;
-fbTM1K4.stTarget2b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET2b';
+    fbTM1K4.stTarget2b.fPosition := -41.249;
+    fbTM1K4.stTarget2b.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget2b.bValid := TRUE;
+    fbTM1K4.stTarget2b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET2b';
 
-fbTM1K4.stTarget3a.fPosition := -55.414;
-fbTM1K4.stTarget3a.bUseRawCounts := FALSE;
-fbTM1K4.stTarget3a.bValid := TRUE;
-fbTM1K4.stTarget3a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3a';
+    fbTM1K4.stTarget3a.fPosition := -55.414;
+    fbTM1K4.stTarget3a.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget3a.bValid := TRUE;
+    fbTM1K4.stTarget3a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3a';
 
-fbTM1K4.stTarget3b.fPosition := -62.895;
-fbTM1K4.stTarget3b.bUseRawCounts := FALSE;
-fbTM1K4.stTarget3b.bValid := TRUE;
-fbTM1K4.stTarget3b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3b';
+    fbTM1K4.stTarget3b.fPosition := -62.895;
+    fbTM1K4.stTarget3b.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget3b.bValid := TRUE;
+    fbTM1K4.stTarget3b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3b';
 
-fbTM1K4.stTarget4.fPosition := -82.25;
-fbTM1K4.stTarget4.bUseRawCounts := FALSE;
-fbTM1K4.stTarget4.bValid := TRUE;
-fbTM1K4.stTarget4.stPMPS.sPmpsState := 'TM1K4:ATM-YAG';
+    fbTM1K4.stTarget4.fPosition := -82.25;
+    fbTM1K4.stTarget4.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget4.bValid := TRUE;
+    fbTM1K4.stTarget4.stPMPS.sPmpsState := 'TM1K4:ATM-YAG';
 
-fbTM1K4.stTarget5.fPosition := -102.258;
-fbTM1K4.stTarget5.bUseRawCounts := FALSE;
-fbTM1K4.stTarget5.bValid := TRUE;
-fbTM1K4.stTarget5.stPMPS.sPmpsState := 'TM1K4:ATM-DIODE';
+    fbTM1K4.stTarget5.fPosition := -102.258;
+    fbTM1K4.stTarget5.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget5.bValid := TRUE;
+    fbTM1K4.stTarget5.stPMPS.sPmpsState := 'TM1K4:ATM-DIODE';
+
+    bInit := TRUE;
+END_IF
 
 fbTM1K4(
     fbArbiter := fbArbiter,
     fbFFHWO := fbFastFaultOutput1,
     stYStage := Main.M21,
     stXStage := Main.M22,
-    sPmpsDeviceName := 'TM1K4:ATM',
+    sDeviceName := 'TM1K4:ATM',
     sTransitionKey := 'TM1K4:ATM-TRANSITION',
+    bEnableMotion := TRUE,
+    bEnableBeamParams := TRUE,
+    bEnablePositionLimits := TRUE,
 );
 ]]></ST>
     </Implementation>

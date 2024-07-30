@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <DUT Name="ENUM_TM2K4_States" Id="{f3c92633-68cb-466f-8e8c-2fc04f05fc6a}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ENUM_TM2K4_States :
@@ -13,7 +13,7 @@ TYPE ENUM_TM2K4_States :
     TARGET3 := 4,
     YAG := 5,
     DIODE := 6
-);
+) UINT;
 END_TYPE
 ]]></Declaration>
   </DUT>
