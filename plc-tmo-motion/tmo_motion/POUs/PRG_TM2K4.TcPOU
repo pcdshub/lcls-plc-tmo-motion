@@ -22,34 +22,48 @@ END_VAR
 
 IF NOT bInit THEN
     fbTM2K4.stOut.fPosition := -2.558;
+    fbTM2K4.stOut.fVelocity := 1;
     fbTM2K4.stOut.bUseRawCounts := FALSE;
     fbTM2K4.stOut.bValid := TRUE;
+    fbTM2K4.stOut.bMoveOK := TRUE;
     fbTM2K4.stOut.stPMPS.sPmpsState := 'TM2K4:ATM-OUT';
 
     fbTM2K4.stTarget1.fPosition := -16.311;
+    fbTM2K4.stTarget1.fVelocity := 1;
     fbTM2K4.stTarget1.bUseRawCounts := FALSE;
     fbTM2K4.stTarget1.bValid := TRUE;
+    fbTM2K4.stTarget1.bMoveOK := TRUE;
     fbTM2K4.stTarget1.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1';
 
     fbTM2K4.stTarget2.fPosition := -25.282;
+    fbTM2K4.stTarget2.fVelocity := 1;
     fbTM2K4.stTarget2.bUseRawCounts := FALSE;
     fbTM2K4.stTarget2.bValid := TRUE;
+    fbTM2K4.stTarget2.bMoveOK := TRUE;
     fbTM2K4.stTarget2.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2';
 
     fbTM2K4.stTarget3.fPosition := -41.249;
+    fbTM2K4.stTarget3.fVelocity := 1;
     fbTM2K4.stTarget3.bUseRawCounts := FALSE;
     fbTM2K4.stTarget3.bValid := TRUE;
+    fbTM2K4.stTarget3.bMoveOK := TRUE;
     fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
 
     fbTM2K4.stTarget4.fPosition := -55.414;
+    fbTM2K4.stTarget4.fVelocity := 1;
     fbTM2K4.stTarget4.bUseRawCounts := FALSE;
     fbTM2K4.stTarget4.bValid := TRUE;
+    fbTM2K4.stTarget4.bMoveOK := TRUE;
     fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
     fbTM2K4.stTarget5.fPosition := -69;
+    fbTM2K4.stTarget5.fVelocity := 1;
     fbTM2K4.stTarget5.bUseRawCounts := FALSE;
     fbTM2K4.stTarget5.bValid := TRUE;
+    fbTM2K4.stTarget5.bMoveOK := TRUE;
     fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-DIODE';
+
+    bInit := TRUE;
 END_IF
 
 
