@@ -106,7 +106,7 @@ VAR
         field: EGU C
         io: i
     '}
-    SP1K4_ATT_RTD_01 : FB_TempSensor;
+    SP1K4_ATT_RTD_01 : FB_CC_TempSensor;
 
     {attribute 'TcLinkTo' := '.iRaw := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 2^Value;
                               .bUnderrange := TIIB[SP1K4-EL3202-E9A]^RTD Inputs Channel 2^Status^Underrange;
@@ -117,7 +117,7 @@ VAR
         field: EGU C
         io: i
     '}
-    SP1K4_ATT_RTD_02 : FB_TempSensor;
+    SP1K4_ATT_RTD_02 : FB_CC_TempSensor;
 
 
 
@@ -574,8 +574,21 @@ Main.M43.bLimitForwardEnable := True;
 GVL_TcGVL.eSP1K4FZP := zp_enumGet;
 GVL_TcGVL.eSP1K4ATT := att_enumGet;
 
-SP1K4_ATT_RTD_01(fResolution:=0.01);
-SP1K4_ATT_RTD_02(fResolution:=0.01);
+SP1K4_ATT_RTD_01(
+    fResolution:=0.01,
+    fFaultThreshold:=fbAttStates.stDbStateParams.stReactiveParams.nTempSP,
+    bVeto:=att_enumGet = ENUM_SolidAttenuator_States.OUT,
+    sDevName:='SP1K4:ATT',
+    io_fbFFHWO:=fbFastFaultOutput1,
+
+);
+SP1K4_ATT_RTD_02(
+    fResolution:=0.01,
+    fFaultThreshold:=fbAttStates.stDbStateParams.stReactiveParams.nTempSP,
+    bVeto:=att_enumGet = ENUM_SolidAttenuator_States.OUT,
+    sDevName:='SP1K4:ATT',
+    io_fbFFHWO:=fbFastFaultOutput1,
+);
 ]]></ST>
     </Implementation>
   </POU>
