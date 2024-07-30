@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_IM6K4_PPM" Id="{5922a5f4-dd07-4dd5-8bd1-7240efca9eab}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_IM6K4_PPM
 VAR
@@ -10,14 +10,14 @@ VAR
     {attribute 'TcLinkTo' := '.fbGige.iIlluminatorINT 					:= TIIB[IM6K4-EL4004-E7]^AO Outputs Channel 1^Analog output;
                               .fbGige.bGigePower 						:= TIIB[IM6K4-EL2004-E3]^Channel 2^Output;
                               .fbPowerMeter.iVoltageINT 				:= TIIB[IM6K4-EL3062-E6]^AI Standard Channel 1^Value;
-                              .fbPowerMeter.fbThermoCouple.bError 		:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
-                              .fbPowerMeter.fbThermoCouple.bUnderrange	:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
-                              .fbPowerMeter.fbThermoCouple.bOverrange 	:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
-                              .fbPowerMeter.fbThermoCouple.iRaw 		:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Value;
-                              .fbYagThermoCouple.bError 				:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
-                              .fbYagThermoCouple.bUnderrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
-                              .fbYagThermoCouple.bOverrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
-                              .fbYagThermoCouple.iRaw 					:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Value;
+                              .fbPowerMeter.fbTempSensor.bError 		:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Error;
+                              .fbPowerMeter.fbTempSensor.bUnderrange	:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Underrange;
+                              .fbPowerMeter.fbTempSensor.bOverrange 	:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Status^Overrange;
+                              .fbPowerMeter.fbTempSensor.iRaw 		:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 1^Value;
+                              .fbYagTempSensor.bError 				:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Error;
+                              .fbYagTempSensor.bUnderrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Underrange;
+                              .fbYagTempSensor.bOverrange 			:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Status^Overrange;
+                              .fbYagTempSensor.iRaw 					:= TIIB[IM6K4-EL3314-E4]^TC Inputs Channel 2^Value;
                               .fbFlowMeter.iRaw                         := TIIB[IM6K4-EL3052-E5]^AI Standard Channel 1^Value'}
     fbIM6K4: FB_PPM;
     fbStateSetup: FB_StateSetupHelper;
