@@ -66,7 +66,7 @@ VAR
 
     {attribute 'pytmc' := '
         pv: MMS
-        astPositionState.array: 1..6
+        astPositionState.array: 1..8
     '}
     fbStates: FB_PositionStatePMPS1D;
     astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
