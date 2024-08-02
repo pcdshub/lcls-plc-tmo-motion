@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_TM2K4" Id="{2e44b794-0439-44f1-8e3d-9aff6b36f21c}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TM2K4
 (*
@@ -9,73 +9,157 @@
     - Swap out FB_ATM_States for FB_TM1K4_States
 *)
 VAR_IN_OUT
+    // Y motor (state select).
     stYStage: ST_MotionStage;
+    // X motor (align target to beam).
     stXStage: ST_MotionStage;
-    fbArbiter: FB_Arbiter;
+    // The fast fault output to fault to.
     fbFFHWO: FB_HardwareFFOutput;
+    // The arbiter to request beam conditions from.
+    fbArbiter: FB_Arbiter;
 END_VAR
 VAR_INPUT
-    stOut: DUT_PositionState;
-    stTarget1: DUT_PositionState;
-    stTarget2: DUT_PositionState;
-    stTarget3: DUT_PositionState;
-    stTarget4: DUT_PositionState;   // target 4 is YAG
-    stTarget5: DUT_PositionState;    // target 5 is Diode
-    sPmpsDeviceName: STRING;
+    stOut: ST_PositionState;
+    stTarget1: ST_PositionState;
+    stTarget2: ST_PositionState;
+    stTarget3: ST_PositionState;
+    stTarget4: ST_PositionState;   // target 4 is YAG
+    stTarget5: ST_PositionState;    // target 5 is Diode
+    // Set this to a non-unknown value to request a new move.
+    {attribute 'pytmc' := '
+        pv: MMS:STATE:SET
+        io: io
+    '}
+    eEnumSet: ENUM_TM2K4_States;
+    // Set this to TRUE to enable input state moves, or FALSE to disable them.
+    bEnableMotion: BOOL;
+    // Set this to TRUE to enable beam parameter checks, or FALSE to disable them.
+    bEnableBeamParams: BOOL;
+    // Set this to TRUE to enable position limit checks, or FALSE to disable them.
+    bEnablePositionLimits: BOOL;
+    // The name of the device for use in the PMPS DB lookup and diagnostic screens.
+    sDeviceName: STRING;
+    // The name of the transition state in the PMPS database.
     sTransitionKey: STRING;
+    // Set this to TRUE to re-read the loaded database immediately (useful for debug).
+    bReadDBNow: BOOL;
+END_VAR
+VAR_OUTPUT
+    // The current position state as an enum.
+    {attribute 'pytmc' := '
+        pv: MMS:STATE:GET
+        io: i
+    '}
+    eEnumGet: ENUM_TM2K4_States;
+    // The PMPS database lookup associated with the current position state.
+    stDbStateParams: ST_DbStateParams;
 END_VAR
 VAR
+    bInit: BOOL;
+
     fbYStage: FB_MotionStage;
     fbXStage: FB_MotionStage;
 
-    {attribute 'pytmc' := '
-        pv: MMS:STATE
-        io: i
-        arrStates.array: 1..6
-    '}
-    fbStates: FB_TM2K4_States;
+    fbStateDefaults: FB_PositionState_Defaults;
 
     {attribute 'pytmc' := '
-        pv: STC:01
-        io: input
+        pv: MMS
+        astPositionState.array: 1..6
     '}
-    fbThermoCouple1: FB_TempSensor;
-    {attribute 'pytmc' := '
-        pv: FWM
-        field: EGU lpm
-    '}
+    fbStates: FB_PositionStatePMPS1D;
+    astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbArrCheckWrite: FB_CheckPositionStateWrite;
+
+    {attribute 'pytmc' := 'pv: STC:01'}
+    fbTempSensor1: FB_CC_TempSensor;
+
+    {attribute 'pytmc' :='pv: FWM'}
     fbFlowMeter: FB_AnalogInput := (iTermBits:=15, fTermMax:=60, fTermMin:=0);
+END_VAR
+VAR CONSTANT
+    // State defaults if not provided
+    fDelta: LREAL := 2;
+    fAccel: LREAL := 200;
+    fOutDecel: LREAL := 25;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbYStage(stMotionStage:=stYStage);
+      <ST><![CDATA[IF NOT bInit THEN
+    bInit := TRUE;
+
+    stYStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    stXStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    // Partial backcompat, this used to set fVelocity too but this should be set per install
+    fbStateDefaults(stPositionState:=stOut, sNameDefault:='OUT', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fOutDecel);
+    fbStateDefaults(stPositionState:=stTarget1, sNameDefault:='TARGET1', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget2, sNameDefault:='TARGET2', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget3, sNameDefault:='TARGET3', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget4, sNameDefault:='YAG', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget5, sNameDefault:='DIODE', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+END_IF
+
 stYStage.bHardwareEnable := TRUE;
 stYStage.bPowerSelf := FALSE;
-stYStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
-fbXStage(stMotionStage:=stXStage);
 stXStage.bLimitForwardEnable := TRUE;
 stXStage.bLimitBackwardEnable := TRUE;
 stXStage.bHardwareEnable := TRUE;
 stXStage.bPowerSelf := TRUE;
-stXStage.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+fbYStage(stMotionStage:=stYStage);
+fbXStage(stMotionStage:=stXStage);
+
+// We need to update from PLC or from EPICS, but not both
+fbArrCheckWrite(
+    astPositionState:=astPositionState,
+    bCheck:=TRUE,
+    bSave:=FALSE,
+);
+IF NOT fbArrCheckWrite.bHadWrite THEN
+    astPositionState[ENUM_TM2K4_States.OUT] := stOut;
+    astPositionState[ENUM_TM2K4_States.TARGET1] := stTarget1;
+    astPositionState[ENUM_TM2K4_States.TARGET2] := stTarget2;
+    astPositionState[ENUM_TM2K4_States.TARGET3] := stTarget3;
+    astPositionState[ENUM_TM2K4_States.YAG] := stTarget4;
+    astPositionState[ENUM_TM2K4_States.DIODE] := stTarget5;
+END_IF
 
 fbStates(
-    fbArbiter:=fbArbiter,
-    fbFFHWO:=fbFFHWO,
-   sPmpsDeviceName:=sPmpsDeviceName,
-    sTransitionKey:=sTransitionKey,
     stMotionStage:=stYStage,
-    bEnable := TRUE,
-    stOut:=stOut,
-    stTarget1:=stTarget1,
-    stTarget2:=stTarget2,
-    stTarget3:=stTarget3,
-    stTarget4:=stTarget4,
-    stTarget5:=stTarget5,
+    astPositionState:=astPositionState,
+    eEnumSet:=eEnumSet,
+    eEnumGet:=eEnumGet,
+    fbFFHWO:=fbFFHWO,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=bEnableMotion,
+    bEnableBeamParams:=bEnableBeamParams,
+    bEnablePositionLimits:=bEnablePositionLimits,
+    sDeviceName:=sDeviceName,
+    sTransitionKey:=sTransitionKey,
+    bReadDBNow:=bReadDBNow,
+    stDbStateParams=>stDbStateParams,
 );
 
-fbThermoCouple1();
+fbArrCheckWrite(
+    astPositionState:=astPositionState,
+    bCheck:=FALSE,
+    bSave:=TRUE,
+);
+
+stOut := astPositionState[ENUM_TM2K4_States.OUT];
+stTarget1 := astPositionState[ENUM_TM2K4_States.TARGET1];
+stTarget2 := astPositionState[ENUM_TM2K4_States.TARGET2];
+stTarget3 := astPositionState[ENUM_TM2K4_States.TARGET3];
+stTarget4 := astPositionState[ENUM_TM2K4_States.YAG];
+stTarget5 := astPositionState[ENUM_TM2K4_States.DIODE];
+
+fbTempSensor1(
+    fFaultThreshold:=fbStates.stDbStateParams.stReactiveParams.nTempSP,
+    bVeto:=eEnumGet = ENUM_TM2K4_States.OUT,
+    sDevName:=sDeviceName,
+    io_fbFFHWO:=fbFFHWO,
+);
 fbFlowMeter();]]></ST>
     </Implementation>
   </POU>
