@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_PA1K4_PF" Id="{3b3608b5-fe23-47f9-92d0-d7907172c21f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_PA1K4_PF
+VAR
+    fbMotionPA1K4: FB_MotionStage;{attribute 'pytmc' := '
+        pv: PA1K4:PF
+        io: io
+    '}
+    fbPA1K4States: FB_PositionStatePMPS1D;
+    {attribute 'pytmc' := '
+        pv: PA1K4:PF:STATE:SET
+        io: io
+    '}
+    pa1k4_enumSet: ENUM_Sample_Calibration_States;
+     {attribute 'pytmc' := '
+        pv: PA1K4:PF:STATE:GET
+        io: i
+    '}
+    pa1k4_enumGet: ENUM_Sample_Calibration_States;
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState :=(
+        fDelta :=0.5,
+        fVelocity := 1.0,
+        bMoveOk := TRUE,
+        bValid := TRUE
+    );
+    aPA1K4States: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbMotionPA1K4(stMotionStage:=Main.M47);
+
+fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.OUT], sName := 'OUT', fPosition:=102.7);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target1], sName := 'TARGET1', fPosition:=200);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target2], sName := 'TARGET2', fPosition:=201);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], sName := 'TARGET3', fPosition:=203);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], sName := 'TARGET4', fPosition:=205);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], sName := 'TARGET5', fPosition:=209);
+//PMPS
+aPA1K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'PA1K4:PF-OUT';
+aPA1K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'PA1K4:PF-TARGET1';
+aPA1K4States[ENUM_Sample_Calibration_States.Target2].stPMPS.sPmpsState := 'PA1K4:PF-TARGET2';
+aPA1K4States[ENUM_Sample_Calibration_States.Target3].stPMPS.sPmpsState := 'PA1K4:PF-TARGET3';
+aPA1K4States[ENUM_Sample_Calibration_States.Target4].stPMPS.sPmpsState := 'PA1K4:PF-TARGET4';
+aPA1K4States[ENUM_Sample_Calibration_States.Target5].stPMPS.sPmpsState := 'PA1K4:PF-TARGET5';
+
+
+fbPA1K4States(
+    stMotionStage:=Main.M47,
+    astPositionState:=aPA1K4States,
+    eEnumSet:=pa1k4_enumSet,
+    eEnumGet:=pa1k4_enumGet,
+    sDeviceName := 'PA1K4:PF',
+    sTransitionKey := 'PA1K4:PF-TRANSITION',
+    fbFFHWO:=fbFastFaultOutput1,
+    fbArbiter:=fbArbiter,
+    bEnableMotion:=TRUE,
+    bEnableBeamParams:=TRUE,
+    bEnablePositionLimits:=TRUE,
+);
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
