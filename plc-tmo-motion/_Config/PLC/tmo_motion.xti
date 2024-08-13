@@ -1260,7 +1260,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{9DD0BA81-4A92-4D5E-8BD9-E101C02702D4}" Name="tmo_motion" PrjFilePath="..\..\tmo_motion\tmo_motion.plcproj" TmcFilePath="..\..\tmo_motion\tmo_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{B3656237-FB9D-5E8F-2A09-437296399872}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{D35A4FBA-A1D6-D1F8-D559-116E09A79F07}">
 			<Name>tmo_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -3650,123 +3650,123 @@ External Setpoint Generation:
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbMotionAT2K4.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Name>PRG_PA1K4_PF.fbMotionPA1K4.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].Axis.NcToPlc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].Axis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bLimitForwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bLimitForwardEnable</Name>
 					<Comment><![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bLimitBackwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bLimitBackwardEnable</Name>
 					<Comment><![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bHome</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bHome</Name>
 					<Comment><![CDATA[ NO Home Switch: TRUE if at home]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bHardwareEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bHardwareEnable</Name>
 					<Comment><![CDATA[ NC STO Input: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderULINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderULINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for ULINT (Biss-C)]]></Comment>
 					<Type>ULINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderUINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderUINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].Axis.NcToPlc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].Axis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bLimitForwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bLimitForwardEnable</Name>
 					<Comment><![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bLimitBackwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bLimitBackwardEnable</Name>
 					<Comment><![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bHome</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bHome</Name>
 					<Comment><![CDATA[ NO Home Switch: TRUE if at home]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bHardwareEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bHardwareEnable</Name>
 					<Comment><![CDATA[ NC STO Input: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderULINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderULINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for ULINT (Biss-C)]]></Comment>
 					<Type>ULINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderUINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderUINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].Axis.NcToPlc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].Axis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bLimitForwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bLimitForwardEnable</Name>
 					<Comment><![CDATA[ NC Forward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bLimitBackwardEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bLimitBackwardEnable</Name>
 					<Comment><![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bHome</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bHome</Name>
 					<Comment><![CDATA[ NO Home Switch: TRUE if at home]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bHardwareEnable</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bHardwareEnable</Name>
 					<Comment><![CDATA[ NC STO Input: TRUE if ok to move]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderULINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderULINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for ULINT (Biss-C)]]></Comment>
 					<Type>ULINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderUINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderUINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]></Comment>
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderINT</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 					<Type>INT</Type>
 				</Var>
@@ -6270,33 +6270,33 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbMotionAT2K4.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+					<Name>PRG_PA1K4_PF.fbMotionPA1K4.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].Axis.PlcToNc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].Axis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bBrakeRelease</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bBrakeRelease</Name>
 					<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].Axis.PlcToNc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].Axis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bBrakeRelease</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bBrakeRelease</Name>
 					<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].Axis.PlcToNc</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].Axis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bBrakeRelease</Name>
+					<Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bBrakeRelease</Name>
 					<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -7067,24 +7067,24 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_ST4K4_TMO_TERM.ST4K4.i_xRetractedLS" VarB="Channel 3^Input" AutoLink="true" Size="1"/>
 				<Link VarA="PlcTask Outputs^PRG_ST4K4_TMO_TERM.ST4K4.q_xRetract_DO" VarB="Channel 9^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^AT2K4-EL5042-E5">
-				<Link VarA="PlcTask Inputs^Main.M47.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^AT2K4-EL7047-E4">
-				<Link VarA="PlcTask Inputs^Main.M47.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true" Size="1"/>
-				<Link VarA="PlcTask Inputs^Main.M47.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^LI2K4-EL5042-E2">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-PA1K4 (EK1100)^LI2K4-EL5042-E2">
 				<Link VarA="PlcTask Inputs^Main.M45.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M46.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^LI2K4X-EL7047-E3">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-PA1K4 (EK1100)^LI2K4X-EL7047-E3">
 				<Link VarA="PlcTask Inputs^Main.M46.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true" Size="1"/>
 				<Link VarA="PlcTask Inputs^Main.M46.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-AT2K4 (EK1100)^LI2K4Y-EL7047-E1">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-PA1K4 (EK1100)^LI2K4Y-EL7047-E1">
 				<Link VarA="PlcTask Inputs^Main.M45.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true" Size="1"/>
 				<Link VarA="PlcTask Inputs^Main.M45.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-PA1K4 (EK1100)^PA1K4-PF-EL5042-E5">
+				<Link VarA="PlcTask Inputs^Main.M47.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^LI2K4-PA1K4 (EK1100)^PA1K4-PF-EL7047-E4">
+				<Link VarA="PlcTask Inputs^Main.M47.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^Main.M47.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^SP1K4 Bottom Rail (EK1100)^FoilX-EL7041">
 				<Link VarA="PlcTask Inputs^Main.M33.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
@@ -7260,10 +7260,6 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M46.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M46.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 47 AT2K4-MMS-FILT">
-				<Link VarA="PlcTask Inputs^Main.M47.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
-				<Link VarA="PlcTask Outputs^Main.M47.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
-			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 5">
 				<Link VarA="PlcTask Inputs^Main.M5.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M5.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
@@ -7295,6 +7291,10 @@ External Setpoint Generation:
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^LensX">
 				<Link VarA="PlcTask Inputs^Main.M32.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M32.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^PA1K4-PF-MMS">
+				<Link VarA="PlcTask Inputs^Main.M47.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M47.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^SL1K4-BOTTOM-M10">
 				<Link VarA="PlcTask Inputs^Main.M10.Axis.NcToPlc" VarB="Outputs^ToPlc"/>

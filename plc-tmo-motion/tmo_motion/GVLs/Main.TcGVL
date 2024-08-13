@@ -335,19 +335,19 @@ VAR_GLOBAL
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
         sName := 'LI2K4:IP1:MMS:X');
 
-    //AT2K4-MMS-FILT
-     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[AT2K4-EL5042-E5]^FB Inputs Channel 1^Position'}
+    //PA1K4-PF-MMS-Y
+     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[PA1K4-PF-EL7047-E4]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[PA1K4-PF-EL7047-E4]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[PA1K4-PF-EL5042-E5]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
-        pv: AT2K4:IP1:MMS
+        pv: PA1K4:PF:MMS:Y
     '}
     M47: ST_MotionStage := (
         bHardwareEnable:=TRUE,
         bPowerSelf:=FALSE,
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.NONE,
-        sName := 'AT2K4:IP1:MMS');
+        sName := 'PA1K4:PF:MMS:Y');
 
 END_VAR]]></Declaration>
   </GVL>

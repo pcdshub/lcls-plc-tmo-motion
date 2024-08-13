@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{B3656237-FB9D-5E8F-2A09-437296399872}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{D35A4FBA-A1D6-D1F8-D559-116E09A79F07}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -84709,7 +84709,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>683219920</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbMotionAT2K4.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+            <Name>PRG_PA1K4_PF.fbMotionPA1K4.fbDriveVirtual.MasterAxis.NcToPlc</Name>
             <BitSize>2048</BitSize>
             <BaseType GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}">NCTOPLC_AXIS_REF</BaseType>
             <Properties>
@@ -84721,7 +84721,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>683648768</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].Axis.NcToPlc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].Axis.NcToPlc</Name>
             <BitSize>2048</BitSize>
             <BaseType GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}">NCTOPLC_AXIS_REF</BaseType>
             <Properties>
@@ -84733,7 +84733,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685277824</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bLimitForwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bLimitForwardEnable</Name>
             <Comment> NC Forward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84746,7 +84746,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285760</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bLimitBackwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bLimitBackwardEnable</Name>
             <Comment> NC Backward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84759,7 +84759,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285768</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bHome</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bHome</Name>
             <Comment> NO Home Switch: TRUE if at home</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84772,7 +84772,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285776</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bHardwareEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bHardwareEnable</Name>
             <Comment> NC STO Input: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84795,7 +84795,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285792</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderULINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderULINT</Name>
             <Comment> Raw encoder IO for ULINT (Biss-C)</Comment>
             <BitSize>64</BitSize>
             <BaseType>ULINT</BaseType>
@@ -84808,7 +84808,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285824</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderUINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderUINT</Name>
             <Comment> Raw encoder IO for UINT (Relative Encoders)</Comment>
             <BitSize>16</BitSize>
             <BaseType>UINT</BaseType>
@@ -84821,7 +84821,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285888</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].nRawEncoderINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].nRawEncoderINT</Name>
             <Comment> Raw encoder IO for INT (LVDT)</Comment>
             <BitSize>16</BitSize>
             <BaseType>INT</BaseType>
@@ -84834,7 +84834,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285904</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].Axis.NcToPlc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].Axis.NcToPlc</Name>
             <BitSize>2048</BitSize>
             <BaseType GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}">NCTOPLC_AXIS_REF</BaseType>
             <Properties>
@@ -84846,7 +84846,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685303744</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bLimitForwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bLimitForwardEnable</Name>
             <Comment> NC Forward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84859,7 +84859,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311680</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bLimitBackwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bLimitBackwardEnable</Name>
             <Comment> NC Backward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84872,7 +84872,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311688</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bHome</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bHome</Name>
             <Comment> NO Home Switch: TRUE if at home</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84885,7 +84885,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311696</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bHardwareEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bHardwareEnable</Name>
             <Comment> NC STO Input: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84908,7 +84908,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311712</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderULINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderULINT</Name>
             <Comment> Raw encoder IO for ULINT (Biss-C)</Comment>
             <BitSize>64</BitSize>
             <BaseType>ULINT</BaseType>
@@ -84921,7 +84921,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311744</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderUINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderUINT</Name>
             <Comment> Raw encoder IO for UINT (Relative Encoders)</Comment>
             <BitSize>16</BitSize>
             <BaseType>UINT</BaseType>
@@ -84934,7 +84934,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311808</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].nRawEncoderINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].nRawEncoderINT</Name>
             <Comment> Raw encoder IO for INT (LVDT)</Comment>
             <BitSize>16</BitSize>
             <BaseType>INT</BaseType>
@@ -84947,7 +84947,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311824</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].Axis.NcToPlc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].Axis.NcToPlc</Name>
             <BitSize>2048</BitSize>
             <BaseType GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}">NCTOPLC_AXIS_REF</BaseType>
             <Properties>
@@ -84959,7 +84959,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685329664</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bLimitForwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bLimitForwardEnable</Name>
             <Comment> NC Forward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84972,7 +84972,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337600</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bLimitBackwardEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bLimitBackwardEnable</Name>
             <Comment> NC Backward Limit Switch: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84985,7 +84985,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337608</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bHome</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bHome</Name>
             <Comment> NO Home Switch: TRUE if at home</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -84998,7 +84998,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337616</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bHardwareEnable</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bHardwareEnable</Name>
             <Comment> NC STO Input: TRUE if ok to move</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -85021,7 +85021,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337632</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderULINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderULINT</Name>
             <Comment> Raw encoder IO for ULINT (Biss-C)</Comment>
             <BitSize>64</BitSize>
             <BaseType>ULINT</BaseType>
@@ -85034,7 +85034,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337664</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderUINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderUINT</Name>
             <Comment> Raw encoder IO for UINT (Relative Encoders)</Comment>
             <BitSize>16</BitSize>
             <BaseType>UINT</BaseType>
@@ -85047,7 +85047,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685337728</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].nRawEncoderINT</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].nRawEncoderINT</Name>
             <Comment> Raw encoder IO for INT (LVDT)</Comment>
             <BitSize>16</BitSize>
             <BaseType>INT</BaseType>
@@ -92326,7 +92326,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>683219800</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbMotionAT2K4.fbDriveVirtual.MasterAxis.PlcToNc</Name>
+            <Name>PRG_PA1K4_PF.fbMotionPA1K4.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
             <BaseType GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}">PLCTONC_AXIS_REF</BaseType>
             <Properties>
@@ -92338,7 +92338,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>683647744</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].Axis.PlcToNc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].Axis.PlcToNc</Name>
             <BitSize>1024</BitSize>
             <BaseType GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}">PLCTONC_AXIS_REF</BaseType>
             <Properties>
@@ -92350,7 +92350,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685276800</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[1].bBrakeRelease</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[1].bBrakeRelease</Name>
             <Comment> NC Brake Output: TRUE to release brake</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -92363,7 +92363,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685285784</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].Axis.PlcToNc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].Axis.PlcToNc</Name>
             <BitSize>1024</BitSize>
             <BaseType GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}">PLCTONC_AXIS_REF</BaseType>
             <Properties>
@@ -92375,7 +92375,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685302720</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[2].bBrakeRelease</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[2].bBrakeRelease</Name>
             <Comment> NC Brake Output: TRUE to release brake</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -92388,7 +92388,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685311704</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].Axis.PlcToNc</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].Axis.PlcToNc</Name>
             <BitSize>1024</BitSize>
             <BaseType GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}">PLCTONC_AXIS_REF</BaseType>
             <Properties>
@@ -92400,7 +92400,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685328640</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States.astMotionStageMax[3].bBrakeRelease</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States.astMotionStageMax[3].bBrakeRelease</Name>
             <Comment> NC Brake Output: TRUE to release brake</Comment>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -101635,14 +101635,14 @@ second version of targets paddle 2</Comment>
             <BitOffs>680306976</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.at2k4_enumSet</Name>
+            <Name>PRG_PA1K4_PF.pa1k4_enumSet</Name>
             <BitSize>16</BitSize>
             <BaseType>ENUM_Sample_Calibration_States</BaseType>
             <Properties>
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-        pv: AT2K4:IP1:STATE:SET
+        pv: PA1K4:PF:STATE:SET
         io: io
     </Value>
               </Property>
@@ -101753,20 +101753,20 @@ second version of targets paddle 2</Comment>
             <BitOffs>683646016</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbMotionAT2K4</Name>
+            <Name>PRG_PA1K4_PF.fbMotionPA1K4</Name>
             <BitSize>327040</BitSize>
             <BaseType Namespace="lcls_twincat_motion">FB_MotionStage</BaseType>
             <BitOffs>683646144</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbAT2K4States</Name>
+            <Name>PRG_PA1K4_PF.fbPA1K4States</Name>
             <BitSize>1548352</BitSize>
             <BaseType Namespace="lcls_twincat_motion">FB_PositionStatePMPS1D</BaseType>
             <Properties>
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-        pv: AT2K4:IP1
+        pv: PA1K4:PF
         io: io
     </Value>
               </Property>
@@ -101774,14 +101774,14 @@ second version of targets paddle 2</Comment>
             <BitOffs>683973184</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.at2k4_enumGet</Name>
+            <Name>PRG_PA1K4_PF.pa1k4_enumGet</Name>
             <BitSize>16</BitSize>
             <BaseType>ENUM_Sample_Calibration_States</BaseType>
             <Properties>
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-        pv: AT2K4:IP1:STATE:GET
+        pv: PA1K4:PF:STATE:GET
         io: i
     </Value>
               </Property>
@@ -101808,13 +101808,13 @@ second version of targets paddle 2</Comment>
             <BitOffs>685521568</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.fbStateSetup</Name>
+            <Name>PRG_PA1K4_PF.fbStateSetup</Name>
             <BitSize>92032</BitSize>
             <BaseType Namespace="lcls_twincat_motion">FB_StateSetupHelper</BaseType>
             <BitOffs>685521600</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.stDefault</Name>
+            <Name>PRG_PA1K4_PF.stDefault</Name>
             <BitSize>3712</BitSize>
             <BaseType Namespace="lcls_twincat_motion">ST_PositionState</BaseType>
             <Default>
@@ -101838,7 +101838,7 @@ second version of targets paddle 2</Comment>
             <BitOffs>685613632</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_AT2K4_IP1.aAT2K4States</Name>
+            <Name>PRG_PA1K4_PF.aPA1K4States</Name>
             <BitSize>55680</BitSize>
             <BaseType Namespace="lcls_twincat_motion">ST_PositionState</BaseType>
             <ArrayInfo>
@@ -103350,7 +103350,7 @@ second version of targets paddle 2</Comment>
           </Symbol>
           <Symbol>
             <Name>Main.M47</Name>
-            <Comment>AT2K4-MMS-FILT</Comment>
+            <Comment>PA1K4-PF-MMS-Y</Comment>
             <BitSize>25920</BitSize>
             <BaseType Namespace="lcls_twincat_motion">ST_MotionStage</BaseType>
             <Default>
@@ -103372,20 +103372,20 @@ second version of targets paddle 2</Comment>
               </SubItem>
               <SubItem>
                 <Name>.sName</Name>
-                <String>AT2K4:IP1:MMS</String>
+                <String>PA1K4:PF:MMS:Y</String>
               </SubItem>
             </Default>
             <Properties>
               <Property>
                 <Name>TcLinkTo</Name>
-                <Value>.bLimitForwardEnable  := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[AT2K4-EL7047-E4]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[AT2K4-EL5042-E5]^FB Inputs Channel 1^Position</Value>
+                <Value>.bLimitForwardEnable  := TIIB[PA1K4-PF-EL7047-E4]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[PA1K4-PF-EL7047-E4]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[PA1K4-PF-EL5042-E5]^FB Inputs Channel 1^Position</Value>
               </Property>
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-        pv: AT2K4:IP1:MMS
+        pv: PA1K4:PF:MMS:Y
     </Value>
               </Property>
               <Property>
@@ -104347,7 +104347,7 @@ second version of targets paddle 2</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-07-30T17:14:51</Value>
+          <Value>2024-08-08T09:41:45</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

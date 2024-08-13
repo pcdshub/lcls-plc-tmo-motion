@@ -16,10 +16,10 @@
 		<Box File="LI2K4X-EL7047-E3.xti" Id="239">
 			<EtherCAT PortABoxInfo="#x010000ee"/>
 		</Box>
-		<Box File="AT2K4-EL7047-E4.xti" Id="241">
+		<Box File="PA1K4-PF-EL7047-E4.xti" Id="241">
 			<EtherCAT PortABoxInfo="#x010000ef"/>
 		</Box>
-		<Box File="AT2K4-EL5042-E5.xti" Id="247">
+		<Box File="PA1K4-PF-EL5042-E5.xti" Id="247">
 			<EtherCAT PortABoxInfo="#x010000f1"/>
 		</Box>
 		<Box File="Term 323 (EL9011).xti" Id="323">
