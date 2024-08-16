@@ -13,7 +13,7 @@
 		<Box File="ST4K4-TERM (EP2338-0001).xti" Id="108">
 			<EtherCAT PortABoxInfo="#x0100006b"/>
 		</Box>
-		<Box File="Box 235 (EP3174-0002).xti" Id="235">
+		<Box File="EP3174-FWM-E2.xti" Id="235">
 			<EtherCAT PortABoxInfo="#x0100006c"/>
 		</Box>
 	</Box>

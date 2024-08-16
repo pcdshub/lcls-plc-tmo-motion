@@ -51,10 +51,16 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PlcTask2.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_SP_ZP.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_1_PlcTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_2_PlcTask.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_2_PMPS_PRE.TcPOU">
@@ -91,6 +97,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_LI2K4_IP1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PRG_PC5K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_PF1K4_WFS_TARGET.TcPOU">
@@ -163,13 +172,13 @@
       <DefaultResolution>LCLS General, * (SLAC)</DefaultResolution>
       <Namespace>LCLS_General</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="lcls-twincat-common-components">
-      <DefaultResolution>lcls-twincat-common-components, * (SLAC)</DefaultResolution>
-      <Namespace>lcls_twincat_common_components</Namespace>
+    <PlaceholderReference Include="lcls-twincat-common-components-nrw">
+      <DefaultResolution>lcls-twincat-common-components-nrw, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_common_components_nrw</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="lcls-twincat-motion">
-      <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
-      <Namespace>lcls_twincat_motion</Namespace>
+    <PlaceholderReference Include="lcls-twincat-motion-nrw">
+      <DefaultResolution>lcls-twincat-motion-nrw, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_motion_nrw</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="PMPS">
       <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
@@ -209,12 +218,6 @@
   <ItemGroup>
     <PlaceholderResolution Include="LCLS General">
       <Resolution>LCLS General, 2.9.1 (SLAC)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="lcls-twincat-common-components">
-      <Resolution>lcls-twincat-common-components, 3.5.0 (SLAC)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 4.1.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 3.3.0 (SLAC - LCLS)</Resolution>
