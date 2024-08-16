@@ -3,8 +3,8 @@
   <POU Name="PRG_PC5K4" Id="{239e0261-00ca-4d33-8394-23cf4a49ddc7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_PC5K4
 VAR
-    {attribute 'pytmc' :='pv: PC5K4:FWM'}
-    {attribute 'TcLinkTo' := '.fbFlowMeter.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value'}
+    {attribute 'pytmc' :='pv: PC5K4'}
+    {attribute 'TcLinkTo' := '.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value'}
     fbFlowMeter: FB_FDQ_FlowMeter;
 END_VAR
 ]]></Declaration>

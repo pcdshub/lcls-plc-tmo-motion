@@ -7,7 +7,7 @@ VAR
     {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 3^Input;
                                  .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output;
-                                 .fbFlowMeter.fbFlowMeter.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value
+                                 .fbFlowMeter.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value
     '}
     ST4K4: FB_MotionPneumaticActuator;
     ibPMPS_OK : BOOL;
