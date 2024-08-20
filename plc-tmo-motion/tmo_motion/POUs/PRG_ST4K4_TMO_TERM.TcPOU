@@ -7,10 +7,12 @@ VAR
     {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 3^Input;
                                  .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output;
-                                 .fbFlowMeter.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value
     '}
     ST4K4: FB_MotionPneumaticActuator;
     ibPMPS_OK : BOOL;
+    {attribute 'pytmc' :='pv: ST4K4:TMO_TERM'}
+    {attribute 'TcLinkTo' := '.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value'}
+    fbFlowMeter: FB_FDQ_FlowMeter;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -29,7 +31,9 @@ END_VAR
 
 // For PMPS Veto
 GVL_PMPS.PMPS_ST4K4_IN := ST4K4.i_xInsertedLS;
-GVL_PMPS.PMPS_ST4K4_OUT := ST4K4.i_xRetractedLS;]]></ST>
+GVL_PMPS.PMPS_ST4K4_OUT := ST4K4.i_xRetractedLS;
+
+fbFlowMeter();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
