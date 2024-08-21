@@ -6,7 +6,7 @@ VAR
     {attribute 'pytmc' := 'pv: ST4K4:TMO_TERM'}
     {attribute 'TcLinkTo' := 	'.i_xInsertedLS	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 3^Input;
-                                 .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output;
+                                 .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output
     '}
     ST4K4: FB_MotionPneumaticActuator;
     ibPMPS_OK : BOOL;

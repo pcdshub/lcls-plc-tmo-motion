@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{B5218D03-7206-8AA3-93DE-D6405FB71219}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{BF974E23-E8A6-06A6-C029-DBC0DA9BF510}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -13131,7 +13131,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">E_AssertionType</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Name>
       <BitSize>8</BitSize>
       <BaseType>BYTE</BaseType>
       <EnumInfo>
@@ -13318,7 +13318,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_TestCaseResult</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Name>
       <BitSize>6192</BitSize>
       <SubItem>
         <Name>TestName</Name>
@@ -13352,7 +13352,7 @@
       </SubItem>
       <SubItem>
         <Name>FailureType</Name>
-        <Type Namespace="PMPS.TcUnit">E_AssertionType</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
         <BitSize>8</BitSize>
         <BitOffs>6160</BitOffs>
       </SubItem>
@@ -13364,7 +13364,7 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_TestSuiteResult</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Name>
       <BitSize>621296</BitSize>
       <SubItem>
         <Name>Name</Name>
@@ -13394,7 +13394,7 @@
       </SubItem>
       <SubItem>
         <Name>TestCaseResults</Name>
-        <Type Namespace="PMPS.TcUnit">ST_TestCaseResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestCaseResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>100</Elements>
@@ -13404,7 +13404,7 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_TestSuiteResults</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Name>
       <BitSize>621296064</BitSize>
       <SubItem>
         <Name>NumberOfTestSuites</Name>
@@ -13436,7 +13436,7 @@
       </SubItem>
       <SubItem>
         <Name>TestSuiteResults</Name>
-        <Type Namespace="PMPS.TcUnit">ST_TestSuiteResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -13447,7 +13447,7 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">I_TestResults</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Name>
       <BitSize>64</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -13457,7 +13457,7 @@
       </Method>
       <Method>
         <Name>GetTestSuiteResults</Name>
-        <ReturnType Namespace="PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
+        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
         <ReturnBitSize>64</ReturnBitSize>
       </Method>
     </DataType>
@@ -13477,13 +13477,13 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_TestResults</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Name>
       <Comment> This function block holds results of the complete test run, i.e. results for all test suites </Comment>
       <BitSize>621296448</BitSize>
-      <Implements Namespace="PMPS.TcUnit">I_TestResults</Implements>
+      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Implements>
       <SubItem>
         <Name>TestSuiteResults</Name>
-        <Type Namespace="PMPS.TcUnit">ST_TestSuiteResults</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_TestSuiteResults</Type>
         <Comment> Test results </Comment>
         <BitSize>621296064</BitSize>
         <BitOffs>128</BitOffs>
@@ -13527,7 +13527,7 @@
       </Method>
       <Method>
         <Name>GetTestSuiteResults</Name>
-        <ReturnType Namespace="PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
+        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</ReturnType>
         <ReturnBitSize>64</ReturnBitSize>
       </Method>
       <Properties>
@@ -13538,7 +13538,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">I_TestResultLogger</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Name>
       <BitSize>64</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -13561,17 +13561,17 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AdsTestResultLogger</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Name>
       <Comment>
     This function block reports the results from the tests using the built-in ADSLOGSTR functionality
     provided by the Tc2_System library. This sends the result using ADS, which is consumed by the "Error List"
     of Visual Studio (which can print Errors, Warnings and Messages).
 </Comment>
       <BitSize>448</BitSize>
-      <Implements Namespace="PMPS.TcUnit">I_TestResultLogger</Implements>
+      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="PMPS.TcUnit">I_TestResults</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
         <BitSize>64</BitSize>
         <BitOffs>128</BitOffs>
       </SubItem>
@@ -13605,7 +13605,7 @@
         <Name>LogTestSuiteResults</Name>
         <Local>
           <Name>TcUnitTestResults</Name>
-          <Type Namespace="PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
           <BitSize>64</BitSize>
         </Local>
         <Local>
@@ -13716,7 +13716,7 @@
       <BaseType PointerTo="1">BYTE</BaseType>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_FileControl</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Name>
       <Comment>
     This functionblock can open, close, read, write and delete files on the local filesystem
 </Comment>
@@ -13837,7 +13837,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">E_XmlError</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Name>
       <BitSize>8</BitSize>
       <BaseType>BYTE</BaseType>
       <EnumInfo>
@@ -13866,7 +13866,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_StreamBuffer</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Name>
       <Comment>
     This functionblock acts as a stream buffer for use with FB_XmlControl
 </Comment>
@@ -13911,7 +13911,7 @@
         </Parameter>
         <Parameter>
           <Name>XmlError</Name>
-          <Type Namespace="PMPS.TcUnit">E_XmlError</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
           <BitSize>8</BitSize>
           <Properties>
             <Property>
@@ -14147,7 +14147,7 @@
         </Parameter>
         <Parameter>
           <Name>XmlError</Name>
-          <Type Namespace="PMPS.TcUnit">E_XmlError</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_XmlError</Type>
           <BitSize>8</BitSize>
           <Properties>
             <Property>
@@ -14185,7 +14185,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_XmlControl</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Name>
       <Comment>
     Organizes parsing and composing of XML data. Data can be treated as STRING or char array.
     Buffer size of file can be set via GVL_Param_TcUnit (xUnitBufferSize)
@@ -14193,13 +14193,13 @@
       <BitSize>6016</BitSize>
       <SubItem>
         <Name>XmlBuffer</Name>
-        <Type Namespace="PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>192</BitSize>
         <BitOffs>64</BitOffs>
       </SubItem>
       <SubItem>
         <Name>TagListBuffer</Name>
-        <Type Namespace="PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>192</BitSize>
         <BitOffs>256</BitOffs>
       </SubItem>
@@ -14211,7 +14211,7 @@
       </SubItem>
       <SubItem>
         <Name>TagListSeekBuffer</Name>
-        <Type Namespace="PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>192</BitSize>
         <BitOffs>2496</BitOffs>
       </SubItem>
@@ -14223,7 +14223,7 @@
       </SubItem>
       <SubItem>
         <Name>TagBuffer</Name>
-        <Type Namespace="PMPS.TcUnit">FB_StreamBuffer</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_StreamBuffer</Type>
         <BitSize>192</BitSize>
         <BitOffs>3392</BitOffs>
       </SubItem>
@@ -14497,15 +14497,15 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_xUnitXmlPublisher</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Name>
       <Comment>
     Publishes test results into an xUnit compatible Xml file
 </Comment>
       <BitSize>530944</BitSize>
-      <Implements Namespace="PMPS.TcUnit">I_TestResultLogger</Implements>
+      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Implements>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="PMPS.TcUnit">I_TestResults</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResults</Type>
         <Comment> Dependancy Injection via FB_Init</Comment>
         <BitSize>64</BitSize>
         <BitOffs>128</BitOffs>
@@ -14522,13 +14522,13 @@
       </SubItem>
       <SubItem>
         <Name>File</Name>
-        <Type Namespace="PMPS.TcUnit">FB_FileControl</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_FileControl</Type>
         <BitSize>192</BitSize>
         <BitOffs>256</BitOffs>
       </SubItem>
       <SubItem>
         <Name>Xml</Name>
-        <Type Namespace="PMPS.TcUnit">FB_XmlControl</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_XmlControl</Type>
         <BitSize>6016</BitSize>
         <BitOffs>448</BitOffs>
       </SubItem>
@@ -14582,7 +14582,7 @@
 </Comment>
         <Local>
           <Name>UnitTestResults</Name>
-          <Type Namespace="PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit" ReferenceTo="true">ST_TestSuiteResults</Type>
           <BitSize>64</BitSize>
         </Local>
         <Local>
@@ -14624,7 +14624,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_TcUnitRunner</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</Name>
       <Comment>
     This function block is responsible for holding track of the tests and executing them.
 </Comment>
@@ -14641,14 +14641,14 @@
       </SubItem>
       <SubItem>
         <Name>TestResults</Name>
-        <Type Namespace="PMPS.TcUnit">FB_TestResults</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestResults</Type>
         <Comment> Test result information </Comment>
         <BitSize>621296448</BitSize>
         <BitOffs>128</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AdsTestResultLogger</Name>
-        <Type Namespace="PMPS.TcUnit">FB_AdsTestResultLogger</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsTestResultLogger</Type>
         <Comment> Prints the results to ADS so that Visual Studio can display the results.
        This test result formatter can be replaced with something else than ADS </Comment>
         <BitSize>448</BitSize>
@@ -14661,7 +14661,7 @@
       </SubItem>
       <SubItem>
         <Name>TestResultLogger</Name>
-        <Type Namespace="PMPS.TcUnit">I_TestResultLogger</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
         <BitSize>64</BitSize>
         <BitOffs>621297024</BitOffs>
       </SubItem>
@@ -14675,7 +14675,7 @@
       </SubItem>
       <SubItem>
         <Name>xUnitXmlPublisher</Name>
-        <Type Namespace="PMPS.TcUnit">FB_xUnitXmlPublisher</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_xUnitXmlPublisher</Type>
         <Comment> Publishes a xUnit compatible XML file </Comment>
         <BitSize>530944</BitSize>
         <BitOffs>621297152</BitOffs>
@@ -14687,7 +14687,7 @@
       </SubItem>
       <SubItem>
         <Name>XmlTestResultPublisher</Name>
-        <Type Namespace="PMPS.TcUnit">I_TestResultLogger</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_TestResultLogger</Type>
         <BitSize>64</BitSize>
         <BitOffs>621828096</BitOffs>
       </SubItem>
@@ -14792,7 +14792,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_Test</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</Name>
       <Comment>
     This function block holds all data that defines a test.
 </Comment>
@@ -14847,14 +14847,14 @@
       </SubItem>
       <SubItem>
         <Name>AssertionType</Name>
-        <Type Namespace="PMPS.TcUnit">E_AssertionType</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
         <Comment> Assertion type for the first assertion in this test</Comment>
         <BitSize>8</BitSize>
         <BitOffs>4216</BitOffs>
       </SubItem>
       <Method>
         <Name>GetAssertionType</Name>
-        <ReturnType Namespace="PMPS.TcUnit">E_AssertionType</ReturnType>
+        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</ReturnType>
         <ReturnBitSize>8</ReturnBitSize>
       </Method>
       <Method>
@@ -14928,7 +14928,7 @@
         <Comment> Sets the assertion type. If one already exists, it's not overwritten as we keep the first assertion in the test </Comment>
         <Parameter>
           <Name>AssertType</Name>
-          <Type Namespace="PMPS.TcUnit">E_AssertionType</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
           <BitSize>8</BitSize>
         </Parameter>
       </Method>
@@ -14971,7 +14971,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">U_ExpectedOrActual</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Name>
       <BitSize>4096</BitSize>
       <SubItem>
         <Name>boolExpectedOrActual</Name>
@@ -15113,17 +15113,17 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_AssertResult</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Name>
       <BitSize>12288</BitSize>
       <SubItem>
         <Name>Expected</Name>
-        <Type Namespace="PMPS.TcUnit">U_ExpectedOrActual</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
         <BitSize>4096</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
       <SubItem>
         <Name>Actual</Name>
-        <Type Namespace="PMPS.TcUnit">U_ExpectedOrActual</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">U_ExpectedOrActual</Type>
         <BitSize>4096</BitSize>
         <BitOffs>4096</BitOffs>
       </SubItem>
@@ -15141,11 +15141,11 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_AssertResultInstances</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Name>
       <BitSize>12352</BitSize>
       <SubItem>
         <Name>AssertResult</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
         <BitSize>12288</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
@@ -15165,7 +15165,7 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AssertResultStatic</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Name>
       <Comment>
     This function block is responsible for keeping track of which asserts that have been made. The reason we need to
     keep track of these is because if the user does the same assert twice (because of running a test suite over several
@@ -15179,7 +15179,7 @@
       <BitSize>24640448</BitSize>
       <SubItem>
         <Name>AssertResults</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -15207,7 +15207,7 @@
       </SubItem>
       <SubItem>
         <Name>AssertResultInstances</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertResultInstances</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertResultInstances</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -15583,7 +15583,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_AssertArrayResult</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Name>
       <BitSize>4224</BitSize>
       <SubItem>
         <Name>ExpectedsSize</Name>
@@ -15627,11 +15627,11 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_AssertArrayResultInstances</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Name>
       <BitSize>4256</BitSize>
       <SubItem>
         <Name>AssertArrayResult</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertArrayResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
         <BitSize>4224</BitSize>
         <BitOffs>0</BitOffs>
       </SubItem>
@@ -15651,7 +15651,7 @@
       </SubItem>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AssertArrayResultStatic</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Name>
       <Comment>
     This function block is responsible for keeping track of which array-asserts that have been made.
     The reason we need to keep track of these is because if the user does the same assert twice
@@ -15667,7 +15667,7 @@
       <BitSize>8480448</BitSize>
       <SubItem>
         <Name>AssertArrayResults</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertArrayResult</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResult</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -15695,7 +15695,7 @@
       </SubItem>
       <SubItem>
         <Name>AssertArrayResultInstances</Name>
-        <Type Namespace="PMPS.TcUnit">ST_AssertArrayResultInstances</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AssertArrayResultInstances</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>1000</Elements>
@@ -16024,7 +16024,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">I_AssertMessageFormatter</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Name>
       <BitSize>64</BitSize>
       <ExtendsType GUID="{18071995-0000-0000-0000-000000000018}">PVOID</ExtendsType>
       <Method>
@@ -16052,7 +16052,7 @@
       </Method>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Name>
       <Comment>
     This function block is responsible for making sure that the asserted test instance path and test message are not
     loo long. The total printed message can not be more than 253 characters long.
@@ -16150,14 +16150,14 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AdsAssertMessageFormatter</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Name>
       <Comment>
     This function block is responsible for printing the results of the assertions using the built-in
     ADSLOGSTR functionality provided by the Tc2_System library. This sends the result using ADS, which
     is consumed by the error list of Visual Studio.
 </Comment>
       <BitSize>128</BitSize>
-      <Implements Namespace="PMPS.TcUnit">I_AssertMessageFormatter</Implements>
+      <Implements Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Implements>
       <Method>
         <Name>LogAssertFailure</Name>
         <Parameter>
@@ -16182,7 +16182,7 @@
         </Parameter>
         <Local>
           <Name>AdjustAssertFailureMessageToMax253CharLength</Name>
-          <Type Namespace="PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdjustAssertFailureMessageToMax253CharLength</Type>
           <BitSize>11648</BitSize>
         </Local>
         <Local>
@@ -16219,7 +16219,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_TestSuite</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</Name>
       <Comment> This function block is responsible for holding the internal state of the test suite.
    Every test suite can have one or more tests, and every test can do one or more asserts.
    It's also responsible for providing all the assert-methods for asserting different data types.
@@ -16261,7 +16261,7 @@
       </SubItem>
       <SubItem>
         <Name>Tests</Name>
-        <Type Namespace="PMPS.TcUnit">FB_Test</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</Type>
         <ArrayInfo>
           <LBound>1</LBound>
           <Elements>100</Elements>
@@ -16295,19 +16295,19 @@
       </SubItem>
       <SubItem>
         <Name>AssertResults</Name>
-        <Type Namespace="PMPS.TcUnit">FB_AssertResultStatic</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertResultStatic</Type>
         <BitSize>24640448</BitSize>
         <BitOffs>440832</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AssertArrayResults</Name>
-        <Type Namespace="PMPS.TcUnit">FB_AssertArrayResultStatic</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AssertArrayResultStatic</Type>
         <BitSize>8480448</BitSize>
         <BitOffs>25081280</BitOffs>
       </SubItem>
       <SubItem>
         <Name>AdsAssertMessageFormatter</Name>
-        <Type Namespace="PMPS.TcUnit">FB_AdsAssertMessageFormatter</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsAssertMessageFormatter</Type>
         <Comment> Prints the failed asserts to ADS so that Visual Studio can display the assert message.
        This assert formatter can be replaced with something else than ADS </Comment>
         <BitSize>128</BitSize>
@@ -16315,7 +16315,7 @@
       </SubItem>
       <SubItem>
         <Name>AssertMessageFormatter</Name>
-        <Type Namespace="PMPS.TcUnit">I_AssertMessageFormatter</Type>
+        <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">I_AssertMessageFormatter</Type>
         <BitSize>64</BitSize>
         <BitOffs>33561856</BitOffs>
       </SubItem>
@@ -16639,7 +16639,7 @@
       <Method>
         <Name>GetTestByPosition</Name>
         <Comment> This method returns the test at the n'th position, ranging from 1.. NumberOfTests </Comment>
-        <ReturnType Namespace="PMPS.TcUnit">FB_Test</ReturnType>
+        <ReturnType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_Test</ReturnType>
         <ReturnBitSize>4224</ReturnBitSize>
         <Parameter>
           <Name>Position</Name>
@@ -18088,7 +18088,7 @@
         <Name>SetTestFailed</Name>
         <Parameter>
           <Name>AssertionType</Name>
-          <Type Namespace="PMPS.TcUnit">E_AssertionType</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">E_AssertionType</Type>
           <BitSize>8</BitSize>
         </Parameter>
         <Parameter>
@@ -20043,7 +20043,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">ST_AdsLogStringMessage</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Name>
       <BitSize>4128</BitSize>
       <SubItem>
         <Name>MsgCtrlMask</Name>
@@ -20071,7 +20071,7 @@
       </Properties>
     </DataType>
     <DataType>
-      <Name Namespace="PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</Name>
+      <Name Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</Name>
       <Comment> This function block is responsible for making sure that the ADSLOGSTR-messages to the ADS-router are transmitted
    cyclically and not in a burst. The reason this is necessary is because that if too many messages are sent at the
    same time some get lost and are never printed to the error list output
@@ -20164,7 +20164,7 @@
         </Parameter>
         <Local>
           <Name>AdsLogStringMessage</Name>
-          <Type Namespace="PMPS.TcUnit">ST_AdsLogStringMessage</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
           <BitSize>4128</BitSize>
         </Local>
       </Method>
@@ -20173,7 +20173,7 @@
         <Comment> Reads and removes the oldest message </Comment>
         <Parameter>
           <Name>AdsLogStringMessage</Name>
-          <Type Namespace="PMPS.TcUnit">ST_AdsLogStringMessage</Type>
+          <Type Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">ST_AdsLogStringMessage</Type>
           <BitSize>4128</BitSize>
           <Properties>
             <Property>
@@ -77511,7 +77511,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88604672</ByteSize>
+          <ByteSize>88735744</ByteSize>
           <Symbol>
             <Name>PRG_SP1K4.bHallInput1</Name>
             <BitSize>8</BitSize>
@@ -90502,7 +90502,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88604672</ByteSize>
+          <ByteSize>88735744</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -93755,7 +93755,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88604672</ByteSize>
+          <ByteSize>88735744</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -100043,7 +100043,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>GVL_TcUnit.TcUnitRunner</Name>
             <BitSize>621828480</BitSize>
-            <BaseType Namespace="PMPS.TcUnit">FB_TcUnitRunner</BaseType>
+            <BaseType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TcUnitRunner</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -100127,7 +100127,7 @@ Digital outputs</Comment>
             <Name>GVL_TcUnit.CurrentTestSuiteBeingCalled</Name>
             <Comment> Pointer to current test suite being called </Comment>
             <BitSize>64</BitSize>
-            <BaseType PointerTo="1" Namespace="PMPS.TcUnit">FB_TestSuite</BaseType>
+            <BaseType PointerTo="1" Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -100150,7 +100150,7 @@ Digital outputs</Comment>
           <Symbol>
             <Name>GVL_TcUnit.TestSuiteAddresses</Name>
             <BitSize>64000</BitSize>
-            <BaseType PointerTo="1" Namespace="PMPS.TcUnit">FB_TestSuite</BaseType>
+            <BaseType PointerTo="1" Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_TestSuite</BaseType>
             <ArrayInfo>
               <LBound>1</LBound>
               <Elements>1000</Elements>
@@ -100184,7 +100184,7 @@ Digital outputs</Comment>
             <Name>GVL_TcUnit.AdsMessageQueue</Name>
             <Comment> Buffered ADS message queue for output to the error list </Comment>
             <BitSize>8321152</BitSize>
-            <BaseType Namespace="PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</BaseType>
+            <BaseType Namespace="lcls_twincat_common_components.lcls_twincat_motion.PMPS.TcUnit">FB_AdsLogStringMessageFifoQueue</BaseType>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -101895,7 +101895,7 @@ Digital outputs</Comment>
                 <Name>TcLinkTo</Name>
                 <Value>.i_xInsertedLS	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 4^Input;
                                  .i_xRetractedLS:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 3^Input;
-                                 .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output;
+                                 .q_xRetract_DO	:=	TIIB[ST4K4-TERM (EP2338-0001)]^Channel 9^Output
     </Value>
               </Property>
             </Properties>
@@ -104378,7 +104378,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88604672</ByteSize>
+          <ByteSize>88735744</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -104464,7 +104464,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-08-21T10:29:30</Value>
+          <Value>2024-08-21T11:32:06</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
