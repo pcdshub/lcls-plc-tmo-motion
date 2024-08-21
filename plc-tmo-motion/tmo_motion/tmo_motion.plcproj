@@ -51,16 +51,10 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PlcTask2.TcTTO">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FB_SP_ZP.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_1_PlcTask.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PRG_2_PlcTask.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_2_PMPS_PRE.TcPOU">

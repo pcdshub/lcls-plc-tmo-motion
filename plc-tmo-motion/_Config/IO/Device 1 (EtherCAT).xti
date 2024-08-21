@@ -41,13 +41,12 @@
 		<Image Id="4" AddrType="10" ImageType="3">
 			<Name>Image-2</Name>
 		</Image>
-		<Image Id="5" AddrType="10" ImageType="3">
-			<Name>Image-3</Name>
-		</Image>
 		<Box File="Power (EK1200).xti" Id="1">
 			<EtherCAT PortABoxInfo="#x00ffffff"/>
 		</Box>
 		<EtherCAT EnableVirtualSwitch="true" MaxSwitchPorts="2" MaxSwitchFrames="120">
+			<SyncUnit Name="SL2K4" NoDeleteIfUnused="true"/>
+			<SyncUnit Name="LI2K4" NoDeleteIfUnused="true"/>
 			<SyncUnit Name="SL2K4" NoDeleteIfUnused="true"/>
 			<SyncUnit Name="LI2K4" NoDeleteIfUnused="true"/>
 		</EtherCAT>
