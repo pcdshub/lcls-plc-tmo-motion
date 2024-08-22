@@ -1,0 +1,30 @@
+lcls-plc-tmo-motion
+-------------------
+
+.. toctree::
+    :maxdepth: 2
+    :caption: plc-tmo-motion
+
+    plc-tmo-motion_pragmas
+    plc-tmo-motion_nc
+    plc-tmo-motion_ethercat
+    plc-tmo-motion_boxes
+    plc-tmo-motion_links
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: tmo_motion
+
+    plc-tmo-motion_tmo_motion_summary
+    plc-tmo-motion_tmo_motion_epics
+    plc-tmo-motion_tmo_motion_source
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

@@ -1,0 +1,21 @@
+
+Pragmas
+-------
+
+.. csv-table::
+    :header: PLC Name, Total Pragmas, Errors
+    :align: center
+
+    :ref:`tmo_motion <tmo_motion_overview_pragmas>`, 207, 0
+
+
+.. _tmo_motion_overview_pragmas:
+
+
+tmo_motion
+^^^^^^^^^^
+
+Total pragmas found: 207
+Total linter errors: 0
+
+
