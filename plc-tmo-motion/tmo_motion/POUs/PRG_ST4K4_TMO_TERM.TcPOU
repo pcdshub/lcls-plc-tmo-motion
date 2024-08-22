@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_ST4K4_TMO_TERM" Id="{6ef451b1-5322-401f-8645-0b36e38c9360}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_ST4K4_TMO_TERM
 VAR
@@ -10,6 +10,9 @@ VAR
     '}
     ST4K4: FB_MotionPneumaticActuator;
     ibPMPS_OK : BOOL;
+    {attribute 'pytmc' :='pv: ST4K4:TMO_TERM'}
+    {attribute 'TcLinkTo' := '.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 1^Value'}
+    fbFlowMeter: FB_FDQ_FlowMeter;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -28,7 +31,9 @@ END_VAR
 
 // For PMPS Veto
 GVL_PMPS.PMPS_ST4K4_IN := ST4K4.i_xInsertedLS;
-GVL_PMPS.PMPS_ST4K4_OUT := ST4K4.i_xRetractedLS;]]></ST>
+GVL_PMPS.PMPS_ST4K4_OUT := ST4K4.i_xRetractedLS;
+
+fbFlowMeter();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

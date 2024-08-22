@@ -93,6 +93,9 @@
     <Compile Include="POUs\PRG_LI2K4_IP1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_PC5K4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_PF1K4_WFS_TARGET.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -211,7 +214,7 @@
       <Resolution>LCLS General, 2.9.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-common-components">
-      <Resolution>lcls-twincat-common-components, 3.5.0 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-common-components, 3.6.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
       <Resolution>lcls-twincat-motion, 4.1.1 (SLAC)</Resolution>
