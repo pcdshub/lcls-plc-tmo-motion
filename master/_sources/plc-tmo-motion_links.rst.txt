@@ -1236,6 +1236,18 @@ Links
         Axes^SL1K4-TOP-M11, Enc^Outputs^Out^nCtrl1, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E4, ENC Control compact^Control^Enable latch extern on positive edge
         Axes^SL1K4-TOP-M11, Enc^Outputs^Out^nCtrl1, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E4, ENC Control compact^Control^Set counter
         Axes^SL1K4-TOP-M11, Enc^Outputs^Out^nDataOut1[0], TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X2 SL1K4-SCATTER^SL1K4-EL5101-E4, ENC Control compact^Set counter value
+        InputDst, Main.M23.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-BOTTOM-M23, Outputs^ToPlc
+        InputDst, Main.M23.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E1, STM Status^Status^Digital input 2
+        InputDst, Main.M24.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-TOP-M24, Outputs^ToPlc
+        InputDst, Main.M24.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E3, STM Status^Status^Digital input 2
+        InputDst, Main.M25.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-NORTH-M25, Outputs^ToPlc
+        InputDst, Main.M25.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E5, STM Status^Status^Digital input 1
+        InputDst, Main.M26.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-SOUTH-M26, Outputs^ToPlc
+        InputDst, Main.M26.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E7, STM Status^Status^Digital input 1
+        OutputSrc, Main.M23.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-BOTTOM-M23, Inputs^FromPlc
+        OutputSrc, Main.M24.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-TOP-M24, Inputs^FromPlc
+        OutputSrc, Main.M25.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-NORTH-M25, Inputs^FromPlc
+        OutputSrc, Main.M26.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-SOUTH-M26, Inputs^FromPlc
         tmo_motion Instance, PlcTask Inputs^Main.M1.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^Axis 1 AL1K4-L2SI-MMS, Outputs^ToPlc
         tmo_motion Instance, PlcTask Inputs^Main.M1.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL7041-E1, STM Status^Status^Digital input 2
         tmo_motion Instance, PlcTask Inputs^Main.M1.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E1 (EK1122)^X1 AL1K4-L2SI (EK1100)^AL1K4-EL7041-E1, STM Status^Status^Digital input 1
@@ -1286,22 +1298,6 @@ Links
         tmo_motion Instance, PlcTask Inputs^Main.M21.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL5042-E3, FB Inputs Channel 1^Position
         tmo_motion Instance, PlcTask Inputs^Main.M22.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^Axis 22 TM1K4-MMS-X, Outputs^ToPlc
         tmo_motion Instance, PlcTask Inputs^Main.M22.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL5042-E3, FB Inputs Channel 2^Position
-        tmo_motion Instance, PlcTask Inputs^Main.M23.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-BOTTOM-M23, Outputs^ToPlc
-        tmo_motion Instance, PlcTask Inputs^Main.M23.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E1, STM Status^Status^Digital input 1
-        tmo_motion Instance, PlcTask Inputs^Main.M23.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E1, STM Status^Status^Digital input 2
-        tmo_motion Instance, PlcTask Inputs^Main.M23.nRawEncoderUINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E2, ENC Status compact^Counter value
-        tmo_motion Instance, PlcTask Inputs^Main.M24.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-TOP-M24, Outputs^ToPlc
-        tmo_motion Instance, PlcTask Inputs^Main.M24.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E3, STM Status^Status^Digital input 1
-        tmo_motion Instance, PlcTask Inputs^Main.M24.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E3, STM Status^Status^Digital input 2
-        tmo_motion Instance, PlcTask Inputs^Main.M24.nRawEncoderUINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E4, ENC Status compact^Counter value
-        tmo_motion Instance, PlcTask Inputs^Main.M25.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-NORTH-M25, Outputs^ToPlc
-        tmo_motion Instance, PlcTask Inputs^Main.M25.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E5, STM Status^Status^Digital input 2
-        tmo_motion Instance, PlcTask Inputs^Main.M25.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E5, STM Status^Status^Digital input 1
-        tmo_motion Instance, PlcTask Inputs^Main.M25.nRawEncoderUINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E6, ENC Status compact^Counter value
-        tmo_motion Instance, PlcTask Inputs^Main.M26.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^SL2K4-SOUTH-M26, Outputs^ToPlc
-        tmo_motion Instance, PlcTask Inputs^Main.M26.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E7, STM Status^Status^Digital input 2
-        tmo_motion Instance, PlcTask Inputs^Main.M26.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL7031-E7, STM Status^Status^Digital input 1
-        tmo_motion Instance, PlcTask Inputs^Main.M26.nRawEncoderUINT, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 9 (EK1122)^X2 SL2K4-SCATTER^SL2K4-EL5101-E8, ENC Status compact^Counter value
         tmo_motion Instance, PlcTask Inputs^Main.M27.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^Axis 27 IM6K4-PPM-MMS, Outputs^ToPlc
         tmo_motion Instance, PlcTask Inputs^Main.M27.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL7041-E1, STM Status^Status^Digital input 2
         tmo_motion Instance, PlcTask Inputs^Main.M27.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL7041-E1, STM Status^Status^Digital input 1
@@ -1497,10 +1493,6 @@ Links
         tmo_motion Instance, PlcTask Outputs^Main.M21.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^Axis 21 TM1K4-MMS-Y, Inputs^FromPlc
         tmo_motion Instance, PlcTask Outputs^Main.M21.bBrakeRelease, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 7 (EK1122)^TM1K4-ATM (EK1100)^TM1K4-EL2004-E4, Channel 1^Output
         tmo_motion Instance, PlcTask Outputs^Main.M22.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^Axis 22 TM1K4-MMS-X, Inputs^FromPlc
-        tmo_motion Instance, PlcTask Outputs^Main.M23.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-BOTTOM-M23, Inputs^FromPlc
-        tmo_motion Instance, PlcTask Outputs^Main.M24.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-TOP-M24, Inputs^FromPlc
-        tmo_motion Instance, PlcTask Outputs^Main.M25.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-NORTH-M25, Inputs^FromPlc
-        tmo_motion Instance, PlcTask Outputs^Main.M26.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^SL2K4-SOUTH-M26, Inputs^FromPlc
         tmo_motion Instance, PlcTask Outputs^Main.M27.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^Axis 27 IM6K4-PPM-MMS, Inputs^FromPlc
         tmo_motion Instance, PlcTask Outputs^Main.M27.bBrakeRelease, TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL2004-E3, Channel 1^Output
         tmo_motion Instance, PlcTask Outputs^Main.M28.Axis.PlcToNc, TINC^NC-Task 1 SAF^Axes^Axis 28 PF2K4-WFS_TARGET-MMS-Y, Inputs^FromPlc
