@@ -71,9 +71,10 @@ aLI2K4YStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1
 aLI2K4XStates[ENUM_LaserCoupling_States.OUT].stPMPS.sPmpsState := 'LI2K4:IP1-OUT';
 aLI2K4XStates[ENUM_LaserCoupling_States.Mirror1].stPMPS.sPmpsState := 'LI2K4:IP1-MIRROR1';
 
-//LI2K4 EPS condition: OUT->In move Y then move X + IN->OUT move X thenm move Y
-//Y only can move up and down when X is OUT
-
+(* The LI2K4 sequence mover is insteded to move as follows:
+   When moving from OUT to MIRROR1, first Y is moved, then once Y movement is complete, X is moved.
+When moving from MIRROR1 to OUT, first X is moved, then once X movement is complete, Y is moved.
+*)
 EPS_LI2K4Y_Positive(eps:=Main.M45.stEPSForwardEnable);
 EPS_LI2K4Y_Positive.setBit(nBits := 0, bValue:= Main.M46.stAxisStatus.fActPosition > -0.3 OR Main.M45.stAxisStatus.fActPosition < 82);
 EPS_LI2K4Y_Negative(eps:=Main.M45.stEPSBackwardEnable);
