@@ -1432,6 +1432,6 @@ Axis 47: PA1K4-PF-MMS
     Id, 47
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.1
-    Velo:Maximum, 27
+    Velo:Maximum, 7
 
 

@@ -142250,35 +142250,35 @@ Database Records
       - | io: input
 
 
-    * - SP1K4:FWM:OFF_RBV
+    * - TMO:SPEC:FWM:OFF_RBV
       - ai
       - PRG_SP1K4.fbFlowMeter.fbFlowMeter.fOffset
       - | field: EGU lpm
         | io: output
 
 
-    * - SP1K4:FWM:OFF
+    * - TMO:SPEC:FWM:OFF
       - ao
       - PRG_SP1K4.fbFlowMeter.fbFlowMeter.fOffset
       - | field: EGU lpm
         | io: output
 
 
-    * - SP1K4:FWM:VAL_RBV
+    * - TMO:SPEC:FWM:VAL_RBV
       - ai
       - PRG_SP1K4.fbFlowMeter.fbFlowMeter.fReal
       - | field: EGU lpm
         | io: input
 
 
-    * - SP1K4:FWM:RES_RBV
+    * - TMO:SPEC:FWM:RES_RBV
       - ai
       - PRG_SP1K4.fbFlowMeter.fbFlowMeter.fResolution
       - | field: EGU lpm
         | io: output
 
 
-    * - SP1K4:FWM:RES
+    * - TMO:SPEC:FWM:RES
       - ao
       - PRG_SP1K4.fbFlowMeter.fbFlowMeter.fResolution
       - | field: EGU lpm
