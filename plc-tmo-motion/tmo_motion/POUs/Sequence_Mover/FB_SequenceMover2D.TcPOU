@@ -155,7 +155,9 @@ CASE nState OF
                 stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
             tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
-            IF eEnumGet1 = nGoal THEN
+            IF stMotionStage1.Axis.NcToPlc.ActPos >= astPositionState1[nGoal].fPosition - astPositionState1[nGoal].fDelta AND
+                stMotionStage1.Axis.NcToPlc.ActPos <= astPositionState1[nGoal].fPosition + astPositionState1[nGoal].fDelta THEN
+                eEnumGet1 := nGoal;
                 eEnumSet := nGoal;
                 tonStateSequenceTimeout(IN:=FALSE);
                 nState := 10;
@@ -183,7 +185,9 @@ CASE nState OF
                 stPMPSPlcToEpics=>stPMPSPlcToEpics,
             );
             tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
-            IF eEnumGet2 = nGoal THEN
+            IF stMotionStage2.Axis.NcToPlc.ActPos >= astPositionState2[nGoal].fPosition - astPositionState2[nGoal].fDelta AND
+                stMotionStage2.Axis.NcToPlc.ActPos <= astPositionState2[nGoal].fPosition + astPositionState2[nGoal].fDelta THEN
+                eEnumGet2 := nGoal;
                 eEnumSet := nGoal;
                 tonStateSequenceTimeout(IN:=FALSE);
                 nState := 20;
@@ -211,7 +215,9 @@ CASE nState OF
             stPMPSPlcToEpics=>stPMPSPlcToEpics,
         );
         tonStateSequenceTimeout(IN:=NOT stMotionStage2.bBusy,PT:=tStateSequenceTimeoutTime);
-        IF eEnumGet2 = nGoal THEN
+        IF stMotionStage2.Axis.NcToPlc.ActPos >= astPositionState2[nGoal].fPosition - astPositionState2[nGoal].fDelta AND
+            stMotionStage2.Axis.NcToPlc.ActPos <= astPositionState2[nGoal].fPosition + astPositionState2[nGoal].fDelta THEN
+            eEnumGet2 := nGoal;
             nState := 0;
             tonStateSequenceTimeout(IN:=FALSE);
         ELSIF tonStateSequenceTimeout.Q THEN
@@ -237,7 +243,9 @@ CASE nState OF
             stPMPSPlcToEpics=>stPMPSPlcToEpics,
         );
         tonStateSequenceTimeout(IN:=NOT stMotionStage1.bBusy,PT:=tStateSequenceTimeoutTime);
-        IF eEnumGet1 = nGoal THEN
+        IF stMotionStage1.Axis.NcToPlc.ActPos >= astPositionState1[nGoal].fPosition - astPositionState1[nGoal].fDelta AND
+            stMotionStage1.Axis.NcToPlc.ActPos <= astPositionState1[nGoal].fPosition + astPositionState1[nGoal].fDelta THEN
+            eEnumGet1 := nGoal;
             nState := 0;
             tonStateSequenceTimeout(IN:=FALSE);
         ELSIF tonStateSequenceTimeout.Q THEN
