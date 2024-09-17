@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{5EA336A7-BBC1-CAA7-3118-CDD119B4865E}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{988ED73B-104A-87E2-7C33-4D26342B57D4}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -58333,6 +58333,14 @@ second version of targets paddle 2</Comment>
         <Text>Target5</Text>
         <Enum>6</Enum>
       </EnumInfo>
+      <EnumInfo>
+        <Text>Target6</Text>
+        <Enum>7</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>Target7</Text>
+        <Enum>8</Enum>
+      </EnumInfo>
       <Properties>
         <Property>
           <Name>qualified_only</Name>
@@ -92629,7 +92637,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>685524584</BitOffs>
+            <BitOffs>685524592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PMPS.PMPS_ST4K4_OUT</Name>
@@ -92648,7 +92656,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>685524592</BitOffs>
+            <BitOffs>685524600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_3_PMPS_POST.fbArbiterIO.q_stRequestedBP</Name>
@@ -101830,7 +101838,7 @@ second version of targets paddle 2</Comment>
               </Property>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: SP1K4</Value>
+                <Value>pv: TMO:SPEC</Value>
               </Property>
             </Properties>
             <BitOffs>679653632</BitOffs>
@@ -102037,23 +102045,28 @@ second version of targets paddle 2</Comment>
             <BitOffs>685524544</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_3_PMPS_POST.bM1K1Veto</Name>
-            <Comment>	bST1K4_Veto: BOOL;</Comment>
+            <Name>PRG_3_PMPS_POST.bST1K4_Veto</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
             <BitOffs>685524560</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_3_PMPS_POST.bM1K3Veto</Name>
+            <Name>PRG_3_PMPS_POST.bM1K1Veto</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
             <BitOffs>685524568</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_3_PMPS_POST.bST4K4_Veto</Name>
+            <Name>PRG_3_PMPS_POST.bM1K3Veto</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
             <BitOffs>685524576</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_3_PMPS_POST.bST4K4_Veto</Name>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <BitOffs>685524584</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_PA1K4_PF.fbStateSetup</Name>
@@ -102068,7 +102081,7 @@ second version of targets paddle 2</Comment>
             <Default>
               <SubItem>
                 <Name>.fDelta</Name>
-                <Value>0.5</Value>
+                <Value>2</Value>
               </SubItem>
               <SubItem>
                 <Name>.fVelocity</Name>
@@ -103655,21 +103668,6 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697564160</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Constants.bSimulationMode</Name>
-            <Comment> Does the target support multiple cores?</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Default>
-              <Bool>false</Bool>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
             <BitOffs>697564168</BitOffs>
           </Symbol>
           <Symbol>
@@ -103733,12 +103731,12 @@ second version of targets paddle 2</Comment>
             <BitOffs>697564240</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>Constants.nRegisterSize</Name>
+            <Name>Constants.bSimulationMode</Name>
             <Comment> Does the target support multiple cores?</Comment>
-            <BitSize>16</BitSize>
-            <BaseType>WORD</BaseType>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
             <Default>
-              <Value>64</Value>
+              <Bool>false</Bool>
             </Default>
             <Properties>
               <Property>
@@ -103746,21 +103744,6 @@ second version of targets paddle 2</Comment>
               </Property>
             </Properties>
             <BitOffs>697564304</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Constants.nPackMode</Name>
-            <Comment> Does the target support multiple cores?</Comment>
-            <BitSize>16</BitSize>
-            <BaseType>UINT</BaseType>
-            <Default>
-              <Value>8</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>697564320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bFPUSupport</Name>
@@ -103775,21 +103758,37 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697564336</BitOffs>
+            <BitOffs>697564312</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>Constants.bMulticoreSupport</Name>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
+            <Name>Constants.nRegisterSize</Name>
+            <Comment> Does the target support multiple cores?</Comment>
+            <BitSize>16</BitSize>
+            <BaseType>WORD</BaseType>
             <Default>
-              <Bool>false</Bool>
+              <Value>64</Value>
             </Default>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697564344</BitOffs>
+            <BitOffs>697564320</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Constants.nPackMode</Name>
+            <Comment> Does the target support multiple cores?</Comment>
+            <BitSize>16</BitSize>
+            <BaseType>UINT</BaseType>
+            <Default>
+              <Value>8</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>697564336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersionNumeric</Name>
@@ -103822,6 +103821,34 @@ second version of targets paddle 2</Comment>
             <BitOffs>697564384</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>Constants.bMulticoreSupport</Name>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Default>
+              <Bool>false</Bool>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>697564416</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask</Name>
+            <BitSize>32</BitSize>
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+            <Properties>
+              <Property>
+                <Name>no_init</Name>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>697564448</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>TwinCAT_SystemInfoVarList._AppInfo</Name>
             <BitSize>2048</BitSize>
             <BaseType GUID="{941FDF6E-37CE-4C30-AA23-3236AFA461E2}">PlcAppSystemInfo</BaseType>
@@ -103833,7 +103860,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697564416</BitOffs>
+            <BitOffs>697564480</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskInfo</Name>
@@ -103851,21 +103878,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697566464</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask</Name>
-            <BitSize>32</BitSize>
-            <BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
-            <Properties>
-              <Property>
-                <Name>no_init</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>697567488</BitOffs>
+            <BitOffs>697566528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskOid_PlcTask</Name>
@@ -103879,7 +103892,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697567520</BitOffs>
+            <BitOffs>697567552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList.__PlcTask</Name>
@@ -103900,7 +103913,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697567552</BitOffs>
+            <BitOffs>697567616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcSystemEventClass</Name>
@@ -103972,7 +103985,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697583936</BitOffs>
+            <BitOffs>697584000</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcGeneralAdsEventClass</Name>
@@ -104044,7 +104057,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584064</BitOffs>
+            <BitOffs>697584128</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRouterEventClass</Name>
@@ -104116,7 +104129,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584192</BitOffs>
+            <BitOffs>697584256</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRTimeEventClass</Name>
@@ -104188,7 +104201,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584320</BitOffs>
+            <BitOffs>697584384</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.Win32EventClass</Name>
@@ -104260,7 +104273,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584448</BitOffs>
+            <BitOffs>697584512</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.LCLSGeneralEventClass</Name>
@@ -104332,7 +104345,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584576</BitOffs>
+            <BitOffs>697584640</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcIPCDiagEventClass</Name>
@@ -104404,7 +104417,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584704</BitOffs>
+            <BitOffs>697584768</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcIPCDiagPlcApiEventClass</Name>
@@ -104476,7 +104489,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697584832</BitOffs>
+            <BitOffs>697584896</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENTS.LCLSGeneralEventClass</Name>
@@ -104502,7 +104515,7 @@ second version of targets paddle 2</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>697617856</BitOffs>
+            <BitOffs>697617920</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -104595,7 +104608,7 @@ second version of targets paddle 2</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-08-29T14:17:28</Value>
+          <Value>2024-09-17T09:59:11</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

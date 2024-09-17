@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <DUT Name="ENUM_Sample_Calibration_States" Id="{ec0185cf-305f-4026-a003-981a68b47dc0}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
@@ -11,7 +11,9 @@ TYPE ENUM_Sample_Calibration_States :
     Target2 := 3,
     Target3 := 4,
     Target4 := 5,
-    Target5 := 6
+    Target5 := 6,
+    Target6 := 7,
+    Target7 := 8
 
 )UINT;
 END_TYPE
