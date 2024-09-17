@@ -21,7 +21,7 @@ bM1K1Veto := NOT PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.MR
 bM1K3Veto := NOT PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.MR1K3_OUT]
                 AND PMPS_GVL.stCurrentBeamParameters.aVetoDevices[PMPS.K_Stopper.MR1K3_IN];
 
-// Adding TXI MR1K3 veto in
+
 fbArbiterIO(
     i_bVeto:=bST3K4_Veto OR bM1K1Veto OR bST1K4_Veto,
     Arbiter:=fbArbiter,
