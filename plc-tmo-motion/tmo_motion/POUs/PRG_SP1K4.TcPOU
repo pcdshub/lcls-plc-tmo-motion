@@ -120,7 +120,7 @@ VAR
     SP1K4_ATT_RTD_02 : FB_CC_TempSensor;
 
     {attribute 'TcLinkTo' := '.iRaw := TIIB[EP3174-FWM-E2]^AI Standard Channel 2^Value'}
-    {attribute 'pytmc' :='pv: SP1K4'}
+    {attribute 'pytmc' :='pv: TMO:SPEC'}
     fbFlowMeter: FB_FDQ_FlowMeter;
 END_VAR
 ]]></Declaration>
