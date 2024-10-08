@@ -1318,7 +1318,7 @@ External Setpoint Generation:
 	<Axis Id="47" CreateSymbols="true" AxisType="1" AxisFolder="PA1K4">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Velo Maximum="27"/>
+			<Velo Maximum="7"/>
 			<PositionAreaControl Range="0.1"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
@@ -1361,7 +1361,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="25.4" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="20.9" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1433,7 +1433,7 @@ External Setpoint Generation:
 		</Drive>
 		<Controller Name="Ctrl" CtrType="1">
 			<CtrPara PriorControlFactor="1">
-				<PosDiffControl Range="0.3"/>
+				<PosDiffControl Range="0.8" Time="0.1"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
