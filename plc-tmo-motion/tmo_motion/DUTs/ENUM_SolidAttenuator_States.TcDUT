@@ -9,12 +9,13 @@ TYPE ENUM_SolidAttenuator_States :
     OUT := 1,
     Target1 := 2,
     Target2 := 3,
-    Target3 := 4
-//    Target4 := 5,
-//   Target5 := 6
+    Target3 := 4,
+    Target4 := 5,
+    Target5 := 6
 
 )UINT;
 END_TYPE
+
 ]]></Declaration>
   </DUT>
 </TcPlcObject>
