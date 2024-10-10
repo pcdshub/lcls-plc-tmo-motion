@@ -86,8 +86,8 @@ VAR
     att_enumGet: ENUM_SolidAttenuator_States;
     fbATTSetup: FB_StateSetupHelper;
     fbATTDefault: ST_PositionState := (
-        fDelta:=1.5,
-        fVelocity:=1,
+        fDelta:=2.0,
+        fVelocity:=2,
 //        bMoveOk:=TRUE,
         bValid:=TRUE
     );
