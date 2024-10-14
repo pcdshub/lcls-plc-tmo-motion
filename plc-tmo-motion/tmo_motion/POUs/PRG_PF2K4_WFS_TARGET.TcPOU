@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_PF2K4_WFS_TARGET" Id="{eca3a9b8-cbcf-48fb-b835-0fd9af0cb164}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_PF2K4_WFS_TARGET
 VAR
