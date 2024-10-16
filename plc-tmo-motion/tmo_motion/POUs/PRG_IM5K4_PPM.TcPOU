@@ -66,8 +66,8 @@ END_CASE
 *}
     //paddle2
 CASE GVL_TcGVL.eSP1K4FZP OF
-    ENUM_ZonePlate_States.FZP1212_1, ENUM_ZonePlate_States.FZP1212_2, ENUM_ZonePlate_States.FZP262_524, ENUM_ZonePlate_States.FZP290, ENUM_ZonePlate_States.FZP350, ENUM_ZonePlate_States.FZP400_1, ENUM_ZonePlate_States.FZP400_2,
-    ENUM_ZonePlate_States.FZP404_1212_1, ENUM_ZonePlate_States.FZP404_1212_2, ENUM_ZonePlate_States.FZP530_1, ENUM_ZonePlate_States.FZP530_2, ENUM_ZonePlate_States.FZP806, ENUM_ZonePlate_States.FZP875, ENUM_ZonePlate_States.Yag:
+    ENUM_ZonePlate_States.Target1a, ENUM_ZonePlate_States.Target1b, ENUM_ZonePlate_States.Target2a, ENUM_ZonePlate_States.Target2b, ENUM_ZonePlate_States.Target3a, ENUM_ZonePlate_States.Target3b, ENUM_ZonePlate_States.Target4a,
+    ENUM_ZonePlate_States.Target4b, ENUM_ZonePlate_States.Target5a, ENUM_ZonePlate_States.Target5b, ENUM_ZonePlate_States.Target6a, ENUM_ZonePlate_States.Target7a, ENUM_ZonePlate_States.Target7b, ENUM_ZonePlate_States.Target6b:
         // Known state targets: allow less strict pmps
         fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_SP1K4_IN';
         fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_SP1K4_IN';

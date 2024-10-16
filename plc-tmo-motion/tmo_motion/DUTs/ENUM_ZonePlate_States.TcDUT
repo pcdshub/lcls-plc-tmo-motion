@@ -4,9 +4,25 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ENUM_ZonePlate_States :
 (
+  // Third version of targets paddle 3
     Unknown := 0,
     OUT := 1,
-    Yag := 2,
+    Target1b := 2,
+    Target5a := 3,
+    Target4b := 4,
+    Target5b := 5,
+    Target3b := 6,
+    Target2b := 7,
+    Target1a := 8,
+    Target2a := 9,
+    Target6b := 10,
+    Target7b := 11,
+    Target6a := 12,
+    Target7a := 13,
+    Target3a := 14,
+    Target4a := 15
+) UINT;
+END_TYPE
     // first version of targets paddle 1
 {*   FZP860_1 := 3,   //Ne1
     FZP860_2 := 4,   //Ne2
@@ -22,7 +38,7 @@ TYPE ENUM_ZonePlate_States :
     FZP290_1 := 14,   // C1
     FZP290_2 := 15   //C2
 //	FZP250_1 := 16    //w1
-*}
+
     //second version of targets paddle 2
     FZP530_1 := 3,
     FZP806 := 4,
@@ -37,8 +53,11 @@ TYPE ENUM_ZonePlate_States :
     FZP350 := 13,
     FZP1212_2 := 14,
     FZP875 := 15
-) UINT;
-END_TYPE
+*}
+
+
+
+
 ]]></Declaration>
   </DUT>
 </TcPlcObject>
