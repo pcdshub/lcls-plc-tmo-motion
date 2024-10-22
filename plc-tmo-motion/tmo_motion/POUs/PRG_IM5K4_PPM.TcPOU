@@ -27,7 +27,7 @@ VAR
         bValid := TRUE
     );
 //    fStartupVelo: LREAL := 12;
-//    bInit: BOOL;
+   // bInit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -38,17 +38,25 @@ fbStateSetup(StPositionState:=fbIM5K4.stPower, fposition:=-44.23, sPmpsState := 
 fbStateSetup(StPositionState:=fbIM5K4.stYag1, fposition:=-68.23, sPmpsState := 'IM5K4:PPM-YAG1');
 fbStateSetup(StPositionState:=fbIM5K4.stYag2, fposition:=-94.24, sPmpsState := 'IM5K4:PPM-YAG2');
 
+
+
 //IM5K4 is vetoed by PF1K4
-CASE GVL_TcGVL.ePF1K4State OF
-    E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
+IF( GVL_TcGVL.ePF1K4State >1) THEN//    E_WFS_STATES.TARGET1, E_WFS_STATES.TARGET2, E_WFS_STATES.TARGET3, E_WFS_STATES.TARGET4, E_WFS_STATES.TARGET5 :
         // Known state targets: allow less strict pmps
         fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_WFS_IN';
         fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_WFS_IN';
+
+ELSIF (GVL_TcGVL.eSP1K4FZP >1) THEN
+        // Known state targets: allow less strict pmps
+        fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1_SP1K4_IN';
+        fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2_SP1K4_IN';
 ELSE
     // Out, Unknown, or an unexpected state: full pmps
     fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
     fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
-END_CASE
+END_IF
+
+
 //IM5K4 is vetoed by SP1K4-FZP
       //paddle1
 {*
@@ -64,7 +72,9 @@ ELSE
     fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
 END_CASE
 *}
-    //paddle2
+
+ //paddle2
+ (*
 CASE GVL_TcGVL.eSP1K4FZP OF
     ENUM_ZonePlate_States.Target1a, ENUM_ZonePlate_States.Target1b, ENUM_ZonePlate_States.Target2a, ENUM_ZonePlate_States.Target2b, ENUM_ZonePlate_States.Target3a, ENUM_ZonePlate_States.Target3b, ENUM_ZonePlate_States.Target4a,
     ENUM_ZonePlate_States.Target4b, ENUM_ZonePlate_States.Target5a, ENUM_ZonePlate_States.Target5b, ENUM_ZonePlate_States.Target6a, ENUM_ZonePlate_States.Target7a, ENUM_ZonePlate_States.Target7b, ENUM_ZonePlate_States.Target6b:
@@ -76,6 +86,7 @@ ELSE
     fbIM5K4.stYag1.stPMPS.sPmpsState := 'IM5K4:PPM-YAG1';
     fbIM5K4.stYag2.stPMPS.sPmpsState := 'IM5K4:PPM-YAG2';
 END_CASE
+*)
 
 fbIM5K4(
     fbArbiter := fbArbiter,
