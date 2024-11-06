@@ -182,9 +182,9 @@
           <Key>MAX_FAST_FAULTS</Key>
           <Value>200</Value>
         </Parameter>
-        <Parameter>
+        <Parameter ListName="PMPS_PARAM">
           <Key>MAX_ASSERTIONS</Key>
-          <Value>30</Value>
+          <Value>33</Value>
         </Parameter>
       </Parameters>
     </PlaceholderReference>

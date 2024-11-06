@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{809F7B1D-2ADE-E1E2-94D2-070C6BB450C6}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{A80F8EE4-0A2F-C0C9-F65C-8E1B0DE33650}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -36058,7 +36058,7 @@ External Setpoint Generation:
     <DataType>
       <Name Namespace="PMPS">FB_BeamParamAssertionPool</Name>
       <Comment> This function block implements simple database. Data element values are stored in the hash table.  </Comment>
-      <BitSize>324544</BitSize>
+      <BitSize>355264</BitSize>
       <SubItem>
         <Name>key</Name>
         <Type>DWORD</Type>
@@ -36170,10 +36170,10 @@ External Setpoint Generation:
         <Type Namespace="PMPS">ST_BP_ArbInternal</Type>
         <ArrayInfo>
           <LBound>1</LBound>
-          <Elements>30</Elements>
+          <Elements>33</Elements>
         </ArrayInfo>
         <Comment> Structured data element pool for display in EPICS</Comment>
-        <BitSize>73920</BitSize>
+        <BitSize>81312</BitSize>
         <BitOffs>5248</BitOffs>
         <Properties>
           <Property>
@@ -36190,42 +36190,42 @@ External Setpoint Generation:
         <Type Namespace="PMPS">ST_BP_ArbInternal</Type>
         <ArrayInfo>
           <LBound>0</LBound>
-          <Elements>91</Elements>
+          <Elements>100</Elements>
         </ArrayInfo>
         <Comment> Structured data element pool </Comment>
-        <BitSize>224224</BitSize>
-        <BitOffs>79168</BitOffs>
+        <BitSize>246400</BitSize>
+        <BitOffs>86560</BitOffs>
       </SubItem>
       <SubItem>
         <Name>entries</Name>
         <Type Namespace="PMPS">T_HashTableEntry</Type>
         <ArrayInfo>
           <LBound>0</LBound>
-          <Elements>91</Elements>
+          <Elements>100</Elements>
         </ArrayInfo>
         <Comment> Max. number of hash table entries. The value of table entry = 32 bit integer (pointer to dataPool-array-entry) </Comment>
-        <BitSize>11648</BitSize>
-        <BitOffs>303424</BitOffs>
+        <BitSize>12800</BitSize>
+        <BitOffs>332992</BitOffs>
       </SubItem>
       <SubItem>
         <Name>fbTable</Name>
         <Type Namespace="LCLS_General.Tc2_Utilities">FB_HashTableCtrl</Type>
         <Comment> basic hash table control function block </Comment>
         <BitSize>704</BitSize>
-        <BitOffs>315072</BitOffs>
+        <BitOffs>345792</BitOffs>
       </SubItem>
       <SubItem>
         <Name>hTable</Name>
         <Type Namespace="LCLS_General.Tc2_Utilities">T_HHASHTABLE</Type>
         <Comment> hash table handle </Comment>
         <BitSize>6848</BitSize>
-        <BitOffs>315776</BitOffs>
+        <BitOffs>346496</BitOffs>
       </SubItem>
       <SubItem>
         <Name>pRefPtr</Name>
         <Type Namespace="PMPS" PointerTo="1">ST_BP_ArbInternal</Type>
         <BitSize>64</BitSize>
-        <BitOffs>322624</BitOffs>
+        <BitOffs>353344</BitOffs>
         <Default>
           <Value>0</Value>
         </Default>
@@ -36235,14 +36235,14 @@ External Setpoint Generation:
         <Type>ULINT</Type>
         <Comment> Integer value (max. size: x86=&gt;32bit, x64=&gt;64bit)</Comment>
         <BitSize>64</BitSize>
-        <BitOffs>322688</BitOffs>
+        <BitOffs>353408</BitOffs>
       </SubItem>
       <SubItem>
         <Name>cstSafeBeam</Name>
         <Type Namespace="PMPS">ST_BeamParams</Type>
         <Comment> MG</Comment>
         <BitSize>1760</BitSize>
-        <BitOffs>322752</BitOffs>
+        <BitOffs>353472</BitOffs>
         <Default>
           <SubItem>
             <Name>.nTran</Name>
@@ -36317,7 +36317,7 @@ the hash table will tell you when you reach the end of all the entries, and enab
 
 These features efficiently address the addition, removal, and verification of beam parameter sets listed in the above requirements.
 </Comment>
-      <BitSize>596992</BitSize>
+      <BitSize>627712</BitSize>
       <Implements Namespace="PMPS">I_HigherAuthority</Implements>
       <Implements Namespace="PMPS">I_LowerAuthority</Implements>
       <SubItem>
@@ -36331,7 +36331,7 @@ These features efficiently address the addition, removal, and verification of be
         <Name>fbBPAssertionPool</Name>
         <Type Namespace="PMPS">FB_BeamParamAssertionPool</Type>
         <Comment>Table of active beam parameter assertions</Comment>
-        <BitSize>324544</BitSize>
+        <BitSize>355264</BitSize>
         <BitOffs>256</BitOffs>
         <Properties>
           <Property>
@@ -36349,14 +36349,14 @@ These features efficiently address the addition, removal, and verification of be
         <Type>BOOL</Type>
         <Comment> Arbiter has confirmed its request has made it into the beam parameter request</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>324800</BitOffs>
+        <BitOffs>355520</BitOffs>
       </SubItem>
       <SubItem>
         <Name>nArbiterID</Name>
         <Type>UDINT</Type>
         <Comment> Arbiter ID, used for making higher-level BP requests</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>324832</BitOffs>
+        <BitOffs>355552</BitOffs>
         <Properties>
           <Property>
             <Name>pytmc</Name>
@@ -36373,7 +36373,7 @@ These features efficiently address the addition, removal, and verification of be
         <Type>UDINT</Type>
         <Comment> The cohort ID any new requests will adopt, will become ReqInProgCohort at the start of the next acknowledgement cycle</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>324864</BitOffs>
+        <BitOffs>355584</BitOffs>
         <Default>
           <Value>1</Value>
         </Default>
@@ -36383,7 +36383,7 @@ These features efficiently address the addition, removal, and verification of be
         <Type>UDINT</Type>
         <Comment> The cohort ID currently being acknowledged, will become nActiveCohort after acknowledgement from HA</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>324896</BitOffs>
+        <BitOffs>355616</BitOffs>
         <Default>
           <Value>0</Value>
         </Default>
@@ -36393,7 +36393,7 @@ These features efficiently address the addition, removal, and verification of be
         <Type>UDINT</Type>
         <Comment> Requests with cohorts &lt;= to this value will be considered active in CheckRequest</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>324928</BitOffs>
+        <BitOffs>355648</BitOffs>
         <Default>
           <Value>0</Value>
         </Default>
@@ -36413,34 +36413,34 @@ These features efficiently address the addition, removal, and verification of be
         <Type>BOOL</Type>
         <Comment> Set by an add or remove method call, triggers an ack cycle</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>324960</BitOffs>
+        <BitOffs>355680</BitOffs>
       </SubItem>
       <SubItem>
         <Name>bAckInProgress</Name>
         <Type>BOOL</Type>
         <Comment> Set by ElevateReq when there is a new ack request and reset when the ack cycle is complete</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>324968</BitOffs>
+        <BitOffs>355688</BitOffs>
       </SubItem>
       <SubItem>
         <Name>idTransmission</Name>
         <Type>DWORD</Type>
         <Comment> ID of BP limiting transmission</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>324992</BitOffs>
+        <BitOffs>355712</BitOffs>
       </SubItem>
       <SubItem>
         <Name>idRate</Name>
         <Type>DWORD</Type>
         <Comment> ID of BP limiting rate</Comment>
         <BitSize>32</BitSize>
-        <BitOffs>325024</BitOffs>
+        <BitOffs>355744</BitOffs>
       </SubItem>
       <SubItem>
         <Name>sPath</Name>
         <Type Namespace="Tc2_System">T_MaxString</Type>
         <BitSize>2048</BitSize>
-        <BitOffs>325056</BitOffs>
+        <BitOffs>355776</BitOffs>
         <Properties>
           <Property>
             <Name>instance-path</Name>
@@ -36454,19 +36454,19 @@ These features efficiently address the addition, removal, and verification of be
         <Name>sArbName</Name>
         <Type Namespace="Tc2_System">T_MaxString</Type>
         <BitSize>2048</BitSize>
-        <BitOffs>327104</BitOffs>
+        <BitOffs>357824</BitOffs>
       </SubItem>
       <SubItem>
         <Name>InfoStringFmtr</Name>
         <Type Namespace="LCLS_General.Tc2_Utilities">FB_FormatString</Type>
         <BitSize>8576</BitSize>
-        <BitOffs>329152</BitOffs>
+        <BitOffs>359872</BitOffs>
       </SubItem>
       <SubItem>
         <Name>bVerbose</Name>
         <Type>BOOL</Type>
         <BitSize>8</BitSize>
-        <BitOffs>337728</BitOffs>
+        <BitOffs>368448</BitOffs>
         <Default>
           <Bool>false</Bool>
         </Default>
@@ -36476,7 +36476,7 @@ These features efficiently address the addition, removal, and verification of be
         <Type Namespace="PMPS">ST_BeamParams</Type>
         <Comment>Updated on each cycle of the arbiter FB with the current arbitrated beam parameter set</Comment>
         <BitSize>1760</BitSize>
-        <BitOffs>337760</BitOffs>
+        <BitOffs>368480</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -36497,7 +36497,7 @@ These features efficiently address the addition, removal, and verification of be
         <Type>BOOL</Type>
         <Comment>Set true if a state-id is found in the assertion pool after calling A_VerifyAssertion</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>339520</BitOffs>
+        <BitOffs>370240</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -36509,7 +36509,7 @@ These features efficiently address the addition, removal, and verification of be
         <Name>__FB_ARBITER__GETARBITRATEDBP__XFIRSTPASS</Name>
         <Type>BOOL</Type>
         <BitSize>8</BitSize>
-        <BitOffs>339528</BitOffs>
+        <BitOffs>370248</BitOffs>
         <Default>
           <Bool> : u</Bool>
         </Default>
@@ -36518,31 +36518,31 @@ These features efficiently address the addition, removal, and verification of be
         <Name>__FB_ARBITER__GETARBITRATEDBP__FBGETCURTASKIDX</Name>
         <Type Namespace="Tc2_System">GETCURTASKINDEX</Type>
         <BitSize>256</BitSize>
-        <BitOffs>339584</BitOffs>
+        <BitOffs>370304</BitOffs>
       </SubItem>
       <SubItem>
         <Name>__FB_ARBITER__GETARBITRATEDBP__LASTCYCLECOUNT</Name>
         <Type>UDINT</Type>
         <BitSize>32</BitSize>
-        <BitOffs>339840</BitOffs>
+        <BitOffs>370560</BitOffs>
       </SubItem>
       <SubItem>
         <Name>__FB_ARBITER__GETARBITRATEDBP__FBLOGMESSAGE</Name>
         <Type Namespace="LCLS_General">FB_LogMessage</Type>
         <BitSize>85696</BitSize>
-        <BitOffs>339904</BitOffs>
+        <BitOffs>370624</BitOffs>
       </SubItem>
       <SubItem>
         <Name>__FB_ARBITER__ADDREQUEST__FBLOG</Name>
         <Type Namespace="LCLS_General">FB_LogMessage</Type>
         <BitSize>85696</BitSize>
-        <BitOffs>425600</BitOffs>
+        <BitOffs>456320</BitOffs>
       </SubItem>
       <SubItem>
         <Name>__FB_ARBITER__REMOVEREQUEST__FBLOG</Name>
         <Type Namespace="LCLS_General">FB_LogMessage</Type>
         <BitSize>85696</BitSize>
-        <BitOffs>511296</BitOffs>
+        <BitOffs>542016</BitOffs>
       </SubItem>
       <Method>
         <Name>__getnEntryCount</Name>
@@ -57459,67 +57459,66 @@ Digital outputs</Comment>
       <EnumInfo>
         <Text>Unknown</Text>
         <Enum>0</Enum>
+        <Comment> Third version of targets paddle 3</Comment>
       </EnumInfo>
       <EnumInfo>
         <Text>OUT</Text>
         <Enum>1</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>Yag</Text>
+        <Text>Target1b</Text>
         <Enum>2</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP530_1</Text>
+        <Text>Target5a</Text>
         <Enum>3</Enum>
-        <Comment> first version of targets paddle 1
-second version of targets paddle 2</Comment>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP806</Text>
+        <Text>Target4b</Text>
         <Enum>4</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP530_2</Text>
+        <Text>Target5b</Text>
         <Enum>5</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP1212_1</Text>
+        <Text>Target3b</Text>
         <Enum>6</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP404_1212_1</Text>
+        <Text>Target2b</Text>
         <Enum>7</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP262_524</Text>
+        <Text>Target1a</Text>
         <Enum>8</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP404_1212_2</Text>
+        <Text>Target2a</Text>
         <Enum>9</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP400_1</Text>
+        <Text>Target6b</Text>
         <Enum>10</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP290</Text>
+        <Text>Target7b</Text>
         <Enum>11</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP400_2</Text>
+        <Text>Target6a</Text>
         <Enum>12</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP350</Text>
+        <Text>Target7a</Text>
         <Enum>13</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP1212_2</Text>
+        <Text>Target3a</Text>
         <Enum>14</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>FZP875</Text>
+        <Text>Target4a</Text>
         <Enum>15</Enum>
       </EnumInfo>
       <Properties>
@@ -77617,7 +77616,7 @@ second version of targets paddle 2</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88670208</ByteSize>
+          <ByteSize>88932352</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
             <BitSize>2048</BitSize>
@@ -90647,7 +90646,7 @@ second version of targets paddle 2</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88670208</ByteSize>
+          <ByteSize>88932352</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -93900,7 +93899,7 @@ second version of targets paddle 2</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88670208</ByteSize>
+          <ByteSize>88932352</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -100005,7 +100004,7 @@ second version of targets paddle 2</Comment>
             <BitSize>32</BitSize>
             <BaseType>UDINT</BaseType>
             <Default>
-              <Value>30</Value>
+              <Value>33</Value>
             </Default>
             <Properties>
               <Property>
@@ -102131,44 +102130,6 @@ second version of targets paddle 2</Comment>
             <BitSize>5802176</BitSize>
             <BaseType Namespace="LCLS_General">FB_LogHandler</BaseType>
             <BitOffs>685857600</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_PMPS.fbArbiter</Name>
-            <Comment> Arbiter linked to the FFO and the MPS</Comment>
-            <BitSize>596992</BitSize>
-            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>pv: PLC:TMO:MOTION:ARB:01</Value>
-              </Property>
-              <Property>
-                <Name>old_input_assignments</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>691665536</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_PMPS.fbArbiter2</Name>
-            <Comment> Arbiter linked to the FFO and the MPS</Comment>
-            <BitSize>596992</BitSize>
-            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>pv: PLC:TMO:MOTION:ARB:02</Value>
-              </Property>
-              <Property>
-                <Name>old_input_assignments</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>692262528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PMPS.fbFastFaultOutput1</Name>
@@ -104523,12 +104484,50 @@ second version of targets paddle 2</Comment>
             </Properties>
             <BitOffs>697617920</BitOffs>
           </Symbol>
+          <Symbol>
+            <Name>GVL_PMPS.fbArbiter</Name>
+            <Comment> Arbiter linked to the FFO and the MPS</Comment>
+            <BitSize>627712</BitSize>
+            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>pv: PLC:TMO:MOTION:ARB:01</Value>
+              </Property>
+              <Property>
+                <Name>old_input_assignments</Name>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>708246976</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_PMPS.fbArbiter2</Name>
+            <Comment> Arbiter linked to the FFO and the MPS</Comment>
+            <BitSize>627712</BitSize>
+            <BaseType Namespace="PMPS">FB_Arbiter</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>pv: PLC:TMO:MOTION:ARB:02</Value>
+              </Property>
+              <Property>
+                <Name>old_input_assignments</Name>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>708874688</BitOffs>
+          </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88670208</ByteSize>
+          <ByteSize>88932352</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -104614,15 +104613,15 @@ second version of targets paddle 2</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-10-10T14:06:46</Value>
+          <Value>2024-10-22T14:57:12</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>1224704</Value>
+          <Value>1220608</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>
-          <Value>86851584</Value>
+          <Value>86859776</Value>
         </Property>
       </Properties>
     </Module>
