@@ -55,7 +55,7 @@ IF NOT bInit THEN
 
     fbTM1K4.stTarget2b.fPosition := -41.755;
     fbTM1K4.stTarget2b.fVelocity := 1;
-    fbTM1K4.stTarget2b.sName := 'Ga_As_2';
+    fbTM1K4.stTarget2b.sName := 'GaAs_2';
     fbTM1K4.stTarget2b.bUseRawCounts := FALSE;
     fbTM1K4.stTarget2b.bValid := TRUE;
     fbTM1K4.stTarget2b.bMoveOK := TRUE;
@@ -71,7 +71,7 @@ IF NOT bInit THEN
 
     fbTM1K4.stTarget3b.fPosition := -63.398;
     fbTM1K4.stTarget3b.fVelocity := 1;
-    fbTM1K4.stTarget3b.sName := 'Ga_As_3';
+    fbTM1K4.stTarget3b.sName := 'GaAs_3';
     fbTM1K4.stTarget3b.bUseRawCounts := FALSE;
     fbTM1K4.stTarget3b.bValid := TRUE;
     fbTM1K4.stTarget3b.bMoveOK := TRUE;
