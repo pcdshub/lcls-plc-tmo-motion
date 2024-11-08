@@ -5,7 +5,7 @@
 (*
     Adapted from FB_ATM to:
     - Change stTarget1..stTarget5 to stTarget1a, stTarget1b, stTarget2b, stTarget3a, stTarget3b, stTarget4, stTarget5 to the inputs
-    - Change the arrStates.array pragma from 1..6 to 1..8 (out and 7 in states, up from 5)
+    - Change the arrStates.array pragma from 1..6 to 1..9 (out and 8 in states, up from 5) // 11-08-24
     - Swap out FB_ATM_States for FB_TM1K4_States
 *)
 VAR_IN_OUT
@@ -67,7 +67,7 @@ VAR
 
     {attribute 'pytmc' := '
         pv: MMS
-        astPositionState.array: 1..8
+        astPositionState.array: 1..9
     '}
     fbStates: FB_PositionStatePMPS1D;
     astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
