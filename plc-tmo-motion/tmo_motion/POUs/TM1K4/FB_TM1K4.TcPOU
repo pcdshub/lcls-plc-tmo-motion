@@ -5,7 +5,7 @@
 (*
     Adapted from FB_ATM to:
     - Change stTarget1..stTarget5 to stTarget1a, stTarget1b, stTarget2b, stTarget3a, stTarget3b, stTarget4, stTarget5 to the inputs
-    - Change the arrStates.array pragma from 1..6 to 1..8 (out and 7 in states, up from 5)
+    - Change the arrStates.array pragma from 1..6 to 1..9 (out and 8 in states, up from 5) // 11-08-24
     - Swap out FB_ATM_States for FB_TM1K4_States
 *)
 VAR_IN_OUT
@@ -22,6 +22,7 @@ VAR_INPUT
     stOut: ST_PositionState;
     stTarget1a: ST_PositionState;
     stTarget1b: ST_PositionState;
+    stTarget2a: ST_PositionState;
     stTarget2b: ST_PositionState;
     stTarget3a: ST_PositionState;
     stTarget3b: ST_PositionState;
@@ -66,7 +67,7 @@ VAR
 
     {attribute 'pytmc' := '
         pv: MMS
-        astPositionState.array: 1..8
+        astPositionState.array: 1..9
     '}
     fbStates: FB_PositionStatePMPS1D;
     astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
@@ -96,6 +97,7 @@ END_VAR
     fbStateDefaults(stPositionState:=stOut, sNameDefault:='OUT', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fOutDecel);
     fbStateDefaults(stPositionState:=stTarget1a, sNameDefault:='TARGET1a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget1b, sNameDefault:='TARGET1b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget2a, sNameDefault:='TARGET2a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget2b, sNameDefault:='TARGET2b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget3a, sNameDefault:='TARGET3a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget3b, sNameDefault:='TARGET3b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
@@ -124,6 +126,7 @@ IF NOT fbArrCheckWrite.bHadWrite THEN
     astPositionState[ENUM_TM1K4_States.OUT] := stOut;
     astPositionState[ENUM_TM1K4_States.TARGET1a] := stTarget1a;
     astPositionState[ENUM_TM1K4_States.TARGET1b] := stTarget1b;
+    astPositionState[ENUM_TM1K4_States.TARGET2a] := stTarget2a;
     astPositionState[ENUM_TM1K4_States.TARGET2b] := stTarget2b;
     astPositionState[ENUM_TM1K4_States.TARGET3a] := stTarget3a;
     astPositionState[ENUM_TM1K4_States.TARGET3b] := stTarget3b;
@@ -156,6 +159,7 @@ fbArrCheckWrite(
 stOut := astPositionState[ENUM_TM1K4_States.OUT];
 stTarget1a := astPositionState[ENUM_TM1K4_States.TARGET1a];
 stTarget1b := astPositionState[ENUM_TM1K4_States.TARGET1b];
+stTarget2a := astPositionState[ENUM_TM1K4_States.TARGET2a];
 stTarget2b := astPositionState[ENUM_TM1K4_States.TARGET2b];
 stTarget3a := astPositionState[ENUM_TM1K4_States.TARGET3a];
 stTarget3b := astPositionState[ENUM_TM1K4_States.TARGET3b];

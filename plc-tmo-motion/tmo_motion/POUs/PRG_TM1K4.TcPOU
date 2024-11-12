@@ -22,55 +22,72 @@ END_VAR
 IF NOT bInit THEN
     fbTM1K4.stOut.fPosition := -2.558;
     fbTM1K4.stOut.fVelocity := 1;
+    fbTM1K4.stOut.sName := 'OUT';
     fbTM1K4.stOut.bUseRawCounts := FALSE;
     fbTM1K4.stOut.bValid := TRUE;
     fbTM1K4.stOut.bMoveOK := TRUE;
     fbTM1K4.stOut.stPMPS.sPmpsState := 'TM1K4:ATM-OUT';
 
-    fbTM1K4.stTarget1a.fPosition := -16.311;
+    fbTM1K4.stTarget1a.fPosition := -15.316;
     fbTM1K4.stTarget1a.fVelocity := 1;
+    fbTM1K4.stTarget1a.sName := 'clear_YAG';
     fbTM1K4.stTarget1a.bUseRawCounts := FALSE;
     fbTM1K4.stTarget1a.bValid := TRUE;
     fbTM1K4.stTarget1a.bMoveOK := TRUE;
     fbTM1K4.stTarget1a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1a';
 
-    fbTM1K4.stTarget1b.fPosition := -25.282;
+    fbTM1K4.stTarget1b.fPosition := -23.294;
     fbTM1K4.stTarget1b.fVelocity := 1;
+    fbTM1K4.stTarget1b.sName := 'GaAs_1';
     fbTM1K4.stTarget1b.bUseRawCounts := FALSE;
     fbTM1K4.stTarget1b.bValid := TRUE;
     fbTM1K4.stTarget1b.bMoveOK := TRUE;
     fbTM1K4.stTarget1b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1b';
 
-    fbTM1K4.stTarget2b.fPosition := -41.249;
+    fbTM1K4.stTarget2a.fPosition := -32;
+    fbTM1K4.stTarget2a.fVelocity := 1;
+    fbTM1K4.stTarget2a.sName := 'SiN';
+    fbTM1K4.stTarget2a.bUseRawCounts := FALSE;
+    fbTM1K4.stTarget2a.bValid := TRUE;
+    fbTM1K4.stTarget2a.bMoveOK := TRUE;
+    fbTM1K4.stTarget2a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET2a';
+
+
+    fbTM1K4.stTarget2b.fPosition := -41.755;
     fbTM1K4.stTarget2b.fVelocity := 1;
+    fbTM1K4.stTarget2b.sName := 'GaAs_2';
     fbTM1K4.stTarget2b.bUseRawCounts := FALSE;
     fbTM1K4.stTarget2b.bValid := TRUE;
     fbTM1K4.stTarget2b.bMoveOK := TRUE;
     fbTM1K4.stTarget2b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET2b';
 
-    fbTM1K4.stTarget3a.fPosition := -55.414;
+    fbTM1K4.stTarget3a.fPosition := -52.318;
     fbTM1K4.stTarget3a.fVelocity := 1;
+    fbTM1K4.stTarget3a.sName := 'AF_target';
     fbTM1K4.stTarget3a.bUseRawCounts := FALSE;
     fbTM1K4.stTarget3a.bValid := TRUE;
     fbTM1K4.stTarget3a.bMoveOK := TRUE;
     fbTM1K4.stTarget3a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3a';
 
-    fbTM1K4.stTarget3b.fPosition := -62.895;
+    fbTM1K4.stTarget3b.fPosition := -63.398;
     fbTM1K4.stTarget3b.fVelocity := 1;
+    fbTM1K4.stTarget3b.sName := 'GaAs_3';
     fbTM1K4.stTarget3b.bUseRawCounts := FALSE;
     fbTM1K4.stTarget3b.bValid := TRUE;
     fbTM1K4.stTarget3b.bMoveOK := TRUE;
     fbTM1K4.stTarget3b.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET3b';
 
-    fbTM1K4.stTarget4.fPosition := -82.25;
+    fbTM1K4.stTarget4.fPosition := -81.057;
     fbTM1K4.stTarget4.fVelocity := 1;
+    fbTM1K4.stTarget4.sName := 'YAG';
     fbTM1K4.stTarget4.bUseRawCounts := FALSE;
     fbTM1K4.stTarget4.bValid := TRUE;
     fbTM1K4.stTarget4.bMoveOK := TRUE;
     fbTM1K4.stTarget4.stPMPS.sPmpsState := 'TM1K4:ATM-YAG';
 
-    fbTM1K4.stTarget5.fPosition := -102.258;
+    fbTM1K4.stTarget5.fPosition := -102.268;
     fbTM1K4.stTarget5.fVelocity := 1;
+    fbTM1K4.stTarget5.sName := 'DIODE';
     fbTM1K4.stTarget5.bUseRawCounts := FALSE;
     fbTM1K4.stTarget5.bValid := TRUE;
     fbTM1K4.stTarget5.bMoveOK := TRUE;
