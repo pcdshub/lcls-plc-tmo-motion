@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{4C27E557-3C49-ED40-EEA7-855E57B56503}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{73A72F00-420B-7E56-73A6-1C61C5057057}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -58641,45 +58641,18 @@ Digital outputs</Comment>
         </Properties>
       </SubItem>
       <SubItem>
-        <Name>stEpicsToPlc</Name>
-        <Type Namespace="lcls_twincat_motion">ST_StateEpicsToPlc</Type>
-        <Comment> Normal EPICS inputs, gathered into a single struct</Comment>
-        <BitSize>32</BitSize>
-        <BitOffs>2528</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>pv: STATE</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>stPMPSEpicsToPlc</Name>
-        <Type Namespace="lcls_twincat_motion">ST_StatePMPSEpicsToPlc</Type>
-        <Comment> PMPS EPICS inputs, gathered into a single struct</Comment>
-        <BitSize>16</BitSize>
-        <BitOffs>2560</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>pv: STATE</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
         <Name>bReadDBNow</Name>
         <Type>BOOL</Type>
-        <Comment> Set this to TRUE to re-read the loaded database immediately (useful for debug)</Comment>
+        <Comment>   // Normal EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stEpicsToPlc: ST_StateEpicsToPlc;
+    // PMPS EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stPMPSEpicsToPlc: ST_StatePMPSEpicsToPlc;
+
+ Set this to TRUE to re-read the loaded database immediately (useful for debug)</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>2576</BitOffs>
+        <BitOffs>2520</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -58692,7 +58665,7 @@ Digital outputs</Comment>
         <Type Namespace="lcls_twincat_motion">ST_StatePlcToEpics</Type>
         <Comment> Normal EPICS outputs, gathered into a single struct</Comment>
         <BitSize>768</BitSize>
-        <BitOffs>2592</BitOffs>
+        <BitOffs>2528</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -58709,7 +58682,7 @@ Digital outputs</Comment>
         <Type Namespace="lcls_twincat_motion">ST_StatePMPSPlcToEpics</Type>
         <Comment> PMPS EPICS outputs, gathered into a single struct</Comment>
         <BitSize>2560</BitSize>
-        <BitOffs>3360</BitOffs>
+        <BitOffs>3296</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -58726,7 +58699,7 @@ Digital outputs</Comment>
         <Type Namespace="PMPS">ST_DbStateParams</Type>
         <Comment> The PMPS database lookup associated with the current position state.</Comment>
         <BitSize>2560</BitSize>
-        <BitOffs>5920</BitOffs>
+        <BitOffs>5856</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -58738,13 +58711,13 @@ Digital outputs</Comment>
         <Name>tonStateSequenceTimeout</Name>
         <Type Namespace="Tc2_Standard">TON</Type>
         <BitSize>256</BitSize>
-        <BitOffs>8512</BitOffs>
+        <BitOffs>8448</BitOffs>
       </SubItem>
       <SubItem>
         <Name>tStateSequenceTimeoutTime</Name>
         <Type>TIME</Type>
         <BitSize>32</BitSize>
-        <BitOffs>8768</BitOffs>
+        <BitOffs>8704</BitOffs>
         <Default>
           <DateTime>T#5s</DateTime>
         </Default>
@@ -58753,27 +58726,53 @@ Digital outputs</Comment>
         <Name>nGoal</Name>
         <Type>UINT</Type>
         <BitSize>16</BitSize>
-        <BitOffs>8800</BitOffs>
+        <BitOffs>8736</BitOffs>
       </SubItem>
       <SubItem>
         <Name>nState</Name>
         <Type>UINT</Type>
         <BitSize>16</BitSize>
-        <BitOffs>8816</BitOffs>
+        <BitOffs>8752</BitOffs>
       </SubItem>
       <SubItem>
         <Name>eEnumGet1</Name>
         <Type>UINT</Type>
         <Comment> The current state index of the 1st axis state mover</Comment>
         <BitSize>16</BitSize>
-        <BitOffs>8832</BitOffs>
+        <BitOffs>8768</BitOffs>
       </SubItem>
       <SubItem>
         <Name>eEnumGet2</Name>
         <Type>UINT</Type>
         <Comment> The current state index of the 2nd axis state mover</Comment>
         <BitSize>16</BitSize>
-        <BitOffs>8848</BitOffs>
+        <BitOffs>8784</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>stEpicsToPlc</Name>
+        <Type Namespace="lcls_twincat_motion">ST_StateEpicsToPlc</Type>
+        <Comment> Normal EPICS inputs, gathered into a single struct</Comment>
+        <BitSize>32</BitSize>
+        <BitOffs>8800</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>pv: STATE</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stPMPSEpicsToPlc</Name>
+        <Type Namespace="lcls_twincat_motion">ST_StatePMPSEpicsToPlc</Type>
+        <Comment> PMPS EPICS inputs, gathered into a single struct</Comment>
+        <BitSize>16</BitSize>
+        <BitOffs>8832</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>pv: STATE</Value>
+          </Property>
+        </Properties>
       </SubItem>
       <Properties>
         <Property>
@@ -104629,7 +104628,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-11-08T09:49:25</Value>
+          <Value>2025-02-05T09:41:51</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

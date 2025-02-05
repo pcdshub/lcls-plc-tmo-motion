@@ -33,6 +33,8 @@ VAR_IN_OUT
 
     fbPositionState1D1 : FB_PositionStatePMPS1D;
     fbPositionState1D2 : FB_PositionStatePMPS1D;
+
+
 END_VAR
 VAR_INPUT
     bReset : BOOL;
@@ -52,14 +54,15 @@ VAR_INPUT
     sDeviceName: STRING;
     // The name of the transition state in the PMPS database.
     sTransitionKey: STRING;
-    // Normal EPICS inputs, gathered into a single struct
+ (*   // Normal EPICS inputs, gathered into a single struct
     {attribute 'pytmc' := 'pv: STATE'}
     stEpicsToPlc: ST_StateEpicsToPlc;
     // PMPS EPICS inputs, gathered into a single struct
     {attribute 'pytmc' := 'pv: STATE'}
     stPMPSEpicsToPlc: ST_StatePMPSEpicsToPlc;
+*)
     // Set this to TRUE to re-read the loaded database immediately (useful for debug)
-    bReadDBNow: BOOL;
+     bReadDBNow: BOOL;
 END_VAR
 VAR_OUTPUT
     // Normal EPICS outputs, gathered into a single struct
@@ -80,6 +83,12 @@ VAR
     eEnumGet1: UINT;
     // The current state index of the 2nd axis state mover
     eEnumGet2: UINT;
+     // Normal EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stEpicsToPlc: ST_StateEpicsToPlc;
+    // PMPS EPICS inputs, gathered into a single struct
+    {attribute 'pytmc' := 'pv: STATE'}
+    stPMPSEpicsToPlc: ST_StatePMPSEpicsToPlc;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -258,7 +267,7 @@ IF eEnumGet1 = eEnumGet2 THEN
 ELSE
     eEnumGet := 0;
 END_IF
-]]></ST>
+stEpicsToPlc.bReset := FALSE;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
