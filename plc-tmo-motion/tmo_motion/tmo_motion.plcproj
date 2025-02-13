@@ -105,9 +105,6 @@
     <Compile Include="POUs\PRG_SL1K4_SCATTER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_SL2K4_SCATTER.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\PRG_SP1K4.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -136,6 +133,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\temp\FB_ZonePlate_States.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\temp\PRG_SL2K4_SCATTER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\TM1K4\ENUM_TM1K4_States.TcDUT">
