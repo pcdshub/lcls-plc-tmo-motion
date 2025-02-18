@@ -106,7 +106,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[TM1K4-EL5042-E3]^FB Inputs Channel 2^Position'}
     M22: ST_MotionStage := (sName := 'TM1K4:ATM:MMS:X');
 
-     // SL2K4-SCATTER: 4 Axes
+  (*   // SL2K4-SCATTER: 4 Axes
     {attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:BOTTOM'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SL2K4-EL7031-E1]^STM Status^Status^Digital input 2;
                              .bLimitBackwardEnable := TIIB[SL2K4-EL7031-E1]^STM Status^Status^Digital input 1;
@@ -127,6 +127,7 @@ VAR_GLOBAL
                               .bLimitBackwardEnable := TIIB[SL2K4-EL7031-E7]^STM Status^Status^Digital input 2;
                               .nRawEncoderUINT      := TIIB[SL2K4-EL5101-E8]^ENC Status compact^Counter value'}
     M26: ST_MotionStage := (sName := 'SL2K4:SCATTER:MMS:SOUTH');
+    *)
 
     // IM6K4-PPM: 1 Axis
     {attribute 'pytmc' := 'pv: IM6K4:PPM:MMS'}
