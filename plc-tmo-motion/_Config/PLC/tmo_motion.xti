@@ -1260,7 +1260,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{9DD0BA81-4A92-4D5E-8BD9-E101C02702D4}" Name="tmo_motion" PrjFilePath="..\..\tmo_motion\tmo_motion.plcproj" TmcFilePath="..\..\tmo_motion\tmo_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="1" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{01161ED6-6A80-B6B6-97F0-F7CC223C68E6}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="1" TmcPath="tmo_motion\tmo_motion.tmc" TmcHash="{37A561C6-B074-3712-CDBD-F43C48034813}">
 			<Name>tmo_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -1389,7 +1389,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_AL1K4_L2SI.fbAL1K4.fbLaser.fbGetLasPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -1514,7 +1514,7 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT</Name>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbTempSensor.bError</Name>
@@ -1535,17 +1535,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbGige.fbGetIllPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM2K4_PPM.fbIM2K4.fbYagTempSensor.bError</Name>
@@ -1690,7 +1690,7 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT</Name>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbTempSensor.bError</Name>
@@ -1711,17 +1711,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbGige.fbGetIllPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM3K4_PPM.fbIM3K4.fbYagTempSensor.bError</Name>
@@ -1866,7 +1866,7 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT</Name>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbTempSensor.bError</Name>
@@ -1887,17 +1887,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbGige.fbGetIllPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM4K4_PPM.fbIM4K4.fbYagTempSensor.bError</Name>
@@ -2042,7 +2042,7 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT</Name>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbTempSensor.bError</Name>
@@ -2063,17 +2063,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbGige.fbGetIllPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM5K4_PPM.fbIM5K4.fbYagTempSensor.bError</Name>
@@ -2218,7 +2218,7 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.iVoltageINT</Name>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.fbTempSensor.bError</Name>
@@ -2239,17 +2239,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.fbGetPMVoltage.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbGige.fbGetIllPercent.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_IM6K4_PPM.fbIM6K4.fbYagTempSensor.bError</Name>
@@ -2556,7 +2556,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_PF1K4_WFS_TARGET.fbPF1K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_PF2K4_WFS_TARGET.fbPF2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -2722,7 +2722,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_PF2K4_WFS_TARGET.fbPF2K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SL1K4_SCATTER.fbSL1K4.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -2769,7 +2769,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_ST4K4_TMO_TERM.fbFlowMeter.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_PC5K4.fbFlowMeter.iRaw</Name>
@@ -2779,7 +2779,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_PC5K4.fbFlowMeter.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_TM1K4.fbTM1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -2925,7 +2925,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_TM1K4.fbTM1K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_TM2K4.fbTM2K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -3071,7 +3071,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_TM2K4.fbTM2K4.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SP1K4.fbMotionLensX.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -3415,7 +3415,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_SP1K4.fbFlowMeter.fbFlowMeter.iRaw</Name>
 					<Comment><![CDATA[ Connect this input to the terminal]]></Comment>
-					<Type>INT</Type>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_LI2K4_IP1.fbMotionLI2K4X.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -6672,7 +6672,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM2K4_PPM.fbIM2K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3062-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 1 (EK1122)^X2 TMO FEE EC2 (EK1100)^FEE EC2 E2 (EK1122)^X1 IM2K4-PPM (EK1100)^IM2K4-EL3314-E4">
 				<Link VarA="PlcTask Inputs^PRG_IM2K4_PPM.fbIM2K4.fbPowerMeter.fbTempSensor.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true" Size="1"/>
@@ -6699,7 +6699,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM3K4_PPM.fbIM3K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3062-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM3K4-PPM (EK1100)^IM3K4-EL3314-E4">
 				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbPowerMeter.fbTempSensor.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true" Size="1"/>
@@ -6726,11 +6726,11 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM4K4_PPM.fbIM4K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3052-E5">
-				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM3K4_PPM.fbIM3K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3062-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 1(EK1100)^PLC Junction 5 (EK1122)^IM4K4-PPM (EK1100)^IM4K4-EL3314-E4">
 				<Link VarA="PlcTask Inputs^PRG_IM4K4_PPM.fbIM4K4.fbPowerMeter.fbTempSensor.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true" Size="1"/>
@@ -6788,12 +6788,12 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM6K4_PPM.fbIM6K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL3052-E5">
-				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_PF2K4_WFS_TARGET.fbPF2K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_TM2K4.fbTM2K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
+				<Link VarA="PlcTask Inputs^PRG_PF2K4_WFS_TARGET.fbPF2K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
+				<Link VarA="PlcTask Inputs^PRG_TM2K4.fbTM2K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL3062-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 10 (EK1122)^Granite3 (EK1100)^PLC Junction 12  (EK1122)^IM6K4 (EK1100)^IM6K4-EL3314-E4">
 				<Link VarA="PlcTask Inputs^PRG_IM6K4_PPM.fbIM6K4.fbPowerMeter.fbTempSensor.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true" Size="1"/>
@@ -6880,12 +6880,12 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Outputs^PRG_IM5K4_PPM.fbIM5K4.fbGige.bGigePower" VarB="Channel 2^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3052-E5">
-				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
+				<Link VarA="PlcTask Inputs^PRG_PF1K4_WFS_TARGET.fbPF1K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
+				<Link VarA="PlcTask Inputs^PRG_TM1K4.fbTM1K4.fbFlowMeter.iRaw" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3062-E6">
-				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.iVoltageINT" VarB="AI Standard Channel 1^Value" AutoLink="true" Size="16"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Power (EK1200)^PLC Junction 2 (EK1122)^PLC Coupler 2 (EK1100)^PLC Junction 8 (EK1122)^IM5K4-PPM (EK1100)^IM5K4-EL3314-E4">
 				<Link VarA="PlcTask Inputs^PRG_IM5K4_PPM.fbIM5K4.fbPowerMeter.fbTempSensor.bError" VarB="TC Inputs Channel 1^Status^Error" AutoLink="true" Size="1"/>
