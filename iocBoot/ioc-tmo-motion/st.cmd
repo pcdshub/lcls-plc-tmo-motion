@@ -1,11 +1,11 @@
-#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.6.2/bin/rhel7-x86_64/adsIoc
+#!c:/Repos/ads-ioc/R0.6.1///bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: plc-tmo-motion.tsproj
 #        PLC name: tmo_motion (tmo_motion Instance)
-# Generated using: pytmc 2.16.0
-# Project version: v0.1.0-329-g07f9851
-#    Project hash: 07f9851d1f2a05b49593291fedb412b8bc8d2e95
+# Generated using: pytmc 2.15.2.dev0+g73bd2d9.d20230727
+# Project version: unknown
+#    Project hash: unknown
 #     PLC IP/host: 172.21.132.76
 #      PLC Net ID: 172.21.132.76.1.1
 #  ** Production mode IOC **
@@ -13,8 +13,8 @@
 #
 # Libraries:
 #
-#   LCLS General: * -> 2.9.1 (SLAC)
-#   lcls-twincat-common-components: * -> 3.5.0 (SLAC)
+#   LCLS General: * -> 2.12.0 (SLAC)
+#   lcls-twincat-common-components: * -> 3.9.0 (SLAC)
 #   lcls-twincat-motion: * -> 4.1.1 (SLAC)
 #   PMPS: * -> 3.3.0 (SLAC - LCLS)
 #   Tc2_MC2: * -> 3.3.42.0 (Beckhoff Automation GmbH)
@@ -28,7 +28,7 @@
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
-epicsEnvSet("ENGINEER", "zlentz" )
+epicsEnvSet("ENGINEER", "" )
 epicsEnvSet("LOCATION", "PLC:TMO:MOTION" )
 epicsEnvSet("IOCSH_PS1", "$(IOC)> " )
 epicsEnvSet("ACF_FILE", "$(ADS_IOC_TOP)/iocBoot/templates/unrestricted.acf")
@@ -44,14 +44,14 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.132.76")
 epicsEnvSet("AMSID",            "172.21.132.76.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "15615")
+epicsEnvSet("ADS_MAX_PARAMS",   "15610")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
 epicsEnvSet("ADS_TIME_SOURCE",  "0")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.132.76 ^172.*")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.132.76 ^172.*$")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -313,66 +313,6 @@ epicsEnvSet("AXIS_NO",         "22")
 epicsEnvSet("MOTOR_PREFIX",    "TM1K4:ATM:MMS:")
 epicsEnvSet("MOTOR_NAME",      "X")
 epicsEnvSet("DESC",            "Main.M22 / Axis 22 TM1K4-MMS-X")
-epicsEnvSet("EGU",             "mm")
-epicsEnvSet("PREC",            "3")
-epicsEnvSet("AXISCONFIG",      "")
-epicsEnvSet("ECAXISFIELDINIT", "")
-epicsEnvSet("AMPLIFIER_FLAGS", "")
-
-EthercatMCCreateAxis("$(MOTOR_PORT)", "$(AXIS_NO)", "$(AMPLIFIER_FLAGS)", "$(AXISCONFIG)")
-dbLoadRecords("EthercatMC.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC), EGU=$(EGU) $(ECAXISFIELDINIT)")
-dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC) ")
-dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
-
-epicsEnvSet("AXIS_NO",         "23")
-epicsEnvSet("MOTOR_PREFIX",    "SL2K4:SCATTER:MMS:")
-epicsEnvSet("MOTOR_NAME",      "BOTTOM")
-epicsEnvSet("DESC",            "Main.M23 / SL2K4-BOTTOM-M23")
-epicsEnvSet("EGU",             "mm")
-epicsEnvSet("PREC",            "3")
-epicsEnvSet("AXISCONFIG",      "")
-epicsEnvSet("ECAXISFIELDINIT", "")
-epicsEnvSet("AMPLIFIER_FLAGS", "")
-
-EthercatMCCreateAxis("$(MOTOR_PORT)", "$(AXIS_NO)", "$(AMPLIFIER_FLAGS)", "$(AXISCONFIG)")
-dbLoadRecords("EthercatMC.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC), EGU=$(EGU) $(ECAXISFIELDINIT)")
-dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC) ")
-dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
-
-epicsEnvSet("AXIS_NO",         "24")
-epicsEnvSet("MOTOR_PREFIX",    "SL2K4:SCATTER:MMS:")
-epicsEnvSet("MOTOR_NAME",      "TOP")
-epicsEnvSet("DESC",            "Main.M24 / SL2K4-TOP-M24")
-epicsEnvSet("EGU",             "mm")
-epicsEnvSet("PREC",            "3")
-epicsEnvSet("AXISCONFIG",      "")
-epicsEnvSet("ECAXISFIELDINIT", "")
-epicsEnvSet("AMPLIFIER_FLAGS", "")
-
-EthercatMCCreateAxis("$(MOTOR_PORT)", "$(AXIS_NO)", "$(AMPLIFIER_FLAGS)", "$(AXISCONFIG)")
-dbLoadRecords("EthercatMC.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC), EGU=$(EGU) $(ECAXISFIELDINIT)")
-dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC) ")
-dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
-
-epicsEnvSet("AXIS_NO",         "25")
-epicsEnvSet("MOTOR_PREFIX",    "SL2K4:SCATTER:MMS:")
-epicsEnvSet("MOTOR_NAME",      "NORTH")
-epicsEnvSet("DESC",            "Main.M25 / SL2K4-NORTH-M25")
-epicsEnvSet("EGU",             "mm")
-epicsEnvSet("PREC",            "3")
-epicsEnvSet("AXISCONFIG",      "")
-epicsEnvSet("ECAXISFIELDINIT", "")
-epicsEnvSet("AMPLIFIER_FLAGS", "")
-
-EthercatMCCreateAxis("$(MOTOR_PORT)", "$(AXIS_NO)", "$(AMPLIFIER_FLAGS)", "$(AXISCONFIG)")
-dbLoadRecords("EthercatMC.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC), EGU=$(EGU) $(ECAXISFIELDINIT)")
-dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), R=$(MOTOR_NAME)-, MOTOR_PORT=$(MOTOR_PORT), ASYN_PORT=$(ASYN_PORT), AXIS_NO=$(AXIS_NO), DESC=$(DESC), PREC=$(PREC) ")
-dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
-
-epicsEnvSet("AXIS_NO",         "26")
-epicsEnvSet("MOTOR_PREFIX",    "SL2K4:SCATTER:MMS:")
-epicsEnvSet("MOTOR_NAME",      "SOUTH")
-epicsEnvSet("DESC",            "Main.M26 / SL2K4-SOUTH-M26")
 epicsEnvSet("EGU",             "mm")
 epicsEnvSet("PREC",            "3")
 epicsEnvSet("AXISCONFIG",      "")
@@ -685,9 +625,9 @@ dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME
 dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
 
 epicsEnvSet("AXIS_NO",         "47")
-epicsEnvSet("MOTOR_PREFIX",    "AT2K4:IP1:")
-epicsEnvSet("MOTOR_NAME",      "MMS")
-epicsEnvSet("DESC",            "Main.M47 / Axis 47 AT2K4-MMS-FILT")
+epicsEnvSet("MOTOR_PREFIX",    "PA1K4:PF:MMS:")
+epicsEnvSet("MOTOR_NAME",      "Y")
+epicsEnvSet("DESC",            "Main.M47 / PA1K4-PF-MMS")
 epicsEnvSet("EGU",             "mm")
 epicsEnvSet("PREC",            "3")
 epicsEnvSet("AXISCONFIG",      "")
@@ -705,15 +645,15 @@ dbLoadRecords("save_restoreStatus.db", "P=PLC:TMO:MOTION:")
 dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 
 ## TwinCAT task, application, and project information databases ##
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TMO:MOTION,IDX=1,TASK_PORT=350")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TMO:MOTION,IDX=1")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:TMO:MOTION")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:TMO:MOTION,PROJECT=plc-tmo-motion.tsproj,HASH=07f9851,VERSION=v0.1.0-329-g07f9851,PYTMC=2.16.0,PLC_HOST=172.21.132.76")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:TMO:MOTION,PROJECT=plc-tmo-motion.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.15.2.dev0+g73bd2d9.d20230727,PLC_HOST=172.21.132.76")
 
-#   LCLS General: * -> 2.9.1 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=LCLS_General,VERSION=2.9.1,VENDOR=SLAC")
-#   lcls-twincat-common-components: * -> 3.5.0 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-common-components,VERSION=3.5.0,VENDOR=SLAC")
+#   LCLS General: * -> 2.12.0 (SLAC)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=LCLS_General,VERSION=2.12.0,VENDOR=SLAC")
+#   lcls-twincat-common-components: * -> 3.9.0 (SLAC)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-common-components,VERSION=3.9.0,VENDOR=SLAC")
 #   lcls-twincat-motion: * -> 4.1.1 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-motion,VERSION=4.1.1,VENDOR=SLAC")
 #   PMPS: * -> 3.3.0 (SLAC - LCLS)
@@ -734,8 +674,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("tmo_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TMO:MOTION:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 14615
-callbackSetQueueSize(31230)
+# Total records: 14610
+callbackSetQueueSize(31220)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:TMO:MOTION:")
