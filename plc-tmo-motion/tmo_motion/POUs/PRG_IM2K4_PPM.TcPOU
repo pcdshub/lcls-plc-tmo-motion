@@ -88,6 +88,7 @@ fbIM2K4(
     bEnableMotion := TRUE,
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
+    fResponsivity := 0.0712,
 );]]></ST>
     </Implementation>
   </POU>

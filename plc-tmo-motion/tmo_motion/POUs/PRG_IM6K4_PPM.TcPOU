@@ -96,6 +96,7 @@ fbIM6K4(
     bEnableBeamParams := TRUE,
     bEnablePositionLimits := TRUE,
     fFlowOffset := 0.0,
+    fResponsivity := 0.0638,
 );]]></ST>
     </Implementation>
   </POU>
