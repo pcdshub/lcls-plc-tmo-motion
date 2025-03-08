@@ -176,9 +176,9 @@ fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='F
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=57);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=-8.2);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=0);
-
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=89);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0.5);
+// FZP-690-1 position X and Y are chanegd due to last TMO MRCO shift 3-7-2025
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=88.882);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=-0.0144);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0);
 
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=97);
@@ -337,7 +337,7 @@ fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=1.00);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5625);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=2.2);
 
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=54.5);
