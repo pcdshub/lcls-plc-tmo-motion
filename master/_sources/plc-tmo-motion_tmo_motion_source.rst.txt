@@ -2840,6 +2840,7 @@ PRG_IM2K4_PPM
         bEnableMotion := TRUE,
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
+        fResponsivity := 0.0712,
     );
 
     END_PROGRAM
@@ -2936,6 +2937,7 @@ PRG_IM3K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0751,
     );
 
     END_PROGRAM
@@ -3039,6 +3041,7 @@ PRG_IM4K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0721,
     );
 
     END_PROGRAM
@@ -3148,7 +3151,7 @@ PRG_IM5K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
-
+        fResponsivity := 0.0862,
     );
 
     END_PROGRAM
@@ -3258,6 +3261,7 @@ PRG_IM6K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0638,
     );
 
     END_PROGRAM
