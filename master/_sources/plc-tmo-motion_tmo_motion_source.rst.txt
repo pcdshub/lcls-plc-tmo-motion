@@ -93,7 +93,11 @@ ENUM_SolidAttenuator_States
         Target2 := 3,
         Target3 := 4,
         Target4 := 5,
-        Target5 := 6
+        Target5 := 6,
+        Target6 := 7, // add four more targets on 9-9-25
+        Target7 := 8,
+        Target8 := 9,
+        Target9 := 10
 
     )UINT;
     END_TYPE
@@ -139,11 +143,15 @@ ENUM_TM2K4_States
 
         Unknown := 0,
         OUT := 1,
-        TARGET1 := 2,
-        TARGET2 := 3,
-        TARGET3 := 4,
-        YAG := 5,
-        DIODE := 6
+        TARGET1a := 2,
+        TARGET1b := 3,
+        TARGET2a := 4,
+        TARGET2b := 5,
+        TARGET3a := 6,
+        TARGET3b := 7,
+        YAG := 8,
+        DIODE := 9
+
     ) UINT;
     END_TYPE
 
@@ -492,7 +500,8 @@ Main
             nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
             sName := 'TMO:SPEC:MMS:05');
         {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
-                                  .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1'}
+                                  .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1';
+                                  .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 1^Position'}
 
         {attribute 'pytmc' := '
             pv: TMO:SPEC:MMS:06
@@ -505,6 +514,7 @@ Main
             nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
         {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 1;
                                   .bLimitBackwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 2'}
+
         {attribute 'pytmc' := '
             pv: TMO:SPEC:MMS:07
         '}
@@ -516,7 +526,9 @@ Main
             nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
 
         {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 2;
-                                  .bLimitBackwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 1'}
+                                  .bLimitBackwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 1';
+                                  .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 2^Position'}
+
         {attribute 'pytmc' := '
             pv: TMO:SPEC:MMS:08
         '}
@@ -568,7 +580,7 @@ Main
 
         {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 1;
                                   .bLimitBackwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 2';
-                                   .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E7]^FB Inputs Channel 1^Position'}
+                                   .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E7]^FB Inputs Channel 2^Position'}
         {attribute 'pytmc' := '
             pv: TMO:SPEC:MMS:13
         '}
@@ -2134,9 +2146,9 @@ FB_TM2K4
     FUNCTION_BLOCK FB_TM2K4
     (*
         Adapted from FB_ATM to:
-        - Change stTarget1..stTarget5 to stTarget1, stTarget2, stTarget3, stTarget4, stTarget5 to the inputs
-        - Change the arrStates.array pragma from 1..6 to 1..5 (out and 4 in states, down from 5)
-        - Swap out FB_ATM_States for FB_TM1K4_States
+        - Change stTarget1..stTarget5 to stTarget1a, stTarget1b, stTarget2b, stTarget3a, stTarget3b, stTarget4, stTarget5 to the inputs
+        - Change the arrStates.array pragma from 1..6 to 1..9 (out and 8 in states, up from 5)
+        - Swap out FB_ATM_States for FB_TM2K4_States //04-2025
     *)
     VAR_IN_OUT
         // Y motor (state select).
@@ -2150,11 +2162,14 @@ FB_TM2K4
     END_VAR
     VAR_INPUT
         stOut: ST_PositionState;
-        stTarget1: ST_PositionState;
-        stTarget2: ST_PositionState;
-        stTarget3: ST_PositionState;
-        stTarget4: ST_PositionState;   // target 4 is YAG
-        stTarget5: ST_PositionState;    // target 5 is Diode
+        stTarget1a: ST_PositionState;
+        stTarget1b: ST_PositionState;
+        stTarget2a: ST_PositionState;
+        stTarget2b: ST_PositionState;
+        stTarget3a: ST_PositionState;
+        stTarget3b: ST_PositionState;
+        stTarget4: ST_PositionState;    // target 4 is Yag
+        stTarget5: ST_PositionState;    //target 5 is Diode
         // Set this to a non-unknown value to request a new move.
         {attribute 'pytmc' := '
             pv: MMS:STATE:SET
@@ -2194,7 +2209,7 @@ FB_TM2K4
 
         {attribute 'pytmc' := '
             pv: MMS
-            astPositionState.array: 1..6
+            astPositionState.array: 1..9
         '}
         fbStates: FB_PositionStatePMPS1D;
         astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
@@ -2220,9 +2235,12 @@ FB_TM2K4
 
         // Partial backcompat, this used to set fVelocity too but this should be set per install
         fbStateDefaults(stPositionState:=stOut, sNameDefault:='OUT', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fOutDecel);
-        fbStateDefaults(stPositionState:=stTarget1, sNameDefault:='TARGET1', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
-        fbStateDefaults(stPositionState:=stTarget2, sNameDefault:='TARGET2', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
-        fbStateDefaults(stPositionState:=stTarget3, sNameDefault:='TARGET3', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget1a, sNameDefault:='TARGET1a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget1b, sNameDefault:='TARGET1b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget2a, sNameDefault:='TARGET2a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget2b, sNameDefault:='TARGET2b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget3a, sNameDefault:='TARGET3a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+        fbStateDefaults(stPositionState:=stTarget3b, sNameDefault:='TARGET3b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
         fbStateDefaults(stPositionState:=stTarget4, sNameDefault:='YAG', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
         fbStateDefaults(stPositionState:=stTarget5, sNameDefault:='DIODE', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     END_IF
@@ -2246,9 +2264,12 @@ FB_TM2K4
     );
     IF NOT fbArrCheckWrite.bHadWrite THEN
         astPositionState[ENUM_TM2K4_States.OUT] := stOut;
-        astPositionState[ENUM_TM2K4_States.TARGET1] := stTarget1;
-        astPositionState[ENUM_TM2K4_States.TARGET2] := stTarget2;
-        astPositionState[ENUM_TM2K4_States.TARGET3] := stTarget3;
+        astPositionState[ENUM_TM2K4_States.TARGET1a] := stTarget1a;
+        astPositionState[ENUM_TM2K4_States.TARGET1b] := stTarget1b;
+        astPositionState[ENUM_TM2K4_States.TARGET2a] := stTarget2a;
+        astPositionState[ENUM_TM2K4_States.TARGET2b] := stTarget2b;
+        astPositionState[ENUM_TM2K4_States.TARGET3a] := stTarget3a;
+        astPositionState[ENUM_TM2K4_States.TARGET3b] := stTarget3b;
         astPositionState[ENUM_TM2K4_States.YAG] := stTarget4;
         astPositionState[ENUM_TM2K4_States.DIODE] := stTarget5;
     END_IF
@@ -2276,9 +2297,12 @@ FB_TM2K4
     );
 
     stOut := astPositionState[ENUM_TM2K4_States.OUT];
-    stTarget1 := astPositionState[ENUM_TM2K4_States.TARGET1];
-    stTarget2 := astPositionState[ENUM_TM2K4_States.TARGET2];
-    stTarget3 := astPositionState[ENUM_TM2K4_States.TARGET3];
+    stTarget1a := astPositionState[ENUM_TM2K4_States.TARGET1a];
+    stTarget1b := astPositionState[ENUM_TM2K4_States.TARGET1b];
+    stTarget2a := astPositionState[ENUM_TM2K4_States.TARGET2a];
+    stTarget2b := astPositionState[ENUM_TM2K4_States.TARGET2b];
+    stTarget3a := astPositionState[ENUM_TM2K4_States.TARGET3a];
+    stTarget3b := astPositionState[ENUM_TM2K4_States.TARGET3b];
     stTarget4 := astPositionState[ENUM_TM2K4_States.YAG];
     stTarget5 := astPositionState[ENUM_TM2K4_States.DIODE];
 
@@ -2840,6 +2864,7 @@ PRG_IM2K4_PPM
         bEnableMotion := TRUE,
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
+        fResponsivity := 0.0712,
     );
 
     END_PROGRAM
@@ -2936,6 +2961,7 @@ PRG_IM3K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0751,
     );
 
     END_PROGRAM
@@ -3039,6 +3065,7 @@ PRG_IM4K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0721,
     );
 
     END_PROGRAM
@@ -3148,7 +3175,7 @@ PRG_IM5K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
-
+        fResponsivity := 0.0862,
     );
 
     END_PROGRAM
@@ -3258,6 +3285,7 @@ PRG_IM6K4_PPM
         bEnableBeamParams := TRUE,
         bEnablePositionLimits := TRUE,
         fFlowOffset := 0.0,
+        fResponsivity := 0.0638,
     );
 
     END_PROGRAM
@@ -3538,14 +3566,15 @@ PRG_PA1K4_PF
     fbMotionPA1K4(stMotionStage:=Main.M47);
 
     fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.OUT],fdelta := 2.0, sName := 'OUT', fPosition:=173.0);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target1], fdelta := 2.0, sName := 'TARGET1', fPosition:=139);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target2], fdelta := 2.0, sName := 'TARGET2', fPosition:=119.2);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], fdelta := 2.0, sName := 'TARGET3', fPosition:=99.4);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], fdelta := 2.0, sName := 'TARGET4', fPosition:=79.6);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], fdelta := 2.0, sName := 'TARGET5', fPosition:=59.8);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=40);
-    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=20.2);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.OUT],fdelta := 2.0, sName := 'OUT', fPosition:=180.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target1], fdelta := 2.0, sName := 'TARGET1', fPosition:=160.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target2], fdelta := 2.0, sName := 'TARGET2', fPosition:=140.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], fdelta := 2.0, sName := 'TARGET3', fPosition:=121.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], fdelta := 2.0, sName := 'TARGET4', fPosition:=101.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], fdelta := 2.0, sName := 'TARGET5', fPosition:=81.0);
+    //target 6 and 7 because is recoered on 7-31-25, those were hided on 05-13-25
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=61.0);
+    fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=41.0);
     //PMPS
     aPA1K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'PA1K4:PF-OUT';
     aPA1K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'PA1K4:PF-TARGET1';
@@ -3553,6 +3582,7 @@ PRG_PA1K4_PF
     aPA1K4States[ENUM_Sample_Calibration_States.Target3].stPMPS.sPmpsState := 'PA1K4:PF-TARGET3';
     aPA1K4States[ENUM_Sample_Calibration_States.Target4].stPMPS.sPmpsState := 'PA1K4:PF-TARGET4';
     aPA1K4States[ENUM_Sample_Calibration_States.Target5].stPMPS.sPmpsState := 'PA1K4:PF-TARGET5';
+    //hide target 6 and 7 because it cannot fully reached 5-13-25 and targets are recovered 7-31-25
     aPA1K4States[ENUM_Sample_Calibration_States.Target6].stPMPS.sPmpsState := 'PA1K4:PF-TARGET6';
     aPA1K4States[ENUM_Sample_Calibration_States.Target7].stPMPS.sPmpsState := 'PA1K4:PF-TARGET7';
 
@@ -4169,7 +4199,7 @@ PRG_SP1K4
     fbMotionZPZ(stMotionStage:=Main.M36);
 
     fbZPSetup(stPositionState:=fbZPDefault, bSetDefault:=TRUE);
-    //third version of zone plate target
+    //swap several FZP targets for run 24 3-18-25
     fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=15);
     fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=-3.5);
     fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=0);
@@ -4179,41 +4209,41 @@ PRG_SP1K4
     fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1b], sName:='YAG', fPosition:=0);
 
     //paddle3
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=81);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=-8.2);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=0);
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=81);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=-8.2);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=0);
+    //paddle is changed on 6-10-25
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=73);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=0.65);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=0);
 
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=73);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=0.65);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=0);
-
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=81);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=0.65);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=0);
-
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=65);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=0.65);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=0);
-
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=57);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=0.65);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=0);
-
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=49);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=-8.2);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=0);
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=81);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=0.65);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=0);
+    //paddle is changed on 4-30-25
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-806_1', fPosition:=65);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-806_1', fPosition:=0.65);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-806_1', fPosition:=0);
+    //paddle is changed on 4-30-25
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=57);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=0.65);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=0);
+    //paddle is changed on 6-10-25
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=49);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=-8.2);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=0);
 
     fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=57);
     fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=-8.2);
     fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=0);
+    // FZP-690-1 position X and Y are chanegd due to last TMO MRCO shift 3-7-2025
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=88.882);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=-0.0144);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=0);
 
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=89);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0.5);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0);
-
-    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=97);
-    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=0.5);
-    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=0);
+    fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=97);
+    fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=0.5);
+    fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=0);
 
     fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6a], sName:='FZP-400_1', fPosition:=89);
     fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6a], sName:='FZP-400_1', fPosition:=-8.2);
@@ -4363,24 +4393,39 @@ PRG_SP1K4
 
     // SP1K4-SOLID-ATT PMPS
     fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
+    //update all targets positions and add four more targets on 9-9-25
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=17.0);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=1.00);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=31.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=2.2);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=36.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=54.5);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=2.0);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=41.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=72.2);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=1.6);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=46.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=90.2);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=1.3);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=51.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=-2.3);
 
-    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=107.8);
-    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=1.0);
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target6], sName:='TARGET6', fPosition:=56.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target6], sName:='TARGET6', fPosition:=-2.3);
+
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target7], sName:='TARGET7', fPosition:=61.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target7], sName:='TARGET7', fPosition:=-2.3);
+
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target8], sName:='TARGET8', fPosition:=66.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target8], sName:='TARGET8', fPosition:=2.3);
+
+    fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target9], sName:='TARGET9', fPosition:=71.5);
+    fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target9], sName:='TARGET9', fPosition:=-2.3);
+
+
+
 
     aATTXStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
     aATTXStates[ENUM_SolidAttenuator_States.Target1].bMoveOk := bPF1K4Out;
@@ -4388,6 +4433,12 @@ PRG_SP1K4
     aATTXStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
     aATTXStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
     aATTXStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+    // add four more targets on 9-9-25
+    aATTXStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
+    aATTXStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
+    aATTXStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
+    aATTXStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
+
 
 
     aATTYStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
@@ -4396,6 +4447,11 @@ PRG_SP1K4
     aATTYStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
     aATTYStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
     aATTYStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+    //add four more targets on 9-925
+    aATTYStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
+    aATTYStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
+    aATTYStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
+    aATTYStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
 
 
 
@@ -4407,6 +4463,12 @@ PRG_SP1K4
     aATTXStates[ENUM_SolidAttenuator_States.Target3].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET3';
     aATTXStates[ENUM_SolidAttenuator_States.Target4].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET4';
     aATTXStates[ENUM_SolidAttenuator_States.Target5].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET5';
+    //add four more targets on 9-9-25
+    aATTXStates[ENUM_SolidAttenuator_States.Target6].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET6';
+    aATTXStates[ENUM_SolidAttenuator_States.Target7].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET7';
+    aATTXStates[ENUM_SolidAttenuator_States.Target8].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET8';
+    aATTXStates[ENUM_SolidAttenuator_States.Target9].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET9';
+
 
     fbATTStates(
         stMotionStage1:=Main.M33,
@@ -4603,7 +4665,7 @@ PRG_TM1K4
         fbTM1K4.stTarget1a.bMoveOK := TRUE;
         fbTM1K4.stTarget1a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1a';
 
-        fbTM1K4.stTarget1b.fPosition := -23.294;
+        fbTM1K4.stTarget1b.fPosition := -20.2167; // data is changed on 3-7-2025 due to last TMO MRCO shift
         fbTM1K4.stTarget1b.fVelocity := 1;
         fbTM1K4.stTarget1b.sName := 'GaAs_1';
         fbTM1K4.stTarget1b.bUseRawCounts := FALSE;
@@ -4704,45 +4766,76 @@ PRG_TM2K4
         bInit: BOOL;
     END_VAR
     IF NOT bInit THEN
-        fbTM2K4.stOut.fPosition := -2.558;
+        fbTM2K4.stOut.fPosition := -1.558;
         fbTM2K4.stOut.fVelocity := 1;
         fbTM2K4.stOut.bUseRawCounts := FALSE;
         fbTM2K4.stOut.bValid := TRUE;
+        fbTM2K4.stOut.sName := 'OUT';
         fbTM2K4.stOut.bMoveOK := TRUE;
         fbTM2K4.stOut.stPMPS.sPmpsState := 'TM2K4:ATM-OUT';
 
-        fbTM2K4.stTarget1.fPosition := -16.311;
-        fbTM2K4.stTarget1.fVelocity := 1;
-        fbTM2K4.stTarget1.bUseRawCounts := FALSE;
-        fbTM2K4.stTarget1.bValid := TRUE;
-        fbTM2K4.stTarget1.bMoveOK := TRUE;
-        fbTM2K4.stTarget1.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1';
+        fbTM2K4.stTarget1a.fPosition := -10.5;
+        fbTM2K4.stTarget1a.fVelocity := 1;
+        fbTM2K4.stTarget1a.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget1a.bValid := TRUE;
+        fbTM2K4.stTarget1a.sName := 'InGaAs_1';
+        fbTM2K4.stTarget1a.bMoveOK := TRUE;
+       fbTM2K4.stTarget1a.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1a';
 
-        fbTM2K4.stTarget2.fPosition := -25.282;
-        fbTM2K4.stTarget2.fVelocity := 1;
-        fbTM2K4.stTarget2.bUseRawCounts := FALSE;
-        fbTM2K4.stTarget2.bValid := TRUE;
-        fbTM2K4.stTarget2.bMoveOK := TRUE;
-        fbTM2K4.stTarget2.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2';
+        fbTM2K4.stTarget1b.fPosition := -16.5;
+        fbTM2K4.stTarget1b.fVelocity := 1;
+        fbTM2K4.stTarget1b.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget1b.bValid := TRUE;
+        fbTM2K4.stTarget1b.sName := 'InGaAs_2';
+        fbTM2K4.stTarget1b.bMoveOK := TRUE;
+       fbTM2K4.stTarget1b.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET1b';
 
-        fbTM2K4.stTarget3.fPosition := -41.249;
-        fbTM2K4.stTarget3.fVelocity := 1;
-        fbTM2K4.stTarget3.bUseRawCounts := FALSE;
-        fbTM2K4.stTarget3.bValid := TRUE;
-        fbTM2K4.stTarget3.bMoveOK := TRUE;
-        fbTM2K4.stTarget3.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3';
+        fbTM2K4.stTarget2a.fPosition := -31.5;
+        fbTM2K4.stTarget2a.fVelocity := 1;
+        fbTM2K4.stTarget2a.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget2a.bValid := TRUE;
+        fbTM2K4.stTarget2a.sName := 'GaAs_1';
+        fbTM2K4.stTarget2a.bMoveOK := TRUE;
+        fbTM2K4.stTarget2a.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2a';
 
-        fbTM2K4.stTarget4.fPosition := -55.414;
+        fbTM2K4.stTarget2b.fPosition := -38.5;
+        fbTM2K4.stTarget2b.fVelocity := 1;
+        fbTM2K4.stTarget2b.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget2b.bValid := TRUE;
+        fbTM2K4.stTarget2b.sName := 'GaAs_2';
+        fbTM2K4.stTarget2b.bMoveOK := TRUE;
+        fbTM2K4.stTarget2b.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET2b';
+
+
+        fbTM2K4.stTarget3a.fPosition := -53.5;
+        fbTM2K4.stTarget3a.fVelocity := 1;
+        fbTM2K4.stTarget3a.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget3a.bValid := TRUE;
+        fbTM2K4.stTarget3a.sName := 'gITO';
+        fbTM2K4.stTarget3a.bMoveOK := TRUE;
+        fbTM2K4.stTarget3a.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3a';
+
+        fbTM2K4.stTarget3b.fPosition := -57.5;
+        fbTM2K4.stTarget3b.fVelocity := 1;
+        fbTM2K4.stTarget3b.bUseRawCounts := FALSE;
+        fbTM2K4.stTarget3b.bValid := TRUE;
+        fbTM2K4.stTarget3b.sName := 'AF_target';
+        fbTM2K4.stTarget3b.bMoveOK := TRUE;
+        fbTM2K4.stTarget3b.stPMPS.sPmpsState := 'TM2K4:ATM-TARGET3b';
+
+        fbTM2K4.stTarget4.fPosition := -77.5;
         fbTM2K4.stTarget4.fVelocity := 1;
         fbTM2K4.stTarget4.bUseRawCounts := FALSE;
         fbTM2K4.stTarget4.bValid := TRUE;
         fbTM2K4.stTarget4.bMoveOK := TRUE;
+        fbTM2K4.stTarget4.sName := 'YAG';
         fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
-        fbTM2K4.stTarget5.fPosition := -69;
+        fbTM2K4.stTarget5.fPosition := -102.5;
         fbTM2K4.stTarget5.fVelocity := 1;
         fbTM2K4.stTarget5.bUseRawCounts := FALSE;
         fbTM2K4.stTarget5.bValid := TRUE;
+        fbTM2K4.stTarget5.sName := 'DIODE';
         fbTM2K4.stTarget5.bMoveOK := TRUE;
         fbTM2K4.stTarget5.stPMPS.sPmpsState := 'TM2K4:ATM-DIODE';
 

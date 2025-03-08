@@ -937,7 +937,7 @@ Axis 30: Axis 30 TM2K4-MMS-Y
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 2.2
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -100.5
+    Enc:SoftEndMinControl:Range, -103
     Id, 30
     OtherSettings:AllowMotionCmdToSlave, true
     TargetPosControl:Range, 0.002
@@ -1150,11 +1150,13 @@ Axis 37: YagX
     CreateSymbols, true
     Dynamic:Acceleration, 2
     Dynamic:Deceleration, 2
-    Enc:EncType, 4
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:Inverse, true
-    Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 7.8125e-05
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:Offset, 128
+    Enc:ScaleFactorNumerator, 5e-05
     Id, 37
     OtherSettings:AllowMotionCmdToSlave, true
     OtherSettings:PulseDistanceNeg, 0.5
@@ -1207,11 +1209,13 @@ Axis 39: YagZ
     CreateSymbols, true
     Dynamic:Acceleration, 2
     Dynamic:Deceleration, 2
-    Enc:EncType, 4
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:Inverse, true
-    Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 9.6875e-05
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:Offset, 172
+    Enc:ScaleFactorNumerator, 5e-05
     Id, 39
     OtherSettings:AllowMotionCmdToSlave, true
     OtherSettings:PulseDistanceNeg, 0.5
@@ -1317,10 +1321,11 @@ Axis 43: Thorlab-LenX
     AxisFolder, SP1K4
     AxisType, 1
     CreateSymbols, true
-    Enc:EncType, 4
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
-    Enc:MaxCount, #x0000ffff
-    Enc:ScaleFactorNumerator, 7.8125e-05
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:ScaleFactorNumerator, 5e-05
     Id, 43
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.1
@@ -1433,6 +1438,10 @@ Axis 47: PA1K4-PF-MMS
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 182.5
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, 39
     Id, 47
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.1
