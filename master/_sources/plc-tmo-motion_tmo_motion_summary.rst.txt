@@ -38,7 +38,7 @@ Libraries
 
         LCLS General, SLAC, Unset, 2.12.0
         lcls-twincat-common-components, SLAC, Unset, 3.9.0
-        lcls-twincat-motion, SLAC, Unset, 4.1.1
+        lcls-twincat-motion, SLAC, Unset, 4.2.1
         PMPS, SLAC - LCLS, Unset, 3.3.0
         SysDir, System, , 3.5.8.0
         SysFile, System, , 3.5.9.0
