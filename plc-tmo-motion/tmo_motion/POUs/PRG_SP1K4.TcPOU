@@ -139,7 +139,7 @@ fbMotionZPY(stMotionStage:=Main.M35);
 fbMotionZPZ(stMotionStage:=Main.M36);
 
 fbZPSetup(stPositionState:=fbZPDefault, bSetDefault:=TRUE);
-//third version of zone plate target
+//swap several FZP targets for run 24 3-18-25
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=15);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=-3.5);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.OUT], sName:='OUT', fPosition:=0);
@@ -149,25 +149,25 @@ fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1b], sName:='Y
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1b], sName:='YAG', fPosition:=0);
 
 //paddle3
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=81);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=-8.2);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-860_1', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=81);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=-8.2);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=0);
 
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=73);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=0.65);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1560_1', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=73);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=0.65);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=0);
 
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=81);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=0.65);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-860_2', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=81);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=0.65);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=0);
 
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=65);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=0.65);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-950_1', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-290_1', fPosition:=65);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-290_1', fPosition:=0.65);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target3b], sName:='FZP-290_1', fPosition:=0);
 
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=57);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=0.65);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-950_2', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-290_2', fPosition:=57);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-290_2', fPosition:=0.65);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-290_2', fPosition:=0);
 
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=49);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=-8.2);
@@ -176,14 +176,14 @@ fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='F
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=57);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=-8.2);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=0);
+// FZP-690-1 position X and Y are chanegd due to last TMO MRCO shift 3-7-2025
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=88.882);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=-0.0144);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-262-524-dual_1', fPosition:=0);
 
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=89);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0.5);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target6b], sName:='FZP-690_1', fPosition:=0);
-
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=97);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=0.5);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-690_2', fPosition:=0);
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=97);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=0.5);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target7b], sName:='FZP-262-524-dual_2', fPosition:=0);
 
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target6a], sName:='FZP-400_1', fPosition:=89);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target6a], sName:='FZP-400_1', fPosition:=-8.2);
@@ -337,7 +337,7 @@ fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=1.00);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5625);
 fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=2.2);
 
 fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=54.5);

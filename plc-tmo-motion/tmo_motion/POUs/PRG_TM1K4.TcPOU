@@ -36,7 +36,7 @@ IF NOT bInit THEN
     fbTM1K4.stTarget1a.bMoveOK := TRUE;
     fbTM1K4.stTarget1a.stPMPS.sPmpsState := 'TM1K4:ATM-TARGET1a';
 
-    fbTM1K4.stTarget1b.fPosition := -23.294;
+    fbTM1K4.stTarget1b.fPosition := -20.2167; // data is changed on 3-7-2025 due to last TMO MRCO shift
     fbTM1K4.stTarget1b.fVelocity := 1;
     fbTM1K4.stTarget1b.sName := 'GaAs_1';
     fbTM1K4.stTarget1b.bUseRawCounts := FALSE;
