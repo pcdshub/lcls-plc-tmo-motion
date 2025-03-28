@@ -1,0 +1,8 @@
+# default group
+* @pcdshub/motion-sme @pcdshub/tmo-members
+
+# language-specific group(s)
+*.{tsproj,plcproj,tmc,tpr,xti,TcTTO,TcPOU,TcDUT,TcGVL,TcVis,TcVMO,TcGTLO} @pcdshub/twincat-reviewers @pcdshub/motion-sme @pcdshub/tmo-members
+
+# github folder holds administrative files
+.github/** @pcdshub/software-admin
