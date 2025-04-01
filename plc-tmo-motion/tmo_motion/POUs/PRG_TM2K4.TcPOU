@@ -21,7 +21,7 @@ END_VAR
       <ST><![CDATA[
 
 IF NOT bInit THEN
-    fbTM2K4.stOut.fPosition := -2.558;
+    fbTM2K4.stOut.fPosition := -1.558;
     fbTM2K4.stOut.fVelocity := 1;
     fbTM2K4.stOut.bUseRawCounts := FALSE;
     fbTM2K4.stOut.bValid := TRUE;
@@ -56,7 +56,7 @@ IF NOT bInit THEN
     fbTM2K4.stTarget4.bMoveOK := TRUE;
     fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
-    fbTM2K4.stTarget5.fPosition := -69;
+    fbTM2K4.stTarget5.fPosition := -101.5;
     fbTM2K4.stTarget5.fVelocity := 1;
     fbTM2K4.stTarget5.bUseRawCounts := FALSE;
     fbTM2K4.stTarget5.bValid := TRUE;
