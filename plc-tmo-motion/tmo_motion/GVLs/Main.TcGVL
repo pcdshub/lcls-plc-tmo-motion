@@ -231,7 +231,8 @@ VAR_GLOBAL
         nEnableMode:=ENUM_StageEnableMode.DURING_MOTION,
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 2'}
+                              .bLimitBackwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 1^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:07
     '}
@@ -295,7 +296,7 @@ VAR_GLOBAL
 
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[FoilY-EL7041]^STM Status^Status^Digital input 2';
-                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E7]^FB Inputs Channel 1^Position'}
+                               .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E7]^FB Inputs Channel 2^Position'}
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:13
     '}
