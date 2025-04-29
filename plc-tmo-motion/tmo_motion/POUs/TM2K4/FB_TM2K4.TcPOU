@@ -4,9 +4,9 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TM2K4
 (*
     Adapted from FB_ATM to:
-    - Change stTarget1..stTarget5 to stTarget1, stTarget2, stTarget3, stTarget4, stTarget5 to the inputs
-    - Change the arrStates.array pragma from 1..6 to 1..5 (out and 4 in states, down from 5)
-    - Swap out FB_ATM_States for FB_TM1K4_States
+    - Change stTarget1..stTarget5 to stTarget1a, stTarget1b, stTarget2b, stTarget3a, stTarget3b, stTarget4, stTarget5 to the inputs
+    - Change the arrStates.array pragma from 1..6 to 1..9 (out and 8 in states, up from 5)
+    - Swap out FB_ATM_States for FB_TM2K4_States //04-2025
 *)
 VAR_IN_OUT
     // Y motor (state select).
