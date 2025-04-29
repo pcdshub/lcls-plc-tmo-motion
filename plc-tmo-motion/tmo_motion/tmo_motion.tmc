@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{60E07485-8285-FC6A-BB39-5319648337E0}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{3C19B256-6FB6-F3E8-FC90-38EC47325502}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -57862,7 +57862,7 @@ Digital outputs</Comment>
             <Name>pytmc</Name>
             <Value>
         pv: MMS
-        astPositionState.array: 1..6
+        astPositionState.array: 1..9
     </Value>
           </Property>
         </Properties>
@@ -101083,7 +101083,7 @@ Digital outputs</Comment>
             <BitSize>32</BitSize>
             <BaseType>REAL</BaseType>
             <Default>
-              <Value>0.05</Value>
+              <Value>0.2</Value>
             </Default>
             <Properties>
               <Property>
@@ -105485,7 +105485,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2025-04-15T11:28:02</Value>
+          <Value>2025-04-29T10:13:04</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
