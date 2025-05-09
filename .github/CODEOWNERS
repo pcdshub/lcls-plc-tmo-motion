@@ -2,7 +2,19 @@
 * @pcdshub/motion-sme @pcdshub/tmo-members
 
 # language-specific group(s)
-*.{tsproj,plcproj,tmc,tpr,xti,TcTTO,TcPOU,TcDUT,TcGVL,TcVis,TcVMO,TcGTLO} @pcdshub/twincat-reviewers @pcdshub/motion-sme @pcdshub/tmo-members
+## TWINCAT files
+*.tsproj @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.plcproj @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.tmc @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.tpr @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.xti @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcTTO @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcPOU @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcDUT @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcGVL @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcVis @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcVMO @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
+*.TcGTLO @pcdshub/motion-sme @pcdshub/twincat-reviewers @pcdshub/tmo-members
 
 # github folder holds administrative files
 .github/** @pcdshub/software-admin
