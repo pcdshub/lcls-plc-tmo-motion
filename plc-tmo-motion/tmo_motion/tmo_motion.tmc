@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{A5B0D25B-C26E-EB1E-DFEB-A94F88ABDB5F}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{590FC650-ED66-B148-AB4B-5D1E273CA7BF}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -58810,14 +58810,8 @@ Digital outputs</Comment>
       <EnumInfo>
         <Text>Target5</Text>
         <Enum>6</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>Target6</Text>
-        <Enum>7</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>Target7</Text>
-        <Enum>8</Enum>
+        <Comment>    Target6 := 7,
+    Target7 := 8</Comment>
       </EnumInfo>
       <Properties>
         <Property>
@@ -78088,7 +78082,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88408064</ByteSize>
+          <ByteSize>88473600</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
             <BitSize>2048</BitSize>
@@ -91789,7 +91783,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88408064</ByteSize>
+          <ByteSize>88473600</ByteSize>
           <Symbol>
             <Name>PRG_AL1K4_L2SI.fbAL1K4.fbYStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
             <BitSize>1024</BitSize>
@@ -94882,7 +94876,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88408064</ByteSize>
+          <ByteSize>88473600</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -105368,7 +105362,7 @@ Digital outputs</Comment>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>88408064</ByteSize>
+          <ByteSize>88473600</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -105454,11 +105448,11 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2025-05-01T13:15:35</Value>
+          <Value>2025-05-13T10:24:32</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>1286144</Value>
+          <Value>1224704</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>

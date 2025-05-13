@@ -41,8 +41,9 @@ fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target
 fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], fdelta := 2.0, sName := 'TARGET3', fPosition:=99.4);
 fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], fdelta := 2.0, sName := 'TARGET4', fPosition:=79.6);
 fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], fdelta := 2.0, sName := 'TARGET5', fPosition:=59.8);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=40);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=20.2);
+//hide target 6 and 7 because it cannot fully reached 5-13-25
+//fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=40);
+//fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=20.2);
 //PMPS
 aPA1K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'PA1K4:PF-OUT';
 aPA1K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'PA1K4:PF-TARGET1';
@@ -50,8 +51,9 @@ aPA1K4States[ENUM_Sample_Calibration_States.Target2].stPMPS.sPmpsState := 'PA1K4
 aPA1K4States[ENUM_Sample_Calibration_States.Target3].stPMPS.sPmpsState := 'PA1K4:PF-TARGET3';
 aPA1K4States[ENUM_Sample_Calibration_States.Target4].stPMPS.sPmpsState := 'PA1K4:PF-TARGET4';
 aPA1K4States[ENUM_Sample_Calibration_States.Target5].stPMPS.sPmpsState := 'PA1K4:PF-TARGET5';
-aPA1K4States[ENUM_Sample_Calibration_States.Target6].stPMPS.sPmpsState := 'PA1K4:PF-TARGET6';
-aPA1K4States[ENUM_Sample_Calibration_States.Target7].stPMPS.sPmpsState := 'PA1K4:PF-TARGET7';
+//hide target 6 and 7 because it cannot fully reached 5-13-25
+//aPA1K4States[ENUM_Sample_Calibration_States.Target6].stPMPS.sPmpsState := 'PA1K4:PF-TARGET6';
+//aPA1K4States[ENUM_Sample_Calibration_States.Target7].stPMPS.sPmpsState := 'PA1K4:PF-TARGET7';
 
 
 fbPA1K4States(
