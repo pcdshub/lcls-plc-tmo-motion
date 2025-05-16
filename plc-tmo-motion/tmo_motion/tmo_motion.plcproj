@@ -186,6 +186,10 @@
           <Key>MAX_ASSERTIONS</Key>
           <Value>33</Value>
         </Parameter>
+        <Parameter ListName="PMPS_PARAM">
+          <Key>TRANS_MARGIN</Key>
+          <Value>REAL#0.2</Value>
+        </Parameter>
       </Parameters>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_MC2">
@@ -217,7 +221,7 @@
       <Resolution>lcls-twincat-common-components, 3.9.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 4.2.1 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 4.2.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 3.3.0 (SLAC - LCLS)</Resolution>

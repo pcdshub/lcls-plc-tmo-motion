@@ -4,9 +4,9 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TM2K4
 (*
     Adapted from FB_ATM to:
-    - Change stTarget1..stTarget5 to stTarget1, stTarget2, stTarget3, stTarget4, stTarget5 to the inputs
-    - Change the arrStates.array pragma from 1..6 to 1..5 (out and 4 in states, down from 5)
-    - Swap out FB_ATM_States for FB_TM1K4_States
+    - Change stTarget1..stTarget5 to stTarget1a, stTarget1b, stTarget2b, stTarget3a, stTarget3b, stTarget4, stTarget5 to the inputs
+    - Change the arrStates.array pragma from 1..6 to 1..9 (out and 8 in states, up from 5)
+    - Swap out FB_ATM_States for FB_TM2K4_States //04-2025
 *)
 VAR_IN_OUT
     // Y motor (state select).
@@ -20,11 +20,14 @@ VAR_IN_OUT
 END_VAR
 VAR_INPUT
     stOut: ST_PositionState;
-    stTarget1: ST_PositionState;
-    stTarget2: ST_PositionState;
-    stTarget3: ST_PositionState;
-    stTarget4: ST_PositionState;   // target 4 is YAG
-    stTarget5: ST_PositionState;    // target 5 is Diode
+    stTarget1a: ST_PositionState;
+    stTarget1b: ST_PositionState;
+    stTarget2a: ST_PositionState;
+    stTarget2b: ST_PositionState;
+    stTarget3a: ST_PositionState;
+    stTarget3b: ST_PositionState;
+    stTarget4: ST_PositionState;    // target 4 is Yag
+    stTarget5: ST_PositionState;    //target 5 is Diode
     // Set this to a non-unknown value to request a new move.
     {attribute 'pytmc' := '
         pv: MMS:STATE:SET
@@ -64,7 +67,7 @@ VAR
 
     {attribute 'pytmc' := '
         pv: MMS
-        astPositionState.array: 1..6
+        astPositionState.array: 1..9
     '}
     fbStates: FB_PositionStatePMPS1D;
     astPositionState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
@@ -92,9 +95,12 @@ END_VAR
 
     // Partial backcompat, this used to set fVelocity too but this should be set per install
     fbStateDefaults(stPositionState:=stOut, sNameDefault:='OUT', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fOutDecel);
-    fbStateDefaults(stPositionState:=stTarget1, sNameDefault:='TARGET1', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
-    fbStateDefaults(stPositionState:=stTarget2, sNameDefault:='TARGET2', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
-    fbStateDefaults(stPositionState:=stTarget3, sNameDefault:='TARGET3', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget1a, sNameDefault:='TARGET1a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget1b, sNameDefault:='TARGET1b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget2a, sNameDefault:='TARGET2a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget2b, sNameDefault:='TARGET2b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget3a, sNameDefault:='TARGET3a', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
+    fbStateDefaults(stPositionState:=stTarget3b, sNameDefault:='TARGET3b', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget4, sNameDefault:='YAG', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
     fbStateDefaults(stPositionState:=stTarget5, sNameDefault:='DIODE', fDeltaDefault:=fDelta, fAccelDefault:=fAccel, fDecelDefault:=fAccel);
 END_IF
@@ -118,9 +124,12 @@ fbArrCheckWrite(
 );
 IF NOT fbArrCheckWrite.bHadWrite THEN
     astPositionState[ENUM_TM2K4_States.OUT] := stOut;
-    astPositionState[ENUM_TM2K4_States.TARGET1] := stTarget1;
-    astPositionState[ENUM_TM2K4_States.TARGET2] := stTarget2;
-    astPositionState[ENUM_TM2K4_States.TARGET3] := stTarget3;
+    astPositionState[ENUM_TM2K4_States.TARGET1a] := stTarget1a;
+    astPositionState[ENUM_TM2K4_States.TARGET1b] := stTarget1b;
+    astPositionState[ENUM_TM2K4_States.TARGET2a] := stTarget2a;
+    astPositionState[ENUM_TM2K4_States.TARGET2b] := stTarget2b;
+    astPositionState[ENUM_TM2K4_States.TARGET3a] := stTarget3a;
+    astPositionState[ENUM_TM2K4_States.TARGET3b] := stTarget3b;
     astPositionState[ENUM_TM2K4_States.YAG] := stTarget4;
     astPositionState[ENUM_TM2K4_States.DIODE] := stTarget5;
 END_IF
@@ -148,9 +157,12 @@ fbArrCheckWrite(
 );
 
 stOut := astPositionState[ENUM_TM2K4_States.OUT];
-stTarget1 := astPositionState[ENUM_TM2K4_States.TARGET1];
-stTarget2 := astPositionState[ENUM_TM2K4_States.TARGET2];
-stTarget3 := astPositionState[ENUM_TM2K4_States.TARGET3];
+stTarget1a := astPositionState[ENUM_TM2K4_States.TARGET1a];
+stTarget1b := astPositionState[ENUM_TM2K4_States.TARGET1b];
+stTarget2a := astPositionState[ENUM_TM2K4_States.TARGET2a];
+stTarget2b := astPositionState[ENUM_TM2K4_States.TARGET2b];
+stTarget3a := astPositionState[ENUM_TM2K4_States.TARGET3a];
+stTarget3b := astPositionState[ENUM_TM2K4_States.TARGET3b];
 stTarget4 := astPositionState[ENUM_TM2K4_States.YAG];
 stTarget5 := astPositionState[ENUM_TM2K4_States.DIODE];
 
