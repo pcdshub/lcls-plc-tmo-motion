@@ -1,11 +1,11 @@
-#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.8.0/bin/rhel7-x86_64/adsIoc
+#!c:/Repos/ads-ioc/R0.8.0///bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: plc-tmo-motion.tsproj
 #        PLC name: tmo_motion (tmo_motion Instance)
-# Generated using: pytmc 2.17.0
-# Project version: 25ee423
-#    Project hash: 25ee42352d7f02ea5d3c2fd1e288d653ac66cfe0
+# Generated using: pytmc 2.18.2
+# Project version: unknown
+#    Project hash: unknown
 #     PLC IP/host: 172.21.132.76
 #      PLC Net ID: 172.21.132.76.1.1
 #  ** Production mode IOC **
@@ -15,7 +15,7 @@
 #
 #   LCLS General: * -> 2.12.0 (SLAC)
 #   lcls-twincat-common-components: * -> 3.9.0 (SLAC)
-#   lcls-twincat-motion: * -> 4.2.1 (SLAC)
+#   lcls-twincat-motion: * -> 4.2.0 (SLAC)
 #   PMPS: * -> 3.3.0 (SLAC - LCLS)
 #   Tc2_MC2: * -> 3.3.42.0 (Beckhoff Automation GmbH)
 #   Tc2_SerialCom: * -> 3.3.7.0 (Beckhoff Automation GmbH)
@@ -28,7 +28,7 @@
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
-epicsEnvSet("ENGINEER", "rnazir" )
+epicsEnvSet("ENGINEER", "" )
 epicsEnvSet("LOCATION", "PLC:TMO:MOTION" )
 epicsEnvSet("IOCSH_PS1", "$(IOC)> " )
 epicsEnvSet("ACF_FILE", "$(ADS_IOC_TOP)/iocBoot/templates/unrestricted.acf")
@@ -44,14 +44,14 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.132.76")
 epicsEnvSet("AMSID",            "172.21.132.76.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "15610")
+epicsEnvSet("ADS_MAX_PARAMS",   "15631")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
 epicsEnvSet("ADS_TIME_SOURCE",  "0")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.132.76 ^172.*")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.132.76 ^172.*$")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -648,14 +648,14 @@ dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TMO:MOTION,IDX=1,TASK_PORT=350")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:TMO:MOTION")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:TMO:MOTION,PROJECT=plc-tmo-motion.tsproj,HASH=25ee423,VERSION=25ee423,PYTMC=2.17.0,PLC_HOST=172.21.132.76")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:TMO:MOTION,PROJECT=plc-tmo-motion.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.18.2,PLC_HOST=172.21.132.76")
 
 #   LCLS General: * -> 2.12.0 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=LCLS_General,VERSION=2.12.0,VENDOR=SLAC")
 #   lcls-twincat-common-components: * -> 3.9.0 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-common-components,VERSION=3.9.0,VENDOR=SLAC")
-#   lcls-twincat-motion: * -> 4.2.1 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-motion,VERSION=4.2.1,VENDOR=SLAC")
+#   lcls-twincat-motion: * -> 4.2.0 (SLAC)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=lcls-twincat-motion,VERSION=4.2.0,VENDOR=SLAC")
 #   PMPS: * -> 3.3.0 (SLAC - LCLS)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TMO:MOTION,DEPENDENCY=PMPS,VERSION=3.3.0,VENDOR=SLAC - LCLS")
 #   Tc2_MC2: * -> 3.3.42.0 (Beckhoff Automation GmbH)
@@ -674,8 +674,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("tmo_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TMO:MOTION:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 14610
-callbackSetQueueSize(31220)
+# Total records: 14631
+callbackSetQueueSize(31262)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:TMO:MOTION:")
