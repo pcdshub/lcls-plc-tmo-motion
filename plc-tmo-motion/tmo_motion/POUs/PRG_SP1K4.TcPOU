@@ -152,10 +152,10 @@ fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1b], sName:='Y
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=81);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=-8.2);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target5a], sName:='FZP-260_1', fPosition:=0);
-
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=73);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=0.65);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-1212_1', fPosition:=0);
+//paddle is changed on 6-10-25
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=73);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=0.65);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target4b], sName:='FZP-400-800-dual_1', fPosition:=0);
 
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=81);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target5b], sName:='FZP-350_1', fPosition:=0.65);
@@ -168,10 +168,10 @@ fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target3b], sName:='F
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=57);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=0.65);
 fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target2b], sName:='FZP-690_1', fPosition:=0);
-
-fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=49);
-fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=-8.2);
-fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-530_1', fPosition:=0);
+//paddle is changed on 6-10-25
+fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=49);
+fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=-8.2);
+fbZPSetup(stPositionState:=aZPZStates[ENUM_ZonePlate_States.Target1a], sName:='FZP-400-800-dual_2', fPosition:=0);
 
 fbZPSetup(stPositionState:=aZPXStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=57);
 fbZPSetup(stPositionState:=aZPYStates[ENUM_ZonePlate_States.Target2a], sName:='FZP-530_2', fPosition:=-8.2);
