@@ -220,7 +220,7 @@ VAR_GLOBAL
         sName := 'TMO:SPEC:MMS:05');
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[YagX-EL7041]^STM Status^Status^Digital input 1';
-							  .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 1^Position'}
 
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:06
@@ -233,7 +233,7 @@ VAR_GLOBAL
         nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET);
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable:=TIIB[YagY-EL7041]^STM Status^Status^Digital input 2'}
-                                
+
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:07
     '}
@@ -246,8 +246,8 @@ VAR_GLOBAL
 
     {attribute 'TcLinkTo' := '.bLimitForwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable:=TIIB[YagZ-EL7041]^STM Status^Status^Digital input 1';
-							  .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 2^Position'}
-							  
+                              .nRawEncoderULINT:=TIIB[SP1K4-EL5042-E8]^FB Inputs Channel 2^Position'}
+
     {attribute 'pytmc' := '
         pv: TMO:SPEC:MMS:08
     '}
