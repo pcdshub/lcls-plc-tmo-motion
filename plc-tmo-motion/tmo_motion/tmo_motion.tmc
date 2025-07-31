@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{223F0684-C3A1-812E-11AA-103B2AB63808}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{F5EC3FEB-4623-4F3E-E555-929B953087FC}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -58810,8 +58810,14 @@ Digital outputs</Comment>
       <EnumInfo>
         <Text>Target5</Text>
         <Enum>6</Enum>
-        <Comment>    Target6 := 7,
-    Target7 := 8</Comment>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>Target6</Text>
+        <Enum>7</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>Target7</Text>
+        <Enum>8</Enum>
       </EnumInfo>
       <Properties>
         <Property>
@@ -105447,7 +105453,7 @@ Digital outputs</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2025-07-29T14:21:06</Value>
+          <Value>2025-07-31T10:28:10</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

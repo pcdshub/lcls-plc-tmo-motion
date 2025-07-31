@@ -35,15 +35,15 @@ END_VAR
       <ST><![CDATA[fbMotionPA1K4(stMotionStage:=Main.M47);
 
 fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.OUT],fdelta := 2.0, sName := 'OUT', fPosition:=173.0);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target1], fdelta := 2.0, sName := 'TARGET1', fPosition:=139);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target2], fdelta := 2.0, sName := 'TARGET2', fPosition:=119.2);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], fdelta := 2.0, sName := 'TARGET3', fPosition:=99.4);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], fdelta := 2.0, sName := 'TARGET4', fPosition:=79.6);
-fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], fdelta := 2.0, sName := 'TARGET5', fPosition:=59.8);
-//hide target 6 and 7 because it cannot fully reached 5-13-25
-//fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=40);
-//fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=20.2);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.OUT],fdelta := 2.0, sName := 'OUT', fPosition:=180.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target1], fdelta := 2.0, sName := 'TARGET1', fPosition:=160.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target2], fdelta := 2.0, sName := 'TARGET2', fPosition:=140.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target3], fdelta := 2.0, sName := 'TARGET3', fPosition:=121.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target4], fdelta := 2.0, sName := 'TARGET4', fPosition:=101.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target5], fdelta := 2.0, sName := 'TARGET5', fPosition:=81.0);
+//target 6 and 7 because is recoered on 7-31-25, those were hided on 05-13-25
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target6], fdelta := 2.0, sName := 'TARGET6', fPosition:=61.0);
+fbStateSetup(stPositionState:=aPA1K4States[ENUM_Sample_Calibration_States.Target7], fdelta := 2.0, sName := 'TARGET7', fPosition:=41.0);
 //PMPS
 aPA1K4States[ENUM_Sample_Calibration_States.OUT].stPMPS.sPmpsState := 'PA1K4:PF-OUT';
 aPA1K4States[ENUM_Sample_Calibration_States.Target1].stPMPS.sPmpsState := 'PA1K4:PF-TARGET1';
@@ -51,9 +51,9 @@ aPA1K4States[ENUM_Sample_Calibration_States.Target2].stPMPS.sPmpsState := 'PA1K4
 aPA1K4States[ENUM_Sample_Calibration_States.Target3].stPMPS.sPmpsState := 'PA1K4:PF-TARGET3';
 aPA1K4States[ENUM_Sample_Calibration_States.Target4].stPMPS.sPmpsState := 'PA1K4:PF-TARGET4';
 aPA1K4States[ENUM_Sample_Calibration_States.Target5].stPMPS.sPmpsState := 'PA1K4:PF-TARGET5';
-//hide target 6 and 7 because it cannot fully reached 5-13-25
-//aPA1K4States[ENUM_Sample_Calibration_States.Target6].stPMPS.sPmpsState := 'PA1K4:PF-TARGET6';
-//aPA1K4States[ENUM_Sample_Calibration_States.Target7].stPMPS.sPmpsState := 'PA1K4:PF-TARGET7';
+//hide target 6 and 7 because it cannot fully reached 5-13-25 and targets are recovered 7-31-25
+aPA1K4States[ENUM_Sample_Calibration_States.Target6].stPMPS.sPmpsState := 'PA1K4:PF-TARGET6';
+aPA1K4States[ENUM_Sample_Calibration_States.Target7].stPMPS.sPmpsState := 'PA1K4:PF-TARGET7';
 
 
 fbPA1K4States(
