@@ -11,9 +11,9 @@ TYPE ENUM_Sample_Calibration_States :
     Target2 := 3,
     Target3 := 4,
     Target4 := 5,
-    Target5 := 6
-//    Target6 := 7,
-//    Target7 := 8
+    Target5 := 6,
+    Target6 := 7,
+    Target7 := 8
 
 )UINT;
 END_TYPE
