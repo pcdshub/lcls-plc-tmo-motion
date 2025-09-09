@@ -333,24 +333,39 @@ fbMotionFoilY(stMotionStage:=Main.M44);
 
 // SP1K4-SOLID-ATT PMPS
 fbATTSetup(stPositionState:=fbATTDefault, bSetDefault:=TRUE);
+//update all targets positions and add four more targets on 9-9-25
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=-17.0);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=11.0);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.OUT], sName:='OUT', fPosition:=1.00);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=-31.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=36.5625);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target1], sName:='TARGET1', fPosition:=2.2);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=-36.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=54.5);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target2], sName:='TARGET2', fPosition:=2.0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=-41.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=72.2);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target3], sName:='TARGET3', fPosition:=1.6);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=-46.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=90.2);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target4], sName:='TARGET4', fPosition:=1.3);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=-51.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=2.3);
 
-fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=107.8);
-fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target5], sName:='TARGET5', fPosition:=1.0);
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target6], sName:='TARGET6', fPosition:=-56.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target6], sName:='TARGET6', fPosition:=2.3);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target7], sName:='TARGET7', fPosition:=-61.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target7], sName:='TARGET7', fPosition:=2.3);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target8], sName:='TARGET8', fPosition:=-66.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target8], sName:='TARGET8', fPosition:=2.3);
+
+fbATTSetup(stPositionState:=aATTXStates[ENUM_SolidAttenuator_States.Target9], sName:='TARGET9', fPosition:=-71.5);
+fbATTSetup(stPositionState:=aATTYStates[ENUM_SolidAttenuator_States.Target9], sName:='TARGET9', fPosition:=2.3);
+
+
+
 
 aATTXStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
 aATTXStates[ENUM_SolidAttenuator_States.Target1].bMoveOk := bPF1K4Out;
@@ -358,6 +373,12 @@ aATTXStates[ENUM_SolidAttenuator_States.Target2].bMoveOk := bPF1K4Out;
 aATTXStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
 aATTXStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
 aATTXStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+// add four more targets on 9-9-25
+aATTXStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
+
 
 
 aATTYStates[ENUM_SolidAttenuator_States.OUT].bMoveOk := TRUE;
@@ -366,6 +387,11 @@ aATTYStates[ENUM_SolidAttenuator_States.Target2].bMoveOk := bPF1K4Out;
 aATTYStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
 aATTYStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
 aATTYStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
+//add four more targets on 9-925
+aATTXStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
+aATTXStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
 
 
 
@@ -377,6 +403,12 @@ aATTXStates[ENUM_SolidAttenuator_States.Target2].stPMPS.sPmpsState := 'SP1K4:ATT
 aATTXStates[ENUM_SolidAttenuator_States.Target3].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET3';
 aATTXStates[ENUM_SolidAttenuator_States.Target4].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET4';
 aATTXStates[ENUM_SolidAttenuator_States.Target5].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET5';
+//add four more targets on 9-9-25
+aATTXStates[ENUM_SolidAttenuator_States.Target6].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET6';
+aATTXStates[ENUM_SolidAttenuator_States.Target7].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET7';
+aATTXStates[ENUM_SolidAttenuator_States.Target8].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET8';
+aATTXStates[ENUM_SolidAttenuator_States.Target9].stPMPS.sPmpsState := 'SP1K4:ATT-TARGET9';
+
 
 fbATTStates(
     stMotionStage1:=Main.M33,
