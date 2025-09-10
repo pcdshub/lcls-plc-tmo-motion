@@ -388,10 +388,10 @@ aATTYStates[ENUM_SolidAttenuator_States.Target3].bMoveOk := bPF1K4Out;
 aATTYStates[ENUM_SolidAttenuator_States.Target4].bMoveOk := bPF1K4Out;
 aATTYStates[ENUM_SolidAttenuator_States.Target5].bMoveOk := bPF1K4Out;
 //add four more targets on 9-925
-aATTXStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
-aATTXStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
-aATTXStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
-aATTXStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target6].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target7].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target8].bMoveOk := bPF1K4Out;
+aATTYStates[ENUM_SolidAttenuator_States.Target9].bMoveOk := bPF1K4Out;
 
 
 
