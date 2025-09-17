@@ -11,7 +11,11 @@ TYPE ENUM_SolidAttenuator_States :
     Target2 := 3,
     Target3 := 4,
     Target4 := 5,
-    Target5 := 6
+    Target5 := 6,
+    Target6 := 7, // add four more targets on 9-9-25
+    Target7 := 8,
+    Target8 := 9,
+    Target9 := 10
 
 )UINT;
 END_TYPE
