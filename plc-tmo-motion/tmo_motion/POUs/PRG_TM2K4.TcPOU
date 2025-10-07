@@ -86,7 +86,7 @@ IF NOT bInit THEN
     fbTM2K4.stTarget4.sName := 'YAG';
     fbTM2K4.stTarget4.stPMPS.sPmpsState := 'TM2K4:ATM-YAG';
 
-    fbTM2K4.stTarget5.fPosition := -101.5;
+    fbTM2K4.stTarget5.fPosition := -102.5;
     fbTM2K4.stTarget5.fVelocity := 1;
     fbTM2K4.stTarget5.bUseRawCounts := FALSE;
     fbTM2K4.stTarget5.bValid := TRUE;
